@@ -5,6 +5,7 @@
 	Brand: <%= board.brand %>
 	Model: <%= board.model %>
 	User: <%= board.owner_id %>
+	<%= link_to "have a looksee", board_url(board.id) %>
 	<br><br>
 <% end %>
 

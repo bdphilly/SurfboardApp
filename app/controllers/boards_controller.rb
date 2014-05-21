@@ -1,12 +1,12 @@
 class BoardsController < ApplicationController
-	# before_action :authenticate_user!
+	before_action :authenticate_user!, only: [:new, :create]
 
 	def index
 		@boards = Board.all
 	end
 
 	def show
-		@board = Board.find([params[:id]])
+		@board = Board.find(params[:id])
 	end
 
 	def new

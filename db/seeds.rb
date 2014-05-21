@@ -23,7 +23,7 @@
 		brand: Faker::Lorem.word,
 		description: Faker::Lorem.paragraph,
 		condition: Faker::Number.number(1),
-		owner_id: new_user	
+		owner_id: (new_user + 1)
 	})
 
 end

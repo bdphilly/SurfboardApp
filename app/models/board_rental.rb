@@ -9,6 +9,7 @@
 #  status     :string(255)      not null
 #  created_at :datetime
 #  updated_at :datetime
+#  renter_id  :integer
 #
 
 class BoardRental < ActiveRecord::Base

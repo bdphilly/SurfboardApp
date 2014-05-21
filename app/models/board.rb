@@ -13,7 +13,6 @@
 #  owner_id    :integer          not null
 #  created_at  :datetime
 #  updated_at  :datetime
-#  renter_id   :integer
 #
 
 class Board < ActiveRecord::Base
