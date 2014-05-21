@@ -42,6 +42,13 @@ class BoardRental < ActiveRecord::Base
 	def assign_available_status
 		self.status ||= "AVAILABLE"
 	end
+
+	def mark_available!
+
+	end
+
+	def mark_unavailable!
+	end
 	
 	def overlapping_rentals
 	  conditions = <<-SQL
@@ -59,18 +66,18 @@ class BoardRental < ActiveRecord::Base
 	    )
 	  SQL
 
-  overlapping_rentals = BoardRental.where(conditions {
-  	board_id: self.board_id,
-  	start_date: self.start_date,
-  	end_date: self.end_date
-	})
+	  overlapping_rentals = BoardRental.where(conditions, {
+	  	board_id: self.board_id,
+	  	start_date: self.start_date,
+	  	end_date: self.end_date
+		})
 
-  if self.id.nil?
-    overlapping_rentals
-  else
-    overlapping_rentals.where("id != ?", self.id)
-  end
-
+	  if self.id.nil?
+	    overlapping_rentals
+	  else
+	    overlapping_rentals.where("id != ?", self.id)
+	  end
+	end
 ################
 
   def valid_rental
@@ -88,4 +95,3 @@ class BoardRental < ActiveRecord::Base
   end
 end
 
-end
