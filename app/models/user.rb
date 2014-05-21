@@ -23,12 +23,13 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_session_token
 
-  has_many(
-    :boards, 
+  has_many :boards, 
     class_name: "Board",
     foreign_key: :owner_id
-  )
 
+  has_many :rented_boards,
+    class_name: "Board",
+    foreign_key: :renter_id
 
 
   def self.find_by_credentials(username, password)
