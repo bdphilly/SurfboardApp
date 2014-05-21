@@ -1,0 +1,32 @@
+<h1>List a Board</h1>
+
+<br>
+<form action="<%= boards_url %>" method="post">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <label for="brand">Brand</label>
+  <input type="text" id="brand" name="board[brand]">
+  <br>
+  <label for="model">Model</label>
+  <input type="text" id="model" name="board[model]">
+  <br>
+  <label for="length">Length</label>
+  <input type="text" id="length" name="board[length]">
+  <br>
+  <label for="width">Width</label>
+  <input type="text" id="width" name="board[width]">
+  <br>
+  <label for="thickness">Thickness</label>
+  <input type="text" id="thickness" name="board[thickness]">
+  <br>
+  <label for="condition">Condition</label>
+  <input type="text" id="condition" name="board[condition]">
+  <br>
+  <label for="description">Description</label>
+  <input type="textarea" id="description" name="board[description]">
+
+  <input type="submit" value="Create it!">
+</form>

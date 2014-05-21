@@ -1,0 +1,12 @@
+<h1>The Boards</h1>
+
+<br>
+<% @boards.each do |board| %>
+	Brand: <%= board.brand %>
+	Model: <%= board.model %>
+	Owner: <%= User.find(board.owner_id).username %>
+	<br><br>
+<% end %>
+
+
+<%= link_to "Create a new board", new_board_url %>
