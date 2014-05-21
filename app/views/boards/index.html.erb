@@ -4,7 +4,7 @@
 <% @boards.each do |board| %>
 	Brand: <%= board.brand %>
 	Model: <%= board.model %>
-	Owner: <%= User.find(board.owner_id).username %>
+	
 	<br><br>
 <% end %>
 

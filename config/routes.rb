@@ -1,9 +1,10 @@
 SurfboardApp::Application.routes.draw do
 
-  resource :session, only: [:create, :destroy, :new]
-  resources :users
+  devise_for :users
+  # resource :session, only: [:create, :destroy, :new]
+  # resources :users
   resources :boards
 
-  root to: "users#show"
+  root to: "boards#index"
 
 end

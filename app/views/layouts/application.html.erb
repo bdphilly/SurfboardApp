@@ -10,13 +10,20 @@
 
 	<%= flash[:errors].join if flash[:errors] %>
 
-	<% if signed_in? %>
-		<%= button_to "Sign Out", session_url, method: :delete %>
+	<% if user_signed_in? %>
+		<%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
 	<% else %>
-		<%= link_to "Sign In", new_session_url %>
-		<%= link_to "Sign Up", new_user_url %>
+		<%= link_to "Sign In", new_user_session_path %>
+		<%= link_to "Sign Up", new_user_registration_path %>
 	<% end %>
 	<hr>
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
 
 
 <%= yield %>

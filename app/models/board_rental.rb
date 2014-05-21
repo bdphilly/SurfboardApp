@@ -19,7 +19,7 @@ class BoardRental < ActiveRecord::Base
 
 	validates :board_id, :start_date, :end_date, :status, presence: true
 
-	validate
+	validates :status, inclusion: STATUS_STATES
 
 	belongs_to :board,
 		class_name: "Board",

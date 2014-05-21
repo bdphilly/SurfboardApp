@@ -51,3 +51,6 @@ end
 
 gem 'pry-rails'
 gem 'annotate'
+
+# Devise Auth
+gem 'devise', '~> 3.2.4'
