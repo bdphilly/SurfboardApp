@@ -1,51 +1,52 @@
 class UsersController < ApplicationController
-	before_action :require_signed_out!, only: [:new, :create]
-	before_action :require_signed_in!, only: [:show]
+  before_action :require_signed_out!, only: [:new, :create]
+  before_action :require_signed_in!, only: [:show]
 
-	def new
-		@user = User.new
-	end
+  def new
+    @user = User.new
+  end
 
-	def create
-		@user = User.new(user_params)
-	
-		if @user.save
-			sign_in(@user)
-			redirect_to user_url(@user)
-		else
-			flash.now[:errors] = @user.errors.full_messages
-			render :new
-		end
-	end
+  def create
+    @user = User.new(user_params)
+    @user.email = SecureRandom::urlsafe_base64(16) #temporary hack for random email address to pass validation
 
-	def show
-			@user = User.find(params[:id])
-	end
+    if @user.save
+      sign_in(@user)
+      redirect_to user_url(@user)
+    else
+      flash.now[:errors] = @user.errors.full_messages
+      render :new
+    end
+  end
 
-	def edit
-		@user = User.find(params[:id])
-	end
+  def show
+    @user = User.find(params[:id])
+  end
 
-	def update
-		@user = User.find(params[:id])
+  def edit
+    @user = User.find(params[:id])
+  end
 
-		if @user.update_attributes(user_params)
-			redirect_to user_url(@user)
-		else
-			flash.now[:errors] = @user.errors.full_messages
-			render :edit
-		end
-	end
+  def update
+    @user = User.find(params[:id])
 
-	def destroy
-		@user = User.find(params[:id])
-		@user.destroy
-		redirect_to new_session_url
-	end
+    if @user.update_attributes(user_params)
+      redirect_to user_url(@user)
+    else
+      flash.now[:errors] = @user.errors.full_messages
+      render :edit
+    end
+  end
 
-	private
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to new_session_url
+  end
 
-	def user_params
-		params.require(:user).permit(:username, :password)
-	end
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :password)
+  end
 end

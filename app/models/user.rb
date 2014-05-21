@@ -23,8 +23,9 @@ class User < ActiveRecord::Base
 
   def password=(unencrypted_password)
     if unencrypted_password.present?
-    @password = unencrypted_password
-    self.password_digest = BCrypt::Password.create(unencrypted_password)  
+      @password = unencrypted_password
+      self.password_digest = BCrypt::Password.create(unencrypted_password)  
+    end
   end
 
   def reset_session_token!
