@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521072128) do
+ActiveRecord::Schema.define(version: 20140521175037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "board_rentals", force: true do |t|
+    t.integer  "board_id",   null: false
+    t.date     "start_date", null: false
+    t.date     "end_date",   null: false
+    t.string   "stats",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "board_rentals", ["board_id"], name: "index_board_rentals_on_board_id", using: :btree
 
   create_table "boards", force: true do |t|
     t.string   "brand"
