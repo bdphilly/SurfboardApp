@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140521175037) do
     t.integer  "board_id",   null: false
     t.date     "start_date", null: false
     t.date     "end_date",   null: false
-    t.string   "stats",      null: false
+    t.string   "status",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
