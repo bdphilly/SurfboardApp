@@ -52,10 +52,8 @@ group :development do
 	gem "binding_of_caller"
   gem 'faker'
   gem 'pry-rails'
-  gem 'debugger'
 end
 
-gem 'pry-rails'
 gem 'annotate'
 gem 'ejs'
 
