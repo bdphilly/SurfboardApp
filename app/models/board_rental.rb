@@ -22,6 +22,8 @@ class BoardRental < ActiveRecord::Base
 
 	validates :status, inclusion: STATUS_STATES
 
+	validate :does_not_overlap_rental
+
 	belongs_to :board,
 		class_name: "Board",
 		foreign_key: :board_id
@@ -87,15 +89,16 @@ class BoardRental < ActiveRecord::Base
 ################
 
   def valid_rental
-    overlapping_rental.where("status = 'AVAILABLE'")
+    overlapping_rentals.where("status = 'AVAILABLE'")
   end
 
   def invalid_rental
-    overlapping_requests.where("status = 'RENTED'" || "status = 'UNAVAILABLE'")
+    puts overlapping_rentals.where("status = 'RENTED'" || "status = 'UNAVAILABLE'")
+		overlapping_rentals.where("status = 'RENTED'" || "status = 'UNAVAILABLE'")
   end
 
-  def does_not_overlap_approved_request
-    unless overlapping_approved_requests.empty?
+  def does_not_overlap_rental
+    unless valid_rental.empty?
       errors[:base] << "The board cannot be rented for this date!"
     end
   end

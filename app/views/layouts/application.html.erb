@@ -8,6 +8,8 @@
 </head>
 <body>
 
+	<%= render "layouts/navbar" %>
+
 	<%= flash[:errors].join if flash[:errors] %>
 
 	<% if user_signed_in? %>
