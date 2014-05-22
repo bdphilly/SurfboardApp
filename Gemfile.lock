@@ -176,6 +176,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   debugger
   devise (~> 3.2.4)
+  ejs
   faker
   jbuilder (~> 1.2)
   jquery-rails

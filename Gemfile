@@ -50,10 +50,13 @@ group :development do
   gem "better_errors"
 	gem "binding_of_caller"
   gem 'faker'
+  gem 'pry-rails'
+  gem 'debugger'
 end
 
 gem 'pry-rails'
 gem 'annotate'
+gem 'ejs'
 
 # Devise Auth
 gem 'devise', '~> 3.2.4'

@@ -1,22 +1,18 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <a class="navbar-brand" href="#">BrahBoards</a>
     </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
-      <ul class="nav navbar-nav navbar-right">
-      <% if user_signed_in? %>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <li><button class="btn btn-info btn-mini" style="margin-top: 5px">Sign Out</button></li>
-          </button>
-          <% end %>
-      <% else %>
-          <li><%= link_to "Sign In", new_user_session_path %></li>
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
-      <% end %>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <li><button class="btn btn-info btn-mini" style="margin-top: 5px">Sign Out</button></li>
+        </button>
+        <% end %>
+    <% else %>
+        <li><%= link_to "Sign In", new_user_session_path %></li>
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+    <% end %>
+    </ul>
+  </div>
 </nav>

@@ -6,7 +6,11 @@ window.SurfboardApp = {
 
   initialize: function() {
     alert('Hello from Backbone!');
-    new SurfboardApp.Routers.Router();
+    
+    new SurfboardApp.Routers.router({
+      $rootEl: $('#content')
+    });
+    
     Backbone.history.start();
   }
 };

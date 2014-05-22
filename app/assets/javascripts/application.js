@@ -16,7 +16,9 @@
 //= require jquery.serializeJSON
 //= require underscore
 //= require backbone
+//= require bootstrap
 //= require surfboard_app
+//= require util
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
