@@ -1,5 +1,5 @@
 SurfboardApp::Application.routes.draw do
-	root to: "boards#index"
+	root to: "static_pages#root"
 
 	namespace :api, :defaults => { format: :json } do
 		resources :boards do

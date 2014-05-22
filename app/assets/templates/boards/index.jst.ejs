@@ -1,0 +1,10 @@
+<h1>The Boards!</h1>
+
+<ul>
+	<% boards.each(function(board) { %>
+		<li>
+		Board Model: <%= board.escape("model") %>
+		</li>
+
+		<% }) %>
+</ul>

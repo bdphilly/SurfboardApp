@@ -15,7 +15,7 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
     var indexView = new SurfboardApp.Views.BoardsIndex({
       collection: SurfboardApp.Collections.boards
     });
-    
+
     this._swapView(indexView);
   },
 
@@ -46,7 +46,7 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
 
     this._currentView = newView;
 
-    this.$rootEl.html(view.render().$el);
+    this.$rootEl.html(newView.render().$el);
   },
 
 });
