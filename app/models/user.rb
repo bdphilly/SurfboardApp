@@ -30,9 +30,14 @@ class User < ActiveRecord::Base
     class_name: "Board",
     foreign_key: :owner_id
 
-  has_many :rented_boards,
+  ##JOIN TABLE (Board Rental Requests)
+  has_many :rentals,
     class_name: "Board",
     foreign_key: :renter_id
+
+  has_many :rented_in_boards, through: :rentals, source: :board
+  has_many :customer_rentals, through: :boards, source: :rentals
+  has_many :rented_out_boards, through: :customer_rentals, source: :board
 
   private
   def user_params

@@ -1,0 +1,2 @@
+module BoardRentalsHelper
+end

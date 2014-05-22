@@ -23,10 +23,6 @@ class Board < ActiveRecord::Base
     foreign_key: :owner_id,
     dependent: :destroy
 
-  belongs_to :renter,
-    class_name: "User",
-    foreign_key: :renter_id
-
   has_many :rentals,
     class_name: "BoardRental",
     foreign_key: :board_id

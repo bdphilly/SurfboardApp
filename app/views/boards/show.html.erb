@@ -4,3 +4,40 @@
 User: <%= @board.owner_id %>
 Brand: <%= @board.brand %>
 Model: <%= @board.model %>
+<br>
+<% @board.rentals.each do |rental| %>
+	Start Date: <%= rental.start_date %>
+	End Date: <%= rental.end_date %>
+	User: <%= rental.renter_id %>
+  <br>
+<% end %>
+
+
+
+<h1>Create Rental Request</h1>
+
+<form action="<%= board_board_rentals_url(@board.id) %>" method="post">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <label for="board_rental_start_date">Start Date</label>
+  <input
+    type="date"
+    name="board_rental[start_date]"
+    id="board_rental_start_date">
+  <br>
+
+  <label for="board_rental_end_date">End Date</label>
+  <input
+    type="date"
+    name="board_rental[end_date]"
+    id="board_rental_end_date">
+  <br>
+
+  <input type="submit">
+</form>
+
+<br>
+<%= link_to "The Boards...", boards_url %>

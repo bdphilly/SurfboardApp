@@ -26,8 +26,12 @@ class BoardRental < ActiveRecord::Base
 		class_name: "Board",
 		foreign_key: :board_id
 
+	belongs_to :renter,
+		class_name: "User",
+		foreign_key: :renter_id
+
 	def rented?
-		self.status == 'RENTED'
+		self.status == "RENTED"
 	end
 
 	def available?
@@ -45,10 +49,11 @@ class BoardRental < ActiveRecord::Base
 	end
 
 	def mark_available!
-
+		self.status = "AVAILABLE"
 	end
 
 	def mark_unavailable!
+		self.status = ""
 	end
 	
 	def overlapping_rentals
