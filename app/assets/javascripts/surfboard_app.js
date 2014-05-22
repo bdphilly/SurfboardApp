@@ -3,8 +3,11 @@ window.SurfboardApp = {
   Collections: {},
   Views: {},
   Routers: {},
+
   initialize: function() {
     alert('Hello from Backbone!');
+    new SurfboardApp.Routers.Router();
+    Backbone.history.start();
   }
 };
 
