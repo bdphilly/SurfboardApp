@@ -4,30 +4,36 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
 	},
 
   routes: {
-    "": "todosIndex",
-    "todos/new": "todosNew",
-    "todos/:id": "todosShow"
+    "": "boardsIndex",
+    "boards/new": "boardsNew",
+    "boards/:id": "boardsShow"
   },
 
-  todosIndex: function () {
-    App.Collections.todos.fetch();
+  boardsIndex: function () {
+    SurfboardApp.Collections.boards.fetch();
 
-    var indexView = new App.Views.TodosIndex({
-      collection: App.Collections.todos
+    var indexView = new SurfboardApp.Views.BoardsIndex({
+      collection: SurfboardApp.Collections.boards
     });
+    
     this._swapView(indexView);
   },
 
-  todosNew: function () {
-    var newView = new App.Views.TodosNew();
+  boardsNew: function () {
+    var board = new SurfboardApp.Models.Board();
+
+    var newView = new SurfboardApp.Views.BoardsNew({
+      model: board
+    });
+
     this._swapView(newView);
   },
 
-  todosShow: function (id) {
-    var todo = App.Collections.todos.getOrFetch(id);
+  boardsShow: function (id) {
+    var board = SurfboardApp.Collections.boards.getOrFetch(id);
 
-    var showView = new App.Views.TodosShow({
-      model: todo
+    var showView = new SurfboardApp.Views.BoardsShow({
+      model: board
     });
 
     this._swapView(showView);
