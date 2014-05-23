@@ -27,4 +27,15 @@ class Board < ActiveRecord::Base
     class_name: "BoardRental",
     foreign_key: :board_id
 
+  has_attached_file :photo, styles: { 
+  	:small => "200x200>", 
+  	:large => "400x400>" 
+  }
+
+	has_many :images, :as => :imageable, :class_name => "Board::Image", :dependent => :destroy
+
+  accepts_nested_attributes_for :images
 end
+
+
+  
