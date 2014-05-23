@@ -6,6 +6,8 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     globalView = this;
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.addAllBoards);
+    this.listenTo(this.collection, 'sync', this.addSearchBar);
+    
     
   },
 
@@ -28,11 +30,19 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     this.addSubview('.board-results', boardResult);
   },
 
-  addAllBoards: function() {
+  addAllBoards: function () {
     
     this.collection.each(this.addBoard.bind(this));
     
-  }
+  },
+
+  addSearchBar: function () {
+    var searchBar = new SurfboardApp.Views.SearchBar({ 
+      boards: this.collection 
+    });
+
+    this.addSubview('.search-bar', searchBar);
+  },
 
 
 

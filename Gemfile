@@ -60,3 +60,6 @@ gem 'ejs'
 
 # Devise Auth
 gem 'devise', '~> 3.2.4'
+
+#Datepicker
+# gem 'bootstrap-datepicker-rails'

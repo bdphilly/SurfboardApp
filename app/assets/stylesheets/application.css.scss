@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require datepicker
  */
 
 @import "bootstrap";
@@ -18,3 +19,21 @@
 ul {
 	list-style-type: none;
 }
+/*
+.merged .input-group-addon {
+    border-right: 0px;
+    background-color: #FFFFFF;
+}
+.merged input {
+    border-left: 0px;
+    background-color: #FFFFFF;
+}*/
+
+.separator {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+/*.form-control-date {
+    width:200px;
+}*/

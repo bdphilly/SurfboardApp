@@ -16,6 +16,7 @@
 //= require underscore
 //= require backbone
 //= require bootstrap
+//= require bootstrap-datepicker
 //= require surfboard_app
 //= require util
 //= require_tree ../templates
