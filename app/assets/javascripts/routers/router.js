@@ -29,6 +29,7 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
 
   boardsShow: function (id) {
     var board = SurfboardApp.Collections.boards.getOrFetch(id);
+    // debugger
     var showView = new SurfboardApp.Views.BoardShow({
       model: board
     });

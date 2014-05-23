@@ -1,24 +1,27 @@
-SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
+SurfboardApp.Views.BoardShow = Backbone.View.extend({
   template: JST['boards/show'],
 
   initialize: function () {
 
   //   globalView = this;
+    // globalModel = this.model;
     this.listenTo(this.model, 'sync', this.render);
-  //   this.listenTo(this.collection, 'sync', this.addAllBoards);
+    this.model.fetch();
+
+  //  this.listenTo(this.model, 'sync', this.addBoard);
   //   this.listenTo(this.collection, 'sync', this.addSearchBar);
     
     
   },
 
   render: function () {
+    console.log('rendering')
+
     var renderedContent = this.template({
       board: this.model
     });
-   
     this.$el.html(renderedContent); 
 
-    this.attachSubviews();
     return this;
   },
 
@@ -27,12 +30,6 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
   //     model: board
   //   });
   //   this.addSubview('.board-results', boardResult);
-  // },
-
-  // addAllBoards: function () {
-    
-  //   this.collection.each(this.addBoard.bind(this));
-    
   // },
 
   // addSearchBar: function () {

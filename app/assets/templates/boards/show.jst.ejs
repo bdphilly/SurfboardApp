@@ -1,3 +1,8 @@
 <h1>Show Page!</h1>
 
-<%= board.escape('model') %>
+<%= board.get('models') %>
+
+<% if (board.get('images')) { %>
+	<img src="<%= board.get('images')[0].url %>"</img>
+<% } %>
+<!-- <%= board.get('id') %> -->

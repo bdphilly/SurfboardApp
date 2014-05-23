@@ -35,7 +35,6 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
       
       var reader = new FileReader();
       reader.onload = function(e) {
-        debugger
           console.log(e.target.result);
           // that.model.set({ attachment: e.target.result });
           that.model.set({ images_attributes: [{attachment: e.target.result }] });
@@ -49,7 +48,6 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
 
   submit: function (event) {
       event.preventDefault();
-      debugger
       var attrs = $(event.currentTarget).serializeJSON();
       this.model.set(attrs);
       SurfboardApp.Collections.boards.add(this.model, {
