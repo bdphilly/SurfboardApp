@@ -1,24 +1,24 @@
 SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
   template: JST['boards/show'],
 
-  // initialize: function () {
+  initialize: function () {
 
   //   globalView = this;
-  //   this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.model, 'sync', this.render);
   //   this.listenTo(this.collection, 'sync', this.addAllBoards);
   //   this.listenTo(this.collection, 'sync', this.addSearchBar);
     
     
-  // },
+  },
 
   render: function () {
     var renderedContent = this.template({
       board: this.model
     });
+   
+    this.$el.html(renderedContent); 
 
-    this.$el.html(renderedContent);
-
-    // this.attachSubviews();
+    this.attachSubviews();
     return this;
   },
 

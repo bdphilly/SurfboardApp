@@ -18,6 +18,10 @@
 #  username               :string(255)
 #  fname                  :string(255)
 #  lname                  :string(255)
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 class User < ActiveRecord::Base
@@ -40,7 +44,6 @@ class User < ActiveRecord::Base
   has_many :rented_out_boards, through: :customer_rentals, source: :board
 
   has_one :avatar, :as => :imageable, :class_name => "User::Avatar", :dependent => :destroy
-
   accepts_nested_attributes_for :avatar
 
   private

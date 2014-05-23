@@ -2,17 +2,21 @@
 #
 # Table name: boards
 #
-#  id          :integer          not null, primary key
-#  brand       :string(255)
-#  model       :string(255)
-#  length      :integer
-#  width       :integer
-#  thickness   :integer
-#  description :string(255)
-#  condition   :integer
-#  owner_id    :integer          not null
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id                 :integer          not null, primary key
+#  brand              :string(255)
+#  model              :string(255)
+#  length             :integer
+#  width              :integer
+#  thickness          :integer
+#  description        :string(255)
+#  condition          :integer
+#  owner_id           :integer          not null
+#  created_at         :datetime
+#  updated_at         :datetime
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

@@ -1,34 +1,43 @@
 class Api::BoardsController < ApplicationController
+	wrap_parameters :board, include: [:images_attributes, :model]
 
 	def index
-		@boards = Board.all
+		render :json => Board.all
+		# @boards = Board.all
 	end
 
 	def show
-		@board = Board.find(params[:id])
+		render :json => Board.find(params[:id])
+		# @board = Board.find(params[:id])
 	end
 
 	def new
 		@board = current_user.boards.new
+		# 4.times do
+    	@board.images.build
+  	# end
 	end
 
 	def create
 		@board = current_user.boards.new(board_params)
-
 		if @board.save
-			redirect_to boards_url
+			render :json => @board
+			# redirect_to boards_url
 		else
-			flash.now[:errors] = @board.errors.full_messages
-			render :new
+			render :json => { error: @board.errors.full_messages }, status: :unprocessable_entity
+			# flash.now[:errors] = @board.errors.full_messages
+			# render :new
 		end
 	end
 
 	def edit
-		@board = Board.find(params[:id])
+		render :json => Board.find(params[:id])
+		# @board = Board.find(params[:id])
 	end
 
 	def update
-		@board = Board.find(params[:id])
+		render :json => Board.find(params[:id])
+		# @board = Board.find(params[:id])
 		if @board.update_attributes(board_params)
 			flash[:notices] = ["Board updated successfully!"]
 			redirect_to boards_url
@@ -55,7 +64,8 @@ class Api::BoardsController < ApplicationController
 			:width,
 			:thickness,
 			:description,
-			:condition
+			:condition,
+			:images_attributes => [:attachment]
 		)
 	end
 end

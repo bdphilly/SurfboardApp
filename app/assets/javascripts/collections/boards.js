@@ -12,7 +12,7 @@ SurfboardApp.Collections.Boards = Backbone.Collection.extend({
     } else {
       board = new SurfboardApp.Models.Board({ id: id });
       board.fetch({
-        success: function () { board.add(board); }
+        success: function () { boards.add(board); }
       });
     }
   

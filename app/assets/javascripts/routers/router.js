@@ -20,7 +20,7 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
 
   boardsNew: function () {
     var board = new SurfboardApp.Models.Board();
-    var newView = new SurfboardApp.Views.BoardsNew({
+    var newView = new SurfboardApp.Views.BoardNew({
       model: board
     });
 
