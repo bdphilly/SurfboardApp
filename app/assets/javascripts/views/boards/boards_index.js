@@ -1,19 +1,38 @@
-SurfboardApp.Views.BoardsIndex = Backbone.View.extend({
+SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   template: JST['boards/index'],
 
   initialize: function () {
-  	this.listenTo(this.collection, 'sync', this.render);
-  	// this.collection.each
+
+    globalView = this;
+    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'sync', this.addAllBoards);
+    
   },
 
   render: function () {
-  	var renderedContent = this.template({
-  		boards: this.collection
-  	});
+    
+    var renderedContent = this.template({
+      boards: this.collection
+    });
 
-  	this.$el.html(renderedContent);
-  	return this;
+    this.$el.html(renderedContent);
+
+    this.attachSubviews();
+    return this;
   },
+
+  addBoard: function (board) {
+    var boardResult = new SurfboardApp.Views.BoardResult({
+      model: board
+    });
+    this.addSubview('.board-results', boardResult);
+  },
+
+  addAllBoards: function() {
+    
+    this.collection.each(this.addBoard.bind(this));
+    
+  }
 
 
 

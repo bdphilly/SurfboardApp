@@ -5,7 +5,6 @@ window.SurfboardApp = {
   Routers: {},
 
   initialize: function() {
-    alert('Hello from Backbone!');
     
     new SurfboardApp.Routers.router({
       $rootEl: $('#content')
