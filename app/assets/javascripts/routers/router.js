@@ -5,13 +5,12 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
 
   routes: {
     "": "boardsIndex",
-    "boards/new": "boardsNew",
-    "boards/:id": "boardsShow"
+    "new": "boardsNew",
+    ":id": "boardsShow"
   },
 
   boardsIndex: function () {
     SurfboardApp.Collections.boards.fetch();
-
     var indexView = new SurfboardApp.Views.BoardsIndex({
       collection: SurfboardApp.Collections.boards
     });
@@ -21,7 +20,6 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
 
   boardsNew: function () {
     var board = new SurfboardApp.Models.Board();
-
     var newView = new SurfboardApp.Views.BoardsNew({
       model: board
     });
@@ -31,8 +29,7 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
 
   boardsShow: function (id) {
     var board = SurfboardApp.Collections.boards.getOrFetch(id);
-
-    var showView = new SurfboardApp.Views.BoardsShow({
+    var showView = new SurfboardApp.Views.BoardShow({
       model: board
     });
 
