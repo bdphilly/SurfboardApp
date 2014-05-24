@@ -8,6 +8,6 @@
 <!-- Reference the tab content partials in the info_tabs folder -->
 
 <div class="tab-content">
-  <%= JST['boards/show/info_tabs/description']({board: board}) %>
-  <%= JST['boards/show/info_tabs/specs']({board: board}) %>
+  <%= JST['boards/show/info_tabs/description']({board: this.model}) %>
+  <%= JST['boards/show/info_tabs/specs']({board: this.model}) %>
 </div>
