@@ -2,7 +2,10 @@
 
 <%= board.get('models') %>
 
-<% if (board.get('images')) { %>
-	<img src="<%= board.get('images')[0].url %>"</img>
-<% } %>
-<!-- <%= board.get('id') %> -->
+<% board.photos().each(function (photo) { %>
+	<%= photo.get('url') %>
+<% }) %>
+
+
+
+<!-- <div class="board-info-tabs"></div> -->

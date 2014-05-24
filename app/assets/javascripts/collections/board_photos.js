@@ -1,22 +1,29 @@
 SurfboardApp.Collections.BoardPhotos = Backbone.Collection.extend({
-  model: SurfboardApp.Models.Board,
+  model: SurfboardApp.Models.BoardPhoto,
 
-  url: "/api/boards",
+  url: function () {
+    return 'api/' + this.imageable_type + '/' + this.imageable_id + '/photos';
+  },
+
+  initialize: function (model, options) {
+    this.imageable_type = options.imageable_type;
+    this.imageable_id = options.imageable_id;
+  },
 
   getOrFetch: function (id) {
-    var boards = this;
+    var photos = this;
   
-    var board;
-    if (board = this.get(id)) {
-      board.fetch();
+    var photo;
+    if (photo = this.get(id)) {
+      photo.fetch();
     } else {
-      board = new SurfboardApp.Models.Board({ id: id });
-      board.fetch({
-        success: function () { boards.add(board); }
+      photo = new SurfboardApp.Models.BoardPhoto({ id: id });
+      photo.fetch({
+        success: function () { photos.add(photo); }
       });
     }
   
-    return board;
+    return photo;
   },  
 
 });

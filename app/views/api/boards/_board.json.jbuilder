@@ -7,4 +7,6 @@ json.(board, :id, :model, :length,
 json.images board.images do |image|
 	json.id image.id
 	json.url image.url
+	json.imageable_id image.imageable_id
+	json.imageable_type image.imageable_type
 end
