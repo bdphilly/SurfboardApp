@@ -6,28 +6,25 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
 
   initialize: function () {
 
-    
-
-    this.map = new google.maps.Map(document.getElementById("map-canvas"), this.model.attributes);
+    // this.map = new google.maps.Map(document.getElementById("map-canvas"), this.model.attributes);
     // this.render();
 
-    // var map = new google.maps.Map(document.getElementById("map-canvas"),
-    //         mapOptions);
-
-
+    google.maps.event.addDomListener(window, "load", this.render);
 
   },
 
   render: function () {
     // debugger
-    // var renderedContent = this.template({
-    //   // board: this.model
-    // });
+    var renderedContent = this.template({
+      // board: this.model
+    });
 
-    this.$el.html(this.map); 
+    // google.maps.event.addDomListener(window, 'load', initialize);
 
-    // this.attachSubviews();
+    // this.map = new google.maps.Map(document.getElementById("map-canvas"), this.model.attributes);
 
+    this.$el.html(renderedContent); 
+    this.map = new google.maps.Map(document.getElementById("map-canvas"), this.model.attributes);
     return this;
   },
 
