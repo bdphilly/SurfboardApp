@@ -2,17 +2,41 @@
 <html>
 <head>
   <title>SurfboardApp</title>
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+  </style>
+
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_API_KEY"] %>&sensor=true">
+  </script>
+
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+
+		
+
+
+   <script type="text/javascript">
+      function initialize() {
+        // var mapOptions = {
+        //   center: new google.maps.LatLng(-34.397, 150.644),
+        //   zoom: 8
+        // };
+        // var map = new google.maps.Map(document.getElementById("map-canvas"),
+        //     mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+
 </head>
 <body>
 
-<div align=center>
-<iframe width="840" height="630" src="//www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen style="margin-top: 50px"></iframe>
-</div>
-
-	<!-- <%= render "layouts/navbar" %> -->
+	<%= render "layouts/navbar" %>
 
 	<%= flash[:errors].join if flash[:errors] %>
 
@@ -24,9 +48,10 @@
 	  <p class="alert alert-danger"><%= alert %></p>
 	<% end %>
 
+<%= yield %>
 
 
-
+<div id="map-canvas"/>
 
 </body>
 </html>

@@ -6,7 +6,18 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
   routes: {
     "": "boardsIndex",
     "new": "boardsNew",
+    "map": "map",
     ":id": "boardsShow"
+  },
+
+  map: function () {
+    map = new SurfboardApp.Models.mapModel();
+    // debugger
+    var view = new SurfboardApp.Views.BoardsMap({
+      model: map
+    });
+    
+    this._swapView(view);
   },
 
   boardsIndex: function () {

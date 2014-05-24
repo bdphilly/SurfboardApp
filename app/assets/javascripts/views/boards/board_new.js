@@ -14,7 +14,7 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
   //   this.listenTo(this.collection, 'sync', this.addSearchBar);
     
     
-  // },
+  // }, 
 
   render: function () {
     var renderedContent = this.template({
