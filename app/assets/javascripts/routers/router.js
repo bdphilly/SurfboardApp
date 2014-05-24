@@ -12,7 +12,6 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
 
   map: function () {
     map = new SurfboardApp.Models.mapModel();
-    // debugger
     var view = new SurfboardApp.Views.BoardsMap({
       model: map
     });
