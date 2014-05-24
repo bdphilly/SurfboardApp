@@ -1,47 +1,13 @@
-<!-- <ul class="nav nav-tabs info-tabs" id="myTab">
-  <li class="active"><a href="#sectionA">Section A</a></li>
-  <li><a href="#sectionB">Section B</a></li>
-  <li class="dropdown">
-    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
-  </li>
-</ul>
-<div class="tab-content">
-  <div id="sectionA" class="tab-pane fade in active">
-      <h3>Section A</h3>
-      <p>Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui. Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
-  </div>
-  <div id="sectionB" class="tab-pane fade">
-      <h3>Section B</h3>
-      <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
-  </div>
-</div> -->
-
-
-THIS IS ONE PAGE
-
 <ul class="nav nav-tabs info-tabs">
-  <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-  <li><a href="#profile" data-toggle="tab">Profile</a></li>
-  <li><a href="#messages" data-toggle="tab">Messages</a></li>
-  <li><a href="#settings" data-toggle="tab">Settings</a></li>
+  <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+  <li><a href="#specs" data-toggle="tab">Specs</a></li>
+  <li><a href="#map" data-toggle="tab">Map</a></li>
+  <li><a href="#availability" data-toggle="tab">Availability</a></li>
 </ul>
 
-
-THESE ARE FOUR PAGES!
-
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active" id="home">...</div>
-</div>
-
- <div class="tab-content">
-  <div class="tab-pane" id="profile">some stuff here</div>
-</div>  
+<!-- Reference the tab content partials in the info_tabs folder -->
 
 <div class="tab-content">
-  <div class="tab-pane" id="messages">messages here</div>
-</div>
-
-<div class="tab-content">
-  <div class="tab-pane" id="settings">la da dee</div>
+  <%= JST['boards/show/info_tabs/description']({board: board}) %>
+  <%= JST['boards/show/info_tabs/specs']({board: board}) %>
 </div>

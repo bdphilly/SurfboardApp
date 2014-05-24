@@ -1,6 +1,8 @@
 SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
   template: JST['boards/show'],
 
+  
+
   initialize: function () {
 
     this.listenTo(this.model, 'sync', this.render);
@@ -24,6 +26,8 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
 
     return this;
   },
+
+
 
   addInfoTabs: function (board) {
     var infoTabs = new SurfboardApp.Views.InfoTabs({
