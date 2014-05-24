@@ -20,7 +20,7 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
     });
     this.$el.html(renderedContent); 
 
-    this.attachSubviews();
+    // this.attachSubviews();
 
     return this;
   },
