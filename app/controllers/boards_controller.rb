@@ -59,7 +59,12 @@ class BoardsController < ApplicationController
 			:thickness,
 			:description,
 			:condition,
-			:images
+			:images,
+			:address,
+			:city,
+			:state,
+			:zipcode,
+			:country
 		)
 	end
 end

@@ -27,9 +27,11 @@
 #
 
 class Board < ActiveRecord::Base
+  # attr_accessible :address, :city, :state, :zip, :country
+
   validates :owner_id, presence: true
 
-  gecode_by :address_to_string
+  geocoded_by :address_to_string
 
   after_validation :geocode
 
@@ -46,10 +48,12 @@ class Board < ActiveRecord::Base
   accepts_nested_attributes_for :images
 
   def address_to_string
-    address.strip + " " + 
-    city.strip + " " + 
-    state.strip + " " + 
-    zipcode.strip + " " +
-    country.strip + " "
+    [address, city, state, zipcode, country].compact.join(', ')
+
+    # address.strip + " " + 
+    # city.strip + " " + 
+    # state.strip + " " + 
+    # zipcode.strip + " " +
+    # country.strip + " "
   end
 end

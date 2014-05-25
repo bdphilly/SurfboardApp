@@ -1,7 +1,7 @@
 <h1>List a Board</h1>
 
 <br>
-<form action="<%= boards_url %>" method="post">
+<form style="margin-left:100px" action="<%= boards_url %>" method="post">
   <input
     type="hidden"
     name="authenticity_token"
@@ -27,6 +27,22 @@
   <br>
   <label for="description">Description</label>
   <input type="textarea" id="description" name="board[description]">
+  <br><br>
+  <label for="address">Address</label>
+  <input type="text" id="address" name="board[address]">
+  <br>
+  <label for="city">City</label>
+  <input type="text" id="city" name="board[city]">
+  <br>
+  <label for="state">State</label>
+  <input type="text" id="state" name="board[state]">
+  <br>
+  <label for="zipcode">Zipcode</label>
+  <input type="text" id="zipcode" name="board[zipcode]">
+  <br>
+  <label for="country">Country</label>
+  <input type="textarea" id="country" name="board[country]">
+
 
   <input type="submit" value="Create it!">
 </form>
