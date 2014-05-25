@@ -66,3 +66,5 @@ gem 'devise', '~> 3.2.4'
 #For photo uploads - paperclip
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem "aws-sdk"
+
+gem "geocoder"

@@ -33,4 +33,8 @@ class Board < ActiveRecord::Base
 
 	has_many :images, :as => :imageable, :class_name => "Board::Image", :dependent => :destroy
   accepts_nested_attributes_for :images
+
+  def address_to_string
+    
+  end
 end
