@@ -5,6 +5,31 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+addresses = [
+	"800 Great Hwy",
+	"3896 Noriega St",
+	"2830 Sloat Blvd",
+	"4500 Irving St",
+	"1200 Clay St",
+	"953 Mission St",
+	"207 Powell St.",
+	"1701 Turk St",
+	"1199 E Beach",
+	"610 3rd St"
+]
+
+zipcodes = [
+	94121,
+	94122,
+	94116,
+	94112,
+	94108,
+	94103,
+	94102,
+	94117,
+	94129,
+	94107
+]
 
 10.times do |new_user|
 	
@@ -22,7 +47,14 @@
 		thickness: Faker::Number.number(2),
 		description: Faker::Lorem.paragraph,
 		condition: Faker::Number.number(1),
-		owner_id: (new_user + 1)
+		owner_id: (new_user + 1),
+		address: addresses[new_user],
+		city: "San Francisco",
+		state: "CA",
+		zipcode: zipcodes[new_user],
+		country: "USA"
 	})
 
 end
+
+# :photo => File.open(File.join('http://apm-assets.s3.amazonaws.com', '/photos/1/original/image.jppg'))
