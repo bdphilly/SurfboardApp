@@ -17,10 +17,21 @@
 #  photo_content_type :string(255)
 #  photo_file_size    :integer
 #  photo_updated_at   :datetime
+#  address            :string(255)
+#  city               :string(255)
+#  state              :string(255)
+#  zipcode            :string(255)
+#  country            :string(255)
+#  latitude           :float
+#  longitude          :float
 #
 
 class Board < ActiveRecord::Base
   validates :owner_id, presence: true
+
+  gecode_by :address_to_string
+
+  after_validation :geocode
 
   belongs_to :owner,
     class_name: "User",
@@ -35,6 +46,10 @@ class Board < ActiveRecord::Base
   accepts_nested_attributes_for :images
 
   def address_to_string
-    
+    address.strip + " " + 
+    city.strip + " " + 
+    state.strip + " " + 
+    zipcode.strip + " " +
+    country.strip + " "
   end
 end

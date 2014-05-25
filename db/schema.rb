@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20140525031146) do
     t.string   "state"
     t.string   "zipcode"
     t.string   "country"
-    t.string   "latitude"
-    t.string   "longitude"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "photos", force: true do |t|
