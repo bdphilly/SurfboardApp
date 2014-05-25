@@ -1,35 +1,57 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="border-form-div">
+  <!-- <form role="form"> -->
+    <h2>Edit Your Profile</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input type="text" class="form-control" name="user[fname]" id="first_name" value="<%= current_user.fname %>" placeholder="First Name">
+      </div>
 
-  <div><%= f.label :fname %><br />
-  <%= f.text_field :fname, autofocus: true %></div>
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input type="text" class="form-control" name="user[lname]" id="last_name" value="<%= current_user.lname %>" placeholder="Last Name">
+      </div>
 
-  <div><%= f.label :lname %><br />
-  <%= f.text_field :lname, autofocus: true %></div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" name="user[email]" id="email" value="<%= current_user.email %>" placeholder="Enter email">
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <button type="submit" class="btn btn-primary">Update</button>
+    
+    <br>
+    <h3>Change your password</h3>
+  
+      <div class="form-group">
+        <label for="current_password">Current Password</label>
+        <input type="password" class="form-control" name="user[current_password]" id="current_password" placeholder="Enter email">
+      </div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+      <div class="form-group">
+        <label for="new_password">New Password</label>
+        <input type="password" class="form-control" name="user[password]" id="new_password" placeholder="New Password">
+      </div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+      <div class="form-group">
+        <label for="confirm_new_password">Confirm New Password</label>
+        <input type="password" class="form-control" name="user[password_confirmation]" id="confirm_new_password" placeholder="New Password Confirmation">
+      </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
+    <button type="submit" class="btn btn-warning">Change Password</button>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+    <% end %>
 
-<h3>Cancel my account</h3>
+    <br>
+    <h4>Cancel your account</h4>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <p>Unhappy? We're going to miss you :( 
+      <br>
+      <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger" %>
+    </p>
 
-<%= link_to "Back", :back %>
+    <%= link_to "Back", :back %>
+  </form>
+</div>
