@@ -31,7 +31,7 @@ class Board < ActiveRecord::Base
 
   validates :owner_id, presence: true
 
-  geocoded_by :address_to_string
+  geocoded_by :address_to_string, if: :address_changed?
 
   after_validation :geocode
 
@@ -49,11 +49,9 @@ class Board < ActiveRecord::Base
 
   def address_to_string
     [address, city, state, zipcode, country].compact.join(', ')
+  end
 
-    # address.strip + " " + 
-    # city.strip + " " + 
-    # state.strip + " " + 
-    # zipcode.strip + " " +
-    # country.strip + " "
+  def address_changed?
+    address_changed? || city_changed? || state_changed? || zipcode_changed? || country_changed?
   end
 end

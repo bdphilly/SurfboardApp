@@ -103,4 +103,3 @@ class BoardRental < ActiveRecord::Base
     end
   end
 end
-
