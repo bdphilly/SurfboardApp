@@ -5,30 +5,24 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
   initialize: function () {
     // this.render();
     // google.maps.event.addDomListener(window, 'load', initialize);
+    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'sync', this.addPins);
   },
 
   renderMap: function () {
     // tricky! Google requires DOM node object, not JQuery! This way converts it
-    var map = new google.maps.Map(this.el.getElementsByClassName("map-canvas")[0], this.model.attributes);
-    // return map;
+    this.map = new google.maps.Map(this.el.getElementsByClassName("map-canvas")[0], this.model.attributes);
+  },
 
-    // var locations = [
-    //   ['Bondi Beach', -33.890542, 151.274856, 4],
-    //   ['Coogee Beach', -33.923036, 151.259052, 5],
-    //   ['Cronulla Beach', -34.028249, 151.157507, 3],
-    //   ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-    //   ['Maroubra Beach', -33.950198, 151.259302, 1]
-    // ];
-
-    // var marker, i;
-
-    // for (var i = 0; i < locations.length; i++) {  
-    //   marker = new google.maps.Marker({
-    //     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-    //     map: map
-    //   });
-    // };
-
+  addPins: function () {
+    var marker;
+    var map = this.map;
+    this.collection.each(function(board){
+      marker = new google.maps.Marker({ 
+        position: new google.maps.LatLng(board.get('latitude'), board.get('longitude')),
+        map: map
+      });
+    });
   },
 
   render: function () {
