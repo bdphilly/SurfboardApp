@@ -12,12 +12,15 @@
 	    <br>
 	    Description: <%= board.escape('description') %>
 			
-			<% board.photos().each(function (photo) { %>
-				<%= photo.get('url') %>
-			<% }) %>
+				
+
+			<br>
+			<br>
+
+
 
 	    
-	    <img src="" class="img-responsive img-thumbnail" alt="Responsive image">
+	    <img src="<%= board.photos().first().get('url') %>" class="img-responsive img-thumbnail" alt="Responsive image">
 	  </div>
 	</div>
 
