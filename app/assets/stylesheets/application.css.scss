@@ -344,9 +344,26 @@ p {
   width: 85px;
   height: 85px;
 }
+
+.cal2 .clndr .clndr-grid .day.event.available {
+  background-color: #30ad9e;
+}
+
+/*.available {
+  background-color: #30ad9e;
+}*/
+
+.cal2 .clndr .clndr-grid .day.event.unavailable {
+  background-color: #e14141;
+}
+
+
 .cal2 .clndr .clndr-grid .day.event {
   background-color: #B4E09F;
 }
+
+
+
 .cal2 .clndr .clndr-grid .day.today {
   background-color: #E3C57F;
 }

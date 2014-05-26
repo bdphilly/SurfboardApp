@@ -1,0 +1,34 @@
+<div class="clndr-controls">
+  <div class="clndr-previous-button">&lsaquo;</div>
+  <div class="month"><%= month %></div>
+  <div class="clndr-next-button">&rsaquo;</div>
+</div>
+<div class="clndr-grid">
+  <div class="days-of-the-week">
+    <% _.each(daysOfTheWeek, function(day) { %>
+      <div class="header-day"><%= day %></div>
+    <% }); %>
+    
+    <div class="days">
+      <% _.each(days, function(day) { %>
+        <div class="<%= day.classes %> 
+          <% if (day.events[0]) { %> 
+            <% if (day.events[0].status === "Available") { %>
+              available
+            <% } else { %>
+              unavailable
+            <% } %>
+          <% } %>
+          ">
+          <%= day.day %><br>
+      
+          <% if(day.events[0]) { %>
+            <%= day.events[0].cost %><br>
+            <%= day.events[0].status %>
+          <% } %>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</div>
+<div class="clndr-today-button">Today</div>
