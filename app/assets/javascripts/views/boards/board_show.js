@@ -4,7 +4,6 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
   initialize: function () {
 
     this.listenTo(this.model, 'sync', this.render);
-    this.model.fetch()
       
     globalmodel = this.model
       
@@ -14,7 +13,6 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
 
   render: function () {
     // console.log('rendering')
-
     var renderedContent = this.template({
       board: this.model
     });

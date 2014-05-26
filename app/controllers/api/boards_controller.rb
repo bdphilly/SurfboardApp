@@ -2,14 +2,11 @@ class Api::BoardsController < ApplicationController
 	wrap_parameters :board, include: [:images_attributes, :model]
 
 	def index
-		render :json => Board.all
-		# @boards = Board.all
+		@boards = Board.all
 	end
 
 	def show
 		@board = Board.find(params[:id])
-		# render :show json => Board.find(params[:id])
-		# @board = Board.find(params[:id])
 	end
 
 	def new
@@ -22,23 +19,21 @@ class Api::BoardsController < ApplicationController
 	def create
 		@board = current_user.boards.new(board_params)
 		if @board.save
-			render :json => @board
-			# redirect_to boards_url
+			# render :json => @board
+			redirect_to boards_url
 		else
-			render :json => { error: @board.errors.full_messages }, status: :unprocessable_entity
-			# flash.now[:errors] = @board.errors.full_messages
-			# render :new
+			# render :json => { error: @board.errors.full_messages }, status: :unprocessable_entity
+			flash.now[:errors] = @board.errors.full_messages
+			render :new
 		end
 	end
 
 	def edit
-		render :json => Board.find(params[:id])
-		# @board = Board.find(params[:id])
+		@board = Board.find(params[:id])
 	end
 
 	def update
-		render :json => Board.find(params[:id])
-		# @board = Board.find(params[:id])
+		@board = Board.find(params[:id])
 		if @board.update_attributes(board_params)
 			flash[:notices] = ["Board updated successfully!"]
 			redirect_to boards_url

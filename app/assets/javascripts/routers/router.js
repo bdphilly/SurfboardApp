@@ -42,11 +42,13 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
   boardsShow: function (id) {
     var board = SurfboardApp.Collections.boards.getOrFetch(id);
     // debugger
+    board.fetch();
     var showView = new SurfboardApp.Views.BoardShow({
       model: board
     });
 
     this._swapView(showView);
+    board.fetch();
   },
 
   _swapView: function (newView) {
