@@ -31,7 +31,7 @@ zipcodes = [
 	94107
 ]
 
-10.times do |new_user|
+1.times do |new_user|
 	
 	User.create({
 		email: Faker::Internet.email,
@@ -39,7 +39,7 @@ zipcodes = [
 		password: Faker::Internet.password(8)
 	})
 
-	Board.create({
+	board = Board.new({
 		brand: Faker::Lorem.word,
 		model: Faker::Lorem.word,
 		length: Faker::Number.number(3),
@@ -52,9 +52,29 @@ zipcodes = [
 		city: "San Francisco",
 		state: "CA",
 		zipcode: zipcodes[new_user],
-		country: "USA"
+		country: "USA",
+		# :images => File.open('./app/assets/images/001.jpg')
 	})
 
+
+
+file_path = './app/assets/images/001.jpg'
+
+my_model_instance = board.images.new
+file = File.open(file_path)
+my_model_instance.attachment = file
+file.close
+board.save!
+my_model_instance.save!
+
 end
+
+
+
+# Photo.create({
+# 	File.open('https://s3-us-west-1.amazonaws.com/brahboards/boards/AM1.jpg')
+# 	})
+
+ 
 
 # :photo => File.open(File.join('http://apm-assets.s3.amazonaws.com', '/photos/1/original/image.jppg'))
