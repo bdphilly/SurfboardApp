@@ -17,6 +17,8 @@
 //= require backbone
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require moment
+//= require clndr
 //= require surfboard_app
 //= require util
 //= require_tree ../templates

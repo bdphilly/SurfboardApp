@@ -18,6 +18,10 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
     });
     this.$el.html(renderedContent); 
 
+    //Adjust board carousel speed
+    this.$el.find('.carousel').carousel({
+      interval: 4000
+    });
     // this.attachSubviews();
 
     return this;

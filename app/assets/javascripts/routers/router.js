@@ -7,7 +7,15 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
     "": "boardsIndex",
     "new": "boardsNew",
     "map": "map",
+    "calendar": "calendarPage",
     ":id": "boardsShow"
+  },
+
+  calendarPage: function () {
+    calendar = new SurfboardApp.Views.CalendarPage({
+
+    });
+    this._swapView(calendar);
   },
 
   map: function () {

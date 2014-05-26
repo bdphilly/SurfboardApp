@@ -68,3 +68,5 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem "aws-sdk"
 
 gem "geocoder"
+
+gem 'momentjs-rails', '~> 2.6.0'
