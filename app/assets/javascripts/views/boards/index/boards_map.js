@@ -1,6 +1,6 @@
 SurfboardApp.Views.BoardsMap = Backbone.View.extend({
 
-  // template: JST['boards/map'],
+  template: JST['boards/index/map_index'],
 
   // tagName: "div",
 
@@ -32,14 +32,14 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
 
   render: function () {
     // render the tempate before the map so it has a map canvas to fit in
-    // var renderedContent = this.template();
+    var renderedContent = this.template();
     // this.setElement(this.template(this.model.toJSON()));
     // this.$el = $(template(".map-canvas"))
-    // this.$el.html(renderedContent); 
-    
+    this.$el.html(renderedContent); 
     this.renderMap();
+    this.addPins();
     // var map = new google.maps.Map(this.el.getElementsByClassName("map-canvas")[0], this.model.attributes);
-    // return this;
+    return this;
   },
 
 });

@@ -2,7 +2,7 @@ SurfboardApp.Models.mapModel = Backbone.Model.extend({
   // Centered on SF
   defaults: {
     center: new google.maps.LatLng(37.7533, -122.4267),
-    zoom: 12,
+    zoom: 11,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
 
