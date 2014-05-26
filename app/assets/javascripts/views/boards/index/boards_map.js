@@ -25,7 +25,8 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     this.collection.each(function(board){
       marker = new google.maps.Marker({ 
         position: new google.maps.LatLng(board.get('latitude'), board.get('longitude')),
-        map: map
+        map: map,
+        icon: 'https://s3-us-west-1.amazonaws.com/brahboards/surf-icon-green.png'
       });
     });
   },
