@@ -13,3 +13,11 @@ json.images board.images do |image|
 	json.imageable_id image.imageable_id
 	json.imageable_type image.imageable_type
 end
+
+json.rentals board.rentals do |rental|
+	json.start_date rental.start_date
+	json.end_date rental.end_date
+	json.status rental.status
+	json.renter_id rental.renter_id
+end
+
