@@ -1,4 +1,4 @@
-SurfboardApp.Views.BoardsMap = Backbone.View.extend({
+SurfboardApp.Views.PageBoardsMap = Backbone.View.extend({
 
   template: JST['boards/map'],
 

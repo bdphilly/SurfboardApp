@@ -38,10 +38,6 @@ ul {
     width:200px;
 }*/
 
-.map-canvas { height: 100% }
-
-#map-canvas { height: 100% }
-
 /* User sign in and sign forms. */
 .border-form-div {
   max-width: 500px;
@@ -55,4 +51,28 @@ ul {
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
           box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+.search-photo {
+  float: left;
+  margin-right: 50px;
+}
+ 
+.borderz {
+  border: solid thin blue;
+}
+
+.map-view {
+  height: 300px ;
+  width: 300px;
+}
+
+.map-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#map-canvas {
+  width: 100%;
+  height: 100%;
 }

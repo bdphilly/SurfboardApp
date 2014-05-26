@@ -13,7 +13,7 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
   map: function () {
     map = new SurfboardApp.Models.mapModel();
     SurfboardApp.Collections.boards.fetch();
-    var view = new SurfboardApp.Views.BoardsMap({
+    var view = new SurfboardApp.Views.PageBoardsMap({
       model: map,
       collection: SurfboardApp.Collections.boards
     });

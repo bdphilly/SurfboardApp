@@ -7,6 +7,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.addAllBoards);
     this.listenTo(this.collection, 'sync', this.addSearchBar);
+    this.listenTo(this.collection, 'sync', this.addMap);
     // this.listenTo(this.collection, 'add', this.render);
     
   },
@@ -31,7 +32,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
 
   addAllBoards: function () {
     this.collection.each(this.addBoard.bind(this));
-    
+    // this.addMap();
   },
 
   addSearchBar: function () {
@@ -42,6 +43,13 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     this.addSubview('.search-bar', searchBar);
   },
 
-
+  addMap: function () {
+    map = new SurfboardApp.Models.mapModel();
+    var mapResults = new SurfboardApp.Views.BoardsMap({
+      model: map,
+      collection: SurfboardApp.Collections.boards
+    });
+    this.addSubview('.map-view', mapResults)
+  },
 
 });

@@ -31,7 +31,7 @@ zipcodes = [
 	94107
 ]
 
-1.times do |new_user|
+5.times do |new_user|
 	
 	User.create({
 		email: Faker::Internet.email,
