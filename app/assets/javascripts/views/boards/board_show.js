@@ -30,8 +30,7 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
     $(".carousel a").click(function (){
       $('.carousel').carousel($(this).data('slide'));
     });
-
-
+    
     // this.attachSubviews();
 
     return this;

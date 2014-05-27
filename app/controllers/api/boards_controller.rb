@@ -50,6 +50,10 @@ class Api::BoardsController < ApplicationController
 		redirect_to boards_url
 	end
 
+	def search
+		@boards = Board.search params[:filters]
+	end
+
 	private
 
 	def board_params

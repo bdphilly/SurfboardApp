@@ -47,6 +47,12 @@ class Board < ActiveRecord::Base
 	has_many :images, :as => :imageable, :class_name => "Board::Image", :dependent => :destroy
   accepts_nested_attributes_for :images
 
+  def self.search(params)
+    params.each do |param|
+      puts param
+    end
+  end
+
   def address_to_string
     [address, city, state, zipcode, country].compact.join(', ')
   end

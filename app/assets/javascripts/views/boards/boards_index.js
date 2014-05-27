@@ -12,6 +12,10 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     
   },
 
+  events: {
+    "submit form" : "runSearch",
+  },
+
   render: function () {
     var renderedContent = this.template({
       boards: this.collection
@@ -52,4 +56,30 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     this.addSubview('.map-view', mapResults)
   },
 
+  runSearch: function (event) {
+    event.preventDefault();
+    var attrs = $(event.currentTarget).serializeJSON()['filters'];
+    console.log(attrs);
+  },
+
 });
+
+
+  submit: function (event) {
+      event.preventDefault();
+      debugger
+      var attrs = $(event.currentTarget).serializeJSON();
+      this.model.set(attrs);
+      SurfboardApp.Collections.boards.add(this.model, {
+          success: function (attribute) {
+              debugger
+              console.log("happy days!");
+          },
+      });
+      this.model.save({}, {
+          success: function () {
+              debugger
+              window.location.assign("");
+          },
+      });
+  },
