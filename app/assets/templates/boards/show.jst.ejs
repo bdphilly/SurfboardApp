@@ -1,11 +1,11 @@
-<h1>Show Page!</h1>
-
-<%= board.get('models') %>
+<h1>
+	<%= board.escape('year') %>
+	<%= board.escape('brand') %>
+	<%= board.escape('model') %>
+</h1>
 
 <%= JST['boards/show/carousel']({board: this.model}) %>
+<br>
 
-<% board.photos().each(function (photo) { %>
-	<%= photo.get('url') %>
-<% }) %>
 
 <div class="board-info-tabs"></div>
