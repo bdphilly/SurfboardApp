@@ -10,7 +10,7 @@ SurfboardApp::Application.routes.draw do
 	end
 
   devise_for :users, :controllers => { :registrations => "registrations" }
-  resources :users, only: [:show]
+  resources :users, only: [:show, :update]
   match 'users/:id' => 'users#show', via: :get
 	# or 
 	# get 'users/:id' => 'users#show'

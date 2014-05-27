@@ -1,3 +1,5 @@
+
+
 window.SurfboardApp = {
   Models: {},
   Collections: {},
@@ -5,7 +7,7 @@ window.SurfboardApp = {
   Routers: {},
 
   initialize: function() {
-    
+    debugger
     new SurfboardApp.Routers.router({
       $rootEl: $('#content')
     });
@@ -19,3 +21,4 @@ window.SurfboardApp = {
 $(document).ready(function(){
   SurfboardApp.initialize();
 });
+

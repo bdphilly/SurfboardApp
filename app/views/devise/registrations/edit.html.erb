@@ -55,16 +55,17 @@
     <%= link_to "Back", :back %>
   </form>
 
-  <form enctype="multipart/form-data" action="<%= api_photos_url %>" method="post">
+  <form enctype="multipart/form-data" action="<%= user_url(current_user) %>" method="post">
     <input
       type="hidden"
       name="authenticity_token"
       value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="PUT">
   
 
     <div class="form-group">
       <label for="photo">Photo</label>
-      <input type="file" name="avatar" id="photo">
+      <input type="file" name="user[avatar_attributes][attachment]" id="photo">
       <p class="help-block">Upload an avatar!</p>
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
