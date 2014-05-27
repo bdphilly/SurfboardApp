@@ -17,7 +17,7 @@
 class Board::Image < Photo
 # validates :attachment, :attachment_content_type => { :content_type => ['image/png', 'image/jpg']}
   
-  has_attached_file :attachment, :styles => { :small => "100x100#", :large => "200x200>" }
+  has_attached_file :attachment, :styles => { :small => "200x150#", :medium => "400x300#", :large => "640x480#" }
 	validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
 
 end
