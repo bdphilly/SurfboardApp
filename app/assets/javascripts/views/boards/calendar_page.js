@@ -18,8 +18,6 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
   },
 
   setEvents: function (callback) {
-    console.log('each loop');
-    console.log(this.events);
     var rentals = this.model.rentals();
     var that = this;
     
