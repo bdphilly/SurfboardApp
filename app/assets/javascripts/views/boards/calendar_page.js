@@ -5,12 +5,6 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
 
   initialize: function () {
     this.events = [];
-    // this.listenTo(this.model, 'sync', this.renderCalendar);
-    // this.model.rentals().fetch();
-    // this.listenTo(this.model)
-    // this.listenTo(this.model, 'all', this.setEvents);
-    // this.listenTo(this.model, 'all', this.renderCalendar);
-    // this.renderCalendar();
     this.setEvents();
   },
 
@@ -24,7 +18,6 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
   },
 
   setEvents: function (callback) {
-    // this.events = [];
     console.log('each loop');
     console.log(this.events);
     var rentals = this.model.rentals();
@@ -32,34 +25,18 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
     
     rentals.each(function(rental){
       that.events.push({ 
-        date: rental.get('start_date'), 
+        start: rental.get('start_date'), 
+        end: rental.get('end_date'),
         status: rental.get('status'), 
         price: rental.get('price')
       });
       
     });
-    debugger
     // this.renderCalendar();
   },
 
   renderCalendar: function () {
-    // var currentMonth = moment().format('YYYY-MM');
-    // var nextMonth    = moment().add('month', 1).format('YYYY-MM');
-    // var events = [
-    //   { date: currentMonth + '-' + '10', status: 'AVAILABLE', price: '$15' },
-    //   { date: currentMonth + '-' + '19', status: 'UNAVAILABLE', price: '$10' },
-    //   { date: currentMonth + '-' + '23', status: 'AVAILABLE', price: '$20' },
-    // ];
-
-    // var lotsOfEvents = [
-    //   { start: '2014-11-04', end: '2014-11-08', title: 'Monday to Friday Event' },
-    //   { start: '2014-11-15', end: '2014-11-20', title: 'Another Long Event' }
-    // ];
-    debugger
     var theEvents = this.events;
-    console.log('in the render')
-    console.log(this.events);
-    
     var that = this;
     
     this.$('.cal2').clndr({
@@ -69,6 +46,11 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
       },
 
       events: theEvents,
+
+      multiDayEvents: {
+        startDate: 'start',
+        endDate: 'end'
+      },
 
       clickEvents: {
         click: function(target) { 
@@ -86,16 +68,10 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
         onYearChange:  function(month)  { console.log('on year change'); }
       },
 
-      doneRendering: function() {
-        console.log("the events: ");
-        console.log(theEvents);
-      },
-
-
-    });
-
-    
-    
+      // doneRendering: function() {
+      //   console.log("the events: ");
+      //   console.log(theEvents);
+      // },
+    });    
   },
-
 });

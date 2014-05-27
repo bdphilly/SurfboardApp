@@ -9,10 +9,10 @@ Model: <%= @board.model %>
 	Start Date: <%= rental.start_date %>
 	End Date: <%= rental.end_date %>
 	User: <%= rental.renter_id %>
+  Price: <%= rental.price %>
+  Status: <%= rental.status %>
   <br>
 <% end %>
-
-
 
 <h1>Create Rental Request</h1>
 
@@ -35,6 +35,20 @@ Model: <%= @board.model %>
     name="board_rental[end_date]"
     id="board_rental_end_date">
   <br>
+
+  <label for="board_rental_price">Price</label>
+  <input
+    type="integer"
+    name="board_rental[price]"
+    id="price">
+  <br>
+
+  <label for="board_rental_status">Status</label>
+  <select name="board_rental[status]" id="board_rental_status">
+    <option value="Available">Available</option>
+    <option value="Unavailable">Unavailable</option>
+    <option value="Rented">Rented</option>
+  </select>
 
   <input type="submit">
 </form>

@@ -14,7 +14,7 @@
 #
 
 class BoardRental < ActiveRecord::Base
-	STATUS_STATES = ["AVAILABLE", "UNAVAILABLE", "RENTED"]
+	STATUS_STATES = ["Available", "Unavailable", "Rented"]
 
 	##take this out after app is functional, let user choose...
   before_validation :assign_available_status
@@ -34,25 +34,25 @@ class BoardRental < ActiveRecord::Base
 		foreign_key: :renter_id
 
 	def rented?
-		self.status == "RENTED"
+		self.status == "Rented"
 	end
 
 	def available?
-		self.status == "AVAILABLE"
+		self.status == "Available"
 	end
 
 	def unavailable?
-		self.status == "UNAVAILABLE" || self.status == "RENTED"
+		self.status == "Unavailable" || self.status == "Rented"
 	end
 
 	private
 
 	def assign_available_status
-		self.status ||= "AVAILABLE"
+		self.status ||= "Available"
 	end
 
 	def mark_available!
-		self.status = "AVAILABLE"
+		self.status = "Available"
 	end
 
 	def mark_unavailable!
@@ -90,12 +90,12 @@ class BoardRental < ActiveRecord::Base
 ################
 
   def valid_rental
-    overlapping_rentals.where("status = 'AVAILABLE'")
+    overlapping_rentals.where("status = 'Available'")
   end
 
   def invalid_rental
-    puts overlapping_rentals.where("status = 'RENTED'" || "status = 'UNAVAILABLE'")
-		overlapping_rentals.where("status = 'RENTED'" || "status = 'UNAVAILABLE'")
+    puts overlapping_rentals.where("status = 'Rented'" || "status = 'Unavailable'")
+		overlapping_rentals.where("status = 'Rented'" || "status = 'Unavailable'")
   end
 
   def does_not_overlap_rental

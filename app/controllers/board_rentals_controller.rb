@@ -18,6 +18,6 @@ class BoardRentalsController < ApplicationController
 
 		private
 		def board_rental_params
-			params.require(:board_rental).permit(:board_id, :start_date, :end_date, :status)
+			params.require(:board_rental).permit(:board_id, :start_date, :end_date, :status, :price)
 		end
 end
