@@ -120,7 +120,7 @@ h1 {
   font-weight: 200;
 }
 
-h4 {
+.cal1 h4 {
   width: 75%;
   text-align: center;
   font-family: 'Droid Sans Mono';
@@ -131,7 +131,7 @@ h4 {
   padding: 1em;
   background: #b63642;
 }
-p {
+.cal1 p {
   text-align: center;
   font-family: 'Droid Sans Mono';
   margin: 3em auto 1em auto;
@@ -140,6 +140,7 @@ p {
   border-bottom: 2px solid #414141;
   background: #f4f4f4;
 }
+
 .cal1 {
   margin: 30px auto;
   max-width: 600px;
@@ -286,12 +287,15 @@ p {
 .cal1 .clndr .clndr-table tr:last-child .empty {
   border-bottom: 1px solid #000000;
 }
+
+
 .cal2 {
   max-width: 597px;
   margin: 30px auto;
   font-family: 'Droid Sans Mono';
   font-size: 14px;
 }
+
 .cal2 .clndr .clndr-controls {
   display: inline-block;
   width: 100%;

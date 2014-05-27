@@ -9,3 +9,8 @@
 <%= JST['boards/show/carousel']({board: this.model}) %>
 
 <div class="board-info-tabs"></div>
+
+This user!
+<a href='/users/<%= board.escape("owner_id") %>'>Check it out!</a>
+
+<br><br><br>

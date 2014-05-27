@@ -7,10 +7,12 @@
 	    </h3>
 	  </div>
 	  <div class="panel-body">
-	    
-	    <img src="<%= board.photos().first().get('small') %>" 
-	    	class="search-photo img-responsive img-thumbnail" alt="Board Photo">
-
+	    <% if (board.photos().first()) { %>
+	    	<img src="<%= board.photos().first().get('small') %>" 
+	    		class="search-photo img-responsive img-thumbnail" alt="Board Photo">
+			<% } else { %>
+					<img src="" class="search-photo img-responsive img-thumbnail" alt="No Photo Present">
+			<% } %>
 	    Length: <%= board.escape('length') %>
 	    <br>
 	    Description: <%= board.escape('description') %>

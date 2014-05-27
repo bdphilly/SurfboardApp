@@ -6,7 +6,15 @@ class Api::PhotosController < ApplicationController
 
 	def create
 		@photo = Photo.new(photo_params)
-		##need to write the rest
+		
+		if @photo.save
+			redirect_to boards_url
+		else
+			flash.now[:errors] = @photo.errors.full_messages
+			render :new
+		end
+
+
 	end
 
 	private
