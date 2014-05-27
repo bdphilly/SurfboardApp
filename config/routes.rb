@@ -4,7 +4,7 @@ SurfboardApp::Application.routes.draw do
 	namespace :api, :defaults => { format: :json } do
 		resources :boards do
 			resources :photos, only: [:index]
-			resources :board_rentals, only: [:new, :create, :destroy]	
+			resources :board_rentals, only: [:show, :index, :new, :create, :destroy]	
 		end
 		resources :photos, only: [:create, :destroy]
 	end

@@ -13,7 +13,7 @@
       <% _.each(days, function(day) { %>
         <div class="<%= day.classes %> 
           <% if (day.events[0]) { %> 
-            <% if (day.events[0].status === "Available") { %>
+            <% if (day.events[0].status === "AVAILABLE") { %>
               available
             <% } else { %>
               unavailable
@@ -22,7 +22,7 @@
           ">
           <%= day.day %><br>      
           <% if(day.events[0]) { %>
-            <%= day.events[0].cost %><br>
+            <%= day.events[0].price %><br>
             <%= day.events[0].status %>
           <% } %>
         </div>

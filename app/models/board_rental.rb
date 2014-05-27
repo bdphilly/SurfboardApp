@@ -10,6 +10,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  renter_id  :integer
+#  price      :integer
 #
 
 class BoardRental < ActiveRecord::Base

@@ -8,7 +8,7 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
     globalmodel = this.model
       
     this.listenTo(this.model, 'sync', this.addInfoTabs);
-    
+    this.listenTo(this.model, 'sync', this.addCalendar);
   },
 
   render: function () {
@@ -29,9 +29,17 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
 
   addInfoTabs: function (board) {
     var infoTabs = new SurfboardApp.Views.InfoTabs({
-      model: board
+      model: this.model
     });
     this.addSubview('.board-info-tabs', infoTabs);
+  },
+
+  addCalendar: function () {
+    // debugger
+    calendar = new SurfboardApp.Views.CalendarPage({
+      model: this.model
+    });
+    this.addSubview('.calendar', calendar);
   },
 
 });

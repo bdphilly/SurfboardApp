@@ -1,6 +1,6 @@
 SurfboardApp.Collections.BoardPhotos = Backbone.Collection.extend({
   model: SurfboardApp.Models.BoardPhoto,
-
+  
   url: function () {
     return 'api/' + this.imageable_type + '/' + this.imageable_id + '/photos';
   },
