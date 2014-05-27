@@ -64,7 +64,9 @@ class BoardsController < ApplicationController
 			:city,
 			:state,
 			:zipcode,
-			:country
+			:country,
+			:price,
+			:images_attributes => [:attachment]
 		)
 	end
 end

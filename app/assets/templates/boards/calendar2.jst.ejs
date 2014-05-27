@@ -12,26 +12,32 @@
     <div class="days">
       <% _.each(days, function(day) { %>
         <% var xyz = day.events[0]; %>
-        <div class="<%= day.classes %> 
-          <% if (day.events[0]) { %> 
-            <% if (day.events[0].status === "Available") { %>
+        <div class="<%= day.classes %>
+        <% if (day.classes.indexOf('past') === -1) { %>
+          <% if (!(_.contains(day.classes, 'past'))) { %>
+            <% if (day.events[0]) { %> 
+              <% if (day.events[0].status === "Available") { %>
+                available
+              <% } else { %>
+                unavailable
+              <% } %>
+            <% } else { %>         
               available
-            <% } else { %>
-              unavailable
             <% } %>
-          <% } else { %>         
-            available
           <% } %>
+        <% } %>
           ">
-          <%= day.day %><br>      
-          <% if (day.events[0]) { %>
-            <%= day.events[0].status %>
-          <% } else { %>
+          <%= day.day %><br>
+          <% if (day.classes.indexOf('past') === -1) { %>      
             <% if (day.events[0]) { %>
-              $<%= day.events[0].price %><br>
+              <%= day.events[0].status %>
+            <% } else { %>
+              <% if (day.events[0]) { %>
+                $<%= day.events[0].price %><br>
+              <% } %>
+              Available
             <% } %>
-            Available
-          <% } %>
+          <% } %>  
         </div>
       <% }); %>
     </div>

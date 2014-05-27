@@ -54,13 +54,20 @@ class Api::BoardsController < ApplicationController
 
 	def board_params
 		params.require(:board).permit(
-			:brand,  
-			:model,
+			:brand, 
+			:model, 
 			:length, 
 			:width,
 			:thickness,
 			:description,
 			:condition,
+			:images,
+			:address,
+			:city,
+			:state,
+			:zipcode,
+			:country,
+			:price,
 			:images_attributes => [:attachment]
 		)
 	end
