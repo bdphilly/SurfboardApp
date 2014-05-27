@@ -2,12 +2,10 @@
 
 <%= board.get('models') %>
 
+<%= JST['boards/show/carousel']({board: this.model}) %>
+
 <% board.photos().each(function (photo) { %>
 	<%= photo.get('url') %>
 <% }) %>
 
 <div class="board-info-tabs"></div>
-
-
-
-<div class = "calendar"></div>

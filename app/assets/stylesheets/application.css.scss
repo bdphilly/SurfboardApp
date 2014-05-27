@@ -365,8 +365,6 @@ p {
   background-color: #B4E09F;
 }
 
-
-
 .cal2 .clndr .clndr-grid .day.today {
   background-color: #E3C57F;
 }
@@ -385,3 +383,20 @@ p {
 .cal2 .clndr .clndr-today-button:hover {
   background-color: #ddd;
 }
+
+/***** Carousel Thumbnails *****/
+.carousel-thumbs {
+    margin-top: 0px;
+    padding: 0;
+    list-style: none outside none;
+}
+.carousel-thumbs li {
+    border: 1px solid green;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+}
+.carousel-thumbs img {
+    max-height: 90px;
+}
+
