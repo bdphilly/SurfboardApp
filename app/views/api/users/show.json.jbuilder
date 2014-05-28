@@ -4,7 +4,7 @@ json.avatar current_user.avatar, :id, :attachment,
 		:small_attachment, :medium_attachment, :large_attachment,
 		:imageable_id, :imageable_type
 
-json.rented_in_boards current_user.rented_in_boards do |rental|
+json.rentals current_user.rentals do |rental|
 	json.start_date rental.start_date
 	json.end_date rental.end_date
 	json.price rental.price

@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   ##JOIN TABLE (Board Rental Requests)
   has_many :rentals,
-    class_name: "Board",
+    class_name: "BoardRental",
     foreign_key: :renter_id
 
   has_many :rented_in_boards, through: :rentals, source: :board
