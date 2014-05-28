@@ -1,7 +1,26 @@
 <h1>This is the user page</h1>
 
-Email: <%= this.model.escape('email') %> <br>
-First Name: <%= this.model.escape('fname') %> <br>
-Last Name: <%= this.model.escape('lname') %> <br>
+Email: <%= user.escape('email') %> <br>
+First Name: <%= user.escape('fname') %> <br>
+Last Name: <%= user.escape('lname') %> <br>
 <br>
-url:<%= this.model.escape('avatar')['url'] %>
+
+<% debugger %>
+
+<% if (user.avatar()) { %>
+  <img src="<%= user.avatar().get('small_attachment') %>" 
+  class="avatar-photo img-responsive img-thumbnail" alt="Avatar Photo">
+<% } else { %>
+  <img src="" class="search-photo img-responsive img-thumbnail" alt="No Photo Present">
+<% } %>
+
+
+<% if (user.boards().first()) { %>
+  <img src="<%= user.boards().first().photos().first().get('small') %>" 
+  class="board-photo img-responsive img-thumbnail" alt="Board Photo">
+<% } else { %>
+  <img src="" class="search-photo img-responsive img-thumbnail" alt="No Photo Present">
+<% } %>
+
+
+

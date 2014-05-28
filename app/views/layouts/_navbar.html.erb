@@ -7,7 +7,7 @@
     <% if user_signed_in? %>
         <li><%= link_to "Profile", current_user %></li>
         <%= link_to destroy_user_session_path, method: :delete do %>
-          <li><button class="btn btn-info btn-mini" style="margin-top: 5px">Sign Out</button></li>
+          <li><button class="btn btn-info btn-mini navbar-btn" style="margin-top: 5px">Sign Out</button></li>
         </button>
         <% end %>
     <% else %>

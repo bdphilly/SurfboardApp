@@ -1,38 +1,54 @@
 SurfboardApp.Models.User = Backbone.Model.extend({
-	urlRoot: "/api/user",
+	url: "/api/user",
 	
-	// photos: function () {
-	// 	if(!this._photos) {
-	// 		this._photos = new SurfboardApp.Collections.AvatarPhoto([], {
-	// 			imageable_id: this.id,
-	// 			imageable_type: 'boards'
-	// 		})
-	// 	}
-	// 	return this._photos;
-	// },
+	boards: function () {
+		if(!this._boards) {
+			this._boards = new SurfboardApp.Collections.Boards([], {
+				board: this
+			})
+		}
+		return this._boards;
+	},
 
-	// rentals: function () {
-	// 	if(!this._rentals) {
-	// 		this._rentals = new SurfboardApp.Collections.Rentals([], {
-	// 			board: this
-	// 		})
-	// 	}
-	// 	return this._rentals;
-	// },
+	avatar: function () {
+		if(!this._avatar) {
+			this._avatar = new SurfboardApp.Models.Avatar([], {
+				
+			})
+		}
+		return this._avatar;
+	},
 
- //  parse: function (resp) {
+	rentals: function () {
+		if(!this._rentals) {
+			this._rentals = new SurfboardApp.Collections.Rentals([], {
+				rental: this
+			})
+		}
+		return this._rentals;
+	},
+
+  parse: function (resp) {
   	
- //    if(resp.images) {
- //      this.photos().set(resp.images, { parse: true });
- //      delete resp.images;
- //    }
+  	// debugger
 
- //    if (resp.rentals) {
- //    	this.rentals().set(resp.rentals, { parse: true });
- //    	delete resp.rentals;
- //    }
+    if(resp.avatar) {
+      this.avatar().set(resp.avatar, { parse: true });
+      delete resp.avatar;
+    }
+
+    if (resp.boards) {
+    	this.boards().set(resp.boards, { parse: true });
+    	delete resp.boards;
+    }
     
- //    return resp;
- //  },
+    if (resp.rentals) {
+    	this.rentals().set(resp.rental, { parse: true });
+    	delete resp.rental;
+    }
+    
+    
+    return resp;
+  },
 
 });

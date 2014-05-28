@@ -2,11 +2,7 @@ SurfboardApp.Collections.Rentals = Backbone.Collection.extend({
   model: SurfboardApp.Models.Rental,
 
   initialize: function (models, options) {
-    this.board = options.board;
-  },
-
-  url: function () {
-    return 'api/boards/' + this.board.id;
+    
   },
 
   getOrFetch: function (id) {

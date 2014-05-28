@@ -22,4 +22,3 @@ json.rentals board.rentals do |rental|
 	json.status rental.status
 	json.renter_id rental.renter_id
 end
-
