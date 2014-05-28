@@ -4,11 +4,18 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
 	},
 
   routes: {
-    "": "boardsIndex",
+    "": "homePage",
+    "index": "boardsIndex",
     "new": "boardsNew",
     "map": "map",
     "calendar": "calendarPage",
     ":id": "boardsShow"
+  },
+
+  homePage: function () {
+    var homeView = new SurfboardApp.Views.HomePage();
+
+    this._swapView(homeView);
   },
 
   map: function () {

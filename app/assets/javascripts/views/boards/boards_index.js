@@ -7,7 +7,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.addAllBoards);
     this.listenTo(this.collection, 'sync', this.addSearchBar);
-    // this.listenTo(this.collection, 'sync', this.addMap);
+    this.listenTo(this.collection, 'sync', this.addMap);
     // this.listenTo(this.collection, 'add', this.render);
     
   },
@@ -22,21 +22,19 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     });
 
     this.$el.html(renderedContent);
-
     this.attachSubviews();
     return this;
   },
 
   addBoard: function (board) {
-    this.boardResult = new SurfboardApp.Views.BoardResult({
+    var boardResult = new SurfboardApp.Views.BoardResult({
       model: board
     });
-    this.addSubview('.board-results', this.boardResult);
+    this.addSubview('.board-results', boardResult);
   },
 
   addAllBoards: function () {
     this.collection.each(this.addBoard.bind(this));
-    // this.addMap();
   },
 
   addSearchBar: function () {
@@ -48,12 +46,16 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addMap: function () {
-    map = new SurfboardApp.Models.mapModel();
+    map = new SurfboardApp.Models.mapModel({
+      center: new google.maps.LatLng(-33.92, 151.25),
+    });
     var mapResults = new SurfboardApp.Views.BoardsMap({
       model: map,
       collection: SurfboardApp.Collections.boards
     });
     this.addSubview('.map-view', mapResults)
+    // google.maps.event.addDomListener(".map-canvas", 'click', this.showAlert);
+
   },
 
   runSearch: function (event) {
@@ -80,7 +82,6 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
 
     });
     console.log(that.searchResults);
-    // debugger
   },
 
   renderSearch: function () {

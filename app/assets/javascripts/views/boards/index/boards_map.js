@@ -17,6 +17,11 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     // tricky! Google requires DOM node object, not JQuery! This way converts it
     // this.map = new google.maps.Map(this.el. getElementsByClassName("map-canvas")[0], this.model.attributes);
     this.map = new google.maps.Map(document.getElementById("map-canvas"), this.model.attributes);
+    // google.maps.event.addDomListener("map-canvas", 'click', this.showAlert);
+  },
+
+  showAlert: function() {
+    alert('DIV clicked');
   },
 
   addPins: function () {
@@ -42,5 +47,7 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     // var map = new google.maps.Map(this.el.getElementsByClassName("map-canvas")[0], this.model.attributes);
     return this;
   },
+
+
 
 });
