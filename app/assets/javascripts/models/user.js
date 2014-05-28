@@ -53,6 +53,16 @@ SurfboardApp.Models.User = Backbone.Model.extend({
 
 	},
 
+	ready: function () {
+		return (this._avatar && 
+            this._boards &&
+            this._rentals &&
+            this._customerRentals &&
+            this._rentedInBoards &&
+            this._rentedOutBoards
+           );
+	},
+
   parse: function (resp) {
 
     if(resp.avatar) {
@@ -76,12 +86,12 @@ SurfboardApp.Models.User = Backbone.Model.extend({
     }
     
     if (resp.customer_rentals) {
-			this.customerRentals().set(resp.customerRentals, { parse: true });
+			this.customerRentals().set(resp.customer_rentals, { parse: true });
     	delete resp.customer_rentals;
     }
 
     if (resp.rented_out_boards) {
-			this.rentedOutBoards().set(resp.rentedOutBoards, { parse: true });
+			this.rentedOutBoards().set(resp.rented_out_boards, { parse: true });
     	delete resp.rented_out_boards;
     }
     

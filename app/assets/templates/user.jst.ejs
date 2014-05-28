@@ -4,24 +4,24 @@ Email: <%= user.escape('email') %> <br>
 First Name: <%= user.escape('fname') %> <br>
 Last Name: <%= user.escape('lname') %> <br>
 <br>
-<% debugger %>
-<% if (user.avatar()) { %>
-  <img src="<%= user.avatar().escape('small_attachment') %>" 
-  class="avatar-photo img-responsive img-thumbnail" alt="Avatar Photo">
-<% } else { %>
-  <img src="" class="search-photo img-responsive img-thumbnail" alt="No Photo Present">
-<% } %>
-
-<% if (user.boards().first()) { %>
-  <img src="<%= user.boards().first().photos().first().escape('small') %>" 
-  class="board-photo img-responsive img-thumbnail" alt="Board Photo">
-<% } else { %>
-  <img src="" class="search-photo img-responsive img-thumbnail" alt="No Photo Present">
-<% } %>
 
 <% debugger %>
+Avatar Image:<br>
+<img src="<%= user.avatar().escape('small_attachment') %>" 
+class="avatar-photo img-responsive img-thumbnail" alt="Avatar Photo">
 
-<% if (user.rentals().first()) { %>
-  Start Date: "<%= user.rentals().first().escape('start_date') %>" 
-  End Date: "<%= user.rentals().first().escape('end_date') %>" 
-<% } %>
+<br>
+Board Images:<br>
+<img src="<%= user.boards().first().photos().first().escape('small') %>" 
+class="board-photo img-responsive img-thumbnail" alt="Board Photo">
+
+<br>
+Rentals:<br>
+Start Date: "<%= user.rentals().first().escape('start_date') %>" 
+End Date: "<%= user.rentals().first().escape('end_date') %>" 
+
+<br>
+Customer Rentals:<br>
+Start Date: "<%= user.customerRentals().first().escape('start_date') %>" 
+Renter Id: "<%= user.customerRentals().first().escape('renter_id') %>" 
+
