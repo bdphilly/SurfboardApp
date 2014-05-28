@@ -29,16 +29,6 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
     this._swapView(homeView);
   },
 
-  // map: function () {
-  //   map = new SurfboardApp.Models.mapModel();
-  //   SurfboardApp.Collections.boards.fetch();
-  //   var view = new SurfboardApp.Views.PageBoardsMap({
-  //     model: map,
-  //     collection: SurfboardApp.Collections.boards
-  //   });
-  //   this._swapView(view);
-  // },
-
   boardsIndex: function () {
     SurfboardApp.Collections.boards.fetch();
     var indexView = new SurfboardApp.Views.BoardsIndex({

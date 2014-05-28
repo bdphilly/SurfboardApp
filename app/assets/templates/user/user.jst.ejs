@@ -1,0 +1,11 @@
+<h1>This is the user page</h1>
+
+Email: <%= user.escape('email') %> <br>
+First Name: <%= user.escape('fname') %> <br>
+Last Name: <%= user.escape('lname') %> <br>
+<br>
+The User Calendar:
+<br>
+<div class="calendar"></div>
+<br>
+<%= JST['user/rental_information']({user: this.model}) %>

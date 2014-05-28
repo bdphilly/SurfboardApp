@@ -352,6 +352,10 @@ h1 {
   height: 85px;
 }
 
+.day:hover {
+  background-color:yellow;
+}
+
 .cal2 .clndr .clndr-grid .day.event.available {
   font-size: 12px;
   background-color: #30ad9e;
