@@ -3,6 +3,7 @@ SurfboardApp::Application.routes.draw do
 
 	namespace :api, :defaults => { format: :json } do
 		get 'boards/search', to: 'boards#search'
+		resource :user, only: [:show, :update]
 		resources :boards do
 			resources :photos, only: [:index]
 			resources :board_rentals, only: [:show, :index, :new, :create, :destroy]	

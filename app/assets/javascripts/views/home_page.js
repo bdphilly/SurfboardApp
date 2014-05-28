@@ -27,12 +27,29 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
     var autocomplete = new google.maps.places.Autocomplete(input, options); 
   },
 
+  getLatLngt: function (attrs){
+    //code here
+
+    return latlng // [0, 0]
+  },
+
   runSearch: function (event) {
     event.preventDefault();
     var attrs = $(event.currentTarget).serializeJSON()['filters'];
     // console.log(attrs);
     // SurfboardApp.Collections.boards.fetch();
+    
+    var latlgn = this.getLatLngt(attrs);
+
+    //we'll have LAT/LNG params
+    SurfboardApp.Collections.boards.fetch({
+      data:{ latitude: lat
+
+      }});
     SurfboardApp.myRouter.navigate('#/boards', {trigger: true});
+
+
+
   },
 
 });

@@ -46,8 +46,4 @@ class User < ActiveRecord::Base
   has_one :avatar, :as => :imageable, :class_name => "User::Avatar", :dependent => :destroy
   accepts_nested_attributes_for :avatar
 
-  # private
-  # def user_params
-  # 	params.require(:user).permit(:email, :password)
-  # end
 end

@@ -7,9 +7,20 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
     "": "homePage",
     "boards": "boardsIndex",
     "boards/new": "boardsNew",
+    "user": "userPage",
     "map": "map",
     "calendar": "calendarPage",
     "boards/:id": "boardsShow"
+  },
+
+  userPage: function () {
+    var currentUser = new SurfboardApp.Models.User();
+    currentUser.fetch();
+    var userView = new SurfboardApp.Views.User({
+      model: currentUser
+    });
+
+    this._swapView(userView);
   },
 
   homePage: function () {
@@ -18,16 +29,15 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
     this._swapView(homeView);
   },
 
-  map: function () {
-    map = new SurfboardApp.Models.mapModel();
-    SurfboardApp.Collections.boards.fetch();
-    var view = new SurfboardApp.Views.PageBoardsMap({
-      model: map,
-      collection: SurfboardApp.Collections.boards
-    });
-    
-    this._swapView(view);
-  },
+  // map: function () {
+  //   map = new SurfboardApp.Models.mapModel();
+  //   SurfboardApp.Collections.boards.fetch();
+  //   var view = new SurfboardApp.Views.PageBoardsMap({
+  //     model: map,
+  //     collection: SurfboardApp.Collections.boards
+  //   });
+  //   this._swapView(view);
+  // },
 
   boardsIndex: function () {
     SurfboardApp.Collections.boards.fetch();
