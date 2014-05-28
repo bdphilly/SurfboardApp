@@ -47,7 +47,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
 
   addMap: function () {
     map = new SurfboardApp.Models.mapModel({
-      center: new google.maps.LatLng(-33.92, 151.25),
+      // center: new google.maps.LatLng(-33.92, 151.25),//PASS IN ARGS HERE!
     });
     var mapResults = new SurfboardApp.Views.BoardsMap({
       model: map,

@@ -5,11 +5,11 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
 
   routes: {
     "": "homePage",
-    "index": "boardsIndex",
-    "new": "boardsNew",
+    "boards": "boardsIndex",
+    "boards/new": "boardsNew",
     "map": "map",
     "calendar": "calendarPage",
-    ":id": "boardsShow"
+    "boards/:id": "boardsShow"
   },
 
   homePage: function () {

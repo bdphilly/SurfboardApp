@@ -5,7 +5,7 @@ window.SurfboardApp = {
   Routers: {},
 
   initialize: function() {
-    new SurfboardApp.Routers.router({
+    SurfboardApp.myRouter = new SurfboardApp.Routers.router({
       $rootEl: $('#content')
     });
     
