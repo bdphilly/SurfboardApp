@@ -60,26 +60,42 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     event.preventDefault();
     var attrs = $(event.currentTarget).serializeJSON()['filters'];
     console.log(attrs);
+    //create new collection of BoardSearchResults...
+    var searchResults = new SurfboardApp.Collections.BoardSearchResults();
+    searchResults.fetch({
+      data: attrs,
+      success: function (response) {
+        // you can pass additional options to the event you trigger here as well
+        console.log(searchResults);
+      },
+      error: function (response) {
+        // you can pass additional options to the event you trigger here as well
+        alert('error!');
+      }
+
+    });
+    console.log(searchResults);
+    debugger
   },
 
 });
 
 
-  submit: function (event) {
-      event.preventDefault();
-      debugger
-      var attrs = $(event.currentTarget).serializeJSON();
-      this.model.set(attrs);
-      SurfboardApp.Collections.boards.add(this.model, {
-          success: function (attribute) {
-              debugger
-              console.log("happy days!");
-          },
-      });
-      this.model.save({}, {
-          success: function () {
-              debugger
-              window.location.assign("");
-          },
-      });
-  },
+  // submit: function (event) {
+  //     event.preventDefault();
+  //     debugger
+  //     var attrs = $(event.currentTarget).serializeJSON();
+  //     this.model.set(attrs);
+  //     SurfboardApp.Collections.boards.add(this.model, {
+  //         success: function (attribute) {
+  //             debugger
+  //             console.log("happy days!");
+  //         },
+  //     });
+  //     this.model.save({}, {
+  //         success: function () {
+  //             debugger
+  //             window.location.assign("");
+  //         },
+  //     });
+  // },

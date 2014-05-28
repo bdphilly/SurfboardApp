@@ -31,6 +31,24 @@ zipcodes = [
 	94107
 ]
 
+prices = [
+	10,
+	20,
+	30,
+	40,
+	50,
+	60,
+	70,
+	80,
+	90,
+	100
+]
+
+types = [
+	'shortboard',
+	'longboard'
+]
+
 5.times do |new_user|
 	
 	User.create({
@@ -53,10 +71,10 @@ zipcodes = [
 		state: "CA",
 		zipcode: zipcodes[new_user],
 		country: "USA",
+		price: prices[new_user],
+		board_type: types[new_user % 2]
 		# :images => File.open('./app/assets/images/001.jpg')
 	})
-
-
 
 file_path = './app/assets/images/001.jpg'
 

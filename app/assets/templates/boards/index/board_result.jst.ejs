@@ -13,10 +13,10 @@
 			<% } else { %>
 					<img src="" class="search-photo img-responsive img-thumbnail" alt="No Photo Present">
 			<% } %>
-	    Length: <%= board.escape('length') %>
+	    Length: <%= board.escape('length') %><br>
+	    Type: <%= board.escape('board_type') %>
 	    <br>
-	    Description: <%= board.escape('description') %>
-						
+	    Description: <%= board.escape('description') %>					
 	  </div>
 	</div>
 </li>

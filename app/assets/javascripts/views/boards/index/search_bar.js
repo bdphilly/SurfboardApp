@@ -22,6 +22,16 @@ SurfboardApp.Views.SearchBar = Backbone.View.extend({
       todayHighlight: true
     });
 
+    this.$el.find( "#slider" ).slider({
+      value: 50,
+      range: 'max',
+      min: 0,
+      max: 50,
+      slide: function( event, ui ) {
+        $( "#filters_max_price" ).val( ui.value );
+        $( "#amount" ).text( "$" + ui.value );
+      }
+    });
     return this;
   },
 

@@ -24,6 +24,8 @@
 #  country            :string(255)
 #  latitude           :float
 #  longitude          :float
+#  price              :integer
+#  board_type         :string(255)
 #
 
 class Board < ActiveRecord::Base
@@ -48,9 +50,29 @@ class Board < ActiveRecord::Base
   accepts_nested_attributes_for :images
 
   def self.search(params)
-    params.each do |param|
-      puts param
-    end
+    results = []
+
+    boards = Board.all
+    boards = Board.find_by_type(params) if params[:board_type]
+    boards = boards.find_by_price(params) if params["max_price"]
+
+    boards
+  end
+
+  def self.find_by_type(params)
+    self.where({:board_type => params[:board_type]})
+  end
+
+  def self.find_by_price(params)
+    self.where("price <= ?", params['max_price'])
+  end
+
+  def self.find_by_location
+    #check for location
+  end
+
+  def self.find_by_availability
+    #check dates for availability
   end
 
   def address_to_string

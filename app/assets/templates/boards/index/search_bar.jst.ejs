@@ -23,13 +23,21 @@
 	    <div class="checkbox">
 		    <label class="filters" for="board_type_shortboard">Shortboard</label>
 		    <input type="checkbox" class="form-control" name="filters[board_type][]" id="board_type_shortboard" value="shortboard"><br>
-		      
-		    <label class="filters" for="board_type_funboard">Funboard</label>
-		    <input type="checkbox" class="form-control" name="filters[board_type][]" id="board_type_funboard" value="funboard"><br>
 		    
 		    <label class="filters" for="board_type_longboard">Shortboard</label>
 		    <input type="checkbox" class="form-control" name="filters[board_type][]" id="board_type_longboard" value="longboard"><br>		    
 		  </div>
+	
+			<br><br>
+			
+			<p>
+			  <label>Max Price: <span id='amount' style="border:0; color:#f6931f; font-weight:bold;">$50</span></label>
+			  <input type="hidden" id="filters_max_price" value="50" name="filters[max_price]">
+			</p>
+
+			<div id="slider"></div>
+
+			<br><br>
 
 			<div class="form-group col-lg-2">
 				<button type="submit" class="btn btn-default ">

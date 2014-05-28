@@ -51,7 +51,7 @@ class Api::BoardsController < ApplicationController
 	end
 
 	def search
-		@boards = Board.search params[:filters]
+		@boards = Board.search(params)
 	end
 
 	private
@@ -72,6 +72,8 @@ class Api::BoardsController < ApplicationController
 			:zipcode,
 			:country,
 			:price,
+			:type,
+			:board_type,
 			:images_attributes => [:attachment]
 		)
 	end

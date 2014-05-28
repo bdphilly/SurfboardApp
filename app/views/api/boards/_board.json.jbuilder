@@ -1,8 +1,9 @@
 json.(board, :id, :brand, :model, :length, 
 						 :width, :thickness, :description,
 						 :condition, :owner_id, :created_at,
-						 :updated_at, :address, :city, :state,
-						 :zipcode, :country, :latitude, :longitude 
+						 :price, :board_type, :updated_at, 
+						 :address, :city, :state, :zipcode, 
+						 :country, :latitude, :longitude, 
 			)
 
 json.images board.images do |image|
