@@ -21,7 +21,4 @@ Start Date: "<%= user.rentals().first().escape('start_date') %>"
 End Date: "<%= user.rentals().first().escape('end_date') %>" 
 
 <br>
-Customer Rentals:<br>
-Start Date: "<%= user.customerRentals().first().escape('start_date') %>" 
-Renter Id: "<%= user.customerRentals().first().escape('renter_id') %>" 
-
+<%= JST['user/rental_information']({user: this.model}) %>

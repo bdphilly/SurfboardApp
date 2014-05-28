@@ -1,0 +1,18 @@
+Customer Rentals:<br>
+<br>
+<% user.customerRentals().each(function (rental) { %>
+	Start Date: <%= rental.escape('start_date') %> 
+	Renter Id: <%= rental.escape('renter_id') %> 
+<% }) %>
+<br>
+Rented Out:
+<br>
+<% user.rentedOutBoards().each(function (rental) { %>
+	Board Id: <%= rental.escape('id') %> 
+<% }) %>
+<br>
+Rented In:
+<br>
+<% user.rentedInBoards().each(function (rental) { %>
+	Board Id: <%= rental.escape('id') %> 
+<% }) %>
