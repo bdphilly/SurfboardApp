@@ -2,19 +2,27 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
   template: JST['user'],
 
   initialize: function () {
-    this.listenTo(this.model, 'all sync add', this.render);
+    this.listenTo(this.model, 'sync', this.render);
   },
 
   events: {
   },
 
   render: function () {
+
+    //if !ready return this;
+
     var renderedContent = this.template({
       user: this.model
     });
     this.$el.html(renderedContent); 
 
     return this;
+  },
+
+  ready: function () {
+    //if (user.boards().first()) && ...
+    
   },
 
 });

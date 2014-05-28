@@ -27,29 +27,43 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
     var autocomplete = new google.maps.places.Autocomplete(input, options); 
   },
 
-  getLatLngt: function (attrs){
-    //code here
-
-    return latlng // [0, 0]
-  },
-
   runSearch: function (event) {
     event.preventDefault();
     var attrs = $(event.currentTarget).serializeJSON()['filters'];
-    // console.log(attrs);
-    // SurfboardApp.Collections.boards.fetch();
-    
-    var latlgn = this.getLatLngt(attrs);
+    this.geocodeAddress(attrs.location, function (coordinates) {
+      alert('hello');
+      console.log(coordinates);
+      SurfboardApp.Collections.boards.fetch({
+        
+        data:{ latitude: lat
 
-    //we'll have LAT/LNG params
-    SurfboardApp.Collections.boards.fetch({
-      data:{ latitude: lat
-
-      }});
-    SurfboardApp.myRouter.navigate('#/boards', {trigger: true});
-
-
-
+        }});
+      SurfboardApp.myRouter.navigate('#/boards', {trigger: true});
+    });
   },
 
+  geocodeAddress: function (address, callback) {
+    var geocoder = new google.maps.Geocoder();
+    var result = {};
+    geocoder.geocode({'address' : address}, function(results, status){
+
+       if (status == google.maps.GeocoderStatus.OK) {
+         result['lat'] = results[0].geometry.location.lat();
+         result['lng'] = results[0].geometry.location.lng();
+         callback(result); 
+       } else {
+           result = "Unable to find address: " + status;
+       }
+       
+    });
+  },
+
+
+  // geocoder.geocode({'address' : address}, function(results, status){
+  //       console.log( "latitude : " + results[0].geometry.location.lat() );
+  //       console.log( "longitude : " + results[0].geometry.location.lng() );
+  //     });
+
+
 });
+
