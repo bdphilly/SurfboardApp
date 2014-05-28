@@ -32,7 +32,19 @@ SurfboardApp.Views.SearchBar = Backbone.View.extend({
         $( "#amount" ).text( "$" + ui.value );
       }
     });
+
+    this.addGoogleAutocomplete();
+
     return this;
+  },
+
+  addGoogleAutocomplete: function () {
+    var input = this.$el.find('#index-location-picker')[0];
+    var options = {
+      types: ['(cities)'],
+      componentRestrictions: {country: "us"}
+    };
+    var autocomplete = new google.maps.places.Autocomplete(input, options); 
   },
 
 });

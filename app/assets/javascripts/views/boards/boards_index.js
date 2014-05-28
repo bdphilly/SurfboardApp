@@ -62,6 +62,9 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     event.preventDefault();
     var attrs = $(event.currentTarget).serializeJSON()['filters'];
     console.log(attrs);
+
+    this.geocodeAddress(attrs.location);
+    
     //create new collection of BoardSearchResults...
     this.searchResults = new SurfboardApp.Collections.BoardSearchResults();
     
@@ -85,8 +88,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   renderSearch: function () {
-    this.collection = this.searchResults;
-    console.log(this.collection);
+    console.log(this.searchResults);
     var resultsView = new SurfboardApp.Views.BoardsIndex({
       collection: this.searchResults
     })
@@ -95,5 +97,15 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     this.$el.find('.board-results').empty();
     this.searchResults.each(this.addBoard.bind(this));
   },
+
+  geocodeAddress: function (address) {
+    var geocoder = new google.maps.Geocoder();
+    debugger
+    geocoder.geocode({'address' : address}, function(results, status){
+      console.log( "latitude : " + results[0].geometry.location.lat() );
+      console.log( "longitude : " + results[0].geometry.location.lng() );
+    });
+  },
+
 
 });

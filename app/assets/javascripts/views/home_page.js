@@ -13,16 +13,18 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
     var renderedContent = this.template();
     this.$el.html(renderedContent); 
 
-    var input = this.$el.find('#location-picker')[0];
+    this.addGoogleAutocomplete();
 
+    return this;
+  },
+
+  addGoogleAutocomplete: function () {
+    var input = this.$el.find('#home-location-picker')[0];
     var options = {
       types: ['(cities)'],
       componentRestrictions: {country: "us"}
     };
-
     var autocomplete = new google.maps.places.Autocomplete(input, options); 
-
-    return this;
   },
 
   runSearch: function (event) {
@@ -31,6 +33,6 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
     // console.log(attrs);
     // SurfboardApp.Collections.boards.fetch();
     SurfboardApp.myRouter.navigate('#/boards', {trigger: true});
-  }
+  },
 
 });
