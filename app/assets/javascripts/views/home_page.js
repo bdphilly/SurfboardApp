@@ -74,7 +74,6 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
     constraints['ne-lng'] = bounds.getNorthEast().lng();
     constraints['sw-lat'] = bounds.getSouthWest().lat();
     constraints['sw-lng'] = bounds.getSouthWest().lng();
-    debugger
     return constraints;
   },
 

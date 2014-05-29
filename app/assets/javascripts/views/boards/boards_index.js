@@ -45,7 +45,6 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addMap: function () {
-    debugger
     if (SurfboardApp.Collections.boards.coordinates) {
       var coords = SurfboardApp.Collections.boards.coordinates;
       map = new SurfboardApp.Models.mapModel({
@@ -65,8 +64,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     google.maps.event.addListener(map, 'center_changed', function () {
       var bounds = new google.maps.LatLngBounds();
       bounds = map.getBounds();
-      var constraints = that.determineBounds(bounds);
-      debugger        
+      var constraints = that.determineBounds(bounds);    
       SurfboardApp.Collections.boards.constraints = constraints;
     });
 
@@ -84,7 +82,8 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     }
 
     if (SurfboardApp.Collections.boards.constraints) {
-      attrs = $.extend(attrs, constraints);
+      attrs = $.extend(attrs, SurfboardApp.Collections.boards.constraints);
+      debugger
     }
 
     //create new collection of BoardSearchResults...
