@@ -45,6 +45,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addMap: function () {
+    debugger
     if (SurfboardApp.Collections.boards.coordinates) {
       var coords = SurfboardApp.Collections.boards.coordinates;
       map = new SurfboardApp.Models.mapModel({
@@ -58,6 +59,17 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
       model: map,
       collection: SurfboardApp.Collections.boards
     });
+
+    var that = this;
+
+    google.maps.event.addListener(map, 'center_changed', function () {
+      var bounds = new google.maps.LatLngBounds();
+      bounds = map.getBounds();
+      var constraints = that.determineBounds(bounds);
+      debugger        
+      SurfboardApp.Collections.boards.constraints = constraints;
+    });
+
     this.addSubview('.map-view', mapResults)
     // google.maps.event.addDomListener(".map-canvas", 'click', this.showAlert);
   },
@@ -69,6 +81,10 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
 
     if (attrs.location) {
       this.geocodeAddress(attrs.location);
+    }
+
+    if (SurfboardApp.Collections.boards.constraints) {
+      attrs = $.extend(attrs, constraints);
     }
 
     //create new collection of BoardSearchResults...
@@ -110,6 +126,17 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
       console.log( "longitude : " + results[0].geometry.location.lng() );
     });
   },
+
+  determineBounds: function (bounds) {
+    var constraints = {};
+    constraints['ne-lat'] = bounds.getNorthEast().lat();
+    constraints['ne-lng'] = bounds.getNorthEast().lng();
+    constraints['sw-lat'] = bounds.getSouthWest().lat();
+    constraints['sw-lng'] = bounds.getSouthWest().lng();
+    debugger
+    return constraints;
+  },
+
 
 
 });
