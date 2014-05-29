@@ -47,18 +47,20 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addMap: function () {
-    if (SurfboardApp.Collections.boards.coordinates) {
-      var coords = SurfboardApp.Collections.boards.coordinates;
-      map = new SurfboardApp.Models.mapModel({
-        center: new google.maps.LatLng(coords.latitude, coords.longitude)
-      });
-    } else {
-      map = new SurfboardApp.Models.mapModel();
-    }
+    // if (SurfboardApp.Models.map.coordinates) {
+    //   var coords = SurfboardApp.Collections.boards.coordinates;
+    //   SurfboardApp.Models.map.set({
+    //     center: new google.maps.LatLng(coords.latitude, coords.longitude)
+    //   });
+    // } else {
+    //   map = SurfboardApp.Models.map;
+    // }
+    var map = SurfboardApp.Models.map;
 
     var mapResults = new SurfboardApp.Views.BoardsMap({
       model: map,
-      collection: SurfboardApp.Collections.boards
+      collection: SurfboardApp.Collections.boards,
+      parentView: this
     });
 
     var that = this;
@@ -85,11 +87,11 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     if (attrs.location) {
       this.geocodeAddress(attrs.location);
     }
+    debugger
 
-    if (SurfboardApp.Collections.boards.constraints) {
-      attrs = $.extend(attrs, SurfboardApp.Collections.boards.constraints);
-      debugger
-    }
+    // if (SurfboardApp.Models.map.attributes.constraints) {
+      attrs = $.extend(attrs, SurfboardApp.Models.map.attributes.constraints);
+    // }
 
     //create new collection of BoardSearchResults...
     this.searchResults = new SurfboardApp.Collections.BoardSearchResults();
@@ -110,6 +112,27 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
 
     });
     console.log(that.searchResults);
+  },
+
+  fetchResults: function (attrs) {
+    this.searchResults = new SurfboardApp.Collections.BoardSearchResults();
+    var that = this;
+
+    this.searchResults.fetch({
+      data: attrs,
+      success: function (response) {
+        // you can pass additional options to the event you trigger here as well
+        console.log(that.searchResults);
+        that.renderSearch(that.searchResults);
+      },
+      error: function (response) {
+        // you can pass additional options to the event you trigger here as well
+        alert('error!');
+      }
+
+    });
+    console.log(that.searchResults);
+
   },
 
   renderSearch: function () {
@@ -137,7 +160,6 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     constraints['ne-lng'] = bounds.getNorthEast().lng();
     constraints['sw-lat'] = bounds.getSouthWest().lat();
     constraints['sw-lng'] = bounds.getSouthWest().lng();
-    debugger
     return constraints;
   },
 

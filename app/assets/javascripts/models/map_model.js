@@ -1,4 +1,4 @@
-SurfboardApp.Models.mapModel = Backbone.Model.extend({
+SurfboardApp.Models.MapModel = Backbone.Model.extend({
   // Centered on SF
   defaults: {
     center: new google.maps.LatLng(37.7533, -122.4267),

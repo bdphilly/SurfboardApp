@@ -10,6 +10,7 @@ window.SurfboardApp = {
     });
     
     SurfboardApp.Collections.boards = new SurfboardApp.Collections.Boards();
+    SurfboardApp.Models.map = new SurfboardApp.Models.MapModel();
     SurfboardApp.Collections.boards.fetch();
     Backbone.history.start();
   }

@@ -6,11 +6,16 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
 
   // className: "map-canvas",
 
-  initialize: function () {
+  initialize: function (options) {
+    
+    this.parentView = options.parentView;
+
     // this.render();
     // google.maps.event.addDomListener(window, 'load', initialize);
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.addPins);
+    // this.listenTo(this.model, 'change', this.reFetchConstraints);
+    this.listenTo(this.model, 'sync', this.render);
   },
 
   renderMap: function () {
@@ -27,13 +32,22 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
       var bounds = new google.maps.LatLngBounds();
       bounds = that.map.getBounds();
       var constraints = that.determineBounds(bounds);    
-      SurfboardApp.Collections.boards.constraints = constraints;
+      console.log(constraints);
+
+      SurfboardApp.Models.map.set({
+        constraints: constraints,
+        zoom: that.map.getZoom(),
+        center: that.map.getCenter()
+      });
+
+      that.parentView.runSearch();
+      // SurfboardApp.Collections.boards.constraints = constraints;
       
-      SurfboardApp.Collections.boards.coordinates = {
-        latitude: that.map.getCenter().lat(),
-        longitude: that.map.getCenter().lng(),
-      }
-      console.log(SurfboardApp.Collections.boards.constraints);
+      // SurfboardApp.Collections.boards.coordinates = {
+      //   latitude: that.map.getCenter().lat(),
+      //   longitude: that.map.getCenter().lng(),
+      // }
+      // console.log(SurfboardApp.Collections.boards.constraints);
     });
 
   },
@@ -88,10 +102,10 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     this.$el.html(renderedContent); 
     this.renderMap();
     this.addPins();
+
     // var map = new google.maps.Map(this.el.getElementsByClassName("map-canvas")[0], this.model.attributes);
     return this;
   },
-
 
   determineBounds: function (bounds) {
     var constraints = {};
@@ -101,7 +115,5 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     constraints['sw-lng'] = bounds.getSouthWest().lng();
     return constraints;
   },
-
-
 
 });
