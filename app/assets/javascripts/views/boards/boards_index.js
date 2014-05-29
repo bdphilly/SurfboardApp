@@ -2,7 +2,6 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   template: JST['boards/index'],
 
   initialize: function () {
-
     globalView = this;
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.addAllBoards);
@@ -46,6 +45,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addMap: function () {
+    //var coords = SurfboardApp.Collections.boards.coordinates;
     map = new SurfboardApp.Models.mapModel({
       // center: new google.maps.LatLng(-33.92, 151.25),//PASS IN ARGS HERE!
     });

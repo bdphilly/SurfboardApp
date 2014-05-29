@@ -30,7 +30,7 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
   },
 
   boardsIndex: function () {
-    SurfboardApp.Collections.boards.fetch();
+    // SurfboardApp.Collections.boards.fetch();
     var indexView = new SurfboardApp.Views.BoardsIndex({
       collection: SurfboardApp.Collections.boards
     });

@@ -3,7 +3,7 @@ class Api::BoardsController < ApplicationController
 
 	def index
 		# @boards = Board.search(params)
-		@boards = Board.all
+		@boards = Board.search(params)
 	end
 
 	def show

@@ -69,19 +69,29 @@ ul {
 }
 
 .map-canvas {
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 
 #map-canvas {
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 
 #home-location-picker {
   width: 500px;
 }
 
+.hidden-map-canvas {
+  height: 400px;
+  width: 400px;
+  border: 1px blue solid;
+}
+
+#hidden-map-canvas {
+  height: 100%;
+  width: 100%;
+}
 
 
 /* ---- */

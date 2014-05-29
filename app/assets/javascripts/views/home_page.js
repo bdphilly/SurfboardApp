@@ -2,7 +2,7 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
   template: JST['home'],
 
   initialize: function () {
-
+    var globalView = this;
   },
 
   events: {
@@ -30,40 +30,71 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
   runSearch: function (event) {
     event.preventDefault();
     var attrs = $(event.currentTarget).serializeJSON()['filters'];
+    
+    var that = this;
+
     this.geocodeAddress(attrs.location, function (coordinates) {
-      alert('hello');
+      
       console.log(coordinates);
+      
+      //make a new map wih coordinates
+      var mapOptions = {
+        zoom: 10,
+        center: new google.maps.LatLng(coordinates.latitude, coordinates.longitude),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      
+      var hiddenMap = new google.maps.Map(document.getElementById("hidden-map-canvas"), mapOptions);
+      
+      google.maps.event.addListener(hiddenMap, 'idle', function () {
+        var bounds = new google.maps.LatLngBounds();
+        bounds = hiddenMap.getBounds();
+        var constraints = that.determineBounds(bounds);        
+      });
+
+      //store coordinates on boards collection
+      //getBounds and pass as data to fetch
+
+      SurfboardApp.Collections.boards.coordinates = coordinates;
       SurfboardApp.Collections.boards.fetch({
         
-        data:{ latitude: lat
+        data:{ 
+          latitude: coordinates.latitude,
+          longitude: coordinates.longitude
+        },
+      });
 
-        }});
-      SurfboardApp.myRouter.navigate('#/boards', {trigger: true});
+      // hiddenMap.getBounds(function (response){
+      //   console.log(response);
+      // });
+
+      // SurfboardApp.myRouter.navigate('#/boards', {trigger: true});
+
     });
+  },
+
+  determineBounds: function (bounds) {
+    var constraints = {};
+    constraints['ne-lat'] = bounds.getNorthEast().lat();
+    constraints['ne-lng'] = bounds.getNorthEast().lng();
+    constraints['sw-lat'] = bounds.getNorthEast().lat();
+    constraints['sw-lng'] = bounds.getNorthEast().lng();
+    return constraints;
   },
 
   geocodeAddress: function (address, callback) {
     var geocoder = new google.maps.Geocoder();
-    var result = {};
+    var coordinates = {};
     geocoder.geocode({'address' : address}, function(results, status){
-
        if (status == google.maps.GeocoderStatus.OK) {
-         result['lat'] = results[0].geometry.location.lat();
-         result['lng'] = results[0].geometry.location.lng();
-         callback(result); 
+         coordinates['latitude'] = results[0].geometry.location.lat();
+         coordinates['longitude'] = results[0].geometry.location.lng();
+         callback(coordinates); 
        } else {
            result = "Unable to find address: " + status;
-       }
-       
+       }       
     });
   },
-
-
-  // geocoder.geocode({'address' : address}, function(results, status){
-  //       console.log( "latitude : " + results[0].geometry.location.lat() );
-  //       console.log( "longitude : " + results[0].geometry.location.lng() );
-  //     });
-
 
 });
 
