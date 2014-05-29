@@ -64,11 +64,11 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
         },
       });
 
-      // hiddenMap.getBounds(function (response){
-      //   console.log(response);
-      // });
+      hiddenMap.getBounds(function (response){
+        console.log(response);
+      });
 
-      // SurfboardApp.myRouter.navigate('#/boards', {trigger: true});
+      SurfboardApp.myRouter.navigate('#/boards', {trigger: true});
 
     });
   },
