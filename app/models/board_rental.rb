@@ -14,7 +14,7 @@
 #
 
 class BoardRental < ActiveRecord::Base
-	STATUS_STATES = ["Pending", "Denied", "Unavailable", "Rented", "Available"]
+	STATUS_STATES = ["Pending", "Denied", "Unavailable", "Approved", "Available"]
 
 	##take this out after app is functional, let user choose...
   before_validation :assign_available_status
@@ -23,7 +23,7 @@ class BoardRental < ActiveRecord::Base
 
 	validates :status, inclusion: STATUS_STATES
 
-	validate :does_not_overlap_rental
+	validate :does_not_overlap_approved_request
 
 	belongs_to :board,
 		class_name: "Board",
@@ -33,8 +33,31 @@ class BoardRental < ActiveRecord::Base
 		class_name: "User",
 		foreign_key: :renter_id
 
-	def rented?
-		self.status == "Rented"
+  def approve!
+    raise "not pending" unless self.status == "Pending"
+    transaction do
+      self.status = "Approved"
+      self.save!
+
+      overlapping_pending_requests.update_all(status: "Denied")
+    end
+  end
+
+  def deny!
+  	self.status = "Denied"
+  	self.save!
+  end
+
+	def approved?
+		self.status == "Approved"
+	end
+
+	def pending?
+		self.status == "Pending"
+	end
+
+	def denied?
+		self.status == "Denied"
 	end
 
 	def available?
@@ -42,7 +65,7 @@ class BoardRental < ActiveRecord::Base
 	end
 
 	def unavailable?
-		self.status == "Unavailable" || self.status == "Rented"
+		self.status == "Unavailable" || self.status == "Approved" || self.status == "Denied"
 	end
 
 	private
@@ -51,12 +74,16 @@ class BoardRental < ActiveRecord::Base
 		self.status ||= "Available"
 	end
 
+	def assign_pending_status
+		self.status ||= "Pending"
+	end
+
 	def mark_available!
 		self.status = "Available"
 	end
 
 	def mark_unavailable!
-		self.status = ""
+		self.status = "Unavailable"
 	end
 	
 	def overlapping_rentals
@@ -89,18 +116,37 @@ class BoardRental < ActiveRecord::Base
 	end
 ################
 
-  def valid_rental
-    overlapping_rentals.where("status = 'Available'")
+	def overlapping_approved_requests
+    overlapping_requests.where("status = 'Approved'")
   end
 
-  def invalid_rental
-    puts overlapping_rentals.where("status = 'Rented'" || "status = 'Unavailable'")
-		overlapping_rentals.where("status = 'Rented'" || "status = 'Unavailable'")
+	def overlapping_pending_requests
+    overlapping_requests.where("status = 'Pending'")
   end
+   
+  def does_not_overlap_approved_request
+    # A denied request doesn't need to be checked. A pending request should be
+    # checked; users shouldn't be able to make requests for periods during
+    # which a board has already been spoken for.
+    return if self.denied?
 
-  def does_not_overlap_rental
-    unless valid_rental.empty?
-      errors[:base] << "The board cannot be rented for this date!"
+    unless overlapping_approved_requests.empty?
+      errors[:base] << "Request conflicts with existing approved request"
     end
   end
+
+  # def valid_rental
+  #   overlapping_rentals.where("status = 'Available'")
+  # end
+
+  # def invalid_rental
+  #   puts overlapping_rentals.where("status = 'Rented'" || "status = 'Unavailable'")
+		# overlapping_rentals.where("status = 'Rented'" || "status = 'Unavailable'")
+  # end
+
+  # def does_not_overlap_rental
+  #   unless valid_rental.empty?
+  #     errors[:base] << "The board cannot be rented for this date!"
+  #   end
+  # end
 end
