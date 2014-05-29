@@ -60,10 +60,7 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
         });
 
         SurfboardApp.Collections.boards.fetch({
-          data:{ 
-            latitude: coordinates.latitude,
-            longitude: coordinates.longitude
-          },
+          data: constraints
         });
         
         SurfboardApp.myRouter.navigate('#boards', {trigger: true});

@@ -14,7 +14,7 @@
 #
 
 class BoardRental < ActiveRecord::Base
-	STATUS_STATES = ["Available", "Unavailable", "Rented"]
+	STATUS_STATES = ["Pending", "Denied", "Unavailable", "Rented", "Available"]
 
 	##take this out after app is functional, let user choose...
   before_validation :assign_available_status

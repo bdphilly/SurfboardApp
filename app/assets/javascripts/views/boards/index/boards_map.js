@@ -11,7 +11,7 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     this.parentView = options.parentView;
 
     this.render();
-    google.maps.event.addDomListener(window, 'load', initialize);
+    // google.maps.event.addDomListener(window, 'load', initialize);
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.addPins);
     // this.listenTo(this.model, 'change', this.reFetchConstraints);
