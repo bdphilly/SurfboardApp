@@ -60,13 +60,16 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     });
 
     var that = this;
+  //   window.setTimeout(function () {
+  //   google.maps.event.addListener(map, 'center_changed', function () {
+  //     alert('changed!');
+  //     var bounds = new google.maps.LatLngBounds();
+  //     bounds = map.getBounds();
+  //     var constraints = that.determineBounds(bounds);    
+  //     SurfboardApp.Collections.boards.constraints = constraints;
+  //   });
 
-    google.maps.event.addListener(map, 'center_changed', function () {
-      var bounds = new google.maps.LatLngBounds();
-      bounds = map.getBounds();
-      var constraints = that.determineBounds(bounds);    
-      SurfboardApp.Collections.boards.constraints = constraints;
-    });
+  // }, 1000);
 
     this.addSubview('.map-view', mapResults)
     // google.maps.event.addDomListener(".map-canvas", 'click', this.showAlert);
@@ -135,7 +138,5 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     debugger
     return constraints;
   },
-
-
 
 });
