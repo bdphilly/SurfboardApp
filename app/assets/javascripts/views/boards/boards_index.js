@@ -8,6 +8,8 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'sync', this.addSearchBar);
     this.listenTo(this.collection, 'sync', this.addMap);
     // this.listenTo(this.collection, 'add', this.render);
+
+    this.listenTo(this.collection, 'change', this.runSearch);
     
   },
 

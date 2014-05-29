@@ -18,22 +18,23 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     // this.map = new google.maps.Map(this.el. getElementsByClassName("map-canvas")[0], this.model.attributes);
     this.map = new google.maps.Map(document.getElementById("map-canvas"), this.model.attributes);
     // google.maps.event.addDomListener("map-canvas", 'click', this.showAlert);
-    this.addEventListeners();
+    this.reFetchConstraints();
   },
 
-  addEventListeners: function () {
+  reFetchConstraints: function () {
+    var that = this;
     google.maps.event.addListener(this.map, 'idle', function () {
-      // alert('changed!');
-      // var bounds = new google.maps.LatLngBounds();
-      // bounds = map.getBounds();
-      // var constraints = that.determineBounds(bounds);    
-      // SurfboardApp.Collections.boards.constraints = constraints;
-      console.log('idle');
+      var bounds = new google.maps.LatLngBounds();
+      bounds = that.map.getBounds();
+      var constraints = that.determineBounds(bounds);    
+      SurfboardApp.Collections.boards.constraints = constraints;
+      
+      SurfboardApp.Collections.boards.coordinates = {
+        latitude: that.map.getCenter().lat(),
+        longitude: that.map.getCenter().lng(),
+      }
+      console.log(SurfboardApp.Collections.boards.constraints);
     });
-
-    // var infowindow = new google.maps.InfoWindow({
-    //   content: contentString
-    // });
 
   },
 
@@ -89,6 +90,16 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     this.addPins();
     // var map = new google.maps.Map(this.el.getElementsByClassName("map-canvas")[0], this.model.attributes);
     return this;
+  },
+
+
+  determineBounds: function (bounds) {
+    var constraints = {};
+    constraints['ne-lat'] = bounds.getNorthEast().lat();
+    constraints['ne-lng'] = bounds.getNorthEast().lng();
+    constraints['sw-lat'] = bounds.getSouthWest().lat();
+    constraints['sw-lng'] = bounds.getSouthWest().lng();
+    return constraints;
   },
 
 
