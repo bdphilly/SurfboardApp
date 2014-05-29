@@ -18,6 +18,30 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     // this.map = new google.maps.Map(this.el. getElementsByClassName("map-canvas")[0], this.model.attributes);
     this.map = new google.maps.Map(document.getElementById("map-canvas"), this.model.attributes);
     // google.maps.event.addDomListener("map-canvas", 'click', this.showAlert);
+    this.addEventListeners();
+  },
+
+  addEventListeners: function () {
+    google.maps.event.addListener(this.map, 'idle', function () {
+      // alert('changed!');
+      // var bounds = new google.maps.LatLngBounds();
+      // bounds = map.getBounds();
+      // var constraints = that.determineBounds(bounds);    
+      // SurfboardApp.Collections.boards.constraints = constraints;
+      console.log('idle');
+    });
+
+    // var infowindow = new google.maps.InfoWindow({
+    //   content: contentString
+    // });
+
+  },
+
+  addInfoWindow: function () {
+    var infowindow = new google.maps.InfoWindow({
+      content: "Hello World!"
+    });
+
   },
 
   showAlert: function() {
@@ -25,14 +49,33 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
   },
 
   addPins: function () {
+
+    var board_info;
     var marker;
+    var infowindow;
     var map = this.map;
+    var html;
+
     this.collection.each(function(board){
+
+      board_info = board.get('brand');
+
+      infowindow = new google.maps.InfoWindow({
+        
+      });  
+
       marker = new google.maps.Marker({ 
         position: new google.maps.LatLng(board.get('latitude'), board.get('longitude')),
         map: map,
         icon: 'https://s3-us-west-1.amazonaws.com/brahboards/surf-icon-green.png'
       });
+      // html = "<b>" + board.get('brand') + "</b> <br/>" + board.get('model');
+      var that = this;
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent("<b>" + board.get('brand') + "</b> <br/>" + board.get('model'));
+        infowindow.open(map, this);
+      });
+
     });
   },
 
