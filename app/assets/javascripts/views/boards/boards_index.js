@@ -45,17 +45,21 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addMap: function () {
-    var coords = SurfboardApp.Collections.boards.coordinates;
-    map = new SurfboardApp.Models.mapModel({
-      center: new google.maps.LatLng(coords.latitude, coords.longitude)
-    });
+    if (SurfboardApp.Collections.boards.coordinates) {
+      var coords = SurfboardApp.Collections.boards.coordinates;
+      map = new SurfboardApp.Models.mapModel({
+        center: new google.maps.LatLng(coords.latitude, coords.longitude)
+      });
+    } else {
+      map = new SurfboardApp.Models.mapModel();
+    }
+
     var mapResults = new SurfboardApp.Views.BoardsMap({
       model: map,
       collection: SurfboardApp.Collections.boards
     });
     this.addSubview('.map-view', mapResults)
     // google.maps.event.addDomListener(".map-canvas", 'click', this.showAlert);
-
   },
 
   runSearch: function (event) {
@@ -63,8 +67,10 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     var attrs = $(event.currentTarget).serializeJSON()['filters'];
     console.log(attrs);
 
-    this.geocodeAddress(attrs.location);
-    
+    if (attrs.location) {
+      this.geocodeAddress(attrs.location);
+    }
+
     //create new collection of BoardSearchResults...
     this.searchResults = new SurfboardApp.Collections.BoardSearchResults();
     
@@ -75,7 +81,6 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
       success: function (response) {
         // you can pass additional options to the event you trigger here as well
         console.log(that.searchResults);
-        alert('great success!');
         that.renderSearch(that.searchResults);
       },
       error: function (response) {
@@ -100,7 +105,6 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
 
   geocodeAddress: function (address) {
     var geocoder = new google.maps.Geocoder();
-    debugger
     geocoder.geocode({'address' : address}, function(results, status){
       console.log( "latitude : " + results[0].geometry.location.lat() );
       console.log( "longitude : " + results[0].geometry.location.lng() );

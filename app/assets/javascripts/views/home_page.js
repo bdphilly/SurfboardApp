@@ -50,12 +50,14 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
         var bounds = new google.maps.LatLngBounds();
         bounds = hiddenMap.getBounds();
         var constraints = that.determineBounds(bounds);        
+        SurfboardApp.Collections.boards.constraints = constraints;
       });
 
       //store coordinates on boards collection
       //getBounds and pass as data to fetch
 
       SurfboardApp.Collections.boards.coordinates = coordinates;
+      debugger
       SurfboardApp.Collections.boards.fetch({
         
         data:{ 
@@ -68,7 +70,7 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
         console.log(response);
       });
 
-      SurfboardApp.myRouter.navigate('#/boards', {trigger: true});
+      SurfboardApp.myRouter.navigate('#boards', {trigger: true});
 
     });
   },
@@ -77,8 +79,8 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
     var constraints = {};
     constraints['ne-lat'] = bounds.getNorthEast().lat();
     constraints['ne-lng'] = bounds.getNorthEast().lng();
-    constraints['sw-lat'] = bounds.getNorthEast().lat();
-    constraints['sw-lng'] = bounds.getNorthEast().lng();
+    constraints['sw-lat'] = bounds.getSouthWest().lat();
+    constraints['sw-lng'] = bounds.getSouthWest().lng();
     return constraints;
   },
 

@@ -64,11 +64,11 @@ class Board < ActiveRecord::Base
   end
 
   def self.find_by_price(params)
-    self.where("price <= ?", params['max_price'])
+    self.where("price <= ?", params["max_price"])
   end
 
-  def self.find_by_location
-    #check for location
+  def self.find_by_location(params)
+    # Object {ne-lat: 29.618566899999973, ne-lng: -95.53772149999998, sw-lat: 29.618566899999973, sw-lng: -95.53772149999998}
   end
 
   def self.find_by_availability
@@ -76,7 +76,7 @@ class Board < ActiveRecord::Base
   end
 
   def address_to_string
-    [address, city, state, zipcode, country].compact.join(', ')
+    [address, city, state, zipcode, country].compact.join(", ")
   end
 
   def address_changed?
