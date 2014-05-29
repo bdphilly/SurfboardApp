@@ -3,9 +3,11 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
 
   initialize: function () {
     globalView = this;
-    this.listenTo(this.collection, 'sync', this.render);
+
+
+    // this.listenTo(this.collection, 'sync', this.render);s
     this.listenTo(this.collection, 'sync', this.addAllBoards);
-    this.listenTo(this.collection, 'sync', this.addSearchBar);
+    // this.listenTo(this.collection, 'sync', this.addSearchBar);
     this.listenTo(this.collection, 'sync', this.addMap);
     // this.listenTo(this.collection, 'add', this.render);
 
@@ -18,11 +20,13 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var renderedContent = this.template({
-      boards: this.collection
-    });
+    var renderedContent = this.template();
 
     this.$el.html(renderedContent);
+
+    this.addSearchBar();
+    // this.addMap();
+
     this.attachSubviews();
     return this;
   },
@@ -35,7 +39,10 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addAllBoards: function () {
+
     this.collection.each(this.addBoard.bind(this));
+
+    // this.searchResults.each(this.addBoard.bind(this));
   },
 
   addSearchBar: function () {
@@ -93,37 +100,37 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
       attrs = $.extend(attrs, SurfboardApp.Models.map.attributes.constraints);
     // }
 
-    //create new collection of BoardSearchResults...
-    this.searchResults = new SurfboardApp.Collections.BoardSearchResults();
+
+    this.fetchResults(attrs);
+
+    // this.searchResults = new SurfboardApp.Collections.BoardSearchResults();
     
-    var that = this;
+    // var that = this;
 
-    this.searchResults.fetch({
-      data: attrs,
-      success: function (response) {
-        // you can pass additional options to the event you trigger here as well
-        console.log(that.searchResults);
-        that.renderSearch(that.searchResults);
-      },
-      error: function (response) {
-        // you can pass additional options to the event you trigger here as well
-        alert('error!');
-      }
+    // this.searchResults.fetch({
+    //   data: attrs,
+    //   success: function (response) {
+    //     // you can pass additional options to the event you trigger here as well
+    //     console.log(that.searchResults);
+    //     that.renderSearch(that.searchResults);
+    //   },
+    //   error: function (response) {
+    //     // you can pass additional options to the event you trigger here as well
+    //     alert('error!');
+    //   }
 
-    });
-    console.log(that.searchResults);
+    // });
+    // console.log(that.searchResults);
   },
 
   fetchResults: function (attrs) {
-    this.searchResults = new SurfboardApp.Collections.BoardSearchResults();
     var that = this;
-
-    this.searchResults.fetch({
+    this.collection.fetch({
       data: attrs,
       success: function (response) {
         // you can pass additional options to the event you trigger here as well
-        console.log(that.searchResults);
-        that.renderSearch(that.searchResults);
+        // console.log(that.searchResults);
+        that.renderSearch(that.collection);
       },
       error: function (response) {
         // you can pass additional options to the event you trigger here as well
@@ -131,19 +138,21 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
       }
 
     });
-    console.log(that.searchResults);
+    // console.log(that.searchResults);
 
   },
 
   renderSearch: function () {
-    console.log(this.searchResults);
-    var resultsView = new SurfboardApp.Views.BoardsIndex({
-      collection: this.searchResults
-    })
+    // console.log(this.searchResults);
+    // var resultsView = new SurfboardApp.Views.BoardsIndex({
+    //   collection: this.searchResults
+    // })
 
     ///FIGURE OUT IF ZOMBIE VIEWS!
     this.$el.find('.board-results').empty();
-    this.searchResults.each(this.addBoard.bind(this));
+    // $('.board-results').empty();
+
+    // this.addAllBoards();
   },
 
   geocodeAddress: function (address) {

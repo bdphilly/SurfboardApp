@@ -10,8 +10,8 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     
     this.parentView = options.parentView;
 
-    // this.render();
-    // google.maps.event.addDomListener(window, 'load', initialize);
+    this.render();
+    google.maps.event.addDomListener(window, 'load', initialize);
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.addPins);
     // this.listenTo(this.model, 'change', this.reFetchConstraints);
@@ -26,21 +26,18 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     this.reFetchConstraints();
   },
 
-  reFetchConstraints: function () {
-    var that = this;
-    google.maps.event.addListener(this.map, 'idle', function () {
+  handleMapChange: function () {
       var bounds = new google.maps.LatLngBounds();
-      bounds = that.map.getBounds();
-      var constraints = that.determineBounds(bounds);    
+      bounds = this.map.getBounds();
+      var constraints = this.determineBounds(bounds);    
       console.log(constraints);
 
       SurfboardApp.Models.map.set({
         constraints: constraints,
-        zoom: that.map.getZoom(),
-        center: that.map.getCenter()
+        zoom: this.map.getZoom(),
+        center: this.map.getCenter()
       });
-
-      that.parentView.runSearch();
+      this.parentView.fetchResults(constraints);
       // SurfboardApp.Collections.boards.constraints = constraints;
       
       // SurfboardApp.Collections.boards.coordinates = {
@@ -48,7 +45,15 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
       //   longitude: that.map.getCenter().lng(),
       // }
       // console.log(SurfboardApp.Collections.boards.constraints);
-    });
+  },
+
+  reFetchConstraints: function () {
+    var that = this;
+    // google.maps.event.addListener(this.map, 'dragend', function () {
+      
+    // });
+    google.maps.event.addListener(this.map, 'dragend', this.handleMapChange.bind(this));
+    google.maps.event.addListener(this.map, 'zoom_changed', this.handleMapChange.bind(this));
 
   },
 
@@ -102,7 +107,6 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     this.$el.html(renderedContent); 
     this.renderMap();
     this.addPins();
-
     // var map = new google.maps.Map(this.el.getElementsByClassName("map-canvas")[0], this.model.attributes);
     return this;
   },
