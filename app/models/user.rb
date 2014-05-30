@@ -46,4 +46,8 @@ class User < ActiveRecord::Base
   has_one :avatar, :as => :imageable, :class_name => "User::Avatar", :dependent => :destroy
   accepts_nested_attributes_for :avatar
 
+  def owns_board?(board)
+    board.owner_id == self.id
+  end
+
 end

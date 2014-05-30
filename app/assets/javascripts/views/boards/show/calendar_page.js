@@ -25,10 +25,16 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
     var that = this;
     
     rentals.each(function(rental){
+   
+      var tempStatus = "Approved"
+      if (rental.get('status') === 'Approved') {
+        tempStatus = 'Rented';
+      }
+
       that.events.push({ 
         start: rental.get('start_date'), 
         end: rental.get('end_date'),
-        status: rental.get('status'), 
+        status: tempStatus,
         price: rental.get('price')
       });
       
