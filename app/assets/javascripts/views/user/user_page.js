@@ -9,8 +9,6 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
   events: {
   },
 
-
-
   render: function () {
     
     // if (!this.model.ready())  return this;
@@ -19,8 +17,6 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
       user: this.model
     });
     
-
-
     this.$el.html(renderedContent);
 
     this.addCalendar();

@@ -1,7 +1,7 @@
 SurfboardApp.Views.CalendarPage = Backbone.View.extend({
 
   template: JST['boards/calendar'],
-  template2: JST['boards/calendar2'],
+  template2: JST['boards/renter_calendar'],
 
   initialize: function () {
     this.events = [];
@@ -52,11 +52,26 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
 
       clickEvents: {
         click: function(target) { 
-          console.log(target);
-          console.log(target.events[0].status);
-          console.log(target.events[0].price);
+        var rentalParams = target;
+
+        that.addModal(rentalParams);
+
+
+        // $('#myModal').modal('show');
+        // console.log(target);
+        console.log(target.events[0]);
+        console.log(target.events[0].status);
+        // console.log(target.events[0].price);
+         
+      },
+
+      // clickEvents: {
+      //   click: function(target) { 
+      //     console.log(target);
+      //     console.log(target.events[0].status);
+      //     console.log(target.events[0].price);
            
-        },
+      //   },
         nextMonth:     function(month)  { console.log('next month'); },
         previousMonth: function(month)  { console.log('previous month'); },
         nextYear:      function(month)  { console.log('next year'); },
@@ -72,4 +87,13 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
       // },
     });    
   },
+
+  addModal: function (rentalParams) {
+    var modalView = new SurfboardApp.Views.UserModal({
+      model: rentalParams
+    });
+    $('body').append(modalView.render().$el);
+    $('#myModal').modal('show')
+  },
+
 });

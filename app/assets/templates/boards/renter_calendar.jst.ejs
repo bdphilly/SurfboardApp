@@ -18,10 +18,14 @@
         <% if (day.classes.indexOf('past') === -1) { %>
           <% if (!(_.contains(day.classes, 'past'))) { %>
             <% if (day.events[0]) { %> 
-              <% if (day.events[0].status === "Available") { %>
-                "><div class="available"</div>
+              <% if (day.events[0].status === "Denied") { %>
+                denied
+              <% } else if (day.events[0].status === "Unavailable") { %>
+                denied
               <% } else if (day.events[0].status === "Pending") { %>
                 pending
+              <% } else if (day.events[0].status === "Approved") { %>  
+                approved
               <% } else { %>
                 unavailable
               <% } %>
