@@ -94,7 +94,7 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
 
   generateNewRentalModal: function () {
     var newRental = new SurfboardApp.Models.Rental();
-    var modalView = new SurfboardApp.Views.RenterModal({
+    var modalView = new SurfboardApp.Views.NewRenterModal({
       model: newRental
     });
     $('body').append(modalView.render().$el);

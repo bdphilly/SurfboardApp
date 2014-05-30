@@ -11,10 +11,19 @@
         End Date: <%= rental.end %><br>
         Price: <%= rental.price %>
         <br><br>
-        <% if (rental.status === "Pending") { %>
-          <!-- form goes here -->
-          <button type="button" class="btn btn-info">Approve this board request!</button>
-        <% } %>
+                  <!--need to submit this to board_rental model! -->
+
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="user-reservation-accept" value="modal[accept]">
+              Reserve this date.
+            </label>
+          </div>
+          <br>
+          From this date until when? [[insert calendar here: __ ]]
+
+          <!--     -->
+
 
       </div>
       <div class="modal-footer">

@@ -67,13 +67,7 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
           // console.log(target.events[0].price);
            
         },
-        nextMonth:     function(month)  { console.log('next month'); },
-        previousMonth: function(month)  { console.log('previous month'); },
-        nextYear:      function(month)  { console.log('next year'); },
-        previousYear:  function(month)  { console.log('previous year'); },
-        today:         function(month)  { console.log('today'); },
-        onMonthChange: function(month)  { console.log('on month change'); },
-        onYearChange:  function(month)  { console.log('on year change'); }
+
       },
 
       doneRendering: function() {
