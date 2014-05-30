@@ -13,6 +13,7 @@ if current_user.boards
 end
 
 json.rentals current_user.rentals do |rental|
+	json.id rental.id
 	json.start_date rental.start_date
 	json.end_date rental.end_date
 	json.price rental.price
@@ -25,6 +26,7 @@ json.rented_in_boards current_user.rented_in_boards do |board|
 end	
 
 json.customer_rentals current_user.customer_rentals do |rental|
+	json.id rental.id
 	json.start_date rental.start_date
 	json.end_date rental.end_date
 	json.price rental.price

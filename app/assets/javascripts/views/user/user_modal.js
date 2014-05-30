@@ -6,7 +6,7 @@ SurfboardApp.Views.UserModal = Backbone.CompositeView.extend({
   },
 
   events: {
-
+    'click #user-accept': 'handleSubmission'
   },
 
   render: function () {
@@ -17,6 +17,21 @@ SurfboardApp.Views.UserModal = Backbone.CompositeView.extend({
     this.$el.html(renderedContent);
 
     return this;
+  },
+
+  handleSubmission: function (event) {
+    event.preventDefault();
+
+    var checkedButton = $('input[type="radio"]:checked').val()
+    console.log(checkedButton)
+    
+    var that = this;
+
+    this.model.events[0].rental[checkedButton](function () {
+        that.$el.hide();
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+    });
   },
 
 });

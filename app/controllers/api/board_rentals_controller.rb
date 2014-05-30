@@ -24,6 +24,18 @@ class Api::BoardRentalsController < ApplicationController
 			end
 		end
 
+		def approve
+			@board_rental = BoardRental.find(params[:id])
+			@board_rental.approve!
+			render :json => @board_rental
+		end
+
+		def deny
+			@board_rental = BoardRental.find(params[:id])
+			@board_rental.deny!
+			render :json => @board_rental
+		end
+
 		private
 		def board_rental_params
 			params.require(:board_rental).permit(:board_id, :start_date, :end_date, :status, :price)

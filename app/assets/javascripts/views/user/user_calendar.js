@@ -6,9 +6,17 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
   initialize: function () {
     this.events = [];
     this.setEvents();
+    var that = this;
+    
+    this.listenTo(this.model.rentals(), 'change', function() {
+      
+      that.setEvents();
+      that.render();
+    });
   },
 
   render: function () {
+    console.log('rendering user calendar view');
     var renderedContent = this.template();
 
     this.$el.html(renderedContent);
@@ -46,10 +54,6 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
         return that.template2(data);
       },
 
-
-
-
-
       events: theEvents,
 
       multiDayEvents: {
@@ -59,9 +63,6 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
 
       clickEvents: {
         click: function(target) { 
-          // var rentalParams = target;
-
-          // that.addModal(rentalParams);
 
           console.log(target);
       
@@ -75,8 +76,6 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
             that.generateOptionToMakeUnavailableModel();
           }
 
-          // $('#myModal').modal('show');
-          // console.log(target);
           console.log(target.events[0]);
           console.log(target.events[0].status);
           // console.log(target.events[0].price);

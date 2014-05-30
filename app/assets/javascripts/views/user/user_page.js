@@ -3,13 +3,17 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model, 'all', this.addCalendar);
+    this.listenTo(this.model, 'sync', this.addCalendar);
+
+    this.listenTo(this.model.customerRentals(), 'all', this.render);
+
   },
 
   events: {
   },
 
   render: function () {
+    
     
     // if (!this.model.ready())  return this;
     // if (this.model.isNew()) return this;
@@ -19,7 +23,7 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
     
     this.$el.html(renderedContent);
 
-    this.addCalendar();
+    // this.addCalendar();
 
     this.attachSubviews(); 
 
@@ -34,6 +38,7 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
       model: board
     });
 
+    this._subviews = {};
     this.addSubview('.calendar', calendar);
   },
 

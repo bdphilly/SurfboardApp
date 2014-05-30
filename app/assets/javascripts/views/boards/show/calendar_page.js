@@ -6,6 +6,9 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
   initialize: function () {
     this.events = [];
     this.setEvents();
+
+    // this.listenTo(this.model.rentals(), 'all', this.renderCalendar);
+
   },
 
   render: function () {
