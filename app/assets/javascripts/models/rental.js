@@ -9,6 +9,7 @@ SurfboardApp.Models.Rental = Backbone.Model.extend({
 			success: callback,
 		})
 		console.log('approving:' + this.id)
+		
 		this.set('status', 'Approved');
 	},
 

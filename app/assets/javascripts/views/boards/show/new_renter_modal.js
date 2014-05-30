@@ -1,8 +1,8 @@
 SurfboardApp.Views.NewRenterModal = Backbone.CompositeView.extend({
   template: JST['boards/show/new_renter_modal'],
 
-  initialize: function () {
-    
+  initialize: function (options) {
+    this.board = options.board; 
   },
 
   events: {
@@ -11,6 +11,7 @@ SurfboardApp.Views.NewRenterModal = Backbone.CompositeView.extend({
 
   render: function () {
     var renderedContent = this.template({
+      board: this.board,
       rental: this.model
     });
     

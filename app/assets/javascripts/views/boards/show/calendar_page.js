@@ -61,7 +61,7 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
             
             if (target.events[0].status === "Approved") {
               debugger
-              that.displayAlreadyRentedModel();
+              that.displayAlreadyRentedModal();
             } else {
               that.addModal(target);  
             }
@@ -69,33 +69,15 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
             that.generateNewRentalModal();
           }
 
-          // $('#myModal').modal('show');
-          // console.log(target);
-          // console.log(target.events[0]);
-          // console.log(target.events[0].status);
-          // console.log(target.events[0].price);
-           
         },
-
-      // clickEvents: {
-      //   click: function(target) { 
-      //     console.log(target);
-      //     console.log(target.events[0].status);
-      //     console.log(target.events[0].price);
-           
-      //   },
       },
-
-      // doneRendering: function() {
-      //   console.log("the events: ");
-      //   console.log(theEvents);
-      // },
     });    
   },
 
   addModal: function (rentalParams) {
     var modalView = new SurfboardApp.Views.RenterModal({
-      model: rentalParams
+      model: rentalParams,
+      board: this.model
     });
     $('body').append(modalView.render().$el);
     $('#myModal').modal('show')
@@ -104,13 +86,14 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
   generateNewRentalModal: function () {
     var newRental = new SurfboardApp.Models.Rental();
     var modalView = new SurfboardApp.Views.NewRenterModal({
-      model: newRental
+      model: newRental,
+      board: this.model
     });
     $('body').append(modalView.render().$el);
     $('#new-renter-modal').modal('show')
   },
 
-  displayAlreadyRentedModel: function () {
+  displayAlreadyRentedModal: function () {
     var modalView = new SurfboardApp.Views.AlreadyRentedModal();
     $('body').append(modalView.render().$el);
     $('#already-rented-modal').modal('show')
