@@ -1,5 +1,5 @@
-SurfboardApp.Views.NewRenterModal = Backbone.CompositeView.extend({
-  template: JST['boards/show/new_renter_modal'],
+SurfboardApp.Views.AlreadyRentedModal = Backbone.CompositeView.extend({
+  template: JST['boards/show/already_rented_modal'],
 
   initialize: function () {
     
@@ -10,8 +10,8 @@ SurfboardApp.Views.NewRenterModal = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    
     var renderedContent = this.template({
-      rental: this.model
     });
     
     this.$el.html(renderedContent);

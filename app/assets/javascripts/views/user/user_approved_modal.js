@@ -1,5 +1,5 @@
-SurfboardApp.Views.NewRenterModal = Backbone.CompositeView.extend({
-  template: JST['boards/show/new_renter_modal'],
+SurfboardApp.Views.UserApprovedModal = Backbone.CompositeView.extend({
+  template: JST['user/approved_modal'],
 
   initialize: function () {
     
@@ -10,8 +10,9 @@ SurfboardApp.Views.NewRenterModal = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    debugger
     var renderedContent = this.template({
-      rental: this.model
+      rental: this.model.events[0]
     });
     
     this.$el.html(renderedContent);

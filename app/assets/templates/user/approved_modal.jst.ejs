@@ -1,4 +1,4 @@
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="approved-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -6,31 +6,15 @@
         <h4 class="modal-title" id="myModalLabel">Booking</h4>
       </div>
       <div class="modal-body">
-        Good news! This rental has been approved!
+        SWEET! you have approved this rental!
 
         <br>
-
-        The details:
-
-        <br>
-
         Current Status: <%= rental.status %><br>
         Start Date: <%= rental.start %><br>
         End Date: <%= rental.end %><br>
         Price: <%= rental.price %>
-        <br><br>
-                  <!--need to submit this to board_rental model! A cancel will destroy the record in the database -->
-
-          <div class="radio">
-            <label>
-              <input type="radio" name="modal[status]" id="user-reservation-accept" value="">
-              Cancel this reservation.
-            </label>
-          </div>
-          <br>
-
-          <!--     -->
-
+        <br>
+        <br>
 
       </div>
       <div class="modal-footer">

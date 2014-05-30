@@ -36,7 +36,7 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
   renderCalendar: function () {
     var theEvents = this.events;
     var that = this;
-    
+
     this.$('.cal2').clndr({
       
       render: function (data) {
@@ -55,7 +55,13 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
           
           console.log(target);
           if (target.events[0]) {
-            that.addModal(target);
+            
+            if (target.events[0].status === "Approved") {
+              debugger
+              that.displayAlreadyRentedModel();
+            } else {
+              that.addModal(target);  
+            }
           } else {
             that.generateNewRentalModal();
           }
@@ -98,7 +104,13 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
       model: newRental
     });
     $('body').append(modalView.render().$el);
-    $('#myModal').modal('show')
+    $('#new-renter-modal').modal('show')
+  },
+
+  displayAlreadyRentedModel: function () {
+    var modalView = new SurfboardApp.Views.AlreadyRentedModal();
+    $('body').append(modalView.render().$el);
+    $('#already-rented-modal').modal('show')
   },
 
 });

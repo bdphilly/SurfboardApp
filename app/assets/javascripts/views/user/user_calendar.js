@@ -46,6 +46,10 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
         return that.template2(data);
       },
 
+
+
+
+
       events: theEvents,
 
       multiDayEvents: {
@@ -55,10 +59,21 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
 
       clickEvents: {
         click: function(target) { 
-          var rentalParams = target;
+          // var rentalParams = target;
 
-          that.addModal(rentalParams);
+          // that.addModal(rentalParams);
 
+          console.log(target);
+      
+          if (target.events[0]) {    
+            if (target.events[0].status === "Approved") {
+              that.displayApprovedModel(target);
+            } else {
+              that.addModal(target);  
+            }
+          } else {
+            that.generateOptionToMakeUnavailableModel();
+          }
 
           // $('#myModal').modal('show');
           // console.log(target);
@@ -82,7 +97,24 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
       model: rentalParams
     });
     $('body').append(modalView.render().$el);
-    $('#myModal').modal('show')
+    $('#user-modal').modal('show')
+  },
+
+  generateOptionToMakeUnavailableModel: function () {
+    var newRental = new SurfboardApp.Models.Rental();
+    var modalView = new SurfboardApp.Views.NewRenterModal({
+      model: newRental
+    });
+    $('body').append(modalView.render().$el);
+    $('#new-renter-modal').modal('show')
+  },
+
+  displayApprovedModel: function (rentalParams) {
+    var modalView = new SurfboardApp.Views.UserApprovedModal({
+      model: rentalParams
+    });
+    $('body').append(modalView.render().$el);
+    $('#approved-modal').modal('show')
   },
 
 
