@@ -27,8 +27,13 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
     rentals.each(function(rental){
    
       var tempStatus = "Approved"
+      
       if (rental.get('status') === 'Approved') {
         tempStatus = 'Rented';
+      } else if (rental.get('status') === 'Pending') {
+        tempStatus = 'Pending';
+      } else if (rental.get('status') === 'Denied') {
+        tempStatus = 'Denied';
       }
 
       that.events.push({ 
@@ -37,7 +42,7 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
         status: tempStatus,
         price: rental.get('price')
       });
-      
+
     });
     // this.renderCalendar();
   },
@@ -63,16 +68,16 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
         click: function(target) { 
           
           console.log(target);
+          
           if (target.events[0]) {
             
             if (target.events[0].status === "Approved") {
-              debugger
               that.displayAlreadyRentedModal();
             } else {
               that.addModal(target);  
             }
           } else {
-            that.generateNewRentalModal();
+            that.generateNewRentalModal(target);
           }
 
         },
@@ -89,11 +94,12 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
     $('#myModal').modal('show')
   },
 
-  generateNewRentalModal: function () {
+  generateNewRentalModal: function (target) {
     var newRental = new SurfboardApp.Models.Rental();
     var modalView = new SurfboardApp.Views.NewRenterModal({
       model: newRental,
-      board: this.model
+      board: this.model,
+      date: target.date
     });
     $('body').append(modalView.render().$el);
     $('#new-renter-modal').modal('show')

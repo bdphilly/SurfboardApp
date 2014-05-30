@@ -94,7 +94,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     if (attrs.location) {
       this.geocodeAddress(attrs.location);
     }
-    debugger
+    
 
     // if (SurfboardApp.Models.map.attributes.constraints) {
       attrs = $.extend(attrs, SurfboardApp.Models.map.attributes.constraints);

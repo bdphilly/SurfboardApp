@@ -16,13 +16,15 @@ SurfboardApp.Views.SearchBar = Backbone.View.extend({
 
     this.$el.html(renderedContent);
 
-    this.$el.find('#datepicker').datepicker({
+    setTimeout(function () {
+
+    $('#datepicker').datepicker({
       startDate: "today",
       autoclose: true,
       todayHighlight: true
     });
 
-    this.$el.find( "#slider" ).slider({
+    $( "#slider" ).slider({
       value: 50,
       range: 'max',
       min: 0,
@@ -32,6 +34,8 @@ SurfboardApp.Views.SearchBar = Backbone.View.extend({
         $( "#amount" ).text( "$" + ui.value );
       }
     });
+
+    }, 200);
 
     this.addGoogleAutocomplete();
 

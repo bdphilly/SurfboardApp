@@ -115,6 +115,5 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
     $('body').append(modalView.render().$el);
     $('#approved-modal').modal('show')
   },
-
-
+  
 });

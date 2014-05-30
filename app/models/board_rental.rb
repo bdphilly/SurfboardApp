@@ -48,6 +48,11 @@ class BoardRental < ActiveRecord::Base
   	self.save!
   end
 
+  def pend!
+		self.status = "Pending"
+		self.save!
+	end
+
 	def approved?
 		self.status == "Approved"
 	end
@@ -72,10 +77,6 @@ class BoardRental < ActiveRecord::Base
 
 	def assign_unavailable_status
 		self.status ||= "Unavailable"
-	end
-
-	def assign_pending_status
-		self.status ||= "Pending"
 	end
 
 	# def mark_available!

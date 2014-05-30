@@ -14,7 +14,6 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
 
   render: function () {
     
-    
     // if (!this.model.ready())  return this;
     // if (this.model.isNew()) return this;
     var renderedContent = this.template({

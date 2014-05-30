@@ -32,7 +32,7 @@ class BoardRentalsController < ApplicationController
 		end
 
 		def require_board_ownership!
-    	redirect_to new_user_session unless current_user.owns_board?(current_cat)
+    	redirect_to new_user_session unless current_user.owns_board?(current_board)
   	end
 
 end
