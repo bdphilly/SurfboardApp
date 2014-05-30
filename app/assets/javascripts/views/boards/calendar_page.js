@@ -1,7 +1,7 @@
 SurfboardApp.Views.CalendarPage = Backbone.View.extend({
 
   template: JST['boards/calendar'],
-  template2: JST['boards/calendar2'],
+  template2: JST['boards/renter_calendar'],
 
   initialize: function () {
     this.events = [];

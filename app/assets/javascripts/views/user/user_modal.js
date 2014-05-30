@@ -10,7 +10,6 @@ SurfboardApp.Views.UserModal = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    debugger
     var renderedContent = this.template({
       rental: this.model.events[0]
     });

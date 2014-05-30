@@ -1,3 +1,5 @@
+<div class="user-modal"></div>
+
 <div class="clndr-controls">
   <div class="clndr-previous-button">&lsaquo;</div>
   <div class="month"><%= month %></div>
@@ -17,7 +19,9 @@
           <% if (!(_.contains(day.classes, 'past'))) { %>
             <% if (day.events[0]) { %> 
               <% if (day.events[0].status === "Available") { %>
-                available
+                "><div class="available"</div>
+              <% } else if (day.events[0].status === "Pending") { %>
+                pending
               <% } else { %>
                 unavailable
               <% } %>
@@ -43,4 +47,7 @@
     </div>
   </div>
 </div>
+
+
+<br><br><br>
 <div class="clndr-today-button">Today</div>

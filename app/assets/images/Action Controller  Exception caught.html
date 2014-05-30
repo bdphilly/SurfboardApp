@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://localhost:3000/api/photos -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Action Controller: Exception caught</title>
+  <style>
+    body {
+      background-color: #FAFAFA;
+      color: #333;
+      margin: 0px;
+    }
+
+    body, p, ol, ul, td {
+      font-family: helvetica, verdana, arial, sans-serif;
+      font-size:   13px;
+      line-height: 18px;
+    }
+
+    pre {
+      font-size: 11px;
+      white-space: pre-wrap;
+    }
+
+    pre.box {
+      border: 1px solid #EEE;
+      padding: 10px;
+      margin: 0px;
+      width: 958px;
+    }
+
+    header {
+      color: #F0F0F0;
+      background: #C52F24;
+      padding: 0.5em 1.5em;
+    }
+
+    h1 {
+      margin: 0.2em 0;
+      line-height: 1.1em;
+      font-size: 2em;
+    }
+
+    h2 {
+      color: #C52F24;
+      line-height: 25px;
+    }
+
+    .details {
+      border: 1px solid #D0D0D0;
+      border-radius: 4px;
+      margin: 1em 0px;
+      display: block;
+      width: 978px;
+    }
+
+    .summary {
+      padding: 8px 15px;
+      border-bottom: 1px solid #D0D0D0;
+      display: block;
+    }
+
+    .details pre {
+      margin: 5px;
+      border: none;
+    }
+
+    #container {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0 1.5em;
+    }
+
+    .source * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .source {
+      border: 1px solid #D9D9D9;
+      background: #ECECEC;
+      width: 978px;
+    }
+
+    .source pre {
+      padding: 10px 0px;
+      border: none;
+    }
+
+    .source .data {
+      font-size: 80%;
+      overflow: auto;
+      background-color: #FFF;
+    }
+
+    .info {
+      padding: 0.5em;
+    }
+
+    .source .data .line_numbers {
+      background-color: #ECECEC;
+      color: #AAA;
+      padding: 1em .5em;
+      border-right: 1px solid #DDD;
+      text-align: right;
+    }
+
+    .line {
+      padding-left: 10px;
+    }
+
+    .line:hover {
+      background-color: #F6F6F6;
+    }
+
+    .line.active {
+      background-color: #FFCCCC;
+    }
+
+    a { color: #980905; }
+    a:visited { color: #666; }
+    a:hover { color: #C52F24; }
+
+      #route_table {
+    margin: 0 auto 0;
+    border-collapse: collapse;
+  }
+
+  #route_table td {
+    padding: 0 30px;
+  }
+
+  #route_table tr.bottom th {
+    padding-bottom: 10px;
+    line-height: 15px;
+  }
+
+  #route_table .matched_paths {
+    background-color: LightGoldenRodYellow;
+  }
+
+  #route_table .matched_paths {
+    border-bottom: solid 3px SlateGrey;
+  }
+
+  #path_search {
+    width: 80%;
+    font-size: inherit;
+  }
+
+  </style>
+
+  <script>
+    var toggle = function(id) {
+      var s = document.getElementById(id).style;
+      s.display = s.display == 'none' ? 'block' : 'none';
+      return false;
+    }
+    var show = function(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+    var hide = function(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+    var toggleTrace = function() {
+      return toggle('blame_trace');
+    }
+    var toggleSessionDump = function() {
+      return toggle('session_dump');
+    }
+    var toggleEnvDump = function() {
+      return toggle('env_dump');
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <h1>Routing Error</h1>
+</header>
+<div id="container">
+  <h2>No route matches [GET] "/api/photos"</h2>
+
+  
+<p><code>Rails.root: /Users/bdphillips/Desktop/SurfboardApp</code></p>
+
+<div id="traces">
+    <a href="http://localhost:3000/api/photos#" onclick="hide(&#39;Framework-Trace&#39;);hide(&#39;Full-Trace&#39;);show(&#39;Application-Trace&#39;);; return false;">Application Trace</a> |
+    <a href="http://localhost:3000/api/photos#" onclick="hide(&#39;Application-Trace&#39;);hide(&#39;Full-Trace&#39;);show(&#39;Framework-Trace&#39;);; return false;">Framework Trace</a> |
+    <a href="http://localhost:3000/api/photos#" onclick="hide(&#39;Application-Trace&#39;);hide(&#39;Framework-Trace&#39;);show(&#39;Full-Trace&#39;);; return false;">Full Trace</a> 
+
+    <div id="Application-Trace" style="display: block;">
+      <pre><code></code></pre>
+    </div>
+    <div id="Framework-Trace" style="display: none;">
+      <pre><code>actionpack (4.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+actionpack (4.0.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+railties (4.0.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (4.0.4) lib/rails/rack/logger.rb:20:in `block in call'
+activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+activesupport (4.0.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+railties (4.0.4) lib/rails/rack/logger.rb:20:in `call'
+actionpack (4.0.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+activesupport (4.0.4) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+rack (1.5.2) lib/rack/lock.rb:17:in `call'
+actionpack (4.0.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+railties (4.0.4) lib/rails/engine.rb:511:in `call'
+railties (4.0.4) lib/rails/application.rb:97:in `call'
+rack (1.5.2) lib/rack/lock.rb:17:in `call'
+rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+/Users/bdphillips/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+/Users/bdphillips/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+/Users/bdphillips/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'</code></pre>
+    </div>
+    <div id="Full-Trace" style="display: none;">
+      <pre><code>actionpack (4.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+actionpack (4.0.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+railties (4.0.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (4.0.4) lib/rails/rack/logger.rb:20:in `block in call'
+activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+activesupport (4.0.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+railties (4.0.4) lib/rails/rack/logger.rb:20:in `call'
+actionpack (4.0.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+activesupport (4.0.4) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+rack (1.5.2) lib/rack/lock.rb:17:in `call'
+actionpack (4.0.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+railties (4.0.4) lib/rails/engine.rb:511:in `call'
+railties (4.0.4) lib/rails/application.rb:97:in `call'
+rack (1.5.2) lib/rack/lock.rb:17:in `call'
+rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+/Users/bdphillips/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+/Users/bdphillips/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+/Users/bdphillips/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'</code></pre>
+    </div>
+</div>
+
+
+    <h2>
+      Routes
+    </h2>
+
+    <p>
+      Routes match in priority from top to bottom
+    </p>
+
+    
+<table id="route_table" class="route_table">
+  <thead>
+    <tr>
+      <th>Helper</th>
+      <th>HTTP Verb</th>
+      <th>Path</th>
+      <th>Controller#Action</th>
+    </tr>
+    <tr class="bottom">
+      <th>
+        <a data-route-helper="_path" href="http://localhost:3000/api/photos#" title="Returns a relative path (without the http or domain)">Path</a> /
+        <a data-route-helper="_url" href="http://localhost:3000/api/photos#" title="Returns an absolute url (with the http and domain)">Url</a>
+      </th>
+      <th>
+      </th>
+      <th>
+        <input id="path_search" name="path[]" placeholder="Path Match" type="search">
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody class="matched_paths" id="matched_paths">
+  </tbody>
+  <tbody>
+    <tr class="route_row" data-helper="path">
+  <td data-route-name="root">
+      root<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/" data-regexp="^\/$">
+    /
+  </td>
+  <td data-route-reqs="static_pages#root">
+    static_pages#root
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="api_boards_search">
+      api_boards_search<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/api/boards/search(.:format)" data-regexp="^\/api\/boards\/search(?:\.([^\/.?]+))?$">
+    /api/boards/search(.:format)
+  </td>
+  <td data-route-reqs="api/boards#search {:format=&gt;:json}">
+    api/boards#search {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="api_user">
+      api_user<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/api/user(.:format)" data-regexp="^\/api\/user(?:\.([^\/.?]+))?$">
+    /api/user(.:format)
+  </td>
+  <td data-route-reqs="api/users#show {:format=&gt;:json}">
+    api/users#show {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="PATCH">
+    PATCH
+  </td>
+  <td data-route-path="/api/user(.:format)" data-regexp="^\/api\/user(?:\.([^\/.?]+))?$">
+    /api/user(.:format)
+  </td>
+  <td data-route-reqs="api/users#update {:format=&gt;:json}">
+    api/users#update {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="PUT">
+    PUT
+  </td>
+  <td data-route-path="/api/user(.:format)" data-regexp="^\/api\/user(?:\.([^\/.?]+))?$">
+    /api/user(.:format)
+  </td>
+  <td data-route-reqs="api/users#update {:format=&gt;:json}">
+    api/users#update {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="api_board_photos">
+      api_board_photos<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/api/boards/:board_id/photos(.:format)" data-regexp="^\/api\/boards\/([^\/.?]+)\/photos(?:\.([^\/.?]+))?$">
+    /api/boards/:board_id/photos(.:format)
+  </td>
+  <td data-route-reqs="api/photos#index {:format=&gt;:json}">
+    api/photos#index {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="api_board_board_rentals">
+      api_board_board_rentals<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="POST">
+    POST
+  </td>
+  <td data-route-path="/api/boards/:board_id/board_rentals(.:format)" data-regexp="^\/api\/boards\/([^\/.?]+)\/board_rentals(?:\.([^\/.?]+))?$">
+    /api/boards/:board_id/board_rentals(.:format)
+  </td>
+  <td data-route-reqs="api/board_rentals#create {:format=&gt;:json}">
+    api/board_rentals#create {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_api_board_board_rental">
+      new_api_board_board_rental<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/api/boards/:board_id/board_rentals/new(.:format)" data-regexp="^\/api\/boards\/([^\/.?]+)\/board_rentals\/new(?:\.([^\/.?]+))?$">
+    /api/boards/:board_id/board_rentals/new(.:format)
+  </td>
+  <td data-route-reqs="api/board_rentals#new {:format=&gt;:json}">
+    api/board_rentals#new {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="api_board_board_rental">
+      api_board_board_rental<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="DELETE">
+    DELETE
+  </td>
+  <td data-route-path="/api/boards/:board_id/board_rentals/:id(.:format)" data-regexp="^\/api\/boards\/([^\/.?]+)\/board_rentals\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /api/boards/:board_id/board_rentals/:id(.:format)
+  </td>
+  <td data-route-reqs="api/board_rentals#destroy {:format=&gt;:json}">
+    api/board_rentals#destroy {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="api_boards">
+      api_boards<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/api/boards(.:format)" data-regexp="^\/api\/boards(?:\.([^\/.?]+))?$">
+    /api/boards(.:format)
+  </td>
+  <td data-route-reqs="api/boards#index {:format=&gt;:json}">
+    api/boards#index {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="POST">
+    POST
+  </td>
+  <td data-route-path="/api/boards(.:format)" data-regexp="^\/api\/boards(?:\.([^\/.?]+))?$">
+    /api/boards(.:format)
+  </td>
+  <td data-route-reqs="api/boards#create {:format=&gt;:json}">
+    api/boards#create {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_api_board">
+      new_api_board<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/api/boards/new(.:format)" data-regexp="^\/api\/boards\/new(?:\.([^\/.?]+))?$">
+    /api/boards/new(.:format)
+  </td>
+  <td data-route-reqs="api/boards#new {:format=&gt;:json}">
+    api/boards#new {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="edit_api_board">
+      edit_api_board<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/api/boards/:id/edit(.:format)" data-regexp="^\/api\/boards\/([^\/.?]+)\/edit(?:\.([^\/.?]+))?$">
+    /api/boards/:id/edit(.:format)
+  </td>
+  <td data-route-reqs="api/boards#edit {:format=&gt;:json}">
+    api/boards#edit {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="api_board">
+      api_board<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/api/boards/:id(.:format)" data-regexp="^\/api\/boards\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /api/boards/:id(.:format)
+  </td>
+  <td data-route-reqs="api/boards#show {:format=&gt;:json}">
+    api/boards#show {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="PATCH">
+    PATCH
+  </td>
+  <td data-route-path="/api/boards/:id(.:format)" data-regexp="^\/api\/boards\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /api/boards/:id(.:format)
+  </td>
+  <td data-route-reqs="api/boards#update {:format=&gt;:json}">
+    api/boards#update {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="PUT">
+    PUT
+  </td>
+  <td data-route-path="/api/boards/:id(.:format)" data-regexp="^\/api\/boards\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /api/boards/:id(.:format)
+  </td>
+  <td data-route-reqs="api/boards#update {:format=&gt;:json}">
+    api/boards#update {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="DELETE">
+    DELETE
+  </td>
+  <td data-route-path="/api/boards/:id(.:format)" data-regexp="^\/api\/boards\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /api/boards/:id(.:format)
+  </td>
+  <td data-route-reqs="api/boards#destroy {:format=&gt;:json}">
+    api/boards#destroy {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="approve_api_board_rental">
+      approve_api_board_rental<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="POST">
+    POST
+  </td>
+  <td data-route-path="/api/board_rentals/:id/approve(.:format)" data-regexp="^\/api\/board_rentals\/([^\/.?]+)\/approve(?:\.([^\/.?]+))?$">
+    /api/board_rentals/:id/approve(.:format)
+  </td>
+  <td data-route-reqs="api/board_rentals#approve {:format=&gt;:json}">
+    api/board_rentals#approve {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="deny_api_board_rental">
+      deny_api_board_rental<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="POST">
+    POST
+  </td>
+  <td data-route-path="/api/board_rentals/:id/deny(.:format)" data-regexp="^\/api\/board_rentals\/([^\/.?]+)\/deny(?:\.([^\/.?]+))?$">
+    /api/board_rentals/:id/deny(.:format)
+  </td>
+  <td data-route-reqs="api/board_rentals#deny {:format=&gt;:json}">
+    api/board_rentals#deny {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="api_board_rentals">
+      api_board_rentals<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="POST">
+    POST
+  </td>
+  <td data-route-path="/api/board_rentals(.:format)" data-regexp="^\/api\/board_rentals(?:\.([^\/.?]+))?$">
+    /api/board_rentals(.:format)
+  </td>
+  <td data-route-reqs="api/board_rentals#create {:format=&gt;:json}">
+    api/board_rentals#create {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_api_board_rental">
+      new_api_board_rental<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/api/board_rentals/new(.:format)" data-regexp="^\/api\/board_rentals\/new(?:\.([^\/.?]+))?$">
+    /api/board_rentals/new(.:format)
+  </td>
+  <td data-route-reqs="api/board_rentals#new {:format=&gt;:json}">
+    api/board_rentals#new {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="api_photos">
+      api_photos<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="POST">
+    POST
+  </td>
+  <td data-route-path="/api/photos(.:format)" data-regexp="^\/api\/photos(?:\.([^\/.?]+))?$">
+    /api/photos(.:format)
+  </td>
+  <td data-route-reqs="api/photos#create {:format=&gt;:json}">
+    api/photos#create {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="api_photo">
+      api_photo<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="DELETE">
+    DELETE
+  </td>
+  <td data-route-path="/api/photos/:id(.:format)" data-regexp="^\/api\/photos\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /api/photos/:id(.:format)
+  </td>
+  <td data-route-reqs="api/photos#destroy {:format=&gt;:json}">
+    api/photos#destroy {:format=&gt;:json}
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_user_session">
+      new_user_session<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/users/sign_in(.:format)" data-regexp="^\/users\/sign_in(?:\.([^\/.?]+))?$">
+    /users/sign_in(.:format)
+  </td>
+  <td data-route-reqs="devise/sessions#new">
+    devise/sessions#new
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="user_session">
+      user_session<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="POST">
+    POST
+  </td>
+  <td data-route-path="/users/sign_in(.:format)" data-regexp="^\/users\/sign_in(?:\.([^\/.?]+))?$">
+    /users/sign_in(.:format)
+  </td>
+  <td data-route-reqs="devise/sessions#create">
+    devise/sessions#create
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="destroy_user_session">
+      destroy_user_session<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="DELETE">
+    DELETE
+  </td>
+  <td data-route-path="/users/sign_out(.:format)" data-regexp="^\/users\/sign_out(?:\.([^\/.?]+))?$">
+    /users/sign_out(.:format)
+  </td>
+  <td data-route-reqs="devise/sessions#destroy">
+    devise/sessions#destroy
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="user_password">
+      user_password<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="POST">
+    POST
+  </td>
+  <td data-route-path="/users/password(.:format)" data-regexp="^\/users\/password(?:\.([^\/.?]+))?$">
+    /users/password(.:format)
+  </td>
+  <td data-route-reqs="devise/passwords#create">
+    devise/passwords#create
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_user_password">
+      new_user_password<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/users/password/new(.:format)" data-regexp="^\/users\/password\/new(?:\.([^\/.?]+))?$">
+    /users/password/new(.:format)
+  </td>
+  <td data-route-reqs="devise/passwords#new">
+    devise/passwords#new
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="edit_user_password">
+      edit_user_password<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/users/password/edit(.:format)" data-regexp="^\/users\/password\/edit(?:\.([^\/.?]+))?$">
+    /users/password/edit(.:format)
+  </td>
+  <td data-route-reqs="devise/passwords#edit">
+    devise/passwords#edit
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="PATCH">
+    PATCH
+  </td>
+  <td data-route-path="/users/password(.:format)" data-regexp="^\/users\/password(?:\.([^\/.?]+))?$">
+    /users/password(.:format)
+  </td>
+  <td data-route-reqs="devise/passwords#update">
+    devise/passwords#update
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="PUT">
+    PUT
+  </td>
+  <td data-route-path="/users/password(.:format)" data-regexp="^\/users\/password(?:\.([^\/.?]+))?$">
+    /users/password(.:format)
+  </td>
+  <td data-route-reqs="devise/passwords#update">
+    devise/passwords#update
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="cancel_user_registration">
+      cancel_user_registration<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/users/cancel(.:format)" data-regexp="^\/users\/cancel(?:\.([^\/.?]+))?$">
+    /users/cancel(.:format)
+  </td>
+  <td data-route-reqs="registrations#cancel">
+    registrations#cancel
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="user_registration">
+      user_registration<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="POST">
+    POST
+  </td>
+  <td data-route-path="/users(.:format)" data-regexp="^\/users(?:\.([^\/.?]+))?$">
+    /users(.:format)
+  </td>
+  <td data-route-reqs="registrations#create">
+    registrations#create
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_user_registration">
+      new_user_registration<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/users/sign_up(.:format)" data-regexp="^\/users\/sign_up(?:\.([^\/.?]+))?$">
+    /users/sign_up(.:format)
+  </td>
+  <td data-route-reqs="registrations#new">
+    registrations#new
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="edit_user_registration">
+      edit_user_registration<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/users/edit(.:format)" data-regexp="^\/users\/edit(?:\.([^\/.?]+))?$">
+    /users/edit(.:format)
+  </td>
+  <td data-route-reqs="registrations#edit">
+    registrations#edit
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="PATCH">
+    PATCH
+  </td>
+  <td data-route-path="/users(.:format)" data-regexp="^\/users(?:\.([^\/.?]+))?$">
+    /users(.:format)
+  </td>
+  <td data-route-reqs="registrations#update">
+    registrations#update
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="PUT">
+    PUT
+  </td>
+  <td data-route-path="/users(.:format)" data-regexp="^\/users(?:\.([^\/.?]+))?$">
+    /users(.:format)
+  </td>
+  <td data-route-reqs="registrations#update">
+    registrations#update
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="DELETE">
+    DELETE
+  </td>
+  <td data-route-path="/users(.:format)" data-regexp="^\/users(?:\.([^\/.?]+))?$">
+    /users(.:format)
+  </td>
+  <td data-route-reqs="registrations#destroy">
+    registrations#destroy
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="user">
+      user<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/users/:id(.:format)" data-regexp="^\/users\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /users/:id(.:format)
+  </td>
+  <td data-route-reqs="users#show">
+    users#show
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="PATCH">
+    PATCH
+  </td>
+  <td data-route-path="/users/:id(.:format)" data-regexp="^\/users\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /users/:id(.:format)
+  </td>
+  <td data-route-reqs="users#update">
+    users#update
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="PUT">
+    PUT
+  </td>
+  <td data-route-path="/users/:id(.:format)" data-regexp="^\/users\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /users/:id(.:format)
+  </td>
+  <td data-route-reqs="users#update">
+    users#update
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/users/:id(.:format)" data-regexp="^\/users\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /users/:id(.:format)
+  </td>
+  <td data-route-reqs="users#show">
+    users#show
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="board_board_rentals">
+      board_board_rentals<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="POST">
+    POST
+  </td>
+  <td data-route-path="/boards/:board_id/board_rentals(.:format)" data-regexp="^\/boards\/([^\/.?]+)\/board_rentals(?:\.([^\/.?]+))?$">
+    /boards/:board_id/board_rentals(.:format)
+  </td>
+  <td data-route-reqs="board_rentals#create">
+    board_rentals#create
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_board_board_rental">
+      new_board_board_rental<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/boards/:board_id/board_rentals/new(.:format)" data-regexp="^\/boards\/([^\/.?]+)\/board_rentals\/new(?:\.([^\/.?]+))?$">
+    /boards/:board_id/board_rentals/new(.:format)
+  </td>
+  <td data-route-reqs="board_rentals#new">
+    board_rentals#new
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="board_board_rental">
+      board_board_rental<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="DELETE">
+    DELETE
+  </td>
+  <td data-route-path="/boards/:board_id/board_rentals/:id(.:format)" data-regexp="^\/boards\/([^\/.?]+)\/board_rentals\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /boards/:board_id/board_rentals/:id(.:format)
+  </td>
+  <td data-route-reqs="board_rentals#destroy">
+    board_rentals#destroy
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="boards">
+      boards<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/boards(.:format)" data-regexp="^\/boards(?:\.([^\/.?]+))?$">
+    /boards(.:format)
+  </td>
+  <td data-route-reqs="boards#index">
+    boards#index
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="POST">
+    POST
+  </td>
+  <td data-route-path="/boards(.:format)" data-regexp="^\/boards(?:\.([^\/.?]+))?$">
+    /boards(.:format)
+  </td>
+  <td data-route-reqs="boards#create">
+    boards#create
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_board">
+      new_board<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/boards/new(.:format)" data-regexp="^\/boards\/new(?:\.([^\/.?]+))?$">
+    /boards/new(.:format)
+  </td>
+  <td data-route-reqs="boards#new">
+    boards#new
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="edit_board">
+      edit_board<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/boards/:id/edit(.:format)" data-regexp="^\/boards\/([^\/.?]+)\/edit(?:\.([^\/.?]+))?$">
+    /boards/:id/edit(.:format)
+  </td>
+  <td data-route-reqs="boards#edit">
+    boards#edit
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="board">
+      board<span class="helper">_path</span>
+  </td>
+  <td data-route-verb="GET">
+    GET
+  </td>
+  <td data-route-path="/boards/:id(.:format)" data-regexp="^\/boards\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /boards/:id(.:format)
+  </td>
+  <td data-route-reqs="boards#show">
+    boards#show
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="PATCH">
+    PATCH
+  </td>
+  <td data-route-path="/boards/:id(.:format)" data-regexp="^\/boards\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /boards/:id(.:format)
+  </td>
+  <td data-route-reqs="boards#update">
+    boards#update
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="PUT">
+    PUT
+  </td>
+  <td data-route-path="/boards/:id(.:format)" data-regexp="^\/boards\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /boards/:id(.:format)
+  </td>
+  <td data-route-reqs="boards#update">
+    boards#update
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td data-route-verb="DELETE">
+    DELETE
+  </td>
+  <td data-route-path="/boards/:id(.:format)" data-regexp="^\/boards\/([^\/.?]+)(?:\.([^\/.?]+))?$">
+    /boards/:id(.:format)
+  </td>
+  <td data-route-reqs="boards#destroy">
+    boards#destroy
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+<script type="text/javascript">
+  function each(elems, func) {
+    if (!elems instanceof Array) { elems = [elems]; }
+    for (var i = 0, len = elems.length; i < len; i++) {
+      func(elems[i]);
+    }
+  }
+
+  function setValOn(elems, val) {
+    each(elems, function(elem) {
+      elem.innerHTML = val;
+    });
+  }
+
+  function onClick(elems, func) {
+    each(elems, function(elem) {
+      elem.onclick = func;
+    });
+  }
+
+  // Enables functionality to toggle between `_path` and `_url` helper suffixes
+  function setupRouteToggleHelperLinks() {
+    var toggleLinks = document.querySelectorAll('#route_table [data-route-helper]');
+    onClick(toggleLinks, function(){
+      var helperTxt   = this.getAttribute("data-route-helper"),
+          helperElems = document.querySelectorAll('[data-route-name] span.helper');
+      setValOn(helperElems, helperTxt);
+    });
+  }
+
+  // takes an array of elements with a data-regexp attribute and
+  // passes their their parent <tr> into the callback function
+  // if the regexp matchs a given path
+  function eachElemsForPath(elems, path, func) {
+    each(elems, function(e){
+      var reg = e.getAttribute("data-regexp");
+      if (path.match(RegExp(reg))) {
+        func(e.parentNode.cloneNode(true));
+      }
+    })
+  }
+
+  // Ensure path always starts with a slash "/" and remove params or fragments
+  function sanitizePath(path) {
+    var path = path.charAt(0) == '/' ? path : "/" + path;
+    return path.replace(/\#.*|\?.*/, '');
+  }
+
+  // Enables path search functionality
+  function setupMatchPaths() {
+    var regexpElems     = document.querySelectorAll('#route_table [data-regexp]'),
+        pathElem        = document.querySelector('#path_search'),
+        selectedSection = document.querySelector('#matched_paths'),
+        noMatchText     = '<tr><th colspan="4">None</th></tr>';
+
+
+    // Remove matches if no path is present
+    pathElem.onblur = function(e) {
+      if (pathElem.value === "") selectedSection.innerHTML = "";
+    }
+
+    // On key press perform a search for matching paths
+    pathElem.onkeyup = function(e){
+      var path        = sanitizePath(pathElem.value),
+          defaultText = '<tr><th colspan="4">Paths Matching (' + path + '):</th></tr>';
+
+      // Clear out results section
+      selectedSection.innerHTML= defaultText;
+
+      // Display matches if they exist
+      eachElemsForPath(regexpElems, path, function(e){
+        selectedSection.appendChild(e);
+      });
+
+      // If no match present, tell the user
+      if (selectedSection.innerHTML === defaultText) {
+        selectedSection.innerHTML = selectedSection.innerHTML + noMatchText;
+      }
+    }
+  }
+
+  setupMatchPaths();
+  setupRouteToggleHelperLinks();
+</script>
+
+</div>
+
+
+
+
+<div id="window-resizer-tooltip" style="display: block;"><a href="http://localhost:3000/api/photos#" title="Edit settings" style="background-image: url(chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/images/icon_19.png);"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1440</span> x <span class="tooltipHeight" id="winHeight">874</span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">1440</span> x <span class="tooltipHeight" id="vpHeight">758</span></div></body></html>

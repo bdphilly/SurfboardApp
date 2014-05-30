@@ -1,4 +1,4 @@
-json.rentals board.rentals do |rental|
+json.rentals board_rentals do |rental|
 	json.start_date rental.start_date
 	json.end_date rental.end_date
 	json.price rental.price
