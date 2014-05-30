@@ -366,25 +366,36 @@ h1 {
   background-color:yellow;
 }
 
-.cal2 .clndr .clndr-grid .day.event.available {
+/*.cal2 .clndr .clndr-grid .day.event.pending {
+  font-size: 12px;
+  background-color: blue;
+}*/
+
+/* for automatically assigned available dates */
+/*.cal2 .clndr .clndr-grid .day.event.available {
   font-size: 12px;
   background-color: #30ad9e;
-}
+}*/
 
+/*user marks as available */
 .available {
   font-size: 12px;
   background-color: #30ad9e;
 }
 
-.cal2 .clndr .clndr-grid .day.event.unavailable {
+.pending {
+  font-size: 12px;
+  background-color: blue;
+}
+
+.unavailable {
   font-size: 12px;
   background-color: #e14141;
 }
 
-
-.cal2 .clndr .clndr-grid .day.event {
+/*.cal2 .clndr .clndr-grid .day.event {
   background-color: #B4E09F;
-}
+}*/
 
 .cal2 .clndr .clndr-grid .day.today {
   background-color: #E3C57F;

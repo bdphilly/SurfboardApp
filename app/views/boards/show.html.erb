@@ -36,18 +36,19 @@ Model: <%= @board.model %>
     id="board_rental_end_date">
   <br>
 
-  <label for="board_rental_price">Price</label>
+<!--   <label for="board_rental_price">Price</label>
   <input
     type="integer"
     name="board_rental[price]"
     id="price">
-  <br>
+  <br> -->
 
   <label for="board_rental_status">Status</label>
   <select name="board_rental[status]" id="board_rental_status">
-    <option value="Available">Available</option>
     <option value="Unavailable">Unavailable</option>
-    <option value="Rented">Rented</option>
+    <option value="Pending">Pending</option>
+    <option value="Denied">Denied</option>
+    <option value="Approved">Approved</option>
   </select>
 
   <input type="submit">

@@ -1,7 +1,7 @@
 SurfboardApp.Views.UserCalendar = Backbone.View.extend({
 
   template: JST['boards/calendar'],
-  template2: JST['boards/calendar2'],
+  template2: JST['user/user_calendar'],
 
   initialize: function () {
     this.events = [];
@@ -11,18 +11,21 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
   render: function () {
     var renderedContent = this.template();
 
-    this.$el.html(renderedContent); 
+    this.$el.html(renderedContent);
 
     this.renderCalendar();
+
     return this;
   },
 
   setEvents: function (callback) {
     var rentals = this.model.rentals();
+
     var that = this;
     
     rentals.each(function(rental){
-      that.events.push({ 
+      that.events.push({
+        rental: rental, 
         start: rental.get('start_date'), 
         end: rental.get('end_date'),
         status: rental.get('status'), 
@@ -52,9 +55,11 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
 
       clickEvents: {
         click: function(target) { 
-          console.log(target);
+          $('#myModal').val(target)
+          // console.log(target);
+          console.log(target.events[0]);
           console.log(target.events[0].status);
-          console.log(target.events[0].price);
+          // console.log(target.events[0].price);
            
         },
         nextMonth:     function(month)  { console.log('next month'); },
@@ -66,10 +71,15 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
         onYearChange:  function(month)  { console.log('on year change'); }
       },
 
-      // doneRendering: function() {
-      //   console.log("the events: ");
-      //   console.log(theEvents);
-      // },
+      doneRendering: function() {
+        console.log("the events: ");
+        console.log(theEvents);
+      },
     });    
   },
+
+  showModal: function () {
+    $('#myModal').modal('show')
+  },
+
 });

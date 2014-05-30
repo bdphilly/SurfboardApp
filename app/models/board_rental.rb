@@ -14,10 +14,10 @@
 #
 
 class BoardRental < ActiveRecord::Base
-	STATUS_STATES = ["Pending", "Denied", "Unavailable", "Approved", "Available"]
+	STATUS_STATES = ["Pending", "Denied", "Unavailable", "Approved"]
 
 	##take this out after app is functional, let user choose...
-  before_validation :assign_available_status
+  # before_validation :assign_available_status
 
 	validates :board_id, :start_date, :end_date, :status, presence: true
 
@@ -60,9 +60,9 @@ class BoardRental < ActiveRecord::Base
 		self.status == "Denied"
 	end
 
-	def available?
-		self.status == "Available"
-	end
+	# def available?
+	# 	self.status == "Available"
+	# end
 
 	def unavailable?
 		self.status == "Unavailable" || self.status == "Approved" || self.status == "Denied"
@@ -70,23 +70,23 @@ class BoardRental < ActiveRecord::Base
 
 	private
 
-	def assign_available_status
-		self.status ||= "Available"
+	def assign_unavailable_status
+		self.status ||= "Unavailable"
 	end
 
 	def assign_pending_status
 		self.status ||= "Pending"
 	end
 
-	def mark_available!
-		self.status = "Available"
-	end
+	# def mark_available!
+	# 	self.status = "Available"
+	# end
 
 	def mark_unavailable!
 		self.status = "Unavailable"
 	end
 	
-	def overlapping_rentals
+	def overlapping_requests
 	  conditions = <<-SQL
 	    (
 	      (board_id = :board_id)
@@ -102,16 +102,16 @@ class BoardRental < ActiveRecord::Base
 	    )
 	  SQL
 
-	  overlapping_rentals = BoardRental.where(conditions, {
+	  overlapping_requests = BoardRental.where(conditions, {
 	  	board_id: self.board_id,
 	  	start_date: self.start_date,
 	  	end_date: self.end_date
 		})
 
 	  if self.id.nil?
-	    overlapping_rentals
+	    overlapping_requests
 	  else
-	    overlapping_rentals.where("id != ?", self.id)
+	    overlapping_requests.where("id != ?", self.id)
 	  end
 	end
 ################
