@@ -83,22 +83,13 @@ SurfboardApp.Views.UserCalendar = Backbone.View.extend({
     });    
   },
 
-  showModal: function () {
-    $('#myModal').modal('show')
-  },
-
   addModal: function (rentalParams) {
     var modalView = new SurfboardApp.Views.UserModal({
       model: rentalParams
     });
     $('body').append(modalView.render().$el);
-    this.showModal();
-    // this.addSubview('user-modal', modalView);
+    $('#myModal').modal('show')
   },
 
-    //   $('#show-modal').click(function() {
-    //     var view = new ModalView({ model: model });
-    //     view.show();
-    // });
 
 });

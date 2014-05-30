@@ -52,18 +52,21 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
 
       clickEvents: {
         click: function(target) { 
-        var rentalParams = target;
+          
+          console.log(target);
+          if (target.events[0]) {
+            that.addModal(target);
+          } else {
+            that.generateNewRentalModal();
+          }
 
-        that.addModal(rentalParams);
-
-
-        // $('#myModal').modal('show');
-        // console.log(target);
-        console.log(target.events[0]);
-        console.log(target.events[0].status);
-        // console.log(target.events[0].price);
-         
-      },
+          // $('#myModal').modal('show');
+          // console.log(target);
+          // console.log(target.events[0]);
+          // console.log(target.events[0].status);
+          // console.log(target.events[0].price);
+           
+        },
 
       // clickEvents: {
       //   click: function(target) { 
@@ -72,13 +75,6 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
       //     console.log(target.events[0].price);
            
       //   },
-        nextMonth:     function(month)  { console.log('next month'); },
-        previousMonth: function(month)  { console.log('previous month'); },
-        nextYear:      function(month)  { console.log('next year'); },
-        previousYear:  function(month)  { console.log('previous year'); },
-        today:         function(month)  { console.log('today'); },
-        onMonthChange: function(month)  { console.log('on month change'); },
-        onYearChange:  function(month)  { console.log('on year change'); }
       },
 
       // doneRendering: function() {
@@ -89,8 +85,17 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
   },
 
   addModal: function (rentalParams) {
-    var modalView = new SurfboardApp.Views.UserModal({
+    var modalView = new SurfboardApp.Views.RenterModal({
       model: rentalParams
+    });
+    $('body').append(modalView.render().$el);
+    $('#myModal').modal('show')
+  },
+
+  generateNewRentalModal: function () {
+    var newRental = new SurfboardApp.Models.Rental();
+    var modalView = new SurfboardApp.Views.RenterModal({
+      model: newRental
     });
     $('body').append(modalView.render().$el);
     $('#myModal').modal('show')

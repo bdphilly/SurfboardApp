@@ -1,5 +1,5 @@
 SurfboardApp.Views.RenterModal = Backbone.CompositeView.extend({
-  template: JST['boards/index/show/renter_modal'],
+  template: JST['boards/show/renter_modal'],
 
   initialize: function () {
     
