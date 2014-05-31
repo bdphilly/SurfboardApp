@@ -60,12 +60,14 @@ ul {
 }
  
 .borderz {
-  border: solid thin blue;
+  /*border: solid thin blue;*/
 }
 
 .map-view {
   height: 400px ;
   width: 400px;
+  /*position: fixed;*/
+  float: right;
 }
 
 .map-canvas {
@@ -274,6 +276,25 @@ h1 {
     max-height: 90px;
 }
 
-.carousel-inner{
+.carousel-inner {
   width:640px;
+}
+
+.board-result-redirect {
+  display: inline-block;
+  text-decoration: none
+}
+
+.results-link
+{
+color:grey;
+display: inline-block;
+  text-decoration: none
+}
+
+.results-link:hover
+{
+color:red;
+display: inline-block;
+  text-decoration: none
 }

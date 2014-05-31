@@ -1,22 +1,28 @@
 <li>
+	<a href="#boards/<%= board.id %>" class="results-link">
+	<!-- <div class="board-result-redirect"> -->
+		
 
-	<div class="panel panel-default">
-	  <div class="panel-heading">
-	    <h3 class="panel-title">
-	    	Brand:<%= board.get('brand') %>
-	    </h3>
-	  </div>
-	  <div class="panel-body">
-	    <% if (board.photos().first()) { %>
-	    	<img src="<%= board.photos().first().get('small') %>" 
-	    		class="search-photo img-responsive img-thumbnail" alt="Board Photo">
-			<% } else { %>
-					<img src="" class="search-photo img-responsive img-thumbnail" alt="No Photo Present">
-			<% } %>
-	    Length: <%= board.escape('length') %><br>
-	    Type: <%= board.escape('board_type') %>
-	    <br>
-	    Description: <%= board.escape('description') %>					
-	  </div>
-	</div>
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">
+		    	Brand:<%= board.get('brand') %>
+		    </h3>
+		  </div>
+		  <div class="panel-body">
+		    <% if (board.photos().first()) { %>
+		    	<img src="<%= board.photos().first().get('small') %>" 
+		    		class="search-photo img-responsive img-thumbnail" alt="Board Photo">
+				<% } else { %>
+						<img src="" class="search-photo img-responsive img-thumbnail" alt="No Photo Present">
+				<% } %>
+		    Length: <%= board.escape('length') %><br>
+		    Type: <%= board.escape('board_type') %>
+		    <br>
+		    Description: <%= board.escape('description') %>					
+		  </div>
+		</div>
+	
+<!-- </div> -->
+</a>
 </li>

@@ -62,7 +62,7 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
         SurfboardApp.Collections.boards.fetch({
           data: constraints
         });
-        
+        debugger
         SurfboardApp.myRouter.navigate('#boards', {trigger: true});
       });
     });
