@@ -23,8 +23,8 @@ ul {
 }
 
 body {
-  background-image:url("https://s3-us-west-1.amazonaws.com/brahboards/escheresque_ste.png");
-  background-repeat:repeat;
+  /*background-image:url("https://s3-us-west-1.amazonaws.com/brahboards/escheresque_ste.png");*/
+  /*background-repeat:repeat;*/
 }
 
 .board-result h2 {
@@ -305,7 +305,7 @@ h2 {
     list-style: none outside none;
 }
 .carousel-thumbs li {
-    border: 1px solid green;
+    border: 1px solid transparent;
     cursor: pointer;
     display: inline-block;
     float: left;
@@ -401,4 +401,12 @@ display: inline-block;
   color: #58BE6E;
 }
 
+#board-carousel {
+  width: auto;
+}
 
+.panel-default.panel-user-show {
+  border-radius: 0px;
+  background-color: yellow;
+  width: 500px;
+}
