@@ -82,11 +82,19 @@ background-size: cover;
   /*border: solid thin blue;*/
 }
 
+.map-results {
+  background-color: #f4f4f4;
+  position: relative;
+  height: 100%;
+}
+
 .map-view {
-  height: 400px ;
+  height: 600px ;
   width: 400px;
   /*position: fixed;*/
   float: right;
+  padding: 10px;
+  background-color: #f4f4f4;
 }
 
 .map-canvas {
@@ -97,6 +105,11 @@ background-size: cover;
 #map-canvas {
   height: 100%;
   width: 100%;
+}
+
+.map-container {
+  position: relative;
+  float: right;
 }
 
 #home-location-picker {
@@ -331,8 +344,13 @@ display: inline-block;
 
 }
 
+.board-results {
+
+}
+
 .board-result {
   width: 500px;
+  height: 100%;
 }
 
 /* Home Page */
@@ -380,5 +398,7 @@ display: inline-block;
   margin-bottom: 0px;
   min-height: 50px;
   border: 1px solid transparent;
+  color: #58BE6E;
 }
+
 

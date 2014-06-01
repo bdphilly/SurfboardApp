@@ -83,7 +83,42 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   // }, 1000);
 
     this.addSubview('.map-view', mapResults)
+    
     // google.maps.event.addDomListener(".map-canvas", 'click', this.showAlert);
+  },
+
+  scrollMap: function () {
+    // debugger
+    var length = $('.map-results').height() - $('.map-view').height() + $('.map-results').offset().top;
+
+    $(window).scroll(function(){
+      var scroll = $(this).scrollTop();
+      var height = $('.map-view').height() + 'px';
+
+      if (scroll < $('.map-results').offset().top) {
+
+          $('.map-view').css({
+              'position': 'absolute',
+              'top': '0'
+          });
+
+      } else if (scroll > length) {
+
+          $('.map-view').css({
+              'position': 'absolute',
+              'bottom': '0',
+              'top': 'auto'
+          });
+
+      } else {
+
+          $('.map-view').css({
+              'position': 'fixed',
+              'top': '0',
+              'height': height
+          });
+      }
+    });
   },
 
   runSearch: function (event) {
