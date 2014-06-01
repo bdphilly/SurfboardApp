@@ -1,6 +1,7 @@
 SurfboardApp.Routers.router = Backbone.Router.extend({
   initialize: function (options) {
 		this.$rootEl = options.$rootEl;
+    this.$altEl = $('#home-main');
 	},
 
   routes: {
@@ -27,7 +28,7 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
   homePage: function () {
     var homeView = new SurfboardApp.Views.HomePage();
 
-    this._swapView(homeView);
+    this._swapView(homeView, this.$altEl);
   },
 
   boardsIndex: function () {
@@ -60,14 +61,16 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
     board.fetch();
   },
 
-  _swapView: function (newView) {
+  _swapView: function (newView, $altEl) {
     if (this._currentView) {
       this._currentView.remove();
     }
 
+    var $renderEl = $altEl || this.$rootEl;
+
     this._currentView = newView;
 
-    this.$rootEl.html(newView.render().$el);
+    $renderEl.html(newView.render().$el);
   },
 
 });

@@ -16,10 +16,29 @@
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400);
 @import "bootstrap";
+/*@import "bootstrap/theme";*/
 
 ul {
 	list-style-type: none;
 }
+
+body {
+  background-image:url("https://s3-us-west-1.amazonaws.com/brahboards/escheresque_ste.png");
+  background-repeat:repeat;
+}
+
+.board-result h2 {
+  margin-top: 0px;
+}
+/*
+html { 
+background: "url(images/bg.jpg) no-repeat center center fixed; "
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}*/
+
 /*
 .merged .input-group-addon {
     border-right: 0px;
@@ -87,7 +106,7 @@ ul {
 .hidden-map-canvas {
   height: 400px;
   width: 400px;
-  border: 1px blue solid;
+  visibility: hidden
 }
 
 #hidden-map-canvas {
@@ -127,6 +146,12 @@ h1 {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 200;
+}
+
+h2 {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
 }
 
 .cal2 {
@@ -285,16 +310,73 @@ h1 {
   text-decoration: none
 }
 
-.results-link
-{
-color:grey;
+.results-link{
+color:black;
 display: inline-block;
   text-decoration: none
 }
 
-.results-link:hover
-{
-color:red;
+.results-link:hover{
+/*color:grey;*/
 display: inline-block;
   text-decoration: none
 }
+
+.img-thumbnail {
+
+}
+
+.panel-body {
+  background-color: #D5D5D5;
+
+}
+
+.board-result {
+  width: 500px;
+}
+
+/* Home Page */
+.home-image {
+  min-height: 800px;
+  min-width: 1280px;
+  background-image: url(https://s3-us-west-1.amazonaws.com/brahboards/surfer-bg-1280x624.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.home-image img {
+  /*margin-top: -20px;*/
+   
+  position: relative;
+}
+
+.home-image-details {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  color: #fff;
+}
+
+.home-image-details h1 {
+  color: white;
+  font-size: 30px;
+  font-weight: 300;  
+}
+
+.home-image-details p {
+  margin-top: -10px;
+  font-size: 2em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/*       */
+
+.navbar {
+  position: relative;
+  min-height: 50px;
+  border: 1px solid transparent;
+}
+
