@@ -18,6 +18,16 @@ SurfboardApp.Views.NewRenterModal = Backbone.CompositeView.extend({
     
     this.$el.html(renderedContent);
 
+    // setTimeout(function () {
+
+      $('#datepicker2').datepicker({
+        startDate: "today",
+        autoclose: true,
+        todayHighlight: true
+      });
+
+    // }, 200);
+
     return this;
   },
 

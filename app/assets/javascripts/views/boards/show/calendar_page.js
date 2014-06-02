@@ -17,6 +17,7 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
     this.$el.html(renderedContent); 
 
     this.renderCalendar();
+
     return this;
   },
 
@@ -103,6 +104,16 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
     });
     $('body').append(modalView.render().$el);
     $('#new-renter-modal').modal('show')
+    
+      
+    setTimeout(function () {
+      $('#datepicker2').datepicker({
+        startDate: "today",
+        autoclose: true,
+        todayHighlight: true
+      });
+    }, 200);
+
   },
 
   displayAlreadyRentedModal: function () {

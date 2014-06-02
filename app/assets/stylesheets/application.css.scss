@@ -16,15 +16,16 @@
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400);
 @import "bootstrap";
-/*@import "bootstrap/theme";*/
+@import "bootstrap/theme";
 
 ul {
 	list-style-type: none;
 }
 
 body {
-  /*background-image:url("https://s3-us-west-1.amazonaws.com/brahboards/escheresque_ste.png");*/
+  background-image:url("https://s3-us-west-1.amazonaws.com/brahboards/noisy.png");
   /*background-repeat:repeat;*/
+  font-family: 'Lato';
 }
 
 .board-result h2 {
@@ -168,7 +169,7 @@ h2 {
 }
 
 .cal2 {
-  max-width: 597px;
+  max-width: 430px;
   margin: 30px auto;
   /*font-family: 'Droid Sans Mono';*/
   font-size: 14px;
@@ -222,15 +223,15 @@ h2 {
 }
 .cal2 .clndr .clndr-grid .header-day {
   float: left;
-  width: 85px;
-  height: 85px;
+  width: 60px;
+  height: 60px;
   background: #FF4545;
   color: #fff;
 }
 .cal2 .clndr .clndr-grid .day {
   float: left;
-  width: 85px;
-  height: 85px;
+  width: 60px;
+  height: 60px;
 }
 
 .day:hover {
@@ -284,8 +285,8 @@ h2 {
 .cal2 .clndr .clndr-grid .empty,
 .cal2 .clndr .clndr-grid .adjacent-month {
   float: left;
-  width: 85px;
-  height: 85px;
+  width: 60px;
+  height: 60px;
   background: #ddd;
 }
 .cal2 .clndr .clndr-today-button {
@@ -353,6 +354,17 @@ display: inline-block;
   height: 100%;
 }
 
+/*.index-image {
+  min-height: 600px;
+  min-width: 880px;
+  background-image: url(https://s3-us-west-1.amazonaws.com/brahboards/surf1.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}*/
+
 /* Home Page */
 .home-image {
   min-height: 800px;
@@ -409,4 +421,25 @@ display: inline-block;
   border-radius: 0px;
   background-color: yellow;
   width: 500px;
+}
+
+/*.datepicker2 {
+  z-index: 100000 !important;
+}*/
+
+.nav-tabs.info-tabs > li > a {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+}
+
+.logo {
+  vertical-align: top;
+  height: 50px;
+}
+
+.navbar-logo {
+  padding-left: 20px;
+  padding-right: 20px;
+   
 }

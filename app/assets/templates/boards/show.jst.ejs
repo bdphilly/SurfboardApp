@@ -7,10 +7,19 @@
 
 <br>
 
-<%= JST['boards/show/carousel']({board: this.model}) %>
+<div class="row">
+	<div class="col-md-5">
+		<%= JST['boards/show/carousel']({board: this.model}) %>
 
-<div class="board-info-tabs"></div>
+		<div class="board-info-tabs"></div>
+	</div>
+	<div class="col-md-2"></div>
+	<div class="col-md-5">
+		<div class="calendar"></div>
+	</div>
+</div>
 
+<br>
 This user!
 <a href='/users/<%= board.escape("owner_id") %>'>Check it out!</a>
 
