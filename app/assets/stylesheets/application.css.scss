@@ -60,12 +60,17 @@ background-size: cover;
 }*/
 
 /* User sign in and sign forms. */
+.auth-form {
+  margin-top: 100px;
+}
+
 .border-form-div {
+  margin-top: 100px;
   max-width: 500px;
-  padding: 19px 29px 29px;
+  padding: 10px 29px 29px 29px;
   margin: 0 auto 20px;
   background-color: #fff;
-  border: 2px solid #e5e5e5;
+  border: 1px solid #74ffa3;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
@@ -165,7 +170,7 @@ h1 {
 h2 {
   font-family: 'Lato';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .cal2 {
