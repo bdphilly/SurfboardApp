@@ -8,11 +8,15 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
     <% if user_signed_in? %>
-        <li><%= link_to "Profile", current_user %></li>
-        <%= link_to destroy_user_session_path, method: :delete do %>
-          <li><button class="btn btn-info btn-mini navbar-btn" style="margin-top: 5px">Sign Out</button></li>
-        </button>
-        <% end %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="<%= current_user %>">Profile</a></li>
+            <li><a href="<%= edit_user_registration_path %>">Edit Profile</a></li>
+            <li class="divider"></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
     <% else %>
         <li><%= link_to "Sign In", new_user_session_path %></li>
         <li><%= link_to "Sign Up", new_user_registration_path %></li>
