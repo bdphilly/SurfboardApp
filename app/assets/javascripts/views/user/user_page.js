@@ -14,6 +14,12 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
 
   render: function () {
     
+    $(document).ajaxError(function (event, xhr) {
+      if (xhr.status == 401) {
+        window.location = '#boards';
+      }    
+    });
+
     // if (!this.model.ready())  return this;
     // if (this.model.isNew()) return this;
     var renderedContent = this.template({
