@@ -18,13 +18,7 @@
 		<div class="calendar"></div>
 		<br>
 		<br>
-		<div class="panel panel-default panel-user-show">
-		  <div class="panel-heading">About</div>
-		  <img src="<%= board.ownerAvatar().escape('medium_attachment') %>" alt="" class="img-thumbnail">
-		  <div class="panel-body">
-			Some stuff here!
-		  </div>
-		</div>
+		<%= JST['boards/show/owner_avatar']({board: this.model}) %>
 	</div>
 </div>
 

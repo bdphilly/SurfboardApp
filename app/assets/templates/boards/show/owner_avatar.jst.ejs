@@ -1,0 +1,11 @@
+<section class="panel panel-default panel-owner-avatar">
+	<a href="/users/<%= board.get('owner_id') %>">
+		<img src="<%= board.ownerAvatar().escape('medium_attachment') %>" alt="" class="owner-avatar img-thumbnail">
+	</a>
+	<span class="avatar-greetings">Sup brah, my name is</span>
+	<h4 class="name">
+		<a href="/users/bcork"><%= board.escape('owner_fname') %></a>
+	</h4>
+	<span class="welcome">Glad you like my board!</span>
+	<div class="panel-body">Some stuff here!</div>
+</section>

@@ -6,6 +6,8 @@ json.(board, :id, :brand, :model, :length,
 						 :country, :latitude, :longitude
 			)
 
+json.owner_fname board.owner.fname
+json.owner_lname board.owner.lname
 
 if board.owner_avatar
 	json.owner_avatar board.owner_avatar, :id, :attachment, 
@@ -29,4 +31,3 @@ json.rentals board.rentals do |rental|
 	json.status rental.status
 	json.renter_id rental.renter_id
 end
-
