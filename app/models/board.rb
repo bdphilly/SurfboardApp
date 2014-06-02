@@ -49,6 +49,8 @@ class Board < ActiveRecord::Base
 	has_many :images, :as => :imageable, :class_name => "Board::Image", :dependent => :destroy
   accepts_nested_attributes_for :images
 
+  has_one :owner_avatar, through: :owner, source: :avatar
+
   def self.search(params)
     results = []
 

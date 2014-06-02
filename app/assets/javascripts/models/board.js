@@ -20,6 +20,14 @@ SurfboardApp.Models.Board = Backbone.Model.extend({
 		return this._rentals;
 	},
 
+	ownerAvatar: function () {
+		if(!this._avatar) {
+			this._avatar = new SurfboardApp.Models.Avatar([], {
+			});
+		}
+		return this._avatar;
+	},
+
   parse: function (resp) {
   	
     if(resp.images) {
@@ -30,6 +38,11 @@ SurfboardApp.Models.Board = Backbone.Model.extend({
     if (resp.rentals) {
     	this.rentals().set(resp.rentals, { parse: true });
     	delete resp.rentals;
+    }
+
+    if(resp.owner_avatar) {
+      this.ownerAvatar().set(resp.owner_avatar, { parse: true });
+      delete resp.owner_avatar;
     }
     
     return resp;

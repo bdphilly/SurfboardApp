@@ -16,6 +16,15 @@
 	<div class="col-md-2"></div>
 	<div class="col-md-5">
 		<div class="calendar"></div>
+		<br>
+		<br>
+		<div class="panel panel-default panel-user-show">
+		  <div class="panel-heading">About</div>
+		  <img src="<%= board.ownerAvatar().escape('medium_attachment') %>" alt="" class="img-thumbnail">
+		  <div class="panel-body">
+			Some stuff here!
+		  </div>
+		</div>
 	</div>
 </div>
 
@@ -24,3 +33,4 @@ This user!
 <a href='/users/<%= board.escape("owner_id") %>'>Check it out!</a>
 
 <br><br><br>
+
