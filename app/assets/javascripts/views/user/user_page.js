@@ -39,7 +39,7 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
 
   addCalendar: function () {
     var user = this.model;
-    var board =  user.boards().getOrFetch('6');
+    var board =  user.boards().first();
     
     var calendar = new SurfboardApp.Views.UserCalendar({
       model: board
@@ -51,12 +51,45 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
 
   handleAcceptance: function (event) {
     event.preventDefault();
-    // console.log(event.currentTarget.data("id"));
+    
+    var rentalId = $(event.target).data("id");
+    console.log(rentalId);
+    // debugger
+
+    this.model.rentals().getOrFetch(rentalId).approve(function () {
+      alert('accepted!');
+    });
+
+  },
+
+  handleRejection: function (event) {
+    event.preventDefault();
+    
+    var rentalId = $(event.target).data("id");
+    console.log(rentalId);
     debugger
 
+    var x = this.model.rentals().getOrFetch(rentalId);
+    // debugger
+    // .deny(function () {
+    //   alert('denied!');
+    // });
 
   },
 
 });
+
+    // var checkedButton = $('input[type="radio"]:checked').val()
+    // console.log(checkedButton)
+    
+    // var that = this;
+
+    // this.model.events[0].rental[checkedButton](function () {
+    //     that.$el.hide();
+    //     $('body').removeClass('modal-open');
+    //     $('.modal-backdrop').remove();
+    // });
+
+
 
 // BoardRental.new({board_id: 7, start_date: "2014-07-04", end_date: "2014-07-08", status: "Approved", renter_id: 6, price: 10})

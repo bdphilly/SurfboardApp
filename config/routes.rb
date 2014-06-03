@@ -6,10 +6,10 @@ SurfboardApp::Application.routes.draw do
 		resource :user, only: [:show, :update]
 		resources :boards do
 			resources :photos, only: [:index]
-			resources :board_rentals, only: [:create, :new, :new, :create, :destroy]
+			resources :board_rentals, only: [:create, :new, :show, :destroy]
 		end
 
-		resources :board_rentals, only: [:create, :new] do
+		resources :board_rentals, only: [:create, :new, :show, :index] do
 			post "approve", :on => :member
   		post "deny", :on => :member
 		end

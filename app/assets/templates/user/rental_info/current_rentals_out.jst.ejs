@@ -19,11 +19,9 @@
 		</div>
 
 		<% if (rental.escape('status') === "Pending") { %> 
-			<div class="col-md-5">
-			<div class="acceptance-buttons">
+			<div class="col-md-4 acceptance-buttons">
 				<button class="btn btn-primary user-accept-button" data-id="<%= rental.get('id') %>">Accept</button>
 				<button class="btn btn-danger reject-button user-reject-button" data-id="<%= rental.get('id') %>">Reject</button>
-			</div>
 			</div>
 		<% } %>
   </div>

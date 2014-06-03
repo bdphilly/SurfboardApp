@@ -52,11 +52,11 @@ class Api::BoardRentalsController < ApplicationController
 		end
 
 		def current_board_rental_request
-			@board_rental ||= BoardRental.includes(:board).find(params[:board_id])
+			@board_rental ||= BoardRental.includes(:board).find(params[:id])
 		end
 
 		def board_rental_params
-			params.require(:board_rental).permit(:board_id, :start_date, :end_date, :status, :price)
+			params.require(:board_rental).permit(:board_id, :start_date, :end_date, :status)
 		end
 
 		def require_board_ownership!
