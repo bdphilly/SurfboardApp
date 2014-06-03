@@ -1,30 +1,34 @@
-<% user.rentedOutBoards().first().rentals().each(function (rental) { %>
-	
-	<div class="panel panel-default">
-  <div class="panel-heading">Rented out board</div>
-  <div class="panel-body">
-  <div class="col-md-2 rented-out-dashboard">
-		<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail" alt="test"> 
-	</div>
-    <div class="col-md-4">
-		  Rented to: <%= rental.escape('renter_fname') + " " + rental.escape('renter_lname') %><br>
-	    Start Date: <%= rental.escape('start_date') %> <br>
-			End Date: <%= rental.escape('end_date') %> <br>
-
-			<% var ppd = user.boards().first().escape('price') %>
-			Price per Day: $<%= ppd %>
-			<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %>
-			Total Price: <%= totalDays * ppd %>
-			Board Status: <%= rental.escape('status') %>
-		</div>
-
-		<% if (rental.escape('status') === "Pending") { %> 
-			<div class="col-md-4 acceptance-buttons">
-				<button class="btn btn-primary user-accept-button" data-id="<%= rental.get('id') %>">Accept</button>
-				<button class="btn btn-danger reject-button user-reject-button" data-id="<%= rental.get('id') %>">Reject</button>
+<div class="tab-pane active" id="current_rentals_out">
+	<% if (user.rentedOutBoards().first()) { %>
+		<% user.rentedOutBoards().first().rentals().each(function (rental) { %>
+			
+			<div class="panel panel-default">
+		  <div class="panel-heading">Rented out board</div>
+		  <div class="panel-body">
+		  <div class="col-md-2 rented-out-dashboard">
+				<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail" alt="test"> 
 			</div>
-		<% } %>
-  </div>
-	</div>
-	
-<% }) %>
+		    <div class="col-md-4">
+				  Rented to: <%= rental.escape('renter_fname') + " " + rental.escape('renter_lname') %><br>
+			    Start Date: <%= rental.escape('start_date') %> <br>
+					End Date: <%= rental.escape('end_date') %> <br>
+
+					<% var ppd = user.boards().first().escape('price') %>
+					Price per Day: $<%= ppd %>
+					<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %>
+					Total Price: <%= totalDays * ppd %>
+					Board Status: <%= rental.escape('status') %>
+				</div>
+
+				<% if (rental.escape('status') === "Pending") { %> 
+					<div class="col-md-4 acceptance-buttons">
+						<button class="btn btn-primary user-accept-button" data-id="<%= rental.get('id') %>">Accept</button>
+						<button class="btn btn-danger reject-button user-reject-button" data-id="<%= rental.get('id') %>">Reject</button>
+					</div>
+				<% } %>
+		  </div>
+			</div>
+			
+		<% }) %>
+	<% } %>	
+</div>

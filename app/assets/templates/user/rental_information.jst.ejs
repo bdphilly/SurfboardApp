@@ -1,3 +1,16 @@
+<ul class="nav nav-tabs info-tabs">
+  <li class="active"><a href="#current_rentals_out" data-toggle="tab">Your Boards Being Rented</a></li>
+  <li><a href="#current_rentals_in" data-toggle="tab">Boards you are renting</a></li>
+</ul>
+
+<!-- Reference the tab content partials in the info_tabs folder -->
+
+<div class="tab-content">
+  <%= JST['user/rental_info/current_rentals_out']({user: user}) %>
+  <%= JST['user/rental_info/current_rentals_in']({user: user}) %>
+</div>
+
+
 <% if (user.avatar()) { %>
 
 	Avatar Image:<br>
@@ -46,20 +59,3 @@ Your Boards:
 
 <% } %>
 <br>
-Your boards currently being rented:
-
-<% if (user.rentedOutBoards().first()) { %>
-
-	<%= JST['user/rental_info/current_rentals_out']({user: user}) %>
-
-<% } %>
-
-<br><br>***********************************<br><br>
-
-Boards you are currently renting:
-
-<% if (user.rentedInBoards().first()) { %>
-
-	<%= JST['user/rental_info/current_rentals_in']({user: user}) %>
-
-<% } %>

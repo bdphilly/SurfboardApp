@@ -4,7 +4,7 @@
 	</a>
 	<span class="avatar-greetings">Sup brah, my name is</span>
 	<h4 class="name">
-		<a href="/users/bcork"><%= board.escape('owner_fname') %></a>
+		<a href="/users/<%= board.escape('owner_id') %>"><%= board.escape('owner_fname') %></a>
 	</h4>
 	<span class="welcome">Glad you like my board!</span>
 	<div class="panel-body">Some stuff here!</div>

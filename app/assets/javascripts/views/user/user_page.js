@@ -4,8 +4,9 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model, 'sync', this.addCalendar);
+    this.listenTo(this.model.rentals(), 'change', this.render);
 
-    this.listenTo(this.model.customerRentals(), 'all', this.render);
+    // this.listenTo(this.model.customerRentals(), 'all', this.render);
 
   },
 
@@ -15,15 +16,13 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    
+    // console.log('rendering');
     $(document).ajaxError(function (event, xhr) {
       if (xhr.status == 401) {
         window.location = '#boards';
       }    
     });
-
-    // if (!this.model.ready())  return this;
-    // if (this.model.isNew()) return this;
+    
     var renderedContent = this.template({
       user: this.model
     });
@@ -51,13 +50,13 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
 
   handleAcceptance: function (event) {
     event.preventDefault();
-    
     var rentalId = $(event.target).data("id");
     console.log(rentalId);
     // debugger
-
+    var that = this;
     this.model.rentals().getOrFetch(rentalId).approve(function () {
-      alert('accepted!');
+      // that.remove();
+      that.render();
     });
 
   },
@@ -67,13 +66,10 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
     
     var rentalId = $(event.target).data("id");
     console.log(rentalId);
-    debugger
-
-    var x = this.model.rentals().getOrFetch(rentalId);
-    // debugger
-    // .deny(function () {
-    //   alert('denied!');
-    // });
+    var that = this;
+    this.model.rentals().getOrFetch(rentalId).deny(function () {
+      that.render();
+    });
 
   },
 
