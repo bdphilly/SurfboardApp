@@ -31,6 +31,7 @@ body {
 .container {
   background-image:url("https://s3-us-west-1.amazonaws.com/brahboards/noisy.png");
   background-repeat:repeat;
+  /*background-color: white;*/
 }
 
 .board-result h2 {
@@ -508,4 +509,8 @@ display: inline-block;
 .user-reject-button {
   margin-left: 40px;
   margin-left: 40px;
+}
+
+.avatar-photo-user {
+  float: left;
 }

@@ -1,6 +1,7 @@
 <ul class="nav nav-tabs info-tabs">
   <li class="active"><a href="#current_rentals_out" data-toggle="tab">Your Boards Being Rented</a></li>
   <li><a href="#current_rentals_in" data-toggle="tab">Boards you are renting</a></li>
+  <li><a href="#users_boards" data-toggle="tab">Your Boards</a></li>
 </ul>
 
 <!-- Reference the tab content partials in the info_tabs folder -->
@@ -8,54 +9,5 @@
 <div class="tab-content">
   <%= JST['user/rental_info/current_rentals_out']({user: user}) %>
   <%= JST['user/rental_info/current_rentals_in']({user: user}) %>
+  <%= JST['user/rental_info/users_boards']({user: user}) %>
 </div>
-
-
-<% if (user.avatar()) { %>
-
-	Avatar Image:<br>
-	<img src="<%= user.avatar().escape('small_attachment') %>" 
-	class="avatar-photo img-responsive img-thumbnail" alt="Avatar Photo">
-
-<% } %>
-
-<br>
-
-Your Boards:
-
-<% if (user.boards().first()) { %>
-
-			<br>
-			Board Images:<br>
-		
-		<% if (user.boards().first().photos().first()) { %>
-
-			<img src="<%= user.boards().first().photos().first().escape('small') %>" 
-			class="board-photo img-responsive img-thumbnail" alt="Board Photo">
-		
-		<% } %>
-
-<% } else { %>
-	You currently do not have any boards listed :(
-<% } %>
-
-<br>
-
-
-<br><br>***********************************<br><br>
-
-<% if (user.customerRentals().first()) { %>
-	
-	Customer Rentals:<br>
-	<br>
-	<% user.customerRentals().each(function (rental) { %>
-		Start Date: <%= rental.escape('start_date') %> 
-		Renter Id: <%= rental.escape('renter_id') %>
-		Board Id: <%= rental.escape('board_id') %>		
-		Status: <%= rental.escape('status') %> 
-		<br>
-	<% }) %>
-	<br>
-
-<% } %>
-<br>
