@@ -28,11 +28,6 @@ Your Boards:
 
 <br>
 
-<% if (user.rentals().first()) { %>
-
-	<%= JST['user/rental_info/current_rentals_in']({user: user}) %>
-
-<% } %>
 
 <br><br>***********************************<br><br>
 
@@ -43,26 +38,28 @@ Your Boards:
 	<% user.customerRentals().each(function (rental) { %>
 		Start Date: <%= rental.escape('start_date') %> 
 		Renter Id: <%= rental.escape('renter_id') %>
+		Board Id: <%= rental.escape('board_id') %>		
 		Status: <%= rental.escape('status') %> 
 		<br>
 	<% }) %>
 	<br>
 
 <% } %>
+<br>
+Your boards currently being rented:
 
 <% if (user.rentedOutBoards().first()) { %>
 
 	<%= JST['user/rental_info/current_rentals_out']({user: user}) %>
 
-
 <% } %>
+
+<br><br>***********************************<br><br>
+
+Boards you are currently renting:
 
 <% if (user.rentedInBoards().first()) { %>
 
-	Rented In:
-	<br>
-	<% user.rentedInBoards().each(function (rental) { %>
-		Board Id: <%= rental.escape('id') %> 
-	<% }) %>
+	<%= JST['user/rental_info/current_rentals_in']({user: user}) %>
 
 <% } %>

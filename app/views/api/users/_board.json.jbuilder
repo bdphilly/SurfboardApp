@@ -33,7 +33,9 @@ json.rentals board.rentals do |rental|
 					:small_attachment, :medium_attachment, :large_attachment,
 					:imageable_id, :imageable_type
 	end
-
+	
+	json.owner_fname board.owner.fname
+	json.owner_lname board.owner.lname
 	json.id rental.id
 	json.start_date rental.start_date
 	json.end_date rental.end_date

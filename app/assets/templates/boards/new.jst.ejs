@@ -1,35 +1,90 @@
-<h1>Create a new Board Listing!</h1>
+<div class="new-listing-container">
+  <form class="new-listing col-md-12" enctype="multipart/form-data" id="new-board-form">
+    <div class="row">
+      <h1 align=center>List your board!</h1><br>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="brand">Brand</label>
+          <input type="text" class="form-control" name="board[brand]" id="brand" placeholder="Brand">
+        </div>
+        <div class="form-group">
+          <label for="model">Model</label>
+          <input type="text" class="form-control" name="model" id="model" placeholder="Model">
+        </div>
+          <div class="form-group">
+          <label for="length">Length</label>
+          <input type="text" class="form-control" name="board[length]" id="length" placeholder="Length">
+        </div>
+        <div class="form-group">
+          <label for="width">Width</label>
+          <input type="text" class="form-control" name="board[width]" id="width" placeholder="Width">
+        </div>
+        <div class="form-group">
+          <label for="condition">Condition</label>
+          <input type="text" class="form-control" name="board[condition]" id="condition" placeholder="Condition">
+        </div>
+        <div class="form-group">
+          <label for="condition_new">New</label>
+          <input type="radio" name="board[condition]" id="condition_new" value="new">  
+          <label for="condition_good">Good</label>
+          <input type="radio" name="board[condition]" id="condition_good" value="good">  
+          <br>
+          <label for="condition_new">Fair</label>
+          <input type="radio" name="board[condition]" id="condition_fair" value="fair">  
+          <label for="condition_good">Poor</label>
+          <input type="radio" name="board[condition]" id="condition_poor" value="poor">  
+          <br>
+        </div>
 
-<form class="new-listing col-md-6" enctype="multipart/form-data" id="new-board-form">
-<!--   <div class="form-group">
-    <label for="brand">Brand</label>
-    <input type="text" class="form-control" name="board[brand]" id="brand" placeholder="Brand">
-  </div> -->
-<div class="form-group">
-    <label for="model">Model</label>
-    <input type="text" class="form-control" name="model" id="model" placeholder="Model">
-  </div>
-<!--     <div class="form-group">
-    <label for="length">Length</label>
-    <input type="text" class="form-control" name="board[length]" id="length" placeholder="Length">
-  </div>
-  <div class="form-group">
-    <label for="width">Width</label>
-    <input type="text" class="form-control" name="board[width]" id="width" placeholder="Width">
-  </div>
-  <div class="form-group">
-    <label for="thickness">Condition</label>
-    <input type="text" class="form-control" name="board[thickness]" id="thickness" placeholder="Condition">
-  </div>
-  <div class="form-group">
-    <label for="description">Description</label>
-    <input type="textarea" class="form-control" name="board[description]" id="description" placeholder="Description">
-  </div> -->
-  
-  <div class="form-group">
-    <label for="photo">Photo</label>
-    <input type="file" name="image" id="photo">
-    <p class="help-block">At least one photo of your board is required!</p>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea rows="4" class="form-control" name="board[description]" id="description" placeholder="Description"></textarea>
+        </div>
+        <div class="form-group">
+        <label for="price">Price</label>
+        <input type="textarea" rows="4" class="form-control" name="board[price]" id="price" placeholder="Price">
+      </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="textarea" class="form-control" name="board[address]" id="address" placeholder="Address">
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="textarea" class="form-control" name="board[city]" id="city" placeholder="City">
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="textarea" class="form-control" name="board[state]" id="state" placeholder="State">
+        </div>
+        <div class="form-group">
+          <label for="zipcode">Zipcode</label>
+          <input type="textarea" class="form-control" name="board[zipcode]" id="zipcode" placeholder="Zipcode">
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input type="textarea" class="form-control" name="board[country]" id="country" placeholder="Country">
+        </div>
+      </col>
+
+      <div class="form-group">
+        <label for="type_shortboard">Shortboard</label>
+        <input type="radio" name="board[board_type]" id="type_shortboard" value="shortboard">  
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <label for="type_longboard">Longboard</label>
+        <input type="radio" name="board[board_type]" id="type_longboard" value="longboard">  
+        <br>
+      </div>
+
+      <div class="form-group">
+        <label for="photo">Photo</label>
+        <input type="file" name="image" id="photo">
+        <p class="help-block">At least one photo of your board is required!</p>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

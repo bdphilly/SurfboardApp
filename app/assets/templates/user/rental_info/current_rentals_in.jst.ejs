@@ -1,13 +1,26 @@
-<% user.rentals().each(function (rental) { %>
+<% user.rentedInBoards().first().rentals().each(function (rental) { %>
 	
 	<div class="panel panel-default">
-  <div class="panel-heading">Panel heading without title</div>
+  <div class="panel-heading">Rented In</div>
   <div class="panel-body">
-    Panel content
+	<div class="col">
+	  Rented From: <%= rental.escape('owner_fname') + " " + rental.escape('owner_lname') %><br>
+    Start Date: <%= rental.escape('start_date') %> <br>
+		End Date: <%= rental.escape('end_date') %> <br>
+
+		<% var ppd = rental.escape('price') %>
+		Price per Day: $<%= ppd %>
+		<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %>
+		Total Price: <%= totalDays * ppd %>
+		Board Status: <%= rental.escape('status') %>
+	</div>
+
   </div>
 	</div>
 
-	Start Date: "<%= rental.escape('start_date') %>" 
-	End Date: "<%= rental.escape('end_date') %>" 
+
+
+
+
 
 <% }) %>

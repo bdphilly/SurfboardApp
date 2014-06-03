@@ -2,17 +2,22 @@
 	
 	<div class="panel panel-default">
   <div class="panel-heading">Rented out board</div>
-  <div class="panel-body">
-    Renter: <%= rental.escape('renter_fname') + " " + rental.escape('renter_lname') %><br>
-    Start Date: <%= rental.escape('start_date') %> <br>
-		End Date: <%= rental.escape('end_date') %> <br>
-		Board Id: <%= rental.escape('id') %>
-		<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail" alt=""> 
+  <div class="panel-body row">
+  <div class="col rented-out-dashboard">
+		<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail" alt="test"> 
+	</div>
+    <div class="col">
+		  Rented to: <%= rental.escape('renter_fname') + " " + rental.escape('renter_lname') %><br>
+	    Start Date: <%= rental.escape('start_date') %> <br>
+			End Date: <%= rental.escape('end_date') %> <br>
+
+			<% var ppd = user.boards().first().escape('price') %>
+			Price per Day: $<%= ppd %>
+			<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %>
+			Total Price: <%= totalDays * ppd %>
+			Board Status: <%= rental.escape('status') %>
+		</div>
   </div>
 	</div>
-
-	
 	
 <% }) %>
-
-<%= user.avatar().escape('small_attachment') %>
