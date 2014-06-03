@@ -6,6 +6,10 @@
 
 <% } %>
 
+<br>
+
+Your Boards:
+
 <% if (user.boards().first()) { %>
 
 			<br>
@@ -18,20 +22,19 @@
 		
 		<% } %>
 
-			<br>Boards:<br>
-			<% user.boards().each(function (board) { %>
-				Start Date: <%= board.escape('start_date') %> 
-				End Date: <%= board.escape('end_date') %> 
-				Status: <%= board.escape('status') %> 
-			<% }) %>
-
+<% } else { %>
+	You currently do not have any boards listed :(
 <% } %>
+
+<br>
 
 <% if (user.rentals().first()) { %>
 
 	<%= JST['user/rental_info/current_rentals_in']({user: user}) %>
 
 <% } %>
+
+<br><br>***********************************<br><br>
 
 <% if (user.customerRentals().first()) { %>
 	
@@ -49,12 +52,8 @@
 
 <% if (user.rentedOutBoards().first()) { %>
 
-	Rented Out:
-	<br>
-	<% user.rentedOutBoards().each(function (rental) { %>
-		Board Id: <%= rental.escape('id') %> 
-	<% }) %>
-	<br>
+	<%= JST['user/rental_info/current_rentals_out']({user: user}) %>
+
 
 <% } %>
 

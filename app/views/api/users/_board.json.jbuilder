@@ -3,8 +3,17 @@ json.(board, :id, :brand, :model, :length,
 						 :condition, :owner_id, :created_at,
 						 :price, :board_type, :updated_at, 
 						 :address, :city, :state, :zipcode, 
-						 :country, :latitude, :longitude, 
+						 :country, :latitude, :longitude
 			)
+
+json.owner_fname board.owner.fname
+json.owner_lname board.owner.lname
+
+if board.owner_avatar
+	json.owner_avatar board.owner_avatar, :id, :attachment, 
+				:small_attachment, :medium_attachment, :large_attachment,
+				:imageable_id, :imageable_type
+end
 
 json.images board.images do |image|
 	json.id image.id
@@ -32,4 +41,3 @@ json.rentals board.rentals do |rental|
 	json.status rental.status
 	json.renter_id rental.renter_id
 end
-

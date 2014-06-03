@@ -1,0 +1,18 @@
+<% user.rentedOutBoards().first().rentals().each(function (rental) { %>
+	
+	<div class="panel panel-default">
+  <div class="panel-heading">Rented out board</div>
+  <div class="panel-body">
+    Renter: <%= rental.escape('renter_fname') + " " + rental.escape('renter_lname') %><br>
+    Start Date: <%= rental.escape('start_date') %> <br>
+		End Date: <%= rental.escape('end_date') %> <br>
+		Board Id: <%= rental.escape('id') %>
+		<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail" alt=""> 
+  </div>
+	</div>
+
+	
+	
+<% }) %>
+
+<%= user.avatar().escape('small_attachment') %>
