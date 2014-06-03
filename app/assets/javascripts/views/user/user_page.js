@@ -10,6 +10,8 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
   },
 
   events: {
+    'click .user-accept-button': 'handleAcceptance',
+    'click .user-reject-button': 'handleRejection',
   },
 
   render: function () {
@@ -45,6 +47,14 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
 
     this._subviews = {};
     this.addSubview('.calendar', calendar);
+  },
+
+  handleAcceptance: function (event) {
+    event.preventDefault();
+    // console.log(event.currentTarget.data("id"));
+    debugger
+
+
   },
 
 });
