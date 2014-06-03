@@ -46,7 +46,7 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
 
   submit: function (event) {
       event.preventDefault();
-      
+      debugger
       var attrs = $(event.currentTarget).serializeJSON();
       this.model.set(attrs);
       SurfboardApp.Collections.boards.add(this.model, {
@@ -54,12 +54,18 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
               
               console.log("happy days!");
           },
+          error: function () {
+            alert('error!');
+          }
       });
       this.model.save({}, {
           success: function () {
               
               window.location.assign("");
           },
+          error: function (response) {
+            console.log(response);
+          }
       });
   },
 

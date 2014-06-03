@@ -1,6 +1,10 @@
 SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
   template: JST['boards/show'],
 
+  events: {
+    'click #submit-rental-request': 'generateNewRentalModal' 
+  },
+
   initialize: function () {
 
     this.listenTo(this.model, 'sync', this.render);
@@ -36,6 +40,10 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
     return this;
   },
 
+  handleRequest: function () {
+
+  },
+
   addInfoTabs: function (board) {
     var infoTabs = new SurfboardApp.Views.InfoTabs({
       model: this.model
@@ -49,6 +57,46 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
       model: this.model
     });
     this.addSubview('.calendar', calendar);
+  },
+
+  // addModal: function () {
+  //   var modalView = new SurfboardApp.Views.RenterModal({
+  //     board: this.model
+  //   });
+  //   $('body').append(modalView.render().$el);
+  //   $('#myModal').modal('show')
+  // },
+
+  generateNewRentalModal: function () {
+    var newRental = new SurfboardApp.Models.Rental();
+    var modalView = new SurfboardApp.Views.NewRenterModal({
+      model: newRental,
+      board: this.model,
+    });
+    $('body').append(modalView.render().$el);
+    $('#new-renter-modal').modal('show');      
+
+    $("#show-start-date").datepicker({ 
+      changeMonth: true,
+      changeYear: true,
+      startDate: "today",
+      dateFormat:'dd/mm/yy',
+      showButtonPanel: true,
+      autoclose: true,
+
+      onSelect: function (dateStr) {
+        $('#endDate').datepicker('option', 'defaultDate', dateStr);
+        $('#endDate').datepicker('option', 'minDate', dateStr);
+      },
+
+    });
+
+    $( "#show-end-date" ).datepicker({ changeMonth: true,
+      changeYear: true,
+      dateFormat:'dd/mm/yy',
+      showButtonPanel: true,
+      autoclose: true,   
+    });
   },
 
 });

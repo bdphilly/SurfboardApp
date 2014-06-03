@@ -15,7 +15,6 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
   },
 
   userPage: function () {
-    
     var currentUser = new SurfboardApp.Models.User();
     currentUser.fetch();
     var userView = new SurfboardApp.Views.User({
