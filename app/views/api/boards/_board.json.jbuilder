@@ -25,6 +25,7 @@ json.images board.images do |image|
 end
 
 json.rentals board.rentals do |rental|
+	json.renter_fname rental.fname
 	json.start_date rental.start_date
 	json.end_date rental.end_date
 	json.price rental.price

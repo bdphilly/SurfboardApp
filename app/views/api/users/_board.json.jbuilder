@@ -16,6 +16,15 @@ json.images board.images do |image|
 end
 
 json.rentals board.rentals do |rental|
+	json.renter_fname rental.renter.fname
+	json.renter_lname rental.renter.lname
+
+	if rental.renter.avatar
+		json.renter_avatar rental.renter.avatar, :id, :attachment, 
+					:small_attachment, :medium_attachment, :large_attachment,
+					:imageable_id, :imageable_type
+	end
+
 	json.id rental.id
 	json.start_date rental.start_date
 	json.end_date rental.end_date
@@ -23,3 +32,4 @@ json.rentals board.rentals do |rental|
 	json.status rental.status
 	json.renter_id rental.renter_id
 end
+

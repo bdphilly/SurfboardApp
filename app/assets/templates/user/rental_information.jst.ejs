@@ -29,16 +29,12 @@
 
 <% if (user.rentals().first()) { %>
 
-	<br>
-	Rentals:<br>
-	Start Date: "<%= user.rentals().first().escape('start_date') %>" 
-	End Date: "<%= user.rentals().first().escape('end_date') %>" 
-	<br>
+	<%= JST['user/rental_info/current_rentals_in']({user: user}) %>
 
 <% } %>
 
 <% if (user.customerRentals().first()) { %>
-
+	
 	Customer Rentals:<br>
 	<br>
 	<% user.customerRentals().each(function (rental) { %>

@@ -1,0 +1,12 @@
+<% user.rentals().each(function (rental) { %>
+	
+	<div class="panel panel-default">
+  <div class="panel-heading">Panel heading without title</div>
+  <div class="panel-body">
+    Panel content
+  </div>
+	</div>
+
+	Start Date: "<%= rental.escape('start_date') %>" 
+	End Date: "<%= rental.escape('end_date') %>" 
+<% }) %>

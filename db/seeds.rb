@@ -53,7 +53,8 @@ types = [
 	
 	User.create({
 		email: Faker::Internet.email,
-		username: Faker::Name.name,
+		fname: Faker::Name.name,
+		lname: Faker::Name.name,
 		password: Faker::Internet.password(8)
 	})
 
