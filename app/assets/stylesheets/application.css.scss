@@ -15,6 +15,7 @@
  */
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
 @import "bootstrap";
 @import "bootstrap/theme";
 
@@ -353,7 +354,10 @@ display: inline-block;
 }
 
 .panel-body {
-  background-color: #D5D5D5;
+  /*background-color: #23FF90;*/
+  /*background: rgba(35,255,155,0.2);*/
+  background-color: white;
+  
 
 }
 
@@ -362,8 +366,10 @@ display: inline-block;
 }
 
 .board-result {
-  width: 500px;
+  width: 550px;
   height: 100%;
+  border-radius: 0px;
+  border: 1px solid #23FF90;
 }
 
 /* Home Page */
@@ -598,4 +604,26 @@ display: inline-block;
 
 .tab-content {
   height: 400px;
+}
+
+.brand-model {
+  color: #0378FF;
+  font-family: 'Varela Round';
+  font-size: 24px;
+}
+
+.list-button-container {
+  position: absolute;
+  height: 100%;
+}
+
+.list-button {
+  font-family: 'Varela Round';
+  font-size: 18px;
+  line-height: 35px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: 200px;
 }
