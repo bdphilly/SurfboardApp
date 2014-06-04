@@ -3,7 +3,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
 
   initialize: function () {
     globalView = this;
-
+    debugger
 
     // this.listenTo(this.collection, 'sync', this.render);s
     this.listenTo(this.collection, 'sync', this.addAllBoards);
@@ -12,7 +12,6 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     // this.listenTo(this.collection, 'add', this.render);
 
     this.listenTo(this.collection, 'change', this.runSearch);
-    
   },
 
   events: {

@@ -6,7 +6,7 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-
+    debugger
     this.listenTo(this.model, 'sync', this.render);
       
     globalmodel = this.model
