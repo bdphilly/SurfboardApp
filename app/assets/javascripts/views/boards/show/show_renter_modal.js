@@ -1,4 +1,4 @@
-SurfboardApp.Views.NewRenterModal = Backbone.CompositeView.extend({
+SurfboardApp.Views.ShowRenterModal = Backbone.CompositeView.extend({
   template: JST['boards/show/show_renter_modal'],
 
   initialize: function (options) {
@@ -35,7 +35,7 @@ SurfboardApp.Views.NewRenterModal = Backbone.CompositeView.extend({
       price: this.board.price,
       status: 'Pending'
     });
-
+    debugger
     var that = this;
 
     newRental.save({},{

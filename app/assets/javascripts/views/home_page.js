@@ -52,7 +52,7 @@ SurfboardApp.Views.HomePage = Backbone.CompositeView.extend({
         var bounds = new google.maps.LatLngBounds();
         bounds = hiddenMap.getBounds();
         var constraints = that.determineBounds(bounds);
-
+        debugger
         SurfboardApp.Models.map.set({
           constraints: constraints,
           center: hiddenMap.center,

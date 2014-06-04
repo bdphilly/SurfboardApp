@@ -130,7 +130,7 @@ background-size: cover;
 }
 
 .hidden-map-canvas {
-  height: 400px;
+  height: 600px;
   width: 400px;
   visibility: hidden
 }
@@ -512,7 +512,7 @@ display: inline-block;
 }
 
 .avatar-photo-user {
-  position: absolute;
+  float: right;
   right: 50px;
 }
 
@@ -590,4 +590,8 @@ display: inline-block;
 .search-button-index {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.input-daterange-modal {
+  width: 500px;
 }

@@ -127,7 +127,9 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     console.log(attrs);
 
     if (attrs.location) {
-      this.geocodeAddress(attrs.location);
+      // var locationAttrs = this.geocodeAddress(attrs.location);
+      // debugger
+      this.runBoundsSearch(attrs.location);
     }
     
 
@@ -156,6 +158,46 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
 
     // });
     // console.log(that.searchResults);
+  },
+
+  runBoundsSearch: function (locationAttrs, callback) {
+    var map = SurfboardApp.Models.map;
+    var that = this;
+    this.geocodeAddress(locationAttrs, function (coordinates) {
+      
+      console.log(coordinates);
+      // SurfboardApp.Models.map.set({
+      //   coordinates: coordinates
+      // )};
+
+      
+      var mapOptions = {
+        center: new google.maps.LatLng(coordinates.latitude, coordinates.longitude),
+        zoom: SurfboardApp.Models.map.defaults.zoom
+      };
+      
+      var newMap = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+      
+      google.maps.event.addListener(newMap, 'idle', function () {
+        var bounds = new google.maps.LatLngBounds();
+        bounds = newMap.getBounds();
+        var constraints = that.determineBounds(bounds);
+        console.log(constraints);
+        SurfboardApp.Models.map.set({
+          constraints: constraints,
+          center: newMap.center,
+          zoom: newMap.zoom
+        });
+
+        SurfboardApp.Collections.boards.fetch({
+          data: constraints
+        });
+        // debugger
+        // SurfboardApp.myRouter.navigate('#user', {trigger: true});
+      });
+      // that.addMap();
+      callback()
+    });
   },
 
   fetchResults: function (attrs) {
@@ -189,11 +231,17 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     // this.addAllBoards();
   },
 
-  geocodeAddress: function (address) {
+  geocodeAddress: function (address, callback) {
     var geocoder = new google.maps.Geocoder();
+    var coordinates = {};
     geocoder.geocode({'address' : address}, function(results, status){
-      console.log( "latitude : " + results[0].geometry.location.lat() );
-      console.log( "longitude : " + results[0].geometry.location.lng() );
+      if (status == google.maps.GeocoderStatus.OK) {
+        coordinates['latitude'] = results[0].geometry.location.lat();
+        coordinates['longitude'] = results[0].geometry.location.lng();
+        callback(coordinates); 
+      } else {
+          result = "Unable to find address: " + status;
+      }       
     });
   },
 

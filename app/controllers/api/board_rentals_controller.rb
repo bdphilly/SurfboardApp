@@ -22,7 +22,6 @@ class Api::BoardRentalsController < ApplicationController
 			if @board_rental.save
 				render :json => @board_rental
 			else
-				
 				render :json => @board_rental.errors.full_messages, status: 422
 			end
 		end

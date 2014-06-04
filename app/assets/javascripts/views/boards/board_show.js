@@ -69,7 +69,7 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
 
   generateNewRentalModal: function () {
     var newRental = new SurfboardApp.Models.Rental();
-    var modalView = new SurfboardApp.Views.NewRenterModal({
+    var modalView = new SurfboardApp.Views.ShowRenterModal({
       model: newRental,
       board: this.model,
     });
