@@ -6,7 +6,7 @@
 			  <div class="panel-heading">		  	
 			  	<div class="row">
 						<div class="col-md-3">
-					  	Rented to: <%= rental.escape('renter_fname') + " " + rental.escape('renter_lname') %>
+				  		Rented to: <%= rental.escape('renter_fname') + " " + rental.escape('renter_lname') %>
 						</div>
 						<div class="col-md-3">
 					  	Details
@@ -19,8 +19,9 @@
 			  <div class="panel-body">
 				  <div class="row">
 					  <div class="col-md-3">
-
-							<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail" alt="test"> 
+							<a href="users/<%= rental.escape('renter_id') %>">
+								<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail" alt="test"> 
+							</a>
 						</div>
 				    <div class="col-md-3">
 					    Start Date: <%= rental.escape('start_date') %> <br>

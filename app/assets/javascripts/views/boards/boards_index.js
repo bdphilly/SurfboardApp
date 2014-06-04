@@ -183,7 +183,6 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     //   collection: this.searchResults
     // })
 
-    ///FIGURE OUT IF ZOMBIE VIEWS!
     this.$el.find('.board-results').empty();
     // $('.board-results').empty();
 

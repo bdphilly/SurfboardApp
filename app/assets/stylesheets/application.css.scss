@@ -107,7 +107,7 @@ background-size: cover;
   float: right;
   padding: 10px;
   background-color: #f4f4f4;
-  margin-right: 50px;
+  margin-right: 40px;
 }
 
 .map-canvas {
@@ -512,7 +512,8 @@ display: inline-block;
 }
 
 .avatar-photo-user {
-  float: left;
+  position: absolute;
+  right: 50px;
 }
 
 .status-heading {
@@ -535,4 +536,58 @@ display: inline-block;
 
 .pending-font {
 
+}
+
+.user-info-tabs {
+  margin-top: 100px;
+}
+
+.jumbotron {
+  background-color: green;
+}
+
+.board-edit {
+  text-align: center;
+}
+
+.slider {
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}
+
+.search-bar-dates {
+  padding-bottom: 10px;
+}
+
+.search-bar-type {
+  text-align: center;
+}
+
+.search-bar-price {
+  padding-bottom: 20px;
+}
+
+.search-bar-location {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.filters {
+  font-size: 18px;
+}
+
+.price-slider {
+  border: 0;
+  color: #f6931f;
+  font-weight: bold;
+}
+
+#index-location-picker {
+  width: 400px;
+}
+
+.search-button-index {
+  text-align: center;
+  margin-bottom: 20px;
 }

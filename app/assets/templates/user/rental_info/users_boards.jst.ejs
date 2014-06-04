@@ -4,14 +4,25 @@
 		Your Boards:
 
 		<% if (user.boards().first()) { %>
-
-					<br>
-					Board Images:<br>
 				
 				<% if (user.boards().first().photos().first()) { %>
 
-					<img src="<%= user.boards().first().photos().first().escape('small') %>" 
-					class="board-photo img-responsive img-thumbnail" alt="Board Photo">
+
+					<div class="row">
+					  <div class="col-sm-6 col-md-4">
+					    <div class="thumbnail">
+					      <img src="<%= user.boards().first().photos().first().escape('large') %>" alt="">
+					      <div class="caption">
+					        <h3>Sick board, brah!</h3>
+					        <p>...</p>
+					        <p class="board-edit"><a href="#board/<%= user.boards().first().escape('id') %>/edit" class="btn btn-primary" role="button">Edit your board!</a></p>
+					      </div>
+					    </div>
+					  </div>
+					</div>					
+
+
+
 				
 				<% } %>
 

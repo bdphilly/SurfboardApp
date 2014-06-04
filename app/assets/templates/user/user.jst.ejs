@@ -6,18 +6,12 @@
 
 <% if (user.avatar()) { %>
 
-	Avatar Image:<br>
 	<img src="<%= user.avatar().escape('small_attachment') %>" 
 	class="avatar-photo-user img-responsive img-thumbnail" alt="Avatar Photo">
 
 <% } %>
 
-Email: <%= user.escape('email') %> <br>
-First Name: <%= user.escape('fname') %> <br>
-Last Name: <%= user.escape('lname') %> <br>
-<br>
-The User Calendar:
-<br>
+
 
 <br>
 <%= JST['user/rental_information']({user: this.model}) %>
