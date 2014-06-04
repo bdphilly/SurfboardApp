@@ -126,19 +126,26 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     var attrs = $(event.currentTarget).serializeJSON()['filters'];
     console.log(attrs);
 
+    var that = this;
+
     if (attrs.location) {
       // var locationAttrs = this.geocodeAddress(attrs.location);
       // debugger
-      this.runBoundsSearch(attrs.location);
+      this.runBoundsSearch(attrs.location, function () {
+        attrs = $.extend(attrs, SurfboardApp.Models.map.attributes.constraints);
+        that.fetchResults(attrs);
+      });
+    } else {
+      that.fetchResults(attrs);
     }
     
 
     // if (SurfboardApp.Models.map.attributes.constraints) {
-      attrs = $.extend(attrs, SurfboardApp.Models.map.attributes.constraints);
+      // attrs = $.extend(attrs, SurfboardApp.Models.map.attributes.constraints);
     // }
 
 
-    this.fetchResults(attrs);
+    // this.fetchResults(attrs);
 
     // this.searchResults = new SurfboardApp.Collections.BoardSearchResults();
     
@@ -188,15 +195,15 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
           center: newMap.center,
           zoom: newMap.zoom
         });
-
-        SurfboardApp.Collections.boards.fetch({
-          data: constraints
-        });
+        callback(SurfboardApp.Models.map);
+        // SurfboardApp.Collections.boards.fetch({
+        //   data: constraints
+        // });
         // debugger
         // SurfboardApp.myRouter.navigate('#user', {trigger: true});
       });
       // that.addMap();
-      callback()
+
     });
   },
 
