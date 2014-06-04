@@ -497,8 +497,8 @@ display: inline-block;
 .acceptance-buttons {
   text-align: right;
   margin-top: 20px;
-  margin-left: 50px;
-  float: right;
+  /*margin-left: 50px;*/
+  /*float: right;*/
 }
 
 .user-accept-button {
@@ -513,4 +513,26 @@ display: inline-block;
 
 .avatar-photo-user {
   float: left;
+}
+
+.status-heading {
+  text-align: right;
+}
+
+.rented-panel {
+  margin-bottom: 20px;
+}
+
+.accepted-font {
+  float: right;
+  margin-right: 200px;
+}
+
+.rejected-font {
+  float: right;
+  margin-right: 200px;
+}
+
+.pending-font {
+
 }
