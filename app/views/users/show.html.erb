@@ -1,15 +1,12 @@
 <div id="content" class="user-container" align="center">
 <br>
 <h1><%= @user.fname %> <%= @user.lname %></h1>
-
-
-		<% if @user.avatar %>
-
+		
+	<% if @user.avatar %>
 		<img src="<%= @user.avatar.url(:medium) %>" class="img-thumbnail user-avatar" alt="">
-
+	<% else %>
+		<img src="https://s3-us-west-1.amazonaws.com/brahboards/avatar-placeholder.png" alt="" class="user-avatar img-thumbnail">		
 	<% end %>
-
-	<br><br>
 
 	<div class="panel panel-default panel-user-show">
 	  <div class="panel-heading">About <%= @user.fname %></div>
@@ -26,8 +23,9 @@
 	  </div>
 	</div>
 
-	<%= @user.fname %> has been a member since <%= @user.created_at.year %>
-
+	<% if @user.fname %>
+		<%= @user.fname %> has been a member since <%= @user.created_at.year %>.
+	<% end %>
 
 
 </div>

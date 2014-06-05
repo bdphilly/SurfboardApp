@@ -38,7 +38,7 @@ body {
 .user-container {
   background-image:url("https://s3-us-west-1.amazonaws.com/brahboards/noisy.png");
   background-repeat:repeat;
-  height: 600px;
+  height: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -695,4 +695,9 @@ div.ui-slider .ui-slider-handle {
 
 .alternative-spacing {
   height: 500px;
+}
+
+.user-avatar {
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
