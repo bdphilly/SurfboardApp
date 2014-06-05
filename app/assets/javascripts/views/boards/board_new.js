@@ -47,7 +47,7 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
   submit: function (event) {
     event.preventDefault();
     debugger
-    var attrs = $(event.currentTarget).serializeJSON();
+    var attrs = $(event.currentTarget).serializeJSON().board;
     this.model.set(attrs);
     SurfboardApp.Collections.boards.add(this.model, {
         success: function (attribute) {

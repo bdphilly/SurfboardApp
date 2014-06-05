@@ -2,7 +2,18 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   template: JST['boards/index'],
 
   initialize: function () {
+    debugger
     globalView = this;
+
+    // 1. It should render any data it has (does not do this)
+    // 2. It should re-render when any data changes.
+    // 3. addAllBoards, addMap should be safe to call multiple times.
+
+    // Start to address 1.
+    this.addAllBoards();
+    // Wait, not rendered yet...
+    _.defer(this.addMap);
+    // this.addMap();
 
     // this.listenTo(this.collection, 'sync', this.render);s
     this.listenTo(this.collection, 'sync', this.addAllBoards);
@@ -37,7 +48,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addAllBoards: function () {
-
+    debugger
     this.collection.each(this.addBoard.bind(this));
 
     // this.searchResults.each(this.addBoard.bind(this));
@@ -52,6 +63,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addMap: function () {
+    debugger
     // if (SurfboardApp.Models.map.coordinates) {
     //   var coords = SurfboardApp.Collections.boards.coordinates;
     //   SurfboardApp.Models.map.set({
@@ -120,6 +132,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   runSearch: function (event) {
+    debugger
     event.preventDefault();
     var attrs = $(event.currentTarget).serializeJSON()['filters'];
     console.log(attrs);

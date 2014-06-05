@@ -1,5 +1,5 @@
 class Api::BoardsController < ApplicationController
-	wrap_parameters :board, include: [:images_attributes]
+	# wrap_parameters :board, include: [:images_attributes, :model]
 
 	def index
 		# @boards = Board.search(params)
@@ -20,8 +20,8 @@ class Api::BoardsController < ApplicationController
 	def create
 		@board = current_user.boards.new(board_params)
 		if @board.save
-			# render :json => @board
-			redirect_to boards_url
+			render :json => @board
+			# redirect_to boards_url
 		else
 			# render :json => { error: @board.errors.full_messages }, status: :unprocessable_entity
 			flash.now[:errors] = @board.errors.full_messages
