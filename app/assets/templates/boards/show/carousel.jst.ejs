@@ -1,26 +1,20 @@
 <div id="board-carousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-show" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-show" data-slide-to="1"></li>
-    <!-- <li data-target="#carousel-show" data-slide-to="2"></li> -->
-  </ol>
+
+  
+    
+  
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner">
+  <div class="carousel-inner-not-running">
     <div class="item active">
-      <img src="http://brahboards.s3.amazonaws.com/board/images/attachments/000/000/001/original/001.jpg?1401075411">
-      <div class="carousel-caption">
-        <!-- CAPTION GOES HERE -->
-      </div>
+      <% if (board.photos().first()) { %>
+        <img src="<%= board.photos().first().get('large') %>">
+      <% } %>
     </div>
 
     <div class="item">
-      <img src="http://brahboards.s3.amazonaws.com/board/images/attachments/000/000/001/original/001.jpg?1401075411">
-      <div class="carousel-caption">
-        <!-- SECOND CAPTION GOES HERE -->
-      </div>
-    </div>
+<!--       <img src="http://brahboards.s3.amazonaws.com/board/images/attachments/000/000/001/original/001.jpg?1401075411">
+ -->    </div>
   </div>
 
   <!-- Controls -->
@@ -31,14 +25,14 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a> -->
 
-  <!-- Carousel -->
-  <ul class="carousel-thumbs">
+  <!-- Carousel Thumbnails -->
+<!--   <ul class="carousel-thumbs">
     <li data-target="#carousel-show" data-slide-to="0" class="active">
         <img src="http://brahboards.s3.amazonaws.com/board/images/attachments/000/000/001/original/001.jpg?1401075411" class=" . . ." />
     </li>
     <li data-target="#carousel-show" data-slide-to="1">
         <img src="http://brahboards.s3.amazonaws.com/board/images/attachments/000/000/001/original/001.jpg?1401075411" class=" . . ." />
-    </li>
+    </li> -->
         
   </ul>
 </div>

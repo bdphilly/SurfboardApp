@@ -25,16 +25,5 @@ SurfboardApp.Models.Rental = Backbone.Model.extend({
 		this.set('status', 'Denied');
 
 	},
-
-	// pend: function (callback) {
-	// 	$.ajax({
-	// 		url: this.url() + "/pend",
-	// 		type: 'POST',
-	// 		success: callback,
-	
-	// 	})
-
-	// 	this.set('status', 'Pending');
-	// }
 	
 });

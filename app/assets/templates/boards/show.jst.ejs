@@ -9,7 +9,7 @@
 
 <div class="row">
 	<div class="col-md-5">
-		<%= JST['boards/show/carousel']({board: this.model}) %>
+		<%= JST['boards/show/carousel']({board: board}) %>
 
 		<div class="board-info-tabs"></div>
 	</div>
@@ -29,10 +29,9 @@
 				</button>
 		  </div>
 		</div>
-
 		<br>
 		<br>
-		<%= JST['boards/show/owner_avatar']({board: this.model}) %>
+		<%= JST['boards/show/owner_avatar']({board: board}) %>
 	</div>
 </div>
 
