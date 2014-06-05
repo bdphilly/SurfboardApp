@@ -3,7 +3,7 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model, 'sync', this.addCalendar);
+    // this.listenTo(this.model, 'sync', this.addCalendar);
     this.listenTo(this.model.rentals(), 'change', this.render);
 
     // this.listenTo(this.model.customerRentals(), 'all', this.render);

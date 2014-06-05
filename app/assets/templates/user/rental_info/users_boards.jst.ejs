@@ -5,30 +5,30 @@
 
 		<% if (user.boards().first()) { %>
 				
-				<% if (user.boards().first().photos().first()) { %>
+			<% if (user.boards().first().photos().first()) { %>
 
-
-					<div class="row">
-					  <div class="col-sm-6 col-md-4">
-					    <div class="thumbnail">
-					      <img src="<%= user.boards().first().photos().first().escape('large') %>" alt="">
-					      <div class="caption">
-					        <h3>Sick board, brah!</h3>
-					        <p>...</p>
-					        <p class="board-edit"><a href="#board/<%= user.boards().first().escape('id') %>/edit" class="btn btn-primary" role="button">Edit your board!</a></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>					
-
-
-
-				
-				<% } %>
-
-		<% } else { %>
-			You currently do not have any boards listed :(
+				<div class="row">
+				  <div class="col-sm-6 col-md-4">
+				    <div class="thumbnail">
+				      <img src="<%= user.boards().first().photos().first().escape('large') %>" alt="">
+				      <div class="caption">
+				        <h3>Sick board, brah!</h3>
+				        <p>...</p>
+				        <p class="board-edit"><a href="#board/<%= user.boards().first().escape('id') %>/edit" class="btn btn-primary" role="button">Edit your board!</a></p>
+				      </div>
+				    </div>
+				  </div>
+				</div>					
+			
+			<% } %>
 		<% } %>
 
+	<% } else { %>
+		<div class="alternative-spacing">
+			You currently do not have any boards listed :(
+			<br><br>
+			<a href="#boards/new">List one!</a> 
+		</div>
 	<% } %>
+	
 </div>
