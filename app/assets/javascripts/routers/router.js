@@ -40,6 +40,13 @@ SurfboardApp.Routers.router = Backbone.Router.extend({
   },
 
   boardsNew: function () {
+    var currentUser = new SurfboardApp.Models.User();
+    currentUser.fetch();
+        $(document).ajaxError(function (event, xhr) {
+      if (xhr.status == 401) {
+        window.location = '/users/new';
+      }    
+    });
     var board = new SurfboardApp.Models.Board();
     var newView = new SurfboardApp.Views.BoardNew({
       model: board

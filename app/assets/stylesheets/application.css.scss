@@ -13,7 +13,7 @@
  *= require datepicker
  *= require jquery.ui.slider
  */
-
+@import url(http://fonts.googleapis.com/css?family=Quicksand);
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400);
 @import url(http://fonts.googleapis.com/css?family=Varela+Round);
 @import "bootstrap";
@@ -390,6 +390,8 @@ display: inline-block;
   position: relative;
 }
 
+
+
 .home-image-details {
   position: absolute;
   top: 50%;
@@ -399,8 +401,10 @@ display: inline-block;
 
 .home-image-details h1 {
   color: white;
-  font-size: 30px;
-  font-weight: 300;  
+  font-size: 48px;
+  font-weight: 400;
+  text-shadow: 1px 1px #404040;  
+  font-family: 'Quicksand';
 }
 
 .home-image-details p {
@@ -603,7 +607,7 @@ display: inline-block;
 }
 
 .tab-content {
-  height: 400px;
+  /*height: 400px;*/
 }
 
 .brand-model {
@@ -613,17 +617,22 @@ display: inline-block;
 }
 
 .list-button-container {
-  position: absolute;
-  height: 100%;
+  /*position: absolute;*/
+  /*height: 100%;*/
 }
 
 .list-button {
   font-family: 'Varela Round';
   font-size: 18px;
-  line-height: 35px;
+  /*line-height: 35px;*/
+  margin-top: 5px;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  margin-left: 200px;
+  margin-left: 20px;
+}
+
+.navbar-default {
+  background-color: #F5F5F5;
 }
