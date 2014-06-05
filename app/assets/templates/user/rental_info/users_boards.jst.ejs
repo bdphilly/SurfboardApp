@@ -1,4 +1,4 @@
-<div class="tab-pane" id="users_boards">
+<div class="tab-pane fade" id="users_boards">
 	<% if (user.rentedOutBoards().first()) { %>
 
 		Your Boards:
@@ -9,7 +9,7 @@
 
 				<div class="row">
 				  <div class="col-sm-6 col-md-4">
-				    <div class="thumbnail">
+				    <div class="thumbnail your-boards">
 				      <img src="<%= user.boards().first().photos().first().escape('large') %>" alt="">
 				      <div class="caption">
 				        <h3>Sick board, brah!</h3>

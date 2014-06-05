@@ -437,9 +437,12 @@ display: inline-block;
 
 /*       */
 
+.nav-top {
+  border-radius: 0px;
+}
+
 .navbar {
   position: relative;
-  border-radius: 0px;
   margin-bottom: 0px;
   min-height: 50px;
   border: 1px solid transparent;
@@ -467,9 +470,19 @@ display: inline-block;
 }
 
 .nav-tabs.info-tabs > li > a {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0px;
+/*  -webkit-border-radius: 0;
+  -moz-border-radius: 0;*/
+  /*border-radius: 0px;*/
+  border-radius: 4px, 4px, 0px, 0px;
+}
+
+.nav-tabs >li.active {
+  border-radius: 4px, 4px, 0px, 0px;
+}
+
+.tab-tab {
+  border-radius: 4px, 4px, 0px, 0px;
+  background-color: #EDEDED;
 }
 
 .logo {
@@ -639,6 +652,10 @@ div.ui-slider .ui-slider-handle {
 
 .tab-content {
   /*height: 400px;*/
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 10px;
+  /*background-color: white;*/
 }
 
 .brand-model {
@@ -700,4 +717,8 @@ div.ui-slider .ui-slider-handle {
 .user-avatar {
   margin-top: 20px;
   margin-bottom: 40px;
+}
+
+.your-boards {
+  background-color: lightgray;
 }

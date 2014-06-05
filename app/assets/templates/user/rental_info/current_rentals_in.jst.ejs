@@ -1,4 +1,4 @@
-<div class="tab-pane" id="current_rentals_in">
+<div class="tab-pane fade" id="current_rentals_in">
 	<% if (user.rentedInBoards().first()) { %>
 		<% user.rentedInBoards().first().rentals().each(function (rental) { %>
 			<div class="panel panel-default">
