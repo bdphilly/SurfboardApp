@@ -1,4 +1,4 @@
-json.(current_user, :id, :email, :fname, :lname, :sign_in_count)
+json.(current_user, :id, :email, :fname, :lname, :about, :sign_in_count)
 
 if current_user.avatar
 	json.avatar current_user.avatar, :id, :attachment, 

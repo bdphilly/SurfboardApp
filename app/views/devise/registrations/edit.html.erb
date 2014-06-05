@@ -23,7 +23,7 @@
 
         <div class="form-group">
           <label for="about">About</label>
-          <textarea rows="4" class="form-control" name="user[about]" id="about" value="<%= current_user.about %>" placeholder="C'mon, tell us something about you!"></textarea>
+          <textarea rows="4" class="form-control" name="user[about]" id="about"  placeholder="C'mon, tell us something about you!"><%= current_user.about %></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Update</button>
@@ -63,8 +63,6 @@
 
   </div>
 </div>
-
-
 
 <div class="row auth-form">
   <div class="border-form-div">
