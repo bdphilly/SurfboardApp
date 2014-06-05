@@ -576,6 +576,15 @@ display: inline-block;
   margin-left: auto;
   margin-right: auto;
   width: 400px;
+  font-size: 16px;
+}
+
+div.ui-slider-range.ui-widget-header {
+  background: #0AC2FF;
+}
+
+div.ui-slider .ui-slider-handle {
+  background: #23FF90;
 }
 
 .search-bar-dates {
@@ -601,7 +610,7 @@ display: inline-block;
 
 .price-slider {
   border: 0;
-  color: #f6931f;
+  color: #0AC2FF;
   font-weight: bold;
 }
 
@@ -643,6 +652,31 @@ display: inline-block;
   left: 0;
   right: 0;
   margin-left: 20px;
+}
+
+.a {
+  background-color: #0AC2FF;
+  color: white;
+}
+
+.b {
+  background-color: #23FF90;
+  color: white;
+}
+.a:hover {
+  opacity: .5;
+  -webkit-transform: scale(1.1);
+  -moz-transform:    scale(1.1);
+  -o-transform:      scale(1.1);
+  -ms-transform:     scale(1.1);
+}
+
+.b:hover {
+  opacity: .5;
+  -webkit-transform: scale(1.1);
+  -moz-transform:    scale(1.1);
+  -o-transform:      scale(1.1);
+  -ms-transform:     scale(1.1);
 }
 
 .navbar-default {
