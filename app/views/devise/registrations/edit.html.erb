@@ -21,6 +21,11 @@
           <input type="email" class="form-control" name="user[email]" id="email" value="<%= current_user.email %>" placeholder="Enter email">
         </div>
 
+        <div class="form-group">
+          <label for="about">About</label>
+          <textarea rows="4" class="form-control" name="user[about]" id="about" value="<%= current_user.about %>" placeholder="C'mon, tell us something about you!"></textarea>
+        </div>
+
         <button type="submit" class="btn btn-primary">Update</button>
       
       <br>
@@ -56,6 +61,15 @@
       <%= link_to "Back", :back %>
     </form>
 
+  </div>
+</div>
+
+
+
+<div class="row auth-form">
+  <div class="border-form-div">
+
+    <h3>Upload an avatar!</h3>
     <form enctype="multipart/form-data" action="<%= user_url(current_user) %>" method="post">
       <input
         type="hidden"
@@ -63,25 +77,12 @@
         value="<%= form_authenticity_token %>">
       <input type="hidden" name="_method" value="PUT">
     
-
       <div class="form-group">
         <label for="photo">Photo</label>
         <input type="file" name="user[avatar_attributes][attachment]" id="photo">
         <p class="help-block">Upload an avatar!</p>
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-info">Submit</button>
     </form>
-
-  <br><br>
-  <%= form_for current_user, 
-    :url => registration_path(current_user), 
-    :html => { :multipart => true } do |form| %>
-    
-    <%= form.file_field :avatar %>
-    <br>
-    <%= form.submit "Submit that photo!" %>
-  <% end %>
-
-
   </div>
 </div>

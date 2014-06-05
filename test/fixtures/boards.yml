@@ -5,11 +5,11 @@
 #  id                 :integer          not null, primary key
 #  brand              :string(255)
 #  model              :string(255)
-#  length             :integer
-#  width              :integer
+#  length             :string(255)
+#  width              :string(255)
 #  thickness          :integer
-#  description        :string(255)
-#  condition          :integer
+#  description        :text
+#  condition          :string(255)
 #  owner_id           :integer          not null
 #  created_at         :datetime
 #  updated_at         :datetime

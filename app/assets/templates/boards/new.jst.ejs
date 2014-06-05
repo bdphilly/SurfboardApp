@@ -9,7 +9,7 @@
         </div>
         <div class="form-group">
           <label for="model">Model</label>
-          <input type="text" class="form-control" name="model" id="model" placeholder="Model">
+          <input type="text" class="form-control" name="board[model]" id="model" placeholder="Model">
         </div>
           <div class="form-group">
           <label for="length">Length</label>
@@ -18,10 +18,6 @@
         <div class="form-group">
           <label for="width">Width</label>
           <input type="text" class="form-control" name="board[width]" id="width" placeholder="Width">
-        </div>
-        <div class="form-group">
-          <label for="condition">Condition</label>
-          <input type="text" class="form-control" name="board[condition]" id="condition" placeholder="Condition">
         </div>
         <div class="form-group">
           <label for="condition_new">New</label>
@@ -42,8 +38,8 @@
           <textarea rows="4" class="form-control" name="board[description]" id="description" placeholder="Description"></textarea>
         </div>
         <div class="form-group">
-        <label for="price">Price</label>
-        <input type="textarea" rows="4" class="form-control" name="board[price]" id="price" placeholder="Price">
+        <label for="price">Price per day</label>
+        <input type="price" rows="4" class="form-control" name="board[price]" id="price" placeholder="Price">
       </div>
       </div>
       <div class="col-md-1"></div>

@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
 	private
   
   def user_params
-  	params.require(:user).permit(:email, :password, :avatar_attributes => [:attachment])
+  	params.require(:user).permit(:email, :password, :about, :avatar_attributes => [:attachment])
   end
 	
 end
