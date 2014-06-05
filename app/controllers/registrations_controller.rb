@@ -21,6 +21,10 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  # def after_sign_in_path_for(user)
+  #   redirect_to "static_pages#root"
+  # end
+
   private
 
   # check if we need password to update user data

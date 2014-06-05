@@ -1,12 +1,13 @@
-<h2>Forgot your password?</h2>
+<h2 style="color: white">Forgot your password?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
+  <div style="color: white"><%= f.label :email %><br>
   <%= f.email_field :email, autofocus: true %></div>
-
-  <div><%= f.submit "Send me reset password instructions" %></div>
+	<br>
+	<button type="submit" class="btn btn-warning">Send me reset password instructions</button>
 <% end %>
+<br>
 
 <%= render "devise/shared/links" %>

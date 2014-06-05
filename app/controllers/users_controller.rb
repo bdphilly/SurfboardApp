@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
 	
-	before_filter :authenticate_user!
+	before_filter :authenticate_user!, :only => [:update, :show]
 	
+	def new
+		redirect_to new_user_session_path
+	end
+
 	def show
-		@user = current_user
+		@user = User.find(params[:id])
 	end
 
 	def update

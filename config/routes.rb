@@ -9,7 +9,7 @@ SurfboardApp::Application.routes.draw do
 			resources :board_rentals, only: [:create, :new, :show, :destroy]
 		end
 
-		resources :board_rentals, only: [:create, :new, :show, :index] do
+		resources :board_rentals, only: [:create, :new, :show, :index, :update] do
 			post "approve", :on => :member
   		post "deny", :on => :member
 		end
@@ -19,7 +19,7 @@ SurfboardApp::Application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users, only: [:show, :update]
-  match 'users/:id' => 'users#show', via: :get
+  # match 'users/:id' => 'users#show', via: :get
 	# or 
 	# get 'users/:id' => 'users#show'
   resources :boards do

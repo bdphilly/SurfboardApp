@@ -6,10 +6,12 @@
       </a>
       <!-- <a class="navbar-brand" href="">BrahBoards</a> -->
     </div>
-    <div class="navbar-left list-button-container">
-      <a class="btn btn-info list-button" href="#boards/new">List your board!</a> 
-<!--       <button class="btn btn-info" href="#boards/new" id="list-button">List your board!</button> -->
-    </div>
+    <% unless ["sessions", "registrations", "passwords"].include?(controller_name) %>
+      <div class="navbar-left list-button-container">
+        <a class="btn btn-info list-button" href="#boards/new">List your board!</a> 
+  <!--       <button class="btn btn-info" href="#boards/new" id="list-button">List your board!</button> -->
+      </div>
+    <% end %>
     <ul class="nav navbar-nav navbar-right">
     <% if user_signed_in? %>
         <li class="dropdown">
