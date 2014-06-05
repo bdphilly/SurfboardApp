@@ -1,32 +1,36 @@
-<h1>
+<div id="content" class="user-container">
 
-First name: <%= @user.fname %>
-<br><br>
-Last name: <%= @user.lname %>
 
-</h1>
 
-<%= @user.email %>
+	First name: <%= @user.fname %>
+	<br><br>
+	Last name: <%= @user.lname %>
 
-<div class="panel panel-default panel-user-show">
-  <div class="panel-heading">About <%= @user.fname %></div>
-  <div class="panel-body">
 
-		<% if @user == current_user && @user.username == nil %>
-			You haven't filed out your description yet. What are you waiting for?! 
-				<%= link_to "Edit your account", edit_user_registration_path %>
-		<% elsif @user.username == nil %>
-			This user hasn't filled out their description yet. They are too busy surfing.
-		<% else %>
-    	<%= @user.lname %>...ADD DESCRIPTION HERE (need to add column in DB)
-    <% end %>
-  </div>
+
+	<%= @user.email %>
+
+	<div class="panel panel-default panel-user-show">
+	  <div class="panel-heading">About <%= @user.fname %></div>
+	  <div class="panel-body">
+
+			<% if @user == current_user && @user.username == nil %>
+				You haven't filed out your description yet. What are you waiting for?! 
+					<%= link_to "Edit your account", edit_user_registration_path %>
+			<% elsif @user.username == nil %>
+				This user hasn't filled out their description yet. They are too busy surfing.
+			<% else %>
+	    	<%= @user.lname %>...ADD DESCRIPTION HERE (need to add column in DB)
+	    <% end %>
+	  </div>
+	</div>
+
+	<%= @user.fname %> has been a member since <%= @user.created_at.year %>
+
+	<% if @user.avatar %>
+
+		<img src="<%= @user.avatar.url(:small) %>" class="img-thumbnail user-avatar" alt="">
+
+	<% end %>
+
 </div>
-
-<%= @user.fname %> has been a member since <%= @user.created_at.year %>
-
-<% if @user.avatar %>
-
-	<img src="<%= @user.avatar.url(:small) %>" class="img-thumbnail user-avatar" alt="">
-
-<% end %>

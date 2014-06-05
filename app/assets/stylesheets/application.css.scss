@@ -35,6 +35,12 @@ body {
   /*background-color: white;*/
 }
 
+.user-container {
+  background-image:url("https://s3-us-west-1.amazonaws.com/brahboards/noisy.png");
+  background-repeat:repeat;
+  /*background-color: white;*/
+}
+
 .board-result h2 {
   margin-top: 0px;
 }
@@ -69,6 +75,14 @@ background-size: cover;
 /* User sign in and sign forms. */
 .auth-form {
   margin-top: 100px;
+}
+
+.four-oh-four-page {
+  background-image: url(https://s3-us-west-1.amazonaws.com/brahboards/404.png); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
 }
 
 .border-form-div {
@@ -389,8 +403,6 @@ display: inline-block;
    
   position: relative;
 }
-
-
 
 .home-image-details {
   position: absolute;
