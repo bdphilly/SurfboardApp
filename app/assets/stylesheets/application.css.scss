@@ -350,7 +350,15 @@ h2 {
 
 .board-result-redirect {
   display: inline-block;
-  text-decoration: none
+  text-decoration: none;
+}
+
+.board-result-redirect:hover {
+  -webkit-transform: scale(1.01);
+  -moz-transform:    scale(1.01);
+  -o-transform:      scale(1.01);
+  -ms-transform:     scale(1.01);
+  opacity: .8;
 }
 
 .results-link{

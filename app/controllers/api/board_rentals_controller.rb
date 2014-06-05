@@ -51,7 +51,7 @@ class Api::BoardRentalsController < ApplicationController
 		end
 
 		def current_board_rental_request
-			@board_rental ||= BoardRental.includes(:board).find(params[:board_id])
+			@board_rental ||= BoardRental.includes(:board).find(params[:id])
 		end
 
 		def board_rental_params

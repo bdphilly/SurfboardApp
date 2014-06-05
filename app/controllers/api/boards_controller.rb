@@ -1,5 +1,5 @@
 class Api::BoardsController < ApplicationController
-	wrap_parameters :board, include: [:images_attributes, :model]
+	wrap_parameters :board, include: [:images_attributes]
 
 	def index
 		# @boards = Board.search(params)
