@@ -39,7 +39,7 @@
 								<button class="btn btn-primary user-accept-button" data-id="<%= rental.get('id') %>">Accept</button>
 								<button class="btn btn-danger reject-button user-reject-button" data-id="<%= rental.get('id') %>">Reject</button>
 							</div>
-						<% } else if (rental.escape('status') === "Accepted") { %>
+						<% } else if (rental.escape('status') === "Approved") { %>
 							<span class="accepted-font">Accepted!</span>
 							<% } else { %>
 							<span class="rejected-font">Rejected!</span>
