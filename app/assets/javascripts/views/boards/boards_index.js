@@ -30,7 +30,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     // this.listenTo(this.collection, 'sync', this.addMap);
     // this.listenTo(this.collection, 'add', this.render);
 
-    this.listenTo(this.collection, 'change', this.runSearch);
+    // this.listenTo(this.collection, 'change', this.runSearch);
   },
 
   events: {
@@ -71,7 +71,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addMap: function () {
-    debugger
+    // debugger
     // this.$el.find('.map-view').empty();
     var map = SurfboardApp.Models.map;
 
@@ -87,7 +87,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   runSearch: function (event) {
-    debugger
+    // debugger
     event.preventDefault();
     var attrs = $(event.currentTarget).serializeJSON()['filters'];
     console.log(attrs);
@@ -95,8 +95,8 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     var that = this;
 
     if (attrs.location) {
-      var locationAttrs = this.geocodeAddress(attrs.location);
-      debugger
+      // var locationAttrs = this.geocodeAddress(attrs.location);
+      // debugger
       this.runBoundsSearch(attrs.location, function () {
         attrs = $.extend(attrs, SurfboardApp.Models.map.attributes.constraints);
         that.fetchResults(attrs);
@@ -108,36 +108,45 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   runBoundsSearch: function (locationAttrs, callback) {
+    // debugger
     var map = SurfboardApp.Models.map;
     var that = this;
     this.geocodeAddress(locationAttrs, function (coordinates) {
       
       console.log(coordinates);
-      
-      var mapOptions = {
+      // debugger
+      SurfboardApp.Models.map.set({
         center: new google.maps.LatLng(coordinates.latitude, coordinates.longitude),
-        zoom: SurfboardApp.Models.map.defaults.zoom
-      };
-      
-      var newMap = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-      
-      google.maps.event.addListener(newMap, 'idle', function () {
-        var bounds = new google.maps.LatLngBounds();
-        bounds = newMap.getBounds();
-        var constraints = that.determineBounds(bounds);
-        console.log(constraints);
-        SurfboardApp.Models.map.set({
-          constraints: constraints,
-          center: newMap.center,
-          zoom: newMap.zoom
-        });
-        callback(SurfboardApp.Models.map);
-        // SurfboardApp.Collections.boards.fetch({
-        //   data: constraints
-        // });
-        // debugger
-        // SurfboardApp.myRouter.navigate('#user', {trigger: true});
       });
+      // debugger
+      callback();
+      // var mapOptions = {
+      //   center: new google.maps.LatLng(coordinates.latitude, coordinates.longitude),
+      //   zoom: SurfboardApp.Models.map.defaults.zoom
+      // };
+      
+      // var newMap = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+      
+      // google.maps.event.addListener(newMap, 'idle', function () {
+      //   var bounds = new google.maps.LatLngBounds();
+      //   bounds = newMap.getBounds();
+      //   var constraints = that.determineBounds(bounds);
+      //   console.log(constraints);
+      //   SurfboardApp.Models.map.set({
+      //     constraints: constraints,
+      //     center: newMap.center,
+      //     zoom: newMap.zoom
+      //   });
+      //   callback(SurfboardApp.Models.map);
+
+
+
+      //   // SurfboardApp.Collections.boards.fetch({
+      //   //   data: constraints
+      //   // });
+      //   // debugger
+      //   // SurfboardApp.myRouter.navigate('#user', {trigger: true});
+      // });
       // that.addMap();
 
     });
@@ -176,6 +185,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
 
   geocodeAddress: function (address, callback) {
     var geocoder = new google.maps.Geocoder();
+    // debugger
     var coordinates = {};
     geocoder.geocode({'address' : address}, function(results, status){
       if (status == google.maps.GeocoderStatus.OK) {

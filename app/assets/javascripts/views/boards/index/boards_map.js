@@ -9,17 +9,18 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
   initialize: function (options) {
     // debugger
     this.parentView = options.parentView;
-
+    // debugger
     // this.render();
-    var that = this;
+    debugger
+    this.renderMap();
+    // var that = this;
     // setTimeout(function() {
-      that.renderMap();
+      // that.renderMap();
     // }, 500);
     // google.maps.event.addDomListener(window, 'load', initialize);
-    this.listenTo(this.collection, 'sync', this.render);
-    this.listenTo(this.collection, 'sync', this.addPins);
-    // this.listenTo(this.model, 'change', this.reFetchConstraints);
-    this.listenTo(this.model, 'sync', this.render);
+    // this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'sync change', this.addPins);
+    this.listenTo(this.model, 'sync change', this.renderMap);
   },
 
   handleMapChange: function () {
@@ -33,15 +34,14 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
         zoom: this.map.getZoom(),
         center: this.map.getCenter()
       });
+      // debugger
       this.parentView.fetchResults(constraints);
   },
 
   reFetchConstraints: function () {
-    var that = this;
-
-    google.maps.event.addListener(this.map, 'dragend', this.handleMapChange.bind(this));
-    google.maps.event.addListener(this.map, 'zoom_changed', this.handleMapChange.bind(this));
-
+    // google.maps.event.addListener(this.map, 'dragend', this.handleMapChange.bind(this));
+    // google.maps.event.addListener(this.map, 'zoom_changed', this.handleMapChange.bind(this));
+    google.maps.event.addListener(this.map, 'idle', this.handleMapChange.bind(this));
   },
 
   addPins: function () {
@@ -72,7 +72,7 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
   },
 
   render: function () {
-    debugger
+    // debugger
     // render the tempate before the map so it has a map canvas to fit in
     // var renderedContent = this.template();
 
