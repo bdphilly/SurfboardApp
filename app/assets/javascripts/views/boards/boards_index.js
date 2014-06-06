@@ -2,7 +2,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   template: JST['boards/index'],
 
   initialize: function () {
-    debugger
+    // debugger
     globalView = this;
 
     // 1. It should render any data it has (does not do this)
@@ -10,15 +10,24 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     // 3. addAllBoards, addMap should be safe to call multiple times.
 
     // Start to address 1.
+    // _.defer(this.addAllBoards());
     this.addAllBoards();
+    // _.defer(this.addMap());
+    // this.addMap();
     // Wait, not rendered yet...
-    _.defer(this.addMap);
+    // _.defer(this.addMap);
     // this.addMap();
 
-    // this.listenTo(this.collection, 'sync', this.render);s
+    var that = this;
+    setTimeout(function() {
+      that.addMap();
+    }, 500);
+
+
+    // this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.addAllBoards);
     // this.listenTo(this.collection, 'sync', this.addSearchBar);
-    this.listenTo(this.collection, 'sync', this.addMap);
+    // this.listenTo(this.collection, 'sync', this.addMap);
     // this.listenTo(this.collection, 'add', this.render);
 
     this.listenTo(this.collection, 'change', this.runSearch);
@@ -32,7 +41,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     var renderedContent = this.template();
 
     this.$el.html(renderedContent);
-
+    // this.addAllBoards();
     this.addSearchBar();
     // this.addMap();
 
@@ -48,10 +57,9 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addAllBoards: function () {
-    debugger
+    // debugger
+    this.$el.find('.board-results').empty();
     this.collection.each(this.addBoard.bind(this));
-
-    // this.searchResults.each(this.addBoard.bind(this));
   },
 
   addSearchBar: function () {
@@ -64,14 +72,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
 
   addMap: function () {
     debugger
-    // if (SurfboardApp.Models.map.coordinates) {
-    //   var coords = SurfboardApp.Collections.boards.coordinates;
-    //   SurfboardApp.Models.map.set({
-    //     center: new google.maps.LatLng(coords.latitude, coords.longitude)
-    //   });
-    // } else {
-    //   map = SurfboardApp.Models.map;
-    // }
+    // this.$el.find('.map-view').empty();
     var map = SurfboardApp.Models.map;
 
     var mapResults = new SurfboardApp.Views.BoardsMap({
@@ -81,54 +82,8 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     });
 
     var that = this;
-  //   window.setTimeout(function () {
-  //   google.maps.event.addListener(map, 'center_changed', function () {
-  //     alert('changed!');
-  //     var bounds = new google.maps.LatLngBounds();
-  //     bounds = map.getBounds();
-  //     var constraints = that.determineBounds(bounds);    
-  //     SurfboardApp.Collections.boards.constraints = constraints;
-  //   });
-
-  // }, 1000);
-
-    this.addSubview('.map-view', mapResults)
-    
-    // google.maps.event.addDomListener(".map-canvas", 'click', this.showAlert);
-  },
-
-  scrollMap: function () {
     // debugger
-    var length = $('.map-results').height() - $('.map-view').height() + $('.map-results').offset().top;
-
-    $(window).scroll(function(){
-      var scroll = $(this).scrollTop();
-      var height = $('.map-view').height() + 'px';
-
-      if (scroll < $('.map-results').offset().top) {
-
-          $('.map-view').css({
-              'position': 'absolute',
-              'top': '0'
-          });
-
-      } else if (scroll > length) {
-
-          $('.map-view').css({
-              'position': 'absolute',
-              'bottom': '0',
-              'top': 'auto'
-          });
-
-      } else {
-
-          $('.map-view').css({
-              'position': 'fixed',
-              'top': '0',
-              'height': height
-          });
-      }
-    });
+    this.addSubview('.map-view', mapResults);
   },
 
   runSearch: function (event) {
@@ -140,8 +95,8 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     var that = this;
 
     if (attrs.location) {
-      // var locationAttrs = this.geocodeAddress(attrs.location);
-      // debugger
+      var locationAttrs = this.geocodeAddress(attrs.location);
+      debugger
       this.runBoundsSearch(attrs.location, function () {
         attrs = $.extend(attrs, SurfboardApp.Models.map.attributes.constraints);
         that.fetchResults(attrs);
@@ -150,32 +105,6 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
       that.fetchResults(attrs);
     }
     
-
-    // if (SurfboardApp.Models.map.attributes.constraints) {
-      // attrs = $.extend(attrs, SurfboardApp.Models.map.attributes.constraints);
-    // }
-
-
-    // this.fetchResults(attrs);
-
-    // this.searchResults = new SurfboardApp.Collections.BoardSearchResults();
-    
-    // var that = this;
-
-    // this.searchResults.fetch({
-    //   data: attrs,
-    //   success: function (response) {
-    //     // you can pass additional options to the event you trigger here as well
-    //     console.log(that.searchResults);
-    //     that.renderSearch(that.searchResults);
-    //   },
-    //   error: function (response) {
-    //     // you can pass additional options to the event you trigger here as well
-    //     alert('error!');
-    //   }
-
-    // });
-    // console.log(that.searchResults);
   },
 
   runBoundsSearch: function (locationAttrs, callback) {
@@ -184,10 +113,6 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     this.geocodeAddress(locationAttrs, function (coordinates) {
       
       console.log(coordinates);
-      // SurfboardApp.Models.map.set({
-      //   coordinates: coordinates
-      // )};
-
       
       var mapOptions = {
         center: new google.maps.LatLng(coordinates.latitude, coordinates.longitude),

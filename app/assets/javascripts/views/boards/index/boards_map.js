@@ -4,26 +4,22 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
 
   // tagName: "div",
 
-  // className: "map-canvas",
+  // className: "map-canvas-test",
 
   initialize: function (options) {
-    
+    // debugger
     this.parentView = options.parentView;
 
-    this.render();
+    // this.render();
+    var that = this;
+    // setTimeout(function() {
+      that.renderMap();
+    // }, 500);
     // google.maps.event.addDomListener(window, 'load', initialize);
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'sync', this.addPins);
     // this.listenTo(this.model, 'change', this.reFetchConstraints);
     this.listenTo(this.model, 'sync', this.render);
-  },
-
-  renderMap: function () {
-    // tricky! Google requires DOM node object, not JQuery! This way converts it
-    // this.map = new google.maps.Map(this.el. getElementsByClassName("map-canvas")[0], this.model.attributes);
-    this.map = new google.maps.Map(document.getElementById("map-canvas"), this.model.attributes);
-    // google.maps.event.addDomListener("map-canvas", 'click', this.showAlert);
-    this.reFetchConstraints();
   },
 
   handleMapChange: function () {
@@ -38,38 +34,17 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
         center: this.map.getCenter()
       });
       this.parentView.fetchResults(constraints);
-      // SurfboardApp.Collections.boards.constraints = constraints;
-      
-      // SurfboardApp.Collections.boards.coordinates = {
-      //   latitude: that.map.getCenter().lat(),
-      //   longitude: that.map.getCenter().lng(),
-      // }
-      // console.log(SurfboardApp.Collections.boards.constraints);
   },
 
   reFetchConstraints: function () {
     var that = this;
-    // google.maps.event.addListener(this.map, 'dragend', function () {
-      
-    // });
+
     google.maps.event.addListener(this.map, 'dragend', this.handleMapChange.bind(this));
     google.maps.event.addListener(this.map, 'zoom_changed', this.handleMapChange.bind(this));
 
   },
 
-  addInfoWindow: function () {
-    var infowindow = new google.maps.InfoWindow({
-      content: "Hello World!"
-    });
-
-  },
-
-  showAlert: function() {
-    alert('DIV clicked');
-  },
-
   addPins: function () {
-
     var board_info;
     var marker;
     var infowindow;
@@ -79,10 +54,7 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     this.collection.each(function(board){
 
       board_info = board.get('brand');
-
-      infowindow = new google.maps.InfoWindow({
-        
-      });  
+      infowindow = new google.maps.InfoWindow();  
 
       marker = new google.maps.Marker({ 
         position: new google.maps.LatLng(board.get('latitude'), board.get('longitude')),
@@ -100,16 +72,37 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
   },
 
   render: function () {
+    debugger
     // render the tempate before the map so it has a map canvas to fit in
-    var renderedContent = this.template();
-    // this.setElement(this.template(this.model.toJSON()));
-    // this.$el = $(template(".map-canvas"))
-    this.$el.html(renderedContent); 
-    this.renderMap();
-    this.addPins();
+    // var renderedContent = this.template();
+
+    var that = this;
+
+    // this.$el.html(renderedContent); 
+    // _.defer(function () {
+    //   that.renderMap();
+    //   that.addPins();
+    // });
+    
+  
+    // setTimeout(function() {
+    //     that.renderMap();
+    // }, 500);
+
+    // _.defer(this.renderMap()) ;
+
     // var map = new google.maps.Map(this.el.getElementsByClassName("map-canvas")[0], this.model.attributes);
     return this;
   },
+
+  renderMap: function () {
+    // tricky! Google requires DOM node object, not JQuery! This way converts it
+    // this.map = new google.maps.Map(this.el. getElementsByClassName("map-canvas")[0], this.model.attributes);
+    this.map = new google.maps.Map(document.getElementById("map-canvas"), this.model.attributes);
+    this.reFetchConstraints();
+    this.addPins();
+  },
+
 
   determineBounds: function (bounds) {
     var constraints = {};
