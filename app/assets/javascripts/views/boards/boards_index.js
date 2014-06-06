@@ -21,16 +21,8 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     var that = this;
     setTimeout(function() {
       that.addMap();
-    }, 500);
-
-
-    // this.listenTo(this.collection, 'sync', this.render);
+    }, 0);
     this.listenTo(this.collection, 'sync', this.addAllBoards);
-    // this.listenTo(this.collection, 'sync', this.addSearchBar);
-    // this.listenTo(this.collection, 'sync', this.addMap);
-    // this.listenTo(this.collection, 'add', this.render);
-
-    // this.listenTo(this.collection, 'change', this.runSearch);
   },
 
   events: {
@@ -39,11 +31,8 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
 
   render: function () {
     var renderedContent = this.template();
-
     this.$el.html(renderedContent);
-    // this.addAllBoards();
     this.addSearchBar();
-    // this.addMap();
 
     this.attachSubviews();
     return this;
@@ -57,7 +46,6 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addAllBoards: function () {
-    // debugger
     this.$el.find('.board-results').empty();
     this.collection.each(this.addBoard.bind(this));
   },
@@ -71,32 +59,24 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   },
 
   addMap: function () {
-    // debugger
-    // this.$el.find('.map-view').empty();
     var map = SurfboardApp.Models.map;
-
+    var that = this;
     var mapResults = new SurfboardApp.Views.BoardsMap({
       model: map,
       collection: SurfboardApp.Collections.boards,
       parentView: this
     });
-
-    var that = this;
-    // debugger
+    
     this.addSubview('.map-view', mapResults);
   },
 
   runSearch: function (event) {
-    // debugger
     event.preventDefault();
     var attrs = $(event.currentTarget).serializeJSON()['filters'];
     console.log(attrs);
-
     var that = this;
 
     if (attrs.location) {
-      // var locationAttrs = this.geocodeAddress(attrs.location);
-      // debugger
       this.runBoundsSearch(attrs.location, function () {
         attrs = $.extend(attrs, SurfboardApp.Models.map.attributes.constraints);
         that.fetchResults(attrs);
@@ -104,51 +84,18 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     } else {
       that.fetchResults(attrs);
     }
-    
   },
 
   runBoundsSearch: function (locationAttrs, callback) {
-    // debugger
     var map = SurfboardApp.Models.map;
     var that = this;
+
     this.geocodeAddress(locationAttrs, function (coordinates) {
-      
       console.log(coordinates);
-      // debugger
       SurfboardApp.Models.map.set({
         center: new google.maps.LatLng(coordinates.latitude, coordinates.longitude),
       });
-      // debugger
       callback();
-      // var mapOptions = {
-      //   center: new google.maps.LatLng(coordinates.latitude, coordinates.longitude),
-      //   zoom: SurfboardApp.Models.map.defaults.zoom
-      // };
-      
-      // var newMap = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-      
-      // google.maps.event.addListener(newMap, 'idle', function () {
-      //   var bounds = new google.maps.LatLngBounds();
-      //   bounds = newMap.getBounds();
-      //   var constraints = that.determineBounds(bounds);
-      //   console.log(constraints);
-      //   SurfboardApp.Models.map.set({
-      //     constraints: constraints,
-      //     center: newMap.center,
-      //     zoom: newMap.zoom
-      //   });
-      //   callback(SurfboardApp.Models.map);
-
-
-
-      //   // SurfboardApp.Collections.boards.fetch({
-      //   //   data: constraints
-      //   // });
-      //   // debugger
-      //   // SurfboardApp.myRouter.navigate('#user', {trigger: true});
-      // });
-      // that.addMap();
-
     });
   },
 
@@ -157,30 +104,12 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     this.collection.fetch({
       data: attrs,
       success: function (response) {
-        // you can pass additional options to the event you trigger here as well
-        // console.log(that.searchResults);
-        that.renderSearch(that.collection);
+        that.$el.find('.board-results').empty();
       },
       error: function (response) {
-        // you can pass additional options to the event you trigger here as well
         alert('error!');
       }
-
     });
-    // console.log(that.searchResults);
-
-  },
-
-  renderSearch: function () {
-    // console.log(this.searchResults);
-    // var resultsView = new SurfboardApp.Views.BoardsIndex({
-    //   collection: this.searchResults
-    // })
-
-    this.$el.find('.board-results').empty();
-    // $('.board-results').empty();
-
-    // this.addAllBoards();
   },
 
   geocodeAddress: function (address, callback) {

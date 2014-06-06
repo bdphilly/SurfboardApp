@@ -2,25 +2,20 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
 
   template: JST['boards/index/map_index'],
 
-  // tagName: "div",
-
-  // className: "map-canvas-test",
-
   initialize: function (options) {
-    // debugger
     this.parentView = options.parentView;
-    // debugger
-    // this.render();
-    debugger
     this.renderMap();
+    // this.addPins();
     // var that = this;
     // setTimeout(function() {
       // that.renderMap();
     // }, 500);
     // google.maps.event.addDomListener(window, 'load', initialize);
     // this.listenTo(this.collection, 'sync', this.render);
-    this.listenTo(this.collection, 'sync change', this.addPins);
+    this.listenTo(this.collection, 'sync', this.addPins);
+    // this.listenTo(this.model, 'change', this.reFetchConstraints);
     this.listenTo(this.model, 'sync change', this.renderMap);
+    // this.listenTo(this.model, 'sync change', this.addPins);
   },
 
   handleMapChange: function () {
@@ -34,11 +29,12 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
         zoom: this.map.getZoom(),
         center: this.map.getCenter()
       });
-      // debugger
       this.parentView.fetchResults(constraints);
   },
 
   reFetchConstraints: function () {
+    var that = this;
+
     // google.maps.event.addListener(this.map, 'dragend', this.handleMapChange.bind(this));
     // google.maps.event.addListener(this.map, 'zoom_changed', this.handleMapChange.bind(this));
     google.maps.event.addListener(this.map, 'idle', this.handleMapChange.bind(this));
@@ -51,58 +47,34 @@ SurfboardApp.Views.BoardsMap = Backbone.View.extend({
     var map = this.map;
     var html;
 
-    this.collection.each(function(board){
-
+    this.collection.each(function (board) {
+      var that = this;
       board_info = board.get('brand');
       infowindow = new google.maps.InfoWindow();  
-
+      
       marker = new google.maps.Marker({ 
         position: new google.maps.LatLng(board.get('latitude'), board.get('longitude')),
         map: map,
         icon: 'https://s3-us-west-1.amazonaws.com/brahboards/surf-icon-green.png'
       });
       // html = "<b>" + board.get('brand') + "</b> <br/>" + board.get('model');
-      var that = this;
+      
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent("<b>" + board.get('brand') + "</b> <br/>" + board.get('model'));
         infowindow.open(map, this);
       });
-
     });
   },
 
   render: function () {
-    // debugger
-    // render the tempate before the map so it has a map canvas to fit in
-    // var renderedContent = this.template();
-
-    var that = this;
-
-    // this.$el.html(renderedContent); 
-    // _.defer(function () {
-    //   that.renderMap();
-    //   that.addPins();
-    // });
-    
-  
-    // setTimeout(function() {
-    //     that.renderMap();
-    // }, 500);
-
-    // _.defer(this.renderMap()) ;
-
-    // var map = new google.maps.Map(this.el.getElementsByClassName("map-canvas")[0], this.model.attributes);
     return this;
   },
 
   renderMap: function () {
-    // tricky! Google requires DOM node object, not JQuery! This way converts it
-    // this.map = new google.maps.Map(this.el. getElementsByClassName("map-canvas")[0], this.model.attributes);
     this.map = new google.maps.Map(document.getElementById("map-canvas"), this.model.attributes);
     this.reFetchConstraints();
-    this.addPins();
+    // this.addPins();
   },
-
 
   determineBounds: function (bounds) {
     var constraints = {};
