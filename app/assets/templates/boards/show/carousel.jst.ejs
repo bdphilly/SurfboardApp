@@ -1,14 +1,9 @@
 <div id="board-carousel" class="carousel slide" data-ride="carousel">
-
-  
-    
-  
-
   <!-- Wrapper for slides -->
   <div class="carousel-inner-not-running">
     <div class="item active">
       <% if (board.photos().first()) { %>
-        <img src="<%= board.photos().first().get('large') %>">
+        <img src="<%= board.photos().first().get('large') %>" class="carousel-alternate">
       <% } %>
     </div>
 

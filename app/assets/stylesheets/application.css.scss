@@ -377,6 +377,11 @@ display: inline-block;
 
 }
 
+.carousel-alternate {
+  border: 5px solid white;
+  border-radius: 4px;
+}
+
 .panel-body {
   /*background-color: #23FF90;*/
   /*background: rgba(35,255,155,0.2);*/
@@ -650,12 +655,22 @@ div.ui-slider .ui-slider-handle {
   width: 500px;
 }
 
-.tab-content {
+.board-tabs {
   /*height: 400px;*/
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
   padding: 10px;
-  /*background-color: white;*/
+  background-color: white;
+  width: 650px;
+  height: 500px;
+}
+
+.user-tabs {
+  /*height: 400px;*/
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 10px;
+  background-color: white;
 }
 
 .brand-model {
@@ -721,4 +736,9 @@ div.ui-slider .ui-slider-handle {
 
 .your-boards {
   background-color: lightgray;
+}
+
+.prices {
+ font-size: 20px;
+ line-height: 36px; 
 }
