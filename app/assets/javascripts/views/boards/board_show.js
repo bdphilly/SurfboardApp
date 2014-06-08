@@ -93,6 +93,7 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
 
     $( "#show-end-date" ).datepicker({ changeMonth: true,
       changeYear: true,
+      startDate: "today",
       dateFormat:'dd/mm/yy',
       showButtonPanel: true,
       autoclose: true,   

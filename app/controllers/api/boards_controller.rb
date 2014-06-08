@@ -6,7 +6,6 @@ class Api::BoardsController < ApplicationController
 		]
 
 	def index
-		# @boards = Board.search(params)
 		@boards = Board.search(params)
 	end
 
@@ -79,6 +78,8 @@ class Api::BoardsController < ApplicationController
 			:price,
 			:type,
 			:board_type,
+			:start_date,
+			:end_date,
 			:images_attributes => [:attachment]
 		)
 	end

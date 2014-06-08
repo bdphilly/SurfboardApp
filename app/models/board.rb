@@ -58,6 +58,7 @@ class Board < ActiveRecord::Base
     boards = Board.find_by_type(params) if params[:board_type]
     boards = boards.find_by_price(params) if params["max_price"]
     boards = boards.find_by_location(params) if params["sw-lat"]
+    # boards = boards.find_by_availability(params) if params["start_date"]
 
     boards
   end
@@ -87,37 +88,13 @@ class Board < ActiveRecord::Base
       })
   end
 
-  #   def overlapping_rentals
-  #   conditions = <<-SQL
-  #     (
-  #       (board_id = :board_id)
-  #       AND (
-  #         (
-  #           (start_date BETWEEN :start_date AND :end_date)
-  #           OR (end_date BETWEEN :start_date AND :end_date)
-  #         ) OR (
-  #           (:start_date BETWEEN start_date AND end_date)
-  #           OR (:end_date BETWEEN start_date AND end_date)
-  #         )
-  #       )
-  #     )
-  #   SQL
-
-  #   overlapping_rentals = BoardRental.where(conditions, {
-  #     board_id: self.board_id,
-  #     start_date: self.start_date,
-  #     end_date: self.end_date
-  #   })
-
-  #   if self.id.nil?
-  #     overlapping_rentals
-  #   else
-  #     overlapping_rentals.where("id != ?", self.id)
-  #   end
-  # end
-
-  def self.find_by_availability
-    #check dates for availability
+  def self.find_by_availability(params)
+    self.where(BoardRental.new({
+      start_date: params["start_date"],
+      end_date: params["end_date"],
+      board_id: self.id, ##THIS DOESN'T WORK!
+      status: 'Pending'
+      }).valid?)
   end
 
   def address_to_string

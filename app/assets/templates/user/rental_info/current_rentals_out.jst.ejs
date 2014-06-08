@@ -20,7 +20,11 @@
 				  <div class="row">
 					  <div class="col-md-3">
 							<a href="users/<%= rental.escape('renter_id') %>">
-								<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail" alt="test"> 
+								<% if (rental.get('renter_avatar')) { %>
+									<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail" alt="test"> 
+								<% } else { %>
+									PLACEHOLDER
+								<% } %>
 							</a>
 						</div>
 				    <div class="col-md-3">

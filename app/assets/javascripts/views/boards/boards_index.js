@@ -82,6 +82,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
         that.fetchResults(attrs);
       });
     } else {
+      attrs = $.extend(attrs, SurfboardApp.Models.map.attributes.constraints);
       that.fetchResults(attrs);
     }
   },
