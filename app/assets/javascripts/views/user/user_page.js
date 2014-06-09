@@ -22,7 +22,7 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
         window.location = '#boards';
       }    
     });
-    
+
     var renderedContent = this.template({
       user: this.model
     });
@@ -57,7 +57,10 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
     this.model.rentals().getOrFetch(rentalId).approve(function () {
       // that.remove();
       // that.render();
+      console.log('happy days');
+      that.render();
       that.model.rentals().trigger('change');
+      that.model.trigger('change');
     });
 
   },
@@ -70,6 +73,7 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
     var that = this;
     this.model.rentals().getOrFetch(rentalId).deny(function () {
       that.model.rentals().trigger('change');
+      that.model.trigger('change');
     });
 
   },

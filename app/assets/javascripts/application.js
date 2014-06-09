@@ -18,3 +18,4 @@
 //= require backbone
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require spin

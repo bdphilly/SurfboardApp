@@ -477,17 +477,19 @@ display: inline-block;
 .nav-tabs.info-tabs > li > a {
 /*  -webkit-border-radius: 0;
   -moz-border-radius: 0;*/
-  /*border-radius: 0px;*/
-  border-radius: 4px, 4px, 0px, 0px;
+  border-radius: 0px;
+  /*border-radius: 4px, 4px, 0px, 0px;*/
 }
 
 .nav-tabs >li.active {
-  border-radius: 4px, 4px, 0px, 0px;
+  /*border-radius: 4px, 4px, 0px, 0px;*/
+  border-radius: 0px;
 }
 
 .tab-tab {
-  border-radius: 4px, 4px, 0px, 0px;
+  /*border-radius: 4px, 4px, 0px, 0px;*/
   background-color: #EDEDED;
+  border-radius: 0px;
 }
 
 .logo {
@@ -545,19 +547,18 @@ display: inline-block;
 }
 
 .acceptance-buttons {
-  text-align: right;
-  margin-top: 20px;
+  /*text-align: right;*/
+  margin-top: 40px;
+  
   /*margin-left: 50px;*/
   /*float: right;*/
 }
 
 .user-accept-button {
-  margin-left: 40px;
-  margin-left: 40px;
+
 }
 
 .user-reject-button {
-  margin-left: 40px;
   margin-left: 40px;
 }
 
@@ -566,17 +567,13 @@ display: inline-block;
   right: 50px;
 }
 
-.status-heading {
-  text-align: right;
-}
-
 .rented-panel {
   margin-bottom: 20px;
 }
 
 .accepted-font {
-  float: right;
-  margin-right: 200px;
+  /*float: right;
+  margin-right: 200px;*/
 }
 
 .rejected-font {
@@ -770,4 +767,12 @@ height: 60px;
 .footer-header {
   color: white;
   padding-left: 40px;
+}
+
+#spinner {
+  height: 800px;
+}
+
+.spinner {
+  color: #23FF90;
 }

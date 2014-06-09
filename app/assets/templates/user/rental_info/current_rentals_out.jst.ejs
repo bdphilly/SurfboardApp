@@ -1,57 +1,59 @@
 <div class="tab-pane fade in active" id="current_rentals_out">
 	<% if (user.rentedOutBoards().first()) { %>
-		<% user.rentedOutBoards().first().rentals().each(function (rental) { %>
-
-			<div class="panel panel-default rented-panel">
-			  <div class="panel-heading">		  	
-			  	<div class="row">
-						<div class="col-md-3">
-				  		Rented to: <%= rental.escape('renter_fname') + " " + rental.escape('renter_lname') %>
-						</div>
-						<div class="col-md-3">
-					  	Details
-						</div>
-						<div class="col-md-4 status-heading">
-					  	Status
-						</div>
-					</div>
-			  </div>
-			  <div class="panel-body">
-				  <div class="row">
-					  <div class="col-md-3">
-							<a href="users/<%= rental.escape('renter_id') %>">
-								<% if (rental.get('renter_avatar')) { %>
-									<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail" alt="test"> 
-								<% } else { %>
-									PLACEHOLDER
-								<% } %>
-							</a>
-						</div>
-				    <div class="col-md-3">
-					    Start Date: <%= rental.escape('start_date') %> <br>
-							End Date: <%= rental.escape('end_date') %> <br>
-
-							<% var ppd = user.boards().first().escape('price') %>
-							Price per Day: $<%= ppd %>
-							<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %><br>
-							Total Price: $<%= totalDays * ppd %>
-						</div>
-				
-						<% if (rental.escape('status') === "Pending") { %> 
-							<span class="accepted-font">Pending!</span>
-							<div class="col-md-4 acceptance-buttons">
-								<button class="btn btn-primary user-accept-button" data-id="<%= rental.get('id') %>">Accept</button>
-								<button class="btn btn-danger reject-button user-reject-button" data-id="<%= rental.get('id') %>">Reject</button>
+		<% user.rentedOutBoards().each(function (board) { %> 
+			<% board.rentals().each(function (rental) { %>
+				<div class="panel panel-default rented-panel">
+				  <div class="panel-heading">		  	
+				  	<div class="row">
+							<div class="col-md-3">
+					  		Rented to: <%= rental.escape('renter_fname') + " " + rental.escape('renter_lname') %>
 							</div>
-						<% } else if (rental.escape('status') === "Approved") { %>
-							<span class="accepted-font">Accepted!</span>
-							<% } else { %>
-							<span class="rejected-font">Rejected!</span>
-						<% } %>
+							<div class="col-md-6">
+						  	Details
+							</div>
+							<div class="col-md-3">
+						  	Status
+							</div>
+						</div>
 				  </div>
-				</div>
-			</div>
+				  <div class="panel-body">
+					  <div class="row">
+						  <div class="col-md-3">
+								<a href="users/<%= rental.escape('renter_id') %>">
+									<% if (rental.get('renter_avatar')) { %>
+										<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail" alt="test"> 
+									<% } else { %>
+										PLACEHOLDER
+									<% } %>
+								</a>
+							</div>
+					    <div class="col-md-6">
+						    Start Date: <%= rental.escape('start_date') %> <br>
+								End Date: <%= rental.escape('end_date') %> <br>
 
+								<% var ppd = user.boards().first().escape('price') %>
+								Price per Day: $<%= ppd %>
+								<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %><br>
+								Total Price: $<%= totalDays * ppd %>
+							</div>
+					
+							<div class="col-md-3">
+								<% if (rental.escape('status') === "Pending") { %> 
+									<span class="accepted-font">Pending!</span>
+									<div class="acceptance-buttons">
+										<button class="btn btn-primary user-accept-button" data-id="<%= rental.get('id') %>">Accept</button>
+										<button class="btn btn-danger user-reject-button" data-id="<%= rental.get('id') %>">Reject</button>
+									</div>
+								<% } else if (rental.escape('status') === "Approved") { %>
+									<span class="accepted-font">Accepted!</span>
+									<% } else { %>
+									<span class="rejected-font">Rejected!</span>
+								<% } %>
+							</div>
+					  </div>
+					</div>
+				</div>
+			<% }) %>
 		<% }) %>
 	<% } else { %>
 		<div class="alternative-spacing">
