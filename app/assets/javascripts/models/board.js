@@ -48,4 +48,17 @@ SurfboardApp.Models.Board = Backbone.Model.extend({
     return resp;
   },
 
+  validate: function (attrs) {
+    var errors = [];
+
+    if (!attrs.brand) {
+        errors.push({name: 'brand', message: 'Please fill brand field.'});
+    }
+    if (!attrs.model) {
+        errors.push({name: 'model', message: 'Please fill model field.'});
+    }
+
+    return errors.length > 0 ? errors : false;
+	},
+
 });

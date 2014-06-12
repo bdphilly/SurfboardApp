@@ -56,11 +56,16 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
         alert('success!');           
         window.location.assign("");
       },
-      error: function (response) {
+      error: function (model, errors) {
         alert('error!');
-        console.log(response);
+        console.log(errors);
       }
     });
+    if (this.model.validationError) {
+      debugger
+      console.log('error!');
+      // validate error(s) accessible in model.validationError
+    }
   },
   
 });
