@@ -27,8 +27,12 @@
 				    <%= board.escape('city') %>
 				    <br>
 				    <br>
-				    Price per day:$ <%= board.escape('price') %> 
+				    
 				  </col>
+				  <div class="price-per-day" align="right">
+						$ <%= board.escape('price') %> 
+						<span style="font-size: 18px">/ day</span>
+					</div>
 			  </div>
 		  </div>
 		</div>

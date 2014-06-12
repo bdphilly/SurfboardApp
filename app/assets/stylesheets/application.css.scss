@@ -198,7 +198,7 @@ h2 {
 }
 
 .cal2 {
-  max-width: 430px;
+  max-width: 457px;
   margin: 30px auto;
   /*font-family: 'Droid Sans Mono';*/
   font-size: 14px;
@@ -208,13 +208,14 @@ h2 {
   display: inline-block;
   width: 100%;
   position: relative;
-  margin-bottom: 10px;
+  background-color: #0AC2FF;
 }
 .cal2 .clndr .clndr-controls .clndr-previous-button {
   float: left;
   width: 25%;
   text-align: left;
   cursor: pointer;
+  font-size: 22px;
   -webkit-user-select: none;
   /* Chrome/Safari */
   -moz-user-select: none;
@@ -223,18 +224,21 @@ h2 {
   /* IE10+ */
 }
 .cal2 .clndr .clndr-controls .clndr-previous-button:hover {
-  background-color: #f4f4f4;
+  background-color: #9E9E9E;
+  height: 31px;
 }
 .cal2 .clndr .clndr-controls .month {
   float: left;
   width: 50%;
   text-align: center;
+  font-size: 22px;
 }
 .cal2 .clndr .clndr-controls .clndr-next-button {
   float: left;
   width: 25%;
   text-align: right;
   cursor: pointer;
+  font-size: 22px;
   -webkit-user-select: none;
   /* Chrome/Safari */
   -moz-user-select: none;
@@ -243,28 +247,33 @@ h2 {
   /* IE10+ */
 }
 .cal2 .clndr .clndr-controls .clndr-next-button:hover {
-  background-color: #f4f4f4;
+  background-color: #9E9E9E;
+  height: 31px;
 }
 .cal2 .clndr .clndr-grid {
   text-align: center;
-  border: 1px solid #FF4545;
+  border: 1px solid white;
   display: inline-block;
 }
 .cal2 .clndr .clndr-grid .header-day {
   float: left;
-  width: 60px;
-  height: 60px;
-  background: #FF4545;
+  width: 65px;
+  height: 65px;
+  background: #4D4FFF;
   color: #fff;
+  font-size: 18px;
+  padding-top: 15px;
+  border-bottom: medium white solid;
 }
 .cal2 .clndr .clndr-grid .day {
   float: left;
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
+  border: thin white solid;
 }
 
 .day:hover {
-  background-color:yellow;
+  background-color: #F4FF8C;
 }
 
 /*.cal2 .clndr .clndr-grid .day.event.pending {
@@ -281,7 +290,7 @@ h2 {
 /*user marks as available */
 .available {
   font-size: 12px;
-  background-color: #30ad9e;
+  background-color: #00FFA6;
 }
 
 .pending {
@@ -291,7 +300,7 @@ h2 {
 
 .unavailable {
   font-size: 12px;
-  background-color: #e14141;
+  background-color: #FF29AD;
 }
 
 .approved {
@@ -309,13 +318,13 @@ h2 {
 }*/
 
 .cal2 .clndr .clndr-grid .day.today {
-  background-color: #E3C57F;
+  background-color: #1BE4F2;
 }
 .cal2 .clndr .clndr-grid .empty,
 .cal2 .clndr .clndr-grid .adjacent-month {
   float: left;
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   background: #ddd;
 }
 .cal2 .clndr .clndr-today-button {
@@ -659,7 +668,7 @@ div.ui-slider .ui-slider-handle {
   padding: 10px;
   background-color: white;
   width: 650px;
-  height: 500px;
+  min-height: 300px;
 }
 
 .user-tabs {
@@ -775,4 +784,9 @@ height: 60px;
 
 .spinner {
   color: #23FF90;
+}
+
+.price-per-day {
+  font-size: 36px;
+  font-family: 'Quicksand';
 }

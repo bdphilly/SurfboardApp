@@ -18,16 +18,10 @@
         <% if (day.classes.indexOf('past') === -1) { %>
           <% if (!(_.contains(day.classes, 'past'))) { %>
             <% if (day.events[0]) { %> 
-              <% if (day.events[0].status === "Denied") { %>
-                denied
-              <% } else if (day.events[0].status === "Unavailable") { %>
-                denied
-              <% } else if (day.events[0].status === "Pending") { %>
-                pending
-              <% } else if (day.events[0].status === "Approved") { %>  
-                approved
-              <% } else { %>
+              <% if (day.events[0].status === "Rented") { %>
                 unavailable
+              <% } else { %>
+                available
               <% } %>
             <% } else { %>         
               available
@@ -38,11 +32,13 @@
           <%= day.day %><br>
           <% if (day.classes.indexOf('past') === -1) { %>      
             <% if (day.events[0]) { %>
-              <%= day.events[0].status %>
+              
+              <% if (day.events[0].status === "Rented") { %>
+                Rented
+              <% } else { %>
+                Available
+                <% } %>
             <% } else { %>
-              <% if (day.events[0]) { %>
-                $<%= day.events[0].price %><br>
-              <% } %>
               Available
             <% } %>
           <% } %>  
@@ -51,7 +47,4 @@
     </div>
   </div>
 </div>
-
-
-<br><br><br>
-<div class="clndr-today-button">Today</div>
+<!-- <div class="clndr-today-button">Today</div> -->
