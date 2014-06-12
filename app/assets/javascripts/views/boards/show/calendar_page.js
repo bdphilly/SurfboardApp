@@ -69,18 +69,20 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
         click: function(target) { 
           
           console.log(target);
-          
-          if (target.events[0]) {
-            
-            if (target.events[0].status === "Approved") {
-              that.displayAlreadyRentedModal();
-            } else {
-              that.addModal(target);  
-            }
-          } else {
-            that.generateNewRentalModal(target);
-          }
 
+          if (target.date <  moment()) {
+            that.displayAlreadyRentedModal();
+          } else {
+            if (target.events[0]) {
+              if (target.events[0].status === "Rented") {
+                that.displayAlreadyRentedModal();
+              } else {
+                that.generateNewRentalModal(target.date.format());
+              }
+            } else {
+              that.generateNewRentalModal(target.date.format());
+            }
+          }
         },
       },
     });    
@@ -95,25 +97,38 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
     $('#myModal').modal('show')
   },
 
-  generateNewRentalModal: function (target) {
+  generateNewRentalModal: function (startDate) {
+    //Can't figure out why pulling in this startDate doesn't
+    //work when I pass it into the datepicker ??
     var newRental = new SurfboardApp.Models.Rental();
-    var modalView = new SurfboardApp.Views.NewRenterModal({
+    var modalView = new SurfboardApp.Views.ShowRenterModal({
       model: newRental,
-      board: this.model,
-      date: target.date
+      board: this.model
     });
     $('body').append(modalView.render().$el);
-    $('#new-renter-modal').modal('show')
-    
-      
-    setTimeout(function () {
-      $('#datepicker2').datepicker({
-        startDate: "today",
-        autoclose: true,
-        todayHighlight: true
-      });
-    }, 200);
+    $('#new-renter-modal').modal('show');      
+    $("#show-start-date").datepicker({ 
+      changeMonth: true,
+      changeYear: true,
+      startDate: 'today',
+      dateFormat:'dd/mm/yy',
+      showButtonPanel: true,
+      autoclose: true,
 
+      onSelect: function (dateStr) {
+        $('#endDate').datepicker('option', 'defaultDate', dateStr);
+        $('#endDate').datepicker('option', 'minDate', dateStr);
+      },
+
+    });
+
+    $( "#show-end-date" ).datepicker({ changeMonth: true,
+      changeYear: true,
+      startDate: 'today',
+      dateFormat:'dd/mm/yy',
+      showButtonPanel: true,
+      autoclose: true,   
+    });
   },
 
   displayAlreadyRentedModal: function () {
