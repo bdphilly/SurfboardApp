@@ -5,7 +5,7 @@
       <h1 align=center>List your board!</h1><br>
       <div class="col-md-6">
         <div class="form-group">
-          <label class="control-label"  for="brand">Brand</label>
+          <label class="control-label" for="brand">Brand</label>
           <input type="text" class="form-control" name="board[brand]" id="brand" placeholder="Brand">
         </div>
         <div class="form-group">
@@ -20,13 +20,14 @@
           <label class="control-label" for="width">Width</label>
           <input type="text" class="form-control" name="board[width]" id="width" placeholder="Width">
         </div>
-        <label>Condition</label>
+        
         <div class="form-group">
+          <label class="radio control-label">Condition</label>
           <label for="condition_new">New</label>
           <input type="radio" name="board[condition]" id="condition_new" value="new">  
           <label for="condition_good">Good</label>
           <input type="radio" name="board[condition]" id="condition_good" value="good">  
-          <br>
+          
           <label for="condition_new">Fair</label>
           <input type="radio" name="board[condition]" id="condition_fair" value="fair">  
           <label for="condition_good">Poor</label>
@@ -68,9 +69,8 @@
         </div>
       </col>
 
-      <label>Board Type:</label>
+      <label>Board Type</label>
       <div class="form-group">
-        <label for="type_shortboard">Shortboard</label>
         <label for="type_shortboard">Shortboard</label>
         <input type="radio" name="board[board_type]" id="type_shortboard" value="Shortboard">  
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 

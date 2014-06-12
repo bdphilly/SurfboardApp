@@ -82,13 +82,39 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
 
   handleValidations: function (errors) {
     $("#error").html("");
-    errors.forEach(function (error) {
-      var id = "#" + error.name;
-      debugger
+    var messages = [];
 
-        $(id).parent().addClass('has-error');
+    var formFields = ['brand', 'model', 'length', 'width', 'condition', 'description'];
+
+    formFields.forEach(function(field) {
+      var id = "#" + field;
+        $(id).parent().find('span').remove();
+        $(id).parent().removeClass('has-error');
+        $(id).parent().addClass('has-success');
+        $(id).parent().addClass('has-feedback');
+        $(id).parent().append('<span class="glyphicon glyphicon-ok form-control-feedback"></span>');
 
     });
+
+    errors.forEach(function (error) {
+      var id = "#" + error.name;
+      // debugger
+        $(id).parent().find('span').remove();
+        $(id).parent().addClass('has-error');
+        $(id).parent().addClass('has-feedback');
+        $(id).parent().append('<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>');
+
+        messages.push(error.message)
+
+    });
+
+    messages.forEach(function (message) {
+
+      $("<div></div>").addClass("alert").addClass("alert-danger")
+        .html(message).appendTo($("#error"));
+
+    });
+
   },
   
 });
