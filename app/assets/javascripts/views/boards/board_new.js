@@ -21,6 +21,17 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
 
     this.$el.html(renderedContent);
 
+    // $("#model").on('blur', function(event){
+    //   if ($('#model').val() !== "") {
+    //     $('#model').parent().removeClass('has-error');
+    //     $('#model').parent().addClass('has-success');
+    //   } else {
+    //     $('#model').parent().removeClass('has-success');
+    //     $('#model').parent().addClass('has-error');
+    //   }
+    // });    
+
+
     // this.attachSubviews();
     return this;
   },
@@ -46,11 +57,11 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
 
   submit: function (event) {
     event.preventDefault();
-    debugger
+    // debugger
     var attrs = $(event.currentTarget).serializeJSON();
     this.model.set(attrs.board);
     SurfboardApp.Collections.boards.add(this.model);
-    debugger
+    // debugger
     this.model.save({}, {
       success: function () {
         alert('success!');           
@@ -63,9 +74,21 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
     });
     if (this.model.validationError) {
       debugger
-      console.log('error!');
+      console.log(this.model.validationError);
+      this.handleValidations(this.model.validationError)
       // validate error(s) accessible in model.validationError
     }
+  },
+
+  handleValidations: function (errors) {
+    $("#error").html("");
+    errors.forEach(function (error) {
+      var id = "#" + error.name;
+      debugger
+
+        $(id).parent().addClass('has-error');
+
+    });
   },
   
 });

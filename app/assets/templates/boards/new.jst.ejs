@@ -1,24 +1,26 @@
 <div class="new-listing-container">
+  <div id="error"></div>
   <form class="new-listing col-md-12" enctype="multipart/form-data" id="new-board-form">
     <div class="row">
       <h1 align=center>List your board!</h1><br>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="brand">Brand</label>
+          <label class="control-label"  for="brand">Brand</label>
           <input type="text" class="form-control" name="board[brand]" id="brand" placeholder="Brand">
         </div>
         <div class="form-group">
-          <label for="model">Model</label>
+          <label class="control-label" for="model">Model</label>
           <input type="text" class="form-control" name="board[model]" id="model" placeholder="Model">
         </div>
           <div class="form-group">
-          <label for="length">Length</label>
+          <label class="control-label" for="length">Length</label>
           <input type="text" class="form-control" name="board[length]" id="length" placeholder="Length">
         </div>
         <div class="form-group">
-          <label for="width">Width</label>
+          <label class="control-label" for="width">Width</label>
           <input type="text" class="form-control" name="board[width]" id="width" placeholder="Width">
         </div>
+        <label>Condition</label>
         <div class="form-group">
           <label for="condition_new">New</label>
           <input type="radio" name="board[condition]" id="condition_new" value="new">  
@@ -34,39 +36,41 @@
 
 
         <div class="form-group">
-          <label for="description">Description</label>
+          <label class="control-label" for="description">Description</label>
           <textarea rows="4" class="form-control" name="board[description]" id="description" placeholder="Description"></textarea>
         </div>
         <div class="form-group">
-        <label for="price">Price per day</label>
+        <label class="control-label" for="price">Price per day</label>
         <input type="price" rows="4" class="form-control" name="board[price]" id="price" placeholder="Price">
       </div>
       </div>
       <div class="col-md-1"></div>
       <div class="col-md-5">
         <div class="form-group">
-          <label for="address">Address</label>
+          <label class="control-label" for="address">Address</label>
           <input type="textarea" class="form-control" name="board[address]" id="address" placeholder="Address">
         </div>
         <div class="form-group">
-          <label for="city">City</label>
+          <label class="control-label" for="city">City</label>
           <input type="textarea" class="form-control" name="board[city]" id="city" placeholder="City">
         </div>
         <div class="form-group">
-          <label for="state">State</label>
+          <label class="control-label" for="state">State</label>
           <input type="textarea" class="form-control" name="board[state]" id="state" placeholder="State">
         </div>
         <div class="form-group">
-          <label for="zipcode">Zipcode</label>
+          <label class="control-label" for="zipcode">Zipcode</label>
           <input type="textarea" class="form-control" name="board[zipcode]" id="zipcode" placeholder="Zipcode">
         </div>
         <div class="form-group">
-          <label for="country">Country</label>
+          <label class="control-label" for="country">Country</label>
           <input type="textarea" class="form-control" name="board[country]" id="country" placeholder="Country">
         </div>
       </col>
 
+      <label>Board Type:</label>
       <div class="form-group">
+        <label for="type_shortboard">Shortboard</label>
         <label for="type_shortboard">Shortboard</label>
         <input type="radio" name="board[board_type]" id="type_shortboard" value="Shortboard">  
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -76,7 +80,7 @@
       </div>
 
       <div class="form-group">
-        <label for="photo">Photo</label>
+        <label class="control-label" for="photo">Photo</label>
         <input type="file" name="image" id="photo">
         <p class="help-block">At least one photo of your board is required!</p>
       </div>
@@ -84,3 +88,4 @@
     </div>
   </form>
 </div>
+</script>

@@ -57,61 +57,35 @@ SurfboardApp.Models.Board = Backbone.Model.extend({
     if (!attrs.model) {
         errors.push({name: 'model', message: 'Your board has a model name, right?!'});
     }
-    if (!attrs.model) {
+    if (!attrs.length) {
         errors.push({name: 'length', message: 'Renters want to know how long it is!'});
     }
-    if (!attrs.model) {
+    if (!attrs.width) {
         errors.push({name: 'width', message: 'Narrow? Wide? Renters want to know this!'});
     }
-    if (!attrs.model) {
+    if (!attrs.description) {
         errors.push({name: 'description', message: "It's your baby...share a dang description!"});
     }
-    if (!attrs.model) {
+    if (!attrs.address) {
         errors.push({name: 'address', message: 'Where is someone going to pick it up?'});
     }
-    if (!attrs.model) {
+    if (!attrs.city) {
         errors.push({name: 'city', message: 'People want to search for a board in YOUR city! What is it?'});
     }
-    if (!attrs.model) {
+    if (!attrs.state) {
         errors.push({name: 'state', message: 'We only have a 1 in 50 chance of guessing your state. You know it!'});
     }
-    if (!attrs.model) {
+    if (!attrs.zipcode) {
         errors.push({name: 'zipcode', message: 'Zip to the code. Please.'});
     }
-    if (!attrs.model) {
+    if (!attrs.price) {
         errors.push({name: 'price', message: 'How much moola do you want to get for your board?!'});
     }
-    if (!attrs.model) {
+    if (!attrs.type) {
         errors.push({name: 'type', message: 'Shortboard? Longboard? Pick one!'});
     }
     
     return errors.length > 0 ? errors : false;
 	},
-
-
-#  id                 :integer          not null, primary key
-#  brand              :string(255)
-#  model              :string(255)
-#  length             :string(255)
-#  width              :string(255)
-#  thickness          :integer
-#  description        :text
-#  condition          :string(255)
-#  owner_id           :integer          not null
-#  created_at         :datetime
-#  updated_at         :datetime
-#  photo_file_name    :string(255)
-#  photo_content_type :string(255)
-#  photo_file_size    :integer
-#  photo_updated_at   :datetime
-#  address            :string(255)
-#  city               :string(255)
-#  state              :string(255)
-#  zipcode            :string(255)
-#  country            :string(255)
-#  latitude           :float
-#  longitude          :float
-#  price              :integer
-#  board_type         :string(255)
 
 });
