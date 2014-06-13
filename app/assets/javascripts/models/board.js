@@ -63,6 +63,9 @@ SurfboardApp.Models.Board = Backbone.Model.extend({
     if (!attrs.width) {
         errors.push({name: 'width', message: 'Narrow? Wide? Renters want to know this!'});
     }
+    if (!attrs.condition) {
+        errors.push({name: 'condition', message: 'So...what kind of shape is your board in?'});
+    }
     if (!attrs.description) {
         errors.push({name: 'description', message: "It's your baby...share a dang description!"});
     }
@@ -81,8 +84,8 @@ SurfboardApp.Models.Board = Backbone.Model.extend({
     if (!attrs.price) {
         errors.push({name: 'price', message: 'How much moola do you want to get for your board?!'});
     }
-    if (!attrs.type) {
-        errors.push({name: 'type', message: 'Shortboard? Longboard? Pick one!'});
+    if (!attrs.board_type) {
+        errors.push({name: 'board_type', message: 'Shortboard? Longboard? Pick one!'});
     }
     
     return errors.length > 0 ? errors : false;

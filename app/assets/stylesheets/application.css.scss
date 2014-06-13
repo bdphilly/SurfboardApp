@@ -790,3 +790,24 @@ height: 60px;
   font-size: 36px;
   font-family: 'Quicksand';
 }
+
+.has-error input[type="radio"] {
+  outline: 1px solid red;
+}
+
+.has-error .form-control {
+  border-color: #FF26BE;
+}
+
+.has-success .form-control {
+  border-color: #47FF54;
+}
+
+.has-success .control-label {
+  color: black;
+}
+
+.has-error .control-label {
+  color: black;
+}
+

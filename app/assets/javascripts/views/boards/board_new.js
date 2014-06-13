@@ -84,7 +84,8 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
     $("#error").html("");
     var messages = [];
 
-    var formFields = ['brand', 'model', 'length', 'width', 'condition', 'description'];
+    var formFields = ['brand', 'model', 'length', 'width', 'condition', 'description',
+      'price', 'address', 'city', 'state', 'zipcode', 'board_type'];
 
     formFields.forEach(function(field) {
       var id = "#" + field;
@@ -96,24 +97,26 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
 
     });
 
+    $('label[for=condition]').find('span').remove();
+    $('label[for=board_type]').find('span').remove();    
+
     errors.forEach(function (error) {
       var id = "#" + error.name;
       // debugger
         $(id).parent().find('span').remove();
+        $(id).parent().removeClass('has-success');
         $(id).parent().addClass('has-error');
         $(id).parent().addClass('has-feedback');
         $(id).parent().append('<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>');
 
         messages.push(error.message)
 
-    });
-
-    messages.forEach(function (message) {
-
-      $("<div></div>").addClass("alert").addClass("alert-danger")
-        .html(message).appendTo($("#error"));
+        $('label[for=' + error.name + ']').append("<span style='color: #FF26BE'>  -  " + error.message + "</span>");
 
     });
+
+    $("<div></div>").addClass("alert").addClass("alert-danger")
+        .html("Brah...you forgot to fill out some information!").appendTo($("#error"));
 
   },
   
