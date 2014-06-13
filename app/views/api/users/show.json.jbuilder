@@ -14,8 +14,8 @@ json.rentals current_user.rentals do |rental|
 	json.partial!("rental", :rental => rental)
 end
 
-json.customers current_user.customer_rentals do |rental|	
-	json.partial!("customer", :rental => rental)
+json.customer_rentals current_user.customer_rentals do |rental|	
+	json.partial!("customer_rentals", :rental => rental)
 end	
 
 json.rented_out_boards current_user.rented_out_boards.uniq do |board|

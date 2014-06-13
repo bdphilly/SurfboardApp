@@ -1,60 +1,58 @@
 <div class="tab-pane fade in active" id="current_rentals_out">
 	<br>
-	<% if (user.rentedOutBoards().first()) { %>
-		<% user.rentedOutBoards().each(function (board) { %> 
-			<% board.rentals().each(function (rental) { %>
-				<div class="panel panel-default rented-panel">
-				  <div class="panel-heading">		  	
-				  	<div class="row">
-							<div class="col-md-3">
-					  		Rented to: <%= rental.escape('renter_fname') + " " + rental.escape('renter_lname') %>
-							</div>
-							<div class="col-md-6">
-						  	Details
-							</div>
-							<div class="col-md-3">
-						  	Status
-							</div>
+	<% if (user.customerRentals().first()) { %>
+		<% user.customerRentals().each(function (rental) { %> 
+			<div class="panel panel-default rented-panel">
+			  <div class="panel-heading">		  	
+			  	<div class="row">
+						<div class="col-md-3">
+				  		Rented to: <%= rental.get('customer').fname + " " + rental.get('customer').lname %>
+						</div>
+						<div class="col-md-6">
+					  	Details
+						</div>
+						<div class="col-md-3">
+					  	Status
+						</div>
+					</div>
+			  </div>
+			  <div class="panel-body">
+				  <div class="row">
+					  <div class="col-md-3">
+							<a href="users/<%= rental.escape('renter_id') %>">
+								<% if (rental.get('customer_avatar')) { %>
+									<img src="<%= rental.get('customer_avatar').small_attachment %>" class="img-thumbnail img-responsive" alt="avatar"> 
+								<% } else { %>
+									<img src="https://s3-us-west-1.amazonaws.com/brahboards/avatar-placeholder_100x100.png" class="img-thumbnail img-responsive" alt="No Photo Present">
+								<% } %>
+							</a>
+						</div>
+				    <div class="col-md-6">
+					    Start Date: <%= rental.escape('start_date') %> <br>
+							End Date: <%= rental.escape('end_date') %> <br>
+
+							<% var ppd = rental.get('board').price %>
+							Price per Day: $ <%= ppd %>
+							<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %><br>
+							Total Price: $ <%= totalDays * ppd %>
+						</div>
+				
+						<div class="col-md-3">
+							<% if (rental.escape('status') === "Pending") { %> 
+								<span class="accepted-font">Pending!</span>
+								<div class="acceptance-buttons">
+									<button class="btn btn-primary user-accept-button" data-id="<%= rental.get('id') %>">Accept</button>
+									<button class="btn btn-danger user-reject-button" data-id="<%= rental.get('id') %>">Reject</button>
+								</div>
+							<% } else if (rental.escape('status') === "Approved") { %>
+								<span class="accepted-font">Accepted!</span>
+								<% } else { %>
+								<span class="rejected-font">Rejected!</span>
+							<% } %>
 						</div>
 				  </div>
-				  <div class="panel-body">
-					  <div class="row">
-						  <div class="col-md-3">
-								<a href="users/<%= rental.escape('renter_id') %>">
-									<% if (rental.get('renter_avatar')) { %>
-										<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail img-responsive" alt="avatar"> 
-									<% } else { %>
-										<img src="https://s3-us-west-1.amazonaws.com/brahboards/avatar-placeholder_100x100.png" class="img-thumbnail img-responsive" alt="No Photo Present">
-									<% } %>
-								</a>
-							</div>
-					    <div class="col-md-6">
-						    Start Date: <%= rental.escape('start_date') %> <br>
-								End Date: <%= rental.escape('end_date') %> <br>
-
-								<% var ppd = user.boards().first().escape('price') %>
-								Price per Day: $<%= ppd %>
-								<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %><br>
-								Total Price: $<%= totalDays * ppd %>
-							</div>
-					
-							<div class="col-md-3">
-								<% if (rental.escape('status') === "Pending") { %> 
-									<span class="accepted-font">Pending!</span>
-									<div class="acceptance-buttons">
-										<button class="btn btn-primary user-accept-button" data-id="<%= rental.get('id') %>">Accept</button>
-										<button class="btn btn-danger user-reject-button" data-id="<%= rental.get('id') %>">Reject</button>
-									</div>
-								<% } else if (rental.escape('status') === "Approved") { %>
-									<span class="accepted-font">Accepted!</span>
-									<% } else { %>
-									<span class="rejected-font">Rejected!</span>
-								<% } %>
-							</div>
-					  </div>
-					</div>
 				</div>
-			<% }) %>
+			</div>
 		<% }) %>
 	<% } else { %>
 		<div class="alternative-spacing">

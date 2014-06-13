@@ -1,48 +1,52 @@
 <div class="tab-pane fade" id="current_rentals_in">
 	<br>
-	<% if (user.rentedInBoards().first()) { %>
-		<% user.rentedInBoards().each(function (board) { %> 
-			<% board.rentals().each(function (rental) { %>
-				<div class="panel panel-default">
-				  <div class="panel-heading">
-				  	<div class="row">
-							<div class="col-md-3">
-					  		Rented from: <%= rental.escape('owner_fname') + " " + rental.escape('owner_lname') %>
-							</div>
-							<div class="col-md-6">
-						  	Details
-							</div>
-							<div class="col-md-3">
-						  	Status
-							</div>
+	<% if (user.rentals().first()) { %>
+		<% user.rentals().each(function (rental) { %> 
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			  	<div class="row">
+						<div class="col-md-3">
+				  		Rented from: <%= rental.get('owner').fname + " " + rental.get('owner').lname %>
+						</div>
+						<div class="col-md-6">
+					  	Details
+						</div>
+						<div class="col-md-3">
+					  	Status
 						</div>
 					</div>
-				  <div class="panel-body">
-					  <div class="row">
-						  <div class="col-md-3">
-								IMAGE HERE
-							</div>
-							<div class="col-md-3">
-						    Start Date: <%= rental.escape('start_date') %> <br>
-								End Date: <%= rental.escape('end_date') %> <br>
-
-								<% var ppd = rental.escape('price') %>
-								Price per Day: $<%= ppd %>
-								<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %><br>
-								Total Price: <%= totalDays * ppd %>
-							</div>
-							<div class="col-md-3">
-							  Brand: <%= board.escape('brand') %><br>
-						    Model: <%= board.escape('model') %> <br>
-								Length: <%= board.escape('length') %> <br>
-							</div>
-							<div class="col-md-3">
-								<%= rental.escape('status') %>
-							</div>
-						</div>
-				  </div>
 				</div>
-			<% }) %>
+			  <div class="panel-body">
+				  <div class="row">
+					  <div class="col-md-3">
+							<a href="users/<%= rental.get('owner').id %>">
+								<% if (rental.get('owner_avatar')) { %>
+									<img src="<%= rental.get('owner_avatar').small_attachment %>" class="img-thumbnail img-responsive" alt="avatar"> 
+								<% } else { %>
+									<img src="https://s3-us-west-1.amazonaws.com/brahboards/avatar-placeholder_100x100.png" class="img-thumbnail img-responsive" alt="No Photo Present">
+								<% } %>
+							</a>
+						</div>
+						<div class="col-md-3">
+					    Start Date: <%= rental.escape('start_date') %> <br>
+							End Date: <%= rental.escape('end_date') %> <br>
+
+							<% var ppd = rental.escape('price') %>
+							Price per Day: $ <%= ppd %>
+							<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %><br>
+							Total Price: $ <%= totalDays * ppd %>
+						</div>
+						<div class="col-md-3">
+						  Brand: <%= rental.escape('board').brand %><br>
+					    Model: <%= rental.escape('board').model %> <br>
+							Length: <%= rental.escape('board').length %> <br>
+						</div>
+						<div class="col-md-3">
+							<%= rental.escape('status') %>
+						</div>
+					</div>
+			  </div>
+			</div>
 		<% }) %>
 	<% } else { %>
 		<div class="alternative-spacing">

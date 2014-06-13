@@ -9,7 +9,7 @@ json.board rental.board
 json.owner rental.board.owner
 
 if rental.board.owner.avatar
-	json.avatar rental.board.owner.avatar, :id, :attachment, 
+	json.owner_avatar rental.board.owner.avatar, :id, :attachment, 
 			:small_attachment, :medium_attachment, :large_attachment,
 			:imageable_id, :imageable_type
 end
