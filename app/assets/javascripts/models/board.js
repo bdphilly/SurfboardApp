@@ -73,9 +73,9 @@ SurfboardApp.Models.Board = Backbone.Model.extend({
     if (!attrs.description) {
         errors.push({name: 'description', message: "It's your baby...share a dang description!"});
     }
-    // if (!attrs.address) {
-    //     errors.push({name: 'address', message: 'Where is someone going to pick it up?'});
-    // }
+    if (!attrs.address) {
+        errors.push({name: 'address', message: 'Where is someone going to pick it up?'});
+    }
     if (!attrs.city) {
         errors.push({name: 'city', message: 'People want to search for a board in YOUR city! What is it?'});
     }
