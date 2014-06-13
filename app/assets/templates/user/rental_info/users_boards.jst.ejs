@@ -1,34 +1,40 @@
 <div class="tab-pane fade" id="users_boards">
-	<% if (user.rentedOutBoards().first()) { %>
+  <% if (user.boards().first()) { %>
 
-		Your Boards:
+    <h1>Your Boards:</h1>
+    <div class="row">
+    <% user.boards().each(function(board) { %>
+      
+      
+        <div class="col-md-4">
+          <div class="thumbnail your-boards">
 
-		<% if (user.boards().first()) { %>
-				
-			<% if (user.boards().first().photos().first()) { %>
+            <% if (board.photos().first()) { %>
+              <img src="<%= board.photos().first().escape('large') %>" alt="">
+            <% } else { %>
+              <img src="https://s3-us-west-1.amazonaws.com/brahboards/board_placeholder_640x480.png" alt="No Photo Present">
+            <% } %>
 
-				<div class="row">
-				  <div class="col-sm-6 col-md-4">
-				    <div class="thumbnail your-boards">
-				      <img src="<%= user.boards().first().photos().first().escape('large') %>" alt="">
-				      <div class="caption">
-				        <h3>Sick board, brah!</h3>
-				        <p>...</p>
-				        <p class="board-edit"><a href="#board/<%= user.boards().first().escape('id') %>/edit" class="btn btn-primary" role="button">Edit your board!</a></p>
-				      </div>
-				    </div>
-				  </div>
-				</div>					
-			
-			<% } %>
-		<% } %>
+            <div class="caption">
+              <h3>Sick board, brah!</h3>
+              <p>...</p>
 
-	<% } else { %>
-		<div class="alternative-spacing">
-			You currently do not have any boards listed :(
-			<br><br>
-			<a href="#boards/new">List one!</a> 
-		</div>
-	<% } %>
-	
+              <div class="board-view"><a href="#boards/<%= user.boards().first().escape('id') %>" class="btn btn-primary" role="button">View board</a></div>
+
+              <div class="board-edit"><a href="" class="btn btn-primary" role="button">Edit board</a></div>
+            </div>
+          </div>
+        </div>
+      
+
+    <% }) %>
+    </div>
+  <% } else { %>
+    <div class="alternative-spacing">
+      You currently do not have any boards listed :(
+      <br><br>
+      <a href="#boards/new">List one!</a> 
+    </div>
+  <% } %>
+  
 </div>

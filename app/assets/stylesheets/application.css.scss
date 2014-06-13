@@ -274,6 +274,7 @@ h2 {
 
 .day:hover {
   background-color: #F4FF8C;
+  cursor: pointer;
 }
 
 /*.cal2 .clndr .clndr-grid .day.event.pending {
@@ -320,6 +321,11 @@ h2 {
 .cal2 .clndr .clndr-grid .day.today {
   background-color: #1BE4F2;
 }
+
+.cal2 .clndr .clndr-grid .day.today:hover {
+  background-color: #F4FF8C;
+}
+
 .cal2 .clndr .clndr-grid .empty,
 .cal2 .clndr .clndr-grid .adjacent-month {
   float: left;
@@ -327,6 +333,11 @@ h2 {
   height: 65px;
   background: #ddd;
 }
+
+.cal2 .clndr .clndr-grid .adjacent-month:hover {
+  background: #F4FF8C;
+}
+
 .cal2 .clndr .clndr-today-button {
   width: 100%;
   text-align: center;
@@ -602,8 +613,12 @@ display: inline-block;
   background-color: green;
 }
 
-.board-edit {
+.board-edit-button {
   text-align: center;
+}
+
+.board-view-button {
+ text-align: center; 
 }
 
 .slider {

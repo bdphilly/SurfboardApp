@@ -65,7 +65,7 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
     this.model.save({}, {
       success: function () {
         alert('success!');           
-        window.location.assign("");
+        window.location.assign("/#user");
       },
       error: function (model, errors) {
         alert('error!');

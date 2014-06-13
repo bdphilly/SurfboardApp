@@ -13,6 +13,7 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
   events: {
     'click .user-accept-button': 'handleAcceptance',
     'click .user-reject-button': 'handleRejection',
+    'click .board-edit': 'alertInDevelopment',
   },
 
   render: function () {
@@ -49,6 +50,7 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
   },
 
   handleAcceptance: function (event) {
+    debugger
     event.preventDefault();
     var rentalId = $(event.target).data("id");
     console.log(rentalId);
@@ -66,6 +68,7 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
   },
 
   handleRejection: function (event) {
+    debugger
     event.preventDefault();
     
     var rentalId = $(event.target).data("id");
@@ -76,6 +79,13 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
       that.model.trigger('change');
     });
 
+  },
+
+  alertInDevelopment: function (event) {
+    debugger
+    event.preventDefault();
+
+    alert("Sorry, brah! This feature is still in development...");
   },
 
 });

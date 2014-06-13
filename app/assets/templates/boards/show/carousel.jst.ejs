@@ -4,6 +4,8 @@
     <div class="item active">
       <% if (board.photos().first()) { %>
         <img src="<%= board.photos().first().get('large') %>" class="carousel-alternate">
+      <% } else { %>
+        <img src="https://s3-us-west-1.amazonaws.com/brahboards/board_placeholder_640x480.png" alt="" class="carousel-alternate">
       <% } %>
     </div>
 
