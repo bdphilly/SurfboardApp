@@ -1,7 +1,7 @@
 class Api::BoardsController < ApplicationController
 	# wrap_parameters :board, include: [:images_attributes]
 	wrap_parameters :board, include: [:images_attributes, :brand, :model, 
-			:length, :width, :thickness, :description, :condition, :images,
+			:length, :width, :description, :condition, :images,
 			:address, :city, :state, :zipcode, :country, :price, :type, :board_type
 		]
 
@@ -66,7 +66,6 @@ class Api::BoardsController < ApplicationController
 			:model, 
 			:length, 
 			:width,
-			:thickness,
 			:description,
 			:condition,
 			:images,

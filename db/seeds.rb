@@ -63,7 +63,6 @@ types = [
 		model: Faker::Lorem.word,
 		length: Faker::Number.number(3),
 		width: Faker::Number.number(2),
-		thickness: Faker::Number.number(2),
 		description: Faker::Lorem.paragraph,
 		condition: Faker::Number.number(1),
 		owner_id: (new_user + 1),

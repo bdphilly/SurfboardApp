@@ -7,7 +7,6 @@
 #  model              :string(255)
 #  length             :string(255)
 #  width              :string(255)
-#  thickness          :integer
 #  description        :text
 #  condition          :string(255)
 #  owner_id           :integer          not null

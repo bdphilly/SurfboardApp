@@ -1,6 +1,10 @@
 SurfboardApp.Models.Board = Backbone.Model.extend({
 	urlRoot: "/api/boards",
 	
+    defaults: {
+      country: 'USA'
+    },
+
 	photos: function () {
 		if(!this._photos) {
 			this._photos = new SurfboardApp.Collections.BoardPhotos([], {

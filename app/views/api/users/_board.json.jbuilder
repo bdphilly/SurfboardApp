@@ -1,5 +1,5 @@
 json.(board, :id, :brand, :model, :length, 
-						 :width, :thickness, :description,
+						 :width, :description,
 						 :condition, :owner_id, :created_at,
 						 :price, :board_type, :updated_at, 
 						 :address, :city, :state, :zipcode, 
@@ -39,7 +39,6 @@ json.rentals board.rentals do |rental|
 	json.id rental.id
 	json.start_date rental.start_date
 	json.end_date rental.end_date
-	json.price rental.price
 	json.status rental.status
 	json.renter_id rental.renter_id
 end

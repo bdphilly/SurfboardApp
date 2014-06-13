@@ -56,7 +56,6 @@ class BoardsController < ApplicationController
 			:model, 
 			:length, 
 			:width,
-			:thickness,
 			:description,
 			:condition,
 			:images,
