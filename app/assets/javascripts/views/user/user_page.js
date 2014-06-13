@@ -13,7 +13,7 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
   events: {
     'click .user-accept-button': 'handleAcceptance',
     'click .user-reject-button': 'handleRejection',
-    'click .board-edit': 'alertInDevelopment',
+    'click .board-edit-button': 'alertInDevelopment',
   },
 
   render: function () {
@@ -82,9 +82,7 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
   },
 
   alertInDevelopment: function (event) {
-    debugger
     event.preventDefault();
-
     alert("Sorry, brah! This feature is still in development...");
   },
 

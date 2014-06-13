@@ -614,11 +614,15 @@ display: inline-block;
 }
 
 .board-edit-button {
-  text-align: center;
+  display: inline-block;
+  float: right;
+  margin-right: 25px;
 }
 
 .board-view-button {
- text-align: center; 
+  display: inline-block;
+  float: left;
+  margin-left: 25px;
 }
 
 .slider {
