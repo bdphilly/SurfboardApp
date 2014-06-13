@@ -1,32 +1,30 @@
 <div class="tab-pane fade" id="users_boards">
   <% if (user.boards().first()) { %>
     <div class="row">
-    <% user.boards().each(function(board) { %>
-      
-        <div class="col-md-4">
-          <div class="thumbnail your-boards">
+      <% user.boards().each(function(board) { %>
+          <div class="col-md-4">
+            <div class="thumbnail your-boards">
+              <% if (board.photos().first()) { %>
+                <img src="<%= board.photos().first().escape('large') %>" alt="">
+              <% } else { %>
+                <img src="https://s3-us-west-1.amazonaws.com/brahboards/board_placeholder_640x480.png" alt="No Photo Present">
+              <% } %>
 
-            <% if (board.photos().first()) { %>
-              <img src="<%= board.photos().first().escape('large') %>" alt="">
-            <% } else { %>
-              <img src="https://s3-us-west-1.amazonaws.com/brahboards/board_placeholder_640x480.png" alt="No Photo Present">
-            <% } %>
+              <div class="caption">
+                <h3>
+                  Board:
+                  <%= board.escape('brand') %>
+                  <%= board.escape('model') %>
+                </h3>
+                <div class="row">
+                <div class="board-view-button"><a href="#boards/<%= user.boards().first().escape('id') %>" class="btn btn-primary" role="button">View board</a></div>
 
-            <div class="caption">
-              <h3>
-                Board:
-                <%= board.escape('brand') %>
-                <%= board.escape('model') %>
-              </h3>
-              <div class="row">
-              <div class="board-view-button"><a href="#boards/<%= user.boards().first().escape('id') %>" class="btn btn-primary" role="button">View board</a></div>
-
-              <div class="board-edit-button"><a href="" class="btn btn-primary" role="button">Edit board</a></div>
-            </div>
+                <div class="board-edit-button"><a href="" class="btn btn-primary" role="button">Edit board</a></div>
+              </div>
+              </div>
             </div>
           </div>
-        </div>
-    <% }) %>
+      <% }) %>
     </div>
   <% } else { %>
     <div class="alternative-spacing">

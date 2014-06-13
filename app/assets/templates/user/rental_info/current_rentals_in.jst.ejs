@@ -27,7 +27,7 @@
 
 								<% var ppd = rental.escape('price') %>
 								Price per Day: $<%= ppd %>
-								<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %>
+								<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %><br>
 								Total Price: <%= totalDays * ppd %>
 							</div>
 							<div class="col-md-3">

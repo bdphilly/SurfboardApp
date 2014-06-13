@@ -21,9 +21,9 @@
 						  <div class="col-md-3">
 								<a href="users/<%= rental.escape('renter_id') %>">
 									<% if (rental.get('renter_avatar')) { %>
-										<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail" alt="test"> 
+										<img src="<%= rental.get('renter_avatar').small_attachment %>" class="img-thumbnail img-responsive" alt="avatar"> 
 									<% } else { %>
-										PLACEHOLDER
+										<img src="https://s3-us-west-1.amazonaws.com/brahboards/avatar-placeholder_100x100.png" class="img-thumbnail img-responsive" alt="No Photo Present">
 									<% } %>
 								</a>
 							</div>
