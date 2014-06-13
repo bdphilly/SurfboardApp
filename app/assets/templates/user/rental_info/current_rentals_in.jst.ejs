@@ -1,7 +1,6 @@
 <div class="tab-pane fade" id="current_rentals_in">
 	<br>
 	<% if (user.rentals().first()) { %>
-	<% debugger %>
 		<% user.rentals().each(function (rental) { %> 
 			<div class="panel panel-default">
 			  <div class="panel-heading">
