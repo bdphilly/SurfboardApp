@@ -1,1 +1,1 @@
-json.(@board_rental, :id, :board_id, :start_date, :end_date, :price, :status, :renter_id)
+json.(@board_rental, :id, :board_id, :start_date, :end_date, :status, :renter_id)

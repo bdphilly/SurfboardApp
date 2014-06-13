@@ -13,6 +13,7 @@ SurfboardApp.Models.Rental = Backbone.Model.extend({
 		})
 		console.log('approving:' + this.id)
 		
+		debugger
 		this.set('status', 'Approved');
 	},
 
@@ -20,8 +21,7 @@ SurfboardApp.Models.Rental = Backbone.Model.extend({
 		$.ajax({
 			url: "api/board_rentals/" + this.id + "/deny",
 			type: 'POST',
-			success: callback,
-	
+			success: callback,	
 		})
 		console.log('denying:' + this.id)
 		

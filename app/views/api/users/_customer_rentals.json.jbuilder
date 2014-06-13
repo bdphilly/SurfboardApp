@@ -1,4 +1,4 @@
-json.rental_id rental.id
+json.id rental.id
 json.board_id rental.board_id
 json.start_date rental.start_date
 json.end_date rental.end_date

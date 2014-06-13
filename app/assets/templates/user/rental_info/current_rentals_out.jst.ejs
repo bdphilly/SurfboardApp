@@ -6,7 +6,11 @@
 			  <div class="panel-heading">		  	
 			  	<div class="row">
 						<div class="col-md-3">
-				  		Rented to: <%= rental.get('customer').fname + " " + rental.get('customer').lname %>
+							<% if (rental.get('customer').fname !== null) { %>
+				  			Rented to: <%= rental.get('customer').fname + " " + rental.get('customer').lname %>
+							<% } else { %>
+								Rented to: ?Unknown user?
+							<% } %> 
 						</div>
 						<div class="col-md-6">
 					  	Details

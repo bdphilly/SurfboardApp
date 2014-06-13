@@ -7,11 +7,8 @@
 <% if (user.avatar()) { %>
 
 	<img src="<%= user.avatar().escape('small_attachment') %>" 
-	class="avatar-photo-user img-responsive img-thumbnail" alt="Avatar Photo">
-
+	class="avatar-photo-user img-responsive img-thumbnail" alt="">
+	<br>
 <% } %>
 
-
-
-<br>
 <%= JST['user/rental_information']({user: this.model}) %>
