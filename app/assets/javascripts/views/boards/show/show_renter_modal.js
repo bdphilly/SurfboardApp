@@ -39,10 +39,12 @@ SurfboardApp.Views.ShowRenterModal = Backbone.CompositeView.extend({
     var that = this;
 
     newRental.save({},{
-      error: function (response) {
-        alert('error');
+      error: function (model, response) {
+        debugger
+        var error = $.parseJSON(response.responseText).error
+        alert(error);
       },
-      success: function (response) {
+      success: function (model, response) {
         alert('success');
         that.$el.hide();
         $('body').removeClass('modal-open');

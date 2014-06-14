@@ -60,12 +60,12 @@ class Api::BoardRentalsController < ApplicationController
 		end
 
 		def require_board_ownership!
-    	#RENDER A JSON ERROR!
-    	redirect_to new_user_session_url unless current_user.owns_board?(current_board)
+    	render :json => { error: @board_rental.errors.full_messages }, status: :unprocessable_entity
+    	# redirect_to new_user_session_url unless current_user.owns_board?(current_board)
   	end
 
   	def require_can_not_request_own_board!
-  		#RENDER A JSON ERROR!
-    	redirect_to new_user_session_url unless !current_user.owns_board?(current_board)
+  		render :json => { error: "C'mon, brah! You can't rent your own board!" }, status: :unprocessable_entity
+    	# redirect_to new_user_session_url unless !current_user.owns_board?(current_board)
   	end
 end
