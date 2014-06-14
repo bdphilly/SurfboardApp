@@ -818,7 +818,7 @@ height: 60px;
 }
 
 .has-error .form-control {
-  border-color: #FF26BE;
+  border-color: #F54747;
 }
 
 .has-success .form-control {
@@ -833,3 +833,16 @@ height: 60px;
   color: black;
 }
 
+.has-error .form-control {
+  color: #F54747;
+}
+
+.has-error .form-control-feedback {
+  color: #F54747;
+}
+
+.alert-danger {
+  background-image: -webkit-linear-gradient(top, #F54747 0%, white 100%);
+  border-color: white;
+  color: #8C8C8C;
+}

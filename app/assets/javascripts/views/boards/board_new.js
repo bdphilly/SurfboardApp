@@ -73,7 +73,6 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
       }
     });
     if (this.model.validationError) {
-      debugger
       console.log(this.model.validationError);
       this.handleValidations(this.model.validationError)
       // validate error(s) accessible in model.validationError
@@ -111,7 +110,7 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
 
         messages.push(error.message)
 
-        $('label[for=' + error.name + ']').append("<span style='color: #FF26BE'>  -  " + error.message + "</span>");
+        $('label[for=' + error.name + ']').append("<span style='color: #F54747'>  -  " + error.message + "</span>");
 
     });
 

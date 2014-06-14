@@ -77,10 +77,10 @@ SurfboardApp.Models.Board = Backbone.Model.extend({
         errors.push({name: 'address', message: 'Where is someone going to pick it up?'});
     }
     if (!attrs.city) {
-        errors.push({name: 'city', message: 'People want to search for a board in YOUR city! What is it?'});
+        errors.push({name: 'city', message: 'People want to search for a board in YOUR city!'});
     }
     if (!attrs.state) {
-        errors.push({name: 'state', message: 'We only have a 1 in 50 chance of guessing your state. You know it!'});
+        errors.push({name: 'state', message: "It's one of fifty..."});
     }
     if (!attrs.zipcode) {
         errors.push({name: 'zipcode', message: 'Zip to the code. Please.'});
