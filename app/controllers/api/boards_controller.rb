@@ -26,8 +26,8 @@ class Api::BoardsController < ApplicationController
 			render :json => @board
 			# redirect_to boards_url
 		else
-			# render :json => { error: @board.errors.full_messages }, status: :unprocessable_entity
-			flash.now[:errors] = @board.errors.full_messages
+			render :json => { error: @board.errors.full_messages }, status: :unprocessable_entity
+			# flash.now[:errors] = @board.errors.full_messages
 			render :new
 		end
 	end

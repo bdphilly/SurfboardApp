@@ -69,9 +69,8 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
         click: function(target) { 
           
           console.log(target);
-
-          if (target.date <  moment()) {
-            that.displayAlreadyRentedModal();
+          if (target.date < moment().add('days', -1)) {
+            that.displayPastDatesModal();
           } else {
             if (target.events[0]) {
               if (target.events[0].status === "Rented") {
@@ -98,9 +97,6 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
   },
 
   generateNewRentalModal: function (startDate) {
-    //Can't figure out why pulling in this startDate doesn't
-    //work when I pass it into the datepicker ??
-    debugger
     var newRental = new SurfboardApp.Models.Rental();
     var modalView = new SurfboardApp.Views.ShowRenterModal({
       model: newRental,
@@ -140,6 +136,12 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
     var modalView = new SurfboardApp.Views.AlreadyRentedModal();
     $('body').append(modalView.render().$el);
     $('#already-rented-modal').modal('show')
+  },
+
+  displayPastDatesModal: function () {
+    var modalView = new SurfboardApp.Views.PastDatesModal();
+    $('body').append(modalView.render().$el);
+    $('#past-dates-modal').modal('show')
   },
 
 });

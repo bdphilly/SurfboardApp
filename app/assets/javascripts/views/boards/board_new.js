@@ -58,24 +58,27 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
   submit: function (event) {
     event.preventDefault();
     // debugger
+    var that = this;
     var attrs = $(event.currentTarget).serializeJSON();
     this.model.set(attrs.board);
     SurfboardApp.Collections.boards.add(this.model);
     // debugger
     this.model.save({}, {
-      success: function () {
-        alert('success!');           
-        window.location.assign("/#user");
+      success: function (data) {
+        window.setTimeout(function () {          
+          window.location.assign("/#boards/" + data.id);
+        }, 1000);
+        that.spinner();        
       },
       error: function (model, errors) {
         alert('error!');
         console.log(errors);
       }
     });
+
     if (this.model.validationError) {
       console.log(this.model.validationError);
       this.handleValidations(this.model.validationError)
-      // validate error(s) accessible in model.validationError
     }
   },
 
@@ -101,22 +104,18 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
 
     errors.forEach(function (error) {
       var id = "#" + error.name;
-      // debugger
-        $(id).parent().find('span').remove();
-        $(id).parent().removeClass('has-success');
-        $(id).parent().addClass('has-error');
-        $(id).parent().addClass('has-feedback');
-        $(id).parent().append('<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>');
+      $(id).parent().find('span').remove();
+      $(id).parent().removeClass('has-success');
+      $(id).parent().addClass('has-error');
+      $(id).parent().addClass('has-feedback');
+      $(id).parent().append('<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>');
 
-        messages.push(error.message)
-
-        $('label[for=' + error.name + ']').append("<span style='color: #F54747'>  -  " + error.message + "</span>");
-
+      messages.push(error.message)
+      $('label[for=' + error.name + ']').append("<span style='color: #F54747'>  -  " + error.message + "</span>");
     });
 
     $("<div></div>").addClass("alert").addClass("alert-danger")
         .html("Brah...you forgot to fill out some information!").appendTo($("#error"));
-
   },
   
 });
