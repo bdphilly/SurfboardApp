@@ -198,9 +198,8 @@ h2 {
 }
 
 .cal2 {
-  max-width: 457px;
+  max-width: 458px;
   margin: 30px auto;
-  /*font-family: 'Droid Sans Mono';*/
   font-size: 14px;
 }
 
@@ -845,4 +844,12 @@ height: 60px;
   background-image: -webkit-linear-gradient(top, #F54747 0%, white 100%);
   border-color: white;
   color: #8C8C8C;
+}
+
+#start-date {
+  text-align: left;
+}
+
+#end-date {
+  text-align: left;
 }

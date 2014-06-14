@@ -77,10 +77,10 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
               if (target.events[0].status === "Rented") {
                 that.displayAlreadyRentedModal();
               } else {
-                that.generateNewRentalModal(target.date.format());
+                that.generateNewRentalModal(target.date.format('L'));
               }
             } else {
-              that.generateNewRentalModal(target.date.format());
+              that.generateNewRentalModal(target.date.format('L'));
             }
           }
         },
@@ -100,13 +100,15 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
   generateNewRentalModal: function (startDate) {
     //Can't figure out why pulling in this startDate doesn't
     //work when I pass it into the datepicker ??
+    debugger
     var newRental = new SurfboardApp.Models.Rental();
     var modalView = new SurfboardApp.Views.ShowRenterModal({
       model: newRental,
       board: this.model
     });
     $('body').append(modalView.render().$el);
-    $('#new-renter-modal').modal('show');      
+    $('#new-renter-modal').modal('show');     
+    
     $("#show-start-date").datepicker({ 
       changeMonth: true,
       changeYear: true,
@@ -114,6 +116,7 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
       dateFormat:'dd/mm/yy',
       showButtonPanel: true,
       autoclose: true,
+      todayHighlight: true,
 
       onSelect: function (dateStr) {
         $('#endDate').datepicker('option', 'defaultDate', dateStr);
@@ -121,6 +124,8 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
       },
 
     });
+
+    $("#show-start-date").datepicker('setDate', startDate); 
 
     $( "#show-end-date" ).datepicker({ changeMonth: true,
       changeYear: true,
