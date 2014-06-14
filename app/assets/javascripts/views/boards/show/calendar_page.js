@@ -113,7 +113,7 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
       changeMonth: true,
       changeYear: true,
       startDate: 'today',
-      dateFormat:'dd/mm/yy',
+      dateFormat:'yyyy/mm/dd',
       showButtonPanel: true,
       autoclose: true,
       todayHighlight: true,
@@ -130,7 +130,7 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
     $( "#show-end-date" ).datepicker({ changeMonth: true,
       changeYear: true,
       startDate: 'today',
-      dateFormat:'dd/mm/yy',
+      dateFormat:'yyyy/mm/dd',
       showButtonPanel: true,
       autoclose: true,   
     });

@@ -80,21 +80,22 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
       changeMonth: true,
       changeYear: true,
       startDate: "today",
-      dateFormat:'dd/mm/yy',
+      dateFormat:'yyyy/mm/dd',
       showButtonPanel: true,
       autoclose: true,
 
-      onSelect: function (dateStr) {
-        $('#endDate').datepicker('option', 'defaultDate', dateStr);
-        $('#endDate').datepicker('option', 'minDate', dateStr);
-      },
+      // onSelect: function (dateStr) {
+      //   $('#endDate').datepicker('option', 'defaultDate', dateStr);
+      //   $('#endDate').datepicker('option', 'minDate', dateStr);
+      // },
 
     });
 
     $( "#show-end-date" ).datepicker({ changeMonth: true,
+      changeMonth: true,
       changeYear: true,
       startDate: "today",
-      dateFormat:'dd/mm/yy',
+      dateFormat:'yyyy/mm/dd',
       showButtonPanel: true,
       autoclose: true,   
     });

@@ -27,11 +27,11 @@ SurfboardApp.Views.ShowRenterModal = Backbone.CompositeView.extend({
     var end_date = $('#show-end-date').val();
 
     var newRental = new SurfboardApp.Models.Rental();
-    // debugger
+    debugger
     newRental.set({
       board_id: this.board.id,
-      start_date: start_date,
-      end_date: end_date,
+      start_date: moment(start_date).format('YYYY-MM-DD'),
+      end_date: moment(end_date).format('YYYY-MM-DD'),
       price: this.board.price,
       status: 'Pending'
     });
