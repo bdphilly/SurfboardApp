@@ -99,6 +99,10 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
       showButtonPanel: true,
       autoclose: true,   
     });
+
+    $("#show-start-date").datepicker('setDate', ""); 
+    $("#show-end-date").datepicker('setDate', ""); 
+
   },
 
 });

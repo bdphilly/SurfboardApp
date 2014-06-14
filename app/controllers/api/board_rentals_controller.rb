@@ -2,7 +2,7 @@ class Api::BoardRentalsController < ApplicationController
 	  before_action :authenticate_user!, :only => [:approve, :deny]
 	  before_action :require_board_ownership!, :only => [:approve, :deny]
 	  before_action :require_can_not_request_own_board!, :only => [:create]
-
+	  before_action :require_dates_are_valid!, :only => [:create]
 		def new
 			@board_rental = BoardRental.new
 		end
@@ -71,5 +71,13 @@ class Api::BoardRentalsController < ApplicationController
   			render :json => { error: "C'mon, brah! You can't rent your own board!" }, status: :unprocessable_entity
     	end
     	# redirect_to new_user_session_url unless !current_user.owns_board?(current_board)
+  	end
+
+  	def require_dates_are_valid!
+  		if params[:start_date] > params[:end_date]
+  			render :json => { 
+  				error: "C'mon, brah! These dates just don't make any sense! Make sure the start date is BEFORE the end date!" 
+  			}, status: :unprocessable_entity
+  		end
   	end
 end
