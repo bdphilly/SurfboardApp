@@ -22,12 +22,12 @@ SurfboardApp.Views.ShowRenterModal = Backbone.CompositeView.extend({
 
   handleRequest: function (event) {
     event.preventDefault();
+    var that = this;
 
     var start_date = $('#show-start-date').val();
     var end_date = $('#show-end-date').val();
 
     var newRental = new SurfboardApp.Models.Rental();
-    debugger
     newRental.set({
       board_id: this.board.id,
       start_date: moment(start_date).format('YYYY-MM-DD'),
@@ -35,23 +35,26 @@ SurfboardApp.Views.ShowRenterModal = Backbone.CompositeView.extend({
       price: this.board.price,
       status: 'Pending'
     });
-    debugger
-    var that = this;
 
     newRental.save({},{
       error: function (model, response) {
-        debugger
         var error = $.parseJSON(response.responseText).error
         alert(error);
       },
       success: function (model, response) {
-        alert('success');
         that.$el.hide();
         $('body').removeClass('modal-open');
         $('.modal-backdrop').remove();
+        that.displayConfirmation();
         SurfboardApp.myRouter.navigate('#user', {trigger: true});
       }
     });
+  },
+
+  displayConfirmation: function () {
+    var modalView = new SurfboardApp.Views.ConfirmationModal();
+    $('body').append(modalView.render().$el);
+    $('#confirmation-modal').modal('show')
   },
 
 });

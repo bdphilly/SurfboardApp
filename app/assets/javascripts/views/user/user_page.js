@@ -54,7 +54,6 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
     // var rental = this.model.customerRentals().getOrFetch(rentalId);
 
     this.model.customerRentals().getOrFetch(rentalId).approve(function () {
-      console.log('happy days');
       // that.spinner();
       // that.model.fetch();
       that.model.customerRentals().getOrFetch(rentalId).status = "Approved";
@@ -72,7 +71,6 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
     console.log(rentalId);
     var that = this;
     this.model.customerRentals().getOrFetch(rentalId).deny(function () {
-      console.log('unhappy days');
       that.model.customerRentals().getOrFetch(rentalId).status = "Denied";
       // that.model.rentals().trigger('change');
       // that.model.trigger('change');
@@ -87,18 +85,3 @@ SurfboardApp.Views.User = Backbone.CompositeView.extend({
   },
 
 });
-
-    // var checkedButton = $('input[type="radio"]:checked').val()
-    // console.log(checkedButton)
-    
-    // var that = this;
-
-    // this.model.events[0].rental[checkedButton](function () {
-    //     that.$el.hide();
-    //     $('body').removeClass('modal-open');
-    //     $('.modal-backdrop').remove();
-    // });
-
-
-
-// BoardRental.new({board_id: 7, start_date: "2014-07-04", end_date: "2014-07-08", status: "Approved", renter_id: 6, price: 10})

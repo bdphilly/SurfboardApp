@@ -6,7 +6,6 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-    // debugger
     this.listenTo(this.model, 'sync', this.render);
       
     globalmodel = this.model
@@ -52,7 +51,6 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
   },
 
   addCalendar: function () {
-    // debugger
     calendar = new SurfboardApp.Views.CalendarPage({
       model: this.model
     });
@@ -90,6 +88,7 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
       // },
 
     });
+    $("#show-start-date").datepicker('setDate', ""); 
 
     $( "#show-end-date" ).datepicker({ changeMonth: true,
       changeMonth: true,
@@ -99,8 +98,6 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
       showButtonPanel: true,
       autoclose: true,   
     });
-
-    $("#show-start-date").datepicker('setDate', ""); 
     $("#show-end-date").datepicker('setDate', ""); 
 
   },

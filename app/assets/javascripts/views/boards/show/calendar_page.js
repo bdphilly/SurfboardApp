@@ -45,7 +45,6 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
       });
 
     });
-    // this.renderCalendar();
   },
 
   renderCalendar: function () {
@@ -118,11 +117,9 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
       //   $('#endDate').datepicker('option', 'defaultDate', dateStr);
       //   $('#endDate').datepicker('option', 'minDate', dateStr);
       // },
-
     });
-
     $("#show-start-date").datepicker('setDate', startDate); 
-    $("#show-end-date").datepicker('setDate', ""); 
+    
     $( "#show-end-date" ).datepicker({ changeMonth: true,
       changeYear: true,
       startDate: 'today',
@@ -130,6 +127,7 @@ SurfboardApp.Views.CalendarPage = Backbone.View.extend({
       showButtonPanel: true,
       autoclose: true,   
     });
+    $("#show-end-date").datepicker('setDate', ""); 
   },
 
   displayAlreadyRentedModal: function () {

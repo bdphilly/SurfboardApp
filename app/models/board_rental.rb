@@ -64,9 +64,9 @@ class BoardRental < ActiveRecord::Base
 		self.status == "Denied"
 	end
 
-	# def available?
-	# 	self.status == "Available"
-	# end
+	def available?
+		self.status == "Available"
+	end
 
 	def unavailable?
 		self.status == "Unavailable" || self.status == "Approved" || self.status == "Denied"
@@ -77,10 +77,6 @@ class BoardRental < ActiveRecord::Base
 	def assign_unavailable_status
 		self.status ||= "Unavailable"
 	end
-
-	# def mark_available!
-	# 	self.status = "Available"
-	# end
 
 	def mark_unavailable!
 		self.status = "Unavailable"
@@ -135,18 +131,4 @@ class BoardRental < ActiveRecord::Base
     end
   end
 
-  # def valid_rental
-  #   overlapping_rentals.where("status = 'Available'")
-  # end
-
-  # def invalid_rental
-  #   puts overlapping_rentals.where("status = 'Rented'" || "status = 'Unavailable'")
-		# overlapping_rentals.where("status = 'Rented'" || "status = 'Unavailable'")
-  # end
-
-  # def does_not_overlap_rental
-  #   unless valid_rental.empty?
-  #     errors[:base] << "The board cannot be rented for this date!"
-  #   end
-  # end
 end

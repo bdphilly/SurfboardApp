@@ -21,17 +21,6 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
 
     this.$el.html(renderedContent);
 
-    // $("#model").on('blur', function(event){
-    //   if ($('#model').val() !== "") {
-    //     $('#model').parent().removeClass('has-error');
-    //     $('#model').parent().addClass('has-success');
-    //   } else {
-    //     $('#model').parent().removeClass('has-success');
-    //     $('#model').parent().addClass('has-error');
-    //   }
-    // });    
-
-
     // this.attachSubviews();
     return this;
   },
