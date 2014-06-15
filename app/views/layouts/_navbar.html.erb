@@ -14,7 +14,13 @@
       </div>
     <% end %>
     <ul class="nav navbar-nav navbar-right">
+    
     <% if user_signed_in? %>
+        <li>
+          <a href="/users/<%= current_user.id %>" style="display: inline">
+            <img src="<%= current_user.avatar.small_attachment %>" alt="" class="navbar-avatar">
+          </a>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
           <ul class="dropdown-menu">
