@@ -98,9 +98,9 @@
 # # :photo => File.open(File.join('http://apm-assets.s3.amazonaws.com', '/photos/1/original/image.jppg'))
 
 	user = User.create({
-		email: 'kelly1234@slater.com',
-		fname: 'Kelly',
-		lname: 'Slater',
+		email: 'cj@hobgood.com',
+		fname: 'CJ',
+		lname: 'Hobgood',
 		password: 'asdfasdf'
 	})
 
@@ -109,7 +109,7 @@
 
 # user.save!
 
-file_path = './app/assets/images/kelly_slater.png'
+file_path = './app/assets/images/cj_hobgood.png'
 
 my_model_instance = user.avatar.new
 file = File.open(file_path)
