@@ -15,12 +15,12 @@
 #
 
 class Board::Image < Photo
-# validates :attachment, :attachment_content_type => { :content_type => ['image/png', 'image/jpg']}
+  # validates :attachment, :attachment_content_type => { :content_type => ['image/png', 'image/jpg']}
   
   has_attached_file :attachment, :styles => { :small => "200x150#", :medium => "400x300#", :large => "640x480#" }
 	validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
 
-	 def small_attachment
+	def small_attachment
   	return self.attachment(:small)
   end
 

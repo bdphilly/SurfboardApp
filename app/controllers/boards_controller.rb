@@ -10,9 +10,9 @@ class BoardsController < ApplicationController
 
 	def new
 		@board = current_user.boards.new
-  	4.times do
-    	@board.images.build
-  	end
+  	# 4.times do
+   #  	@board.images.build
+  	# end
 	end
 
 	def create

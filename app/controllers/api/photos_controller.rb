@@ -14,7 +14,6 @@ class Api::PhotosController < ApplicationController
 			render :new
 		end
 
-
 	end
 
 	private

@@ -16,7 +16,7 @@ class Api::BoardsController < ApplicationController
 	def new
 		@board = current_user.boards.new
 		# 4.times do
-    	@board.images.build
+    	# @board.images.build
   	# end
 	end
 
