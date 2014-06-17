@@ -449,7 +449,7 @@ display: inline-block;
   color: white;
   font-size: 48px;
   font-weight: 400;
-  text-shadow: 1px 1px #404040;  
+  text-shadow: 1px 2px #404040;  
   font-family: 'Quicksand';
 }
 
@@ -458,8 +458,6 @@ display: inline-block;
   font-size: 2em;
   color: rgba(255, 255, 255, 0.9);
 }
-
-/*       */
 
 .nav-top {
   border-radius: 0px;
@@ -867,4 +865,9 @@ height: 60px;
   border-radius: 4px;
   border: 0px;
   padding: 1px;
+}
+
+.btn-search {
+  color: white;
+  background: #0AC2FF;
 }

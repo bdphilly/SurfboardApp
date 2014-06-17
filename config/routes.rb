@@ -22,8 +22,10 @@ SurfboardApp::Application.routes.draw do
   # match 'users/:id' => 'users#show', via: :get
 	# or 
 	# get 'users/:id' => 'users#show'
-  resources :boards do
-  	resources :board_rentals, only: [:new, :create, :destroy]
-  end
+
+	#for testing purposes only
+  # resources :boards do
+  # 	resources :board_rentals, only: [:new, :create, :destroy]
+  # end
 
 end
