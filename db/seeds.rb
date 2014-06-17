@@ -87,17 +87,15 @@
 
 # # end
 
-
-
 # # # Photo.create({
 # # # 	File.open('https://s3-us-west-1.amazonaws.com/brahboards/boards/AM1.jpg')
 # # # 	})
 
- 
-
 # # # :photo => File.open(File.join('http://apm-assets.s3.amazonaws.com', '/photos/1/original/image.jppg'))
 
-emails = [
+###############################USERS###############################USERS###############################
+
+# emails = [
 	# 'patrick@swayze.com',
 	# 'keanu@reeves.com',
 	# 'joel@parkinson.com',
@@ -127,14 +125,14 @@ emails = [
 	# 'adam@sandler.com',
 	# 'layne@beachley.com',
 	# 'anastasia@ashley.com',
-	'karina@petroni.com',
-	'marissa@miller.com',
-	'malia@jones.com',
-	'megan@abubo.com',
-	'serena@brooke.com'
-]
+	# 'karina@petroni.com',
+	# 'marissa@miller.com',
+	# 'malia@jones.com',
+	# 'megan@abubo.com',
+	# 'serena@brooke.com'
+# ]
 
-fnames = [
+# fnames = [
 	# 'Patrick',
 	# 'Keanu',
 	# 'Joel',
@@ -164,14 +162,14 @@ fnames = [
 	# 'Adam',
 	# 'Layne',
 	# 'Anastasia',
-	'Karina',
-	'Marissa',
-	'Malia',
-	'Megan',
-	'Serena'
-]
+	# 'Karina',
+	# 'Marissa',
+	# 'Malia',
+	# 'Megan',
+	# 'Serena'
+# ]
 
-lnames = [
+# lnames = [
 	# 'Swayze',
 	# 'Reeves',
 	# 'Parkinson',
@@ -201,14 +199,14 @@ lnames = [
 	# 'Sandler',
 	# 'Beachley',
 	# 'Ashley',
-	'Petroni',
-	'Miller',
-	'Jones',
-	'Abubo',
-	'Brooke'
-]
+	# 'Petroni',
+	# 'Miller',
+	# 'Jones',
+	# 'Abubo',
+	# 'Brooke'
+# ]
 
-file_paths = [
+# file_paths = [
 # './app/assets/images/avatars/patrick_swayze.png',
 # './app/assets/images/avatars/keanu_reeves.png',
 # './app/assets/images/avatars/joel_parkinson.png',
@@ -238,32 +236,32 @@ file_paths = [
 # './app/assets/images/avatars/adam_sandler.png',
 # './app/assets/images/avatars/layne_beachley.png',
 # './app/assets/images/avatars/anastasia_ashley.png',
-'./app/assets/images/avatars/karina_petroni.png',
-'./app/assets/images/avatars/marissa_miller.png',
-'./app/assets/images/avatars/malia_jones.png',
-'./app/assets/images/avatars/megan_abubo.png',
-'./app/assets/images/avatars/serena_brooke.png'
-]
+# './app/assets/images/avatars/karina_petroni.png',
+# './app/assets/images/avatars/marissa_miller.png',
+# './app/assets/images/avatars/malia_jones.png',
+# './app/assets/images/avatars/megan_abubo.png',
+# './app/assets/images/avatars/serena_brooke.png'
+# ]
 
-5.times do |new_user|
+# 5.times do |new_user|
 
-	user = User.create({
-		email: emails[new_user],
-		fname: fnames[new_user],
-		lname: lnames[new_user],
-		password: 'asdfasdf'
-	})
+# 	user = User.create({
+# 		email: emails[new_user],
+# 		fname: fnames[new_user],
+# 		lname: lnames[new_user],
+# 		password: 'asdfasdf'
+# 	})
 
-	file_path = file_paths[new_user];
+# 	file_path = file_paths[new_user];
 
-	my_model_instance = user.avatar.new
-	file = File.open(file_path)
-	my_model_instance.attachment = file
-	file.close
-	user.save!
-	my_model_instance.save!
+# 	my_model_instance = user.avatar.new
+# 	file = File.open(file_path)
+# 	my_model_instance.attachment = file
+# 	file.close
+# 	user.save!
+# 	my_model_instance.save!
 
-end
+# end
 
 # file_path = './app/assets/images/avatars/cj_hobgood.png'
 
@@ -274,9 +272,4 @@ end
 # user.save!
 # my_model_instance.save!
 
-
-# # # Photo.create({
-# # # 	File.open('https://s3-us-west-1.amazonaws.com/brahboards/boards/AM1.jpg')
-# # # 	})
-
-# # # :photo => File.open(File.join('http://apm-assets.s3.amazonaws.com', '/photos/1/original/image.jppg'))
+#############################################################################################
