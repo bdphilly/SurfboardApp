@@ -5,7 +5,7 @@
 	<h1>Welcome back! </h1>
 <% } %>
 
-<% if (user.avatar()) { %>
+<% if (user.avatar().first) { %>
   <a href="/users/<%= user.escape('id') %>">      
 		<img src="<%= user.avatar().escape('small_attachment') %>" 
 		class="avatar-photo-user img-responsive img-thumbnail" alt="">
