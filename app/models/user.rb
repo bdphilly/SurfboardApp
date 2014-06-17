@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   has_many :customer_rentals, through: :boards, source: :rentals
   has_many :rented_out_boards, through: :customer_rentals, source: :board
 
-  has_one :avatar, :as => :imageable, :class_name => "User::Avatar", :dependent => :destroy
+  has_many :avatar, :as => :imageable, :class_name => "User::Avatar", :dependent => :destroy
   accepts_nested_attributes_for :avatar
 
   def owns_board?(board)

@@ -97,19 +97,51 @@
 
 # # # :photo => File.open(File.join('http://apm-assets.s3.amazonaws.com', '/photos/1/original/image.jppg'))
 
-# 	user = User.create({
-# 		email: 'cj@hobgood.com',
-# 		fname: 'CJ',
-# 		lname: 'Hobgood',
-# 		password: 'asdfasdf'
-# 	})
+emails = [
+	'nat@moore.com',
+	'lakey@peterson.com',
+	'carissa@moore.com'
+]
 
+fnames = [
+	'Nat',
+	'Lakey',
+	'Carissa'
+]
 
-# # 	user.avatar.attachment = File.open('./app/assets/images/kelly-slater.jpg')
+lnames = [
+	'Moore',
+	'Peterson',
+	'Moore'
+]
 
-# # user.save!
+file_paths = [
+	'./app/assets/images/avatars/nat_young.png',
+	'./app/assets/images/avatars/lakey_peterson.png',
+	'./app/assets/images/avatars/carissa_moore.png'
+]
 
-# file_path = './app/assets/images/cj_hobgood.png'
+3.times do |new_user|
+
+	user = User.create({
+		email: emails[new_user],
+		fname: fnames[new_user],
+		lname: lnames[new_user],
+		password: 'asdfasdf'
+	})
+
+	file_path = file_paths[new_user];
+
+	my_model_instance = user.avatar.new
+	file = File.open(file_path)
+	my_model_instance.attachment = file
+	file.close
+	user.save!
+	my_model_instance.save!
+
+end
+
+# file_path = './app/assets/images/avatars/cj_hobgood.png'
 
 # my_model_instance = user.avatar.new
 # file = File.open(file_path)
