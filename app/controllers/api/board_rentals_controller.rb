@@ -3,6 +3,7 @@ class Api::BoardRentalsController < ApplicationController
 	  before_action :require_board_ownership!, :only => [:approve, :deny]
 	  before_action :require_can_not_request_own_board!, :only => [:create]
 	  before_action :require_dates_are_valid!, :only => [:create]
+		
 		def new
 			@board_rental = BoardRental.new
 		end
@@ -51,8 +52,14 @@ class Api::BoardRentalsController < ApplicationController
 		end
 
 		def current_board_rental_request
-			id = params[:board_id] ||= params[:id]
-			@board_rental ||= BoardRental.includes(:board).find(id)
+			if params[:id]
+				BoardRental.includes(:board).find(params[:id])
+			else
+				@board_rental = BoardRental.new(board_rental_params)
+			end
+
+			# id = params[:board_id] ||= params[:id]
+			# @board_rental ||= BoardRental.includes(:board).find(id)
 		end
 
 		def board_rental_params
