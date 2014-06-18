@@ -94,6 +94,7 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
     this.geocodeAddress(locationAttrs, function (coordinates) {
       console.log(coordinates);
       SurfboardApp.Models.map.set({
+        zoom: 10,
         center: new google.maps.LatLng(coordinates.latitude, coordinates.longitude),
       });
       callback();
