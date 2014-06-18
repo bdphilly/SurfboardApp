@@ -42,7 +42,8 @@ SurfboardApp.Views.ShowRenterModal = Backbone.CompositeView.extend({
         alert(error);
       },
       success: function (model, response) {
-        that.$el.hide();
+        $('#new-renter-modal').modal('hide');      
+        // that.$el.hide();
         $('body').removeClass('modal-open');
         $('.modal-backdrop').remove();
         that.displayConfirmation();

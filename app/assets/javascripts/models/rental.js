@@ -6,7 +6,6 @@ SurfboardApp.Models.Rental = Backbone.Model.extend({
 	},
 
 	approve: function (callback) {
-		debugger
 		$.ajax({
 			url: "api/board_rentals/" + this.id + "/approve",
 			type: 'POST',

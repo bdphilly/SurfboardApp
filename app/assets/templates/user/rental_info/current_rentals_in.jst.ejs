@@ -37,15 +37,15 @@
 					    Start Date: <%= rental.escape('start_date') %> <br>
 							End Date: <%= rental.escape('end_date') %> <br>
 
-							<% var ppd = rental.escape('price') %>
+							<% var ppd = rental.escape('board').price %>
 							Price per Day: $ <%= ppd %>
 							<% var totalDays = moment(rental.escape('end_date')).diff(moment(rental.escape('start_date')), 'days') %><br>
 							Total Price: $ <%= totalDays * ppd %>
 						</div>
 						<div class="col-md-3">
-						  Brand: <%= rental.escape('board').brand %><br>
-					    Model: <%= rental.escape('board').model %> <br>
-							Length: <%= rental.escape('board').length %> <br>
+						  Brand: <%= rental.get('board').brand %><br>
+					    Model: <%= rental.get('board').model %> <br>
+							Length: <%= rental.get('board').length %> <br>
 						</div>
 						<div class="col-md-3">
 							<%= rental.escape('status') %>

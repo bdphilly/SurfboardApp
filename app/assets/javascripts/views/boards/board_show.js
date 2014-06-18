@@ -39,10 +39,6 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
     return this;
   },
 
-  handleRequest: function () {
-
-  },
-
   addInfoTabs: function (board) {
     var infoTabs = new SurfboardApp.Views.InfoTabs({
       model: this.model
