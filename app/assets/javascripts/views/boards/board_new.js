@@ -46,14 +46,14 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
 
   submit: function (event) {
     event.preventDefault();
-    // debugger
     var that = this;
     var attrs = $(event.currentTarget).serializeJSON();
     this.model.set(attrs.board);
     SurfboardApp.Collections.boards.add(this.model);
-    // debugger
+    $("#upload-board").css("visibility","hidden");
+    $("#smiley").append('<img src="https://s3-us-west-1.amazonaws.com/brahboards/smiley.gif">');
     this.model.save({}, {
-      success: function (data) {
+      success: function (data) {        
         window.setTimeout(function () {          
           window.location.assign("/#boards/" + data.id);
         }, 1000);
@@ -66,7 +66,8 @@ SurfboardApp.Views.BoardNew = Backbone.CompositeView.extend({
     });
 
     if (this.model.validationError) {
-      console.log(this.model.validationError);
+      $("#upload-board").css("visibility","visible");
+      // console.log(this.model.validationError);
       this.handleValidations(this.model.validationError)
     }
   },
