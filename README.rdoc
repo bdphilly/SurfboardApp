@@ -1,28 +1,35 @@
-== README
+== Brahboards
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Brahboards is a peer-to-peer surfboard rental app. Traveling to a surf spot and looking to rent a board? Don't surf often enough to buy one? Your board goes unused most days of the year so want to make a couple extra bucks renting it out to fellow surfers? If you've answered yes to any of the above questions, Brahboards might be perfect for you!
 
-Things you may want to cover:
+Technologies
+---
 
-* Ruby version
+Brahboards is a Backbone.js app consuming a RESTful API built with Rails. Other technolgies include PostgreSQL, jQuery, Bootstrap, JavaScript, Ruby, HTML, & CSS.
 
-* System dependencies
+Features
+---
 
-* Configuration
+..* Custom SQL queries to conduct search skillfully integrated with the Google Maps API
+..* Search by board size, price, availability, location
+..* Stable booking engine allows users to request and accept/deny bookings - check out the 'Dashboard'
+..* Photo uploading to AWS S3 using Paperclip (Photos model belongs to users and boards through a polymorphic association)
+..* Automatic geocoding of board's location upon entry to the database
+..* User authorization and authentication
+..* Crete unlimited boards per user
+..* Custom-written 'Composite View' class for Backbone.js to handle composite views, swap views, delegating events, etc.
+..* Auto-complete geographic search
+..* Interactive calendar to check availability and select dates
 
-* Database creation
+In-the-works
+---
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+..* Footer pages (about, contact, highlighted cities)
+..* Edit boards
+..* Send messages directly on the site to other users
+..* Comment on previous rentals
+..* Payment processing
+..* Email alerts when rentals requets are made or accepted/denied
+..* Search for boards by description
+..* Save boards as favorites
+..* Facebook Authenticaiton
