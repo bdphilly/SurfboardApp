@@ -1,5 +1,5 @@
 class Api::BoardRentalsController < ApplicationController
-	  before_action :authenticate_user!, :only => [:approve, :deny]
+	  before_action :authenticate_user!, :only => [:approve, :deny, :create]
 	  before_action :require_board_ownership!, :only => [:approve, :deny]
 	  before_action :require_can_not_request_own_board!, :only => [:create]
 	  before_action :require_dates_are_valid!, :only => [:create]

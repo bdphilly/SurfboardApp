@@ -2,23 +2,10 @@ SurfboardApp.Views.BoardsIndex = Backbone.CompositeView.extend({
   template: JST['boards/index'],
 
   initialize: function () {
-    // debugger
     globalView = this;
-
-    // 1. It should render any data it has (does not do this)
-    // 2. It should re-render when any data changes.
-    // 3. addAllBoards, addMap should be safe to call multiple times.
-
-    // Start to address 1.
-    // _.defer(this.addAllBoards());
     this.addAllBoards();
-    // _.defer(this.addMap());
-    // this.addMap();
-    // Wait, not rendered yet...
-    // _.defer(this.addMap);
-    // this.addMap();
-
     var that = this;
+
     setTimeout(function() {
       that.addMap();
     }, 0);

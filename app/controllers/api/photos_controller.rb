@@ -13,7 +13,6 @@ class Api::PhotosController < ApplicationController
 			flash.now[:errors] = @photo.errors.full_messages
 			render :new
 		end
-
 	end
 
 	private

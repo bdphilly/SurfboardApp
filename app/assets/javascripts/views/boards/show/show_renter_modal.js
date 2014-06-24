@@ -39,7 +39,8 @@ SurfboardApp.Views.ShowRenterModal = Backbone.CompositeView.extend({
     newRental.save({},{
       error: function (model, response) {
         var error = $.parseJSON(response.responseText).error
-        alert(error);
+        window.alert(error);
+        window.location.href='./users/sign_up'
       },
       success: function (model, response) {
         $('#new-renter-modal').modal('hide');      

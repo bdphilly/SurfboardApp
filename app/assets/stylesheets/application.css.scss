@@ -422,27 +422,35 @@ display: inline-block;
 
 /* Home Page */
 .home-image {
-  min-height: 800px;
-  min-width: 1280px;
+  /*min-height: 800px;
+  min-width: 1280px;*/
   background-image: url(https://s3-us-west-1.amazonaws.com/brahboards/surfer-bg-1280x624.jpg);
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .home-image img {
   /*margin-top: -20px;*/
-   
-  position: relative;
+  /*position: relative;*/
 }
 
 .home-image-details {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 30%;
   color: #fff;
+}
+
+#home-main {
+  min-height: 100%;
+  min-width: 100%;
+  position: fixed;
 }
 
 .home-image-details h1 {

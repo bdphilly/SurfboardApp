@@ -53,14 +53,6 @@ SurfboardApp.Views.BoardShow = Backbone.CompositeView.extend({
     this.addSubview('.calendar', calendar);
   },
 
-  // addModal: function () {
-  //   var modalView = new SurfboardApp.Views.RenterModal({
-  //     board: this.model
-  //   });
-  //   $('body').append(modalView.render().$el);
-  //   $('#myModal').modal('show')
-  // },
-
   generateNewRentalModal: function () {
     var newRental = new SurfboardApp.Models.Rental();
     var modalView = new SurfboardApp.Views.ShowRenterModal({
