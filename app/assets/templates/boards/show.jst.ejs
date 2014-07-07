@@ -1,37 +1,37 @@
 <h1>
-	<%= board.escape('year') %>
-	<%= board.escape('brand') %>
-	<%= board.escape('model') %>	
+  <%= board.escape('year') %>
+  <%= board.escape('brand') %>
+  <%= board.escape('model') %>  
 </h1>
 
 <br>
 
 <div class="row">
-	<div class="col-md-5">
-		<%= JST['boards/show/carousel']({board: board}) %>
+  <div class="col-md-5">
+    <%= JST['boards/show/carousel']({board: board}) %>
 
-		<div class="board-info-tabs"></div>
-	</div>
-	<div class="col-md-2"></div>
-	<div class="col-md-5">
-		
-		<div class="panel panel-default price-show">
-	  	<div class="panel-heading prices">
-	  		Price per day: $<%= board.escape('price') %><br>
-	  		Price per week: $<%= board.escape('price') * 7 %>
-	  	</div>
-		  <div class="panel-body" align="center">
-		    
-				<button type="submit" class="btn btn-primary" id="submit-rental-request">
-					<span class="glyphicon glyphicon-ok"></span>
-					Rent this board!
-				</button>
-		  </div>
-		</div>
-		<br>
-		<br>
-		<%= JST['boards/show/owner_avatar']({board: board}) %>
-	</div>
+    <div class="board-info-tabs"></div>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-5">
+    
+    <div class="panel panel-default price-show">
+      <div class="panel-heading prices">
+        Price per day: $<%= board.escape('price') %><br>
+        Price per week: $<%= board.escape('price') * 7 %>
+      </div>
+      <div class="panel-body" align="center">
+        
+        <button type="submit" class="btn btn-primary" id="submit-rental-request">
+          <span class="glyphicon glyphicon-ok"></span>
+          Rent this board!
+        </button>
+      </div>
+    </div>
+    <br>
+    <br>
+    <%= JST['boards/show/owner_avatar']({board: board}) %>
+  </div>
 </div>
 
 <br><br><br><br>

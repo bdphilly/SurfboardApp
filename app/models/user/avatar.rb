@@ -19,15 +19,15 @@ class User::Avatar < Photo
   validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
 
   def small_attachment
-  	return self.attachment(:small)
+    return self.attachment(:small)
   end
 
   def medium_attachment
-  	return self.attachment(:medium)
+    return self.attachment(:medium)
   end
 
   def large_attachment
-  	return self.attachment(:large)
+    return self.attachment(:large)
   end
 
 end

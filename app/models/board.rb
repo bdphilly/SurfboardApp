@@ -45,7 +45,7 @@ class Board < ActiveRecord::Base
     class_name: "BoardRental",
     foreign_key: :board_id
 
-	has_many :images, :as => :imageable, :class_name => "Board::Image", :dependent => :destroy
+  has_many :images, :as => :imageable, :class_name => "Board::Image", :dependent => :destroy
   accepts_nested_attributes_for :images
 
   has_one :owner_avatar, through: :owner, source: :avatar

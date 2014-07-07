@@ -6,9 +6,9 @@ Brand: <%= @board.brand %>
 Model: <%= @board.model %>
 <br>
 <% @board.rentals.each do |rental| %>
-	Start Date: <%= rental.start_date %>
-	End Date: <%= rental.end_date %>
-	User: <%= rental.renter_id %>
+  Start Date: <%= rental.start_date %>
+  End Date: <%= rental.end_date %>
+  User: <%= rental.renter_id %>
   Price: <%= rental.price %>
   Status: <%= rental.status %>
   <br>

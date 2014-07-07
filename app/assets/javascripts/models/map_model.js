@@ -13,4 +13,3 @@ SurfboardApp.Models.MapModel = Backbone.Model.extend({
   //   }
 
 });
-

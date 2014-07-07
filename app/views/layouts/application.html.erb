@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	  <title>SurfboardApp</title>
-	  <%= stylesheet_link_tag    "application", media: "all" %>
-	  <%= javascript_include_tag "application" %>
-	  <%= csrf_meta_tags %>
-	  <%= favicon_link_tag 'favicon.png' %>
-		<%= yield :head %>
-	</head>
-	<body>
-		<%= render "layouts/navbar" %>
+  <head>
+    <title>SurfboardApp</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.png' %>
+    <%= yield :head %>
+  </head>
+  <body>
+    <%= render "layouts/navbar" %>
 
-		<%= flash[:errors].join if flash[:errors] %>
+    <%= flash[:errors].join if flash[:errors] %>
 
-		<!--Devise login alerts...edit or remove at some point! -->
-<!-- 		<% if notice %>
-		  <p class="alert alert-success"><%= notice %></p>
-		<% end %> -->
-		<% if alert %>
-			<br>
-		  <p class="alert alert-danger alert-dismissable"><%= alert %></p>
-		<% end %>
+    <!--Devise login alerts...edit or remove at some point! -->
+<!--    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %> -->
+    <% if alert %>
+      <br>
+      <p class="alert alert-danger alert-dismissable"><%= alert %></p>
+    <% end %>
 
-		<%= yield %>
-	</body>
-	<footer>
-	</footer>
+    <%= yield %>
+  </body>
+  <footer>
+  </footer>
 </html>

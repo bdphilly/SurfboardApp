@@ -1,32 +1,32 @@
 <div id="content" class="user-container" align="center">
 <br>
 <h1><%= @user.fname %> <%= @user.lname %></h1>
-		
-	<% if @user.avatar %>
-		<img src="<%= @user.avatar.url(:large) %>" class="img-thumbnail user-avatar" alt="">
-	<% else %>
-		<img src="https://s3-us-west-1.amazonaws.com/brahboards/avatar-placeholder.png" alt="" class="user-avatar img-thumbnail">		
-	<% end %>
+    
+  <% if @user.avatar %>
+    <img src="<%= @user.avatar.url(:large) %>" class="img-thumbnail user-avatar" alt="">
+  <% else %>
+    <img src="https://s3-us-west-1.amazonaws.com/brahboards/avatar-placeholder.png" alt="" class="user-avatar img-thumbnail">   
+  <% end %>
 
-	<div class="panel panel-default panel-user-show">
-	  <div class="panel-heading">About <%= @user.fname %></div>
-	  <div class="panel-body">
+  <div class="panel panel-default panel-user-show">
+    <div class="panel-heading">About <%= @user.fname %></div>
+    <div class="panel-body">
 
-			<% if @user == current_user && @user.about == nil %>
-				You haven't filed out your description yet. What are you waiting for?! 
-					<br>
-					<%= link_to "Edit your profile", edit_user_registration_path %>
-			<% elsif @user.about == nil %>
-				This user hasn't filled out their description yet. They are too busy surfing.
-			<% else %>
-	    	<%= @user.about %>
-	    <% end %>
-	  </div>
-	</div>
+      <% if @user == current_user && @user.about == nil %>
+        You haven't filed out your description yet. What are you waiting for?! 
+          <br>
+          <%= link_to "Edit your profile", edit_user_registration_path %>
+      <% elsif @user.about == nil %>
+        This user hasn't filled out their description yet. They are too busy surfing.
+      <% else %>
+        <%= @user.about %>
+      <% end %>
+    </div>
+  </div>
 
-	<% if @user.fname %>
-		<%= @user.fname %> has been a member since <%= @user.created_at.year %>.
-	<% end %>
+  <% if @user.fname %>
+    <%= @user.fname %> has been a member since <%= @user.created_at.year %>.
+  <% end %>
 
 
 </div>

@@ -1,22 +1,22 @@
 <section class="panel panel-default panel-owner-avatar">
-	
-	<a href="/users/<%= board.get('owner_id') %>">
-		<% if (board.ownerAvatar().get('medium_attachment')) { %>
-		<img src="<%= board.ownerAvatar().escape('medium_attachment') %>" alt="" class="owner-avatar img-thumbnail">
-		<% } else { %> 
-		<img src="https://s3-us-west-1.amazonaws.com/brahboards/avatar-placeholder.png" alt="" class="owner-avatar img-thumbnail">
-		<% } %>
-	</a>
-	
-	<% if (board.get('owner_fname')) { %>
-	<span class="avatar-greetings">Sup brah, my name is</span>
-	<h4 class="name">
-		<a href="/users/<%= board.escape('owner_id') %>"><%= board.escape('owner_fname') %></a>
-	</h4>
-	<span class="welcome">Glad you like my board!</span>
-	<% } else { %>
-	<br>
-	<div class="panel-body">This person who listed this board is currently a mystery...</div>
-	<% } %>
-	<br>
+  
+  <a href="/users/<%= board.get('owner_id') %>">
+    <% if (board.ownerAvatar().get('medium_attachment')) { %>
+    <img src="<%= board.ownerAvatar().escape('medium_attachment') %>" alt="" class="owner-avatar img-thumbnail">
+    <% } else { %> 
+    <img src="https://s3-us-west-1.amazonaws.com/brahboards/avatar-placeholder.png" alt="" class="owner-avatar img-thumbnail">
+    <% } %>
+  </a>
+  
+  <% if (board.get('owner_fname')) { %>
+  <span class="avatar-greetings">Sup brah, my name is</span>
+  <h4 class="name">
+    <a href="/users/<%= board.escape('owner_id') %>"><%= board.escape('owner_fname') %></a>
+  </h4>
+  <span class="welcome">Glad you like my board!</span>
+  <% } else { %>
+  <br>
+  <div class="panel-body">This person who listed this board is currently a mystery...</div>
+  <% } %>
+  <br>
 </section>

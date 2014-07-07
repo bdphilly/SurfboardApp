@@ -1,40 +1,40 @@
 <li>
-	<div class="board-result-redirect">
-	<a href="#boards/<%= board.id %>" class="results-link">
-	
-		<div class="panel board-result">
-		  <!-- <div class="panel-heading"> -->
-		    <!-- <h3 class="panel-title"> -->
-		    	
-		    <!-- </h3> -->
-		  <!-- </div> -->
-		  <div class="panel-body">
-		    <div row>
-			    <col>
-				    <% if (board.photos().first()) { %>
-				    	<img src="<%= board.photos().first().get('small') %>" 
-				    		class="search-photo img-responsive" alt="Board Photo">
-						<% } else { %>
-								<img src="https://s3-us-west-1.amazonaws.com/brahboards/placeholder-board.png" class="search-photo img-responsive" alt="No Photo Present">
-						<% } %>
-					</col>
-					<col>	
-						<span class="index-entry brand-model"><%= board.escape('brand') %> <%= board.escape('model') %></span>
-						<br>
-				    Length: <%= board.escape('length') %><br>
-				    Type: <%= board.escape('board_type') %><br>
-				    <%= board.escape('city') %>, <%= board.escape('state') %>
-				    <br>
-				    <br>
-				    
-				  </col>
-				  <div class="price-per-day" align="right">
-						$ <%= board.escape('price') %> 
-						<span style="font-size: 18px">/ day</span>
-					</div>
-			  </div>
-		  </div>
-		</div>
+  <div class="board-result-redirect">
+  <a href="#boards/<%= board.id %>" class="results-link">
+  
+    <div class="panel board-result">
+      <!-- <div class="panel-heading"> -->
+        <!-- <h3 class="panel-title"> -->
+          
+        <!-- </h3> -->
+      <!-- </div> -->
+      <div class="panel-body">
+        <div row>
+          <col>
+            <% if (board.photos().first()) { %>
+              <img src="<%= board.photos().first().get('small') %>" 
+                class="search-photo img-responsive" alt="Board Photo">
+            <% } else { %>
+                <img src="https://s3-us-west-1.amazonaws.com/brahboards/placeholder-board.png" class="search-photo img-responsive" alt="No Photo Present">
+            <% } %>
+          </col>
+          <col> 
+            <span class="index-entry brand-model"><%= board.escape('brand') %> <%= board.escape('model') %></span>
+            <br>
+            Length: <%= board.escape('length') %><br>
+            Type: <%= board.escape('board_type') %><br>
+            <%= board.escape('city') %>, <%= board.escape('state') %>
+            <br>
+            <br>
+            
+          </col>
+          <div class="price-per-day" align="right">
+            $ <%= board.escape('price') %> 
+            <span style="font-size: 18px">/ day</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
 </a>
 </div>

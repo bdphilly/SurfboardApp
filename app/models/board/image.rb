@@ -18,18 +18,18 @@ class Board::Image < Photo
   # validates :attachment, :attachment_content_type => { :content_type => ['image/png', 'image/jpg']}
   
   has_attached_file :attachment, :styles => { :small => "200x150#", :medium => "400x300#", :large => "640x480#" }
-	validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
 
-	def small_attachment
-  	return self.attachment(:small)
+  def small_attachment
+    return self.attachment(:small)
   end
 
   def medium_attachment
-  	return self.attachment(:medium)
+    return self.attachment(:medium)
   end
 
   def large_attachment
-  	return self.attachment(:large)
+    return self.attachment(:large)
   end
 
 end

@@ -13,24 +13,24 @@
 #
 
 class BoardRental < ActiveRecord::Base
-	STATUS_STATES = ["Pending", "Denied", "Unavailable", "Approved"]
+  STATUS_STATES = ["Pending", "Denied", "Unavailable", "Approved"]
 
-	##take this out after app is functional, let user choose...
+  ##take this out after app is functional, let user choose...
   # before_validation :assign_available_status
 
-	validates :board_id, :start_date, :end_date, :status, presence: true
+  validates :board_id, :start_date, :end_date, :status, presence: true
 
-	validates :status, inclusion: STATUS_STATES
+  validates :status, inclusion: STATUS_STATES
 
-	validate :does_not_overlap_approved_request
+  validate :does_not_overlap_approved_request
 
-	belongs_to :board,
-		class_name: "Board",
-		foreign_key: :board_id
+  belongs_to :board,
+    class_name: "Board",
+    foreign_key: :board_id
 
-	belongs_to :renter,
-		class_name: "User",
-		foreign_key: :renter_id
+  belongs_to :renter,
+    class_name: "User",
+    foreign_key: :renter_id
 
   def approve!
     raise "not pending" unless self.status == "Pending"
@@ -43,80 +43,80 @@ class BoardRental < ActiveRecord::Base
   end
 
   def deny!
-  	self.status = "Denied"
-  	self.save!
+    self.status = "Denied"
+    self.save!
   end
 
   def pend!
-		self.status = "Pending"
-		self.save!
-	end
+    self.status = "Pending"
+    self.save!
+  end
 
-	def approved?
-		self.status == "Approved"
-	end
+  def approved?
+    self.status == "Approved"
+  end
 
-	def pending?
-		self.status == "Pending"
-	end
+  def pending?
+    self.status == "Pending"
+  end
 
-	def denied?
-		self.status == "Denied"
-	end
+  def denied?
+    self.status == "Denied"
+  end
 
-	def available?
-		self.status == "Available"
-	end
+  def available?
+    self.status == "Available"
+  end
 
-	def unavailable?
-		self.status == "Unavailable" || self.status == "Approved" || self.status == "Denied"
-	end
+  def unavailable?
+    self.status == "Unavailable" || self.status == "Approved" || self.status == "Denied"
+  end
 
-	private
+  private
 
-	def assign_unavailable_status
-		self.status ||= "Unavailable"
-	end
+  def assign_unavailable_status
+    self.status ||= "Unavailable"
+  end
 
-	def mark_unavailable!
-		self.status = "Unavailable"
-	end
-	
-	def overlapping_requests
-	  conditions = <<-SQL
-	    (
-	      (board_id = :board_id)
-	      AND (
-	        (
-	          (start_date BETWEEN :start_date AND :end_date)
-	          OR (end_date BETWEEN :start_date AND :end_date)
-	        ) OR (
-	          (:start_date BETWEEN start_date AND end_date)
-	          OR (:end_date BETWEEN start_date AND end_date)
-	        )
-	      )
-	    )
-	  SQL
+  def mark_unavailable!
+    self.status = "Unavailable"
+  end
+  
+  def overlapping_requests
+    conditions = <<-SQL
+      (
+        (board_id = :board_id)
+        AND (
+          (
+            (start_date BETWEEN :start_date AND :end_date)
+            OR (end_date BETWEEN :start_date AND :end_date)
+          ) OR (
+            (:start_date BETWEEN start_date AND end_date)
+            OR (:end_date BETWEEN start_date AND end_date)
+          )
+        )
+      )
+    SQL
 
-	  overlapping_requests = BoardRental.where(conditions, {
-	  	board_id: self.board_id,
-	  	start_date: self.start_date,
-	  	end_date: self.end_date
-		})
+    overlapping_requests = BoardRental.where(conditions, {
+      board_id: self.board_id,
+      start_date: self.start_date,
+      end_date: self.end_date
+    })
 
-	  if self.id.nil?
-	    overlapping_requests
-	  else
-	    overlapping_requests.where("id != ?", self.id)
-	  end
-	end
+    if self.id.nil?
+      overlapping_requests
+    else
+      overlapping_requests.where("id != ?", self.id)
+    end
+  end
 ################
 
-	def overlapping_approved_requests
+  def overlapping_approved_requests
     overlapping_requests.where("status = 'Approved'")
   end
 
-	def overlapping_pending_requests
+  def overlapping_pending_requests
     overlapping_requests.where("status = 'Pending'")
   end
    

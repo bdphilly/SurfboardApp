@@ -6,5 +6,3 @@ SurfboardApp.Models.BoardPhoto = Backbone.Model.extend({
  //  },
 	
 });
-
-//Board with a capital B
