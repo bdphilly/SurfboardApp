@@ -3,7 +3,6 @@
 Brahboards is a peer-to-peer surfboard rental app. Traveling to a surf spot and looking to rent a board? Don't surf often enough to buy one? Your board goes unused most days of the year so want to make a couple extra bucks renting it out to fellow surfers? If you've answered yes to any of the above questions, Brahboards might be perfect for you!
 
 == Technologies
----
 Brahboards is a Backbone.js app consuming a RESTful API built with Rails. Other technolgies include PostgreSQL, jQuery, Bootstrap, JavaScript, Ruby, HTML, & CSS.
 
 == Features
@@ -18,7 +17,7 @@ Brahboards is a Backbone.js app consuming a RESTful API built with Rails. Other 
 * Auto-complete geographic search
 * Interactive calendar to check availability and select dates
 
-== In-the-works
+== TODO
 * Footer pages (about, contact, highlighted cities)
 * Edit boards
 * Send messages directly on the site to other users
