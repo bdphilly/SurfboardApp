@@ -17,11 +17,10 @@
   <% end %>
   <br>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <input type="hidden" name="user[email]" value="kelly@slater.com">
-        <input type="hidden" name="user[password]" value="asdfasdf">
+      <input type="hidden" name="user[email]" value="kelly@slater.com">
+      <input type="hidden" name="user[password]" value="asdfasdf">
     <div><button type="submit" id="demo-user" class="btn btn-primary">Sign in as a guest!</button></div>
   <% end %>
-
   <br>
   <%= render "devise/shared/links" %>
 </div>
